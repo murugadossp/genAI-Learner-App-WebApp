@@ -1,0 +1,34 @@
+{
+  "description": "Single registry of content modules, slug rules and built-site folder layout. Swift, TypeScript and Python resolvers mirror these rules; scripts/content/fixtures/lesson_paths.json enforces parity.",
+  "surfaces": [
+    "mobile",
+    "web"
+  ],
+  "modules": [
+    {
+      "key": "genai-basics",
+      "slugPattern": "^c(1[0-2]|[1-9])-(0[1-9]|[1-9][0-9])$",
+      "groupFolder": "chapter",
+      "groupFolderOverrides": {},
+      "authoringRoot": "content/modules/genai-basics"
+    },
+    {
+      "key": "mathematics-for-ai",
+      "slugPattern": "^math-(0[1-9])$",
+      "groupFolder": "none",
+      "authoringRoot": "content/modules/mathematics-for-ai"
+    },
+    {
+      "key": "python-for-ai",
+      "slugPattern": "^p1-(0[1-9]|1[0-4])$",
+      "groupFolder": "none",
+      "authoringRoot": "content/modules/python-for-ai"
+    },
+    {
+      "key": "rag-advanced",
+      "slugPattern": "^ra-(0[1-9]|1[0-7])$",
+      "groupFolder": "none",
+      "authoringRoot": "content/modules/rag-advanced"
+    }
+  ]
+}
