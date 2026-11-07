@@ -96,9 +96,11 @@ Selecting an answer changes selection styling but does not grade it. Enable Chec
 
 Both themes have identical layout, content, and interactions. Use semantic variables from the separate [light](light-theme.md) and [dark](dark-theme.md) references. Theme changes must not reset experiments, answers, navigation, or progress.
 
-The current mockup defaults to light and persists an explicit choice in `genai-theme`. The `dark` class on `body` selects dark tokens. The workspace toggle changes the same preference as the header toggle. System-theme detection and pre-paint preference restoration are not implemented; do not document them as existing features.
+The current mockup defaults to light and persists an explicit choice in `genai-theme`. The `dark` class on `body` selects dark tokens. The workspace toggle changes the same preference as the header toggle. System-theme detection and pre-paint preference restoration are not implemented in the mockup.
 
-Some decorative landing artwork retains a fixed light palette, and the marketing feature panel intentionally uses an inverse dark treatment. New lesson components should use semantic tokens throughout. Review these inherited decorative exceptions in browser QA before extending them.
+Planned for the web app (PR 1 requirement, not yet implemented): keep the same tokens and the shared toggle, but follow the system theme when no choice is saved, apply a saved choice before first paint, and set `data-theme` on `<html>` only for an explicit choice, with a `prefers-color-scheme` media query covering the unset default. See the [dark theme](dark-theme.md#web-app-behavior-planned-pr-1-requirement) reference.
+
+Some decorative landing artwork retains a fixed light palette, and the marketing feature panel intentionally uses an inverse dark treatment. About 25 hardcoded colours remain there (hero artwork, feature panel); move the feature panel to `--inverse-*` tokens when the landing page is ported. New lesson components should use semantic tokens throughout. Review these inherited decorative exceptions in browser QA before extending them.
 
 ## 7. Accessibility, performance, and state
 
