@@ -9,7 +9,8 @@
     "test": "npm run test:mockup",
     "typecheck": "tsc --noEmit",
     "test:web": "playwright test",
-    "preview:mockup": "python3 -m http.server 3001 --bind 127.0.0.1 --directory mockups"
+    "preview:mockup": "python3 -m http.server 3001 --bind 127.0.0.1 --directory mockups",
+    "test:production": "node scripts/test-production-gating.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.65.0",
