@@ -54,3 +54,5 @@ Calculated WCAG contrast ratios for the CSS token pairs: body text/background 14
 Still pending: 768px and 1440px light-mode screenshots and expanded workspaces, a complete overflow audit, and a real back/forward check. The previously captured 390px screenshot is not part of this PR. Keep the PR in draft pending this review.
 
 Chrome also captured light-mode lesson views at [768px](review-screenshots/lesson-768-light.png) and [1440px](review-screenshots/lesson-1440-light.png), and an [expanded workspace at 768px](review-screenshots/workspace-768-light.png). At 768px the workspace stages stack vertically. These images supplement, rather than replace, the previously noted pending browser checks.
+
+Chrome history check: advanced the experiment to step 1, used the lesson section menu to navigate from `#lesson/experiment` to `#lesson/mechanics`, then used browser Back and Forward. The URL changed as expected and the experiment remained at step 1 after Forward. This confirms section-history state in the browser; quiz selection and history across separate views remain covered by DOM tests only.
