@@ -52,3 +52,5 @@ Chrome responsive previews were inspected at 768 × 844 and 1440 × 844 in dark 
 Calculated WCAG contrast ratios for the CSS token pairs: body text/background 14.27:1 light and 14.95:1 dark; primary button text/background 6.16:1 light and 8.17:1 dark; disabled text/background 7.05:1 light and 6.24:1 dark. These calculations do not cover every element or hover state.
 
 Still pending: 768px and 1440px light-mode screenshots and expanded workspaces, a complete overflow audit, and a real back/forward check. The previously captured 390px screenshot is not part of this PR. Keep the PR in draft pending this review.
+
+Chrome also captured light-mode lesson views at [768px](review-screenshots/lesson-768-light.png) and [1440px](review-screenshots/lesson-1440-light.png), and an [expanded workspace at 768px](review-screenshots/workspace-768-light.png). At 768px the workspace stages stack vertically. These images supplement, rather than replace, the previously noted pending browser checks.
