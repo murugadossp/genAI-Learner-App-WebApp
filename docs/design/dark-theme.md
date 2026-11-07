@@ -6,7 +6,7 @@ Use layered charcoal-green surfaces with soft light text. The theme should prese
 
 ## Current tokens
 
-CSS in [styles.css](../../mockups/styles.css) is canonical. The values below are a documentation snapshot for review; verify them against CSS when tokens change.
+CSS is canonical: [app/tokens.css](../../app/tokens.css) for the web app, mapped one-to-one from the mockup's [styles.css](../../mockups/styles.css). The values below are a documentation snapshot; verify them against CSS when tokens change.
 
 | Token | Value | Role |
 | --- | --- | --- |
@@ -21,8 +21,17 @@ CSS in [styles.css](../../mockups/styles.css) is canonical. The values below are
 | `--orange` | `#875627` | Reserved warm highlight |
 | `--panel` | `#2c362e` | Muted panels and bar tracks |
 | `--dark` | `#111b16` | Deeper inverse/code surfaces |
+| `--inverse-ink` | `#edf1e8` | Same as light; text on inverse panels |
+| `--inverse-muted` | `#bdcba9` | Same as light; supporting text on inverse panels |
+| `--inverse-border` | `#71806f` | Same as light; borders on inverse panels |
+| `--highlight-ink` | `#f1f4e9` | Text on highlight chips |
+| `--disabled-bg` | `#39433d` | Disabled control background |
+| `--disabled-ink` | `#c3ccc4` | Disabled control text |
+| `--on-accent` | `#151c32` | Dark text on the light accent. New in the web app |
+| `--code-ink` | `#dce8ce` | Same as light; code text. New in the web app |
+| `--backdrop` | `rgba(9, 18, 15, 0.65)` | Same as light; dialog backdrop. New in the web app |
 
-`--radius` remains `16px`; geometry does not change. Use `color-scheme: dark` for native controls. Primary buttons use dark foreground `#151c32` over the light accent, rather than white text. Most ordinary text uses `--ink`.
+`--radius` remains `16px`; geometry does not change. Use `color-scheme: dark` for native controls. Primary buttons use `--on-accent` (`#151c32`) over the light accent, rather than white text. Most ordinary text uses `--ink`.
 
 ## Surface and illustration rules
 
@@ -38,6 +47,10 @@ CSS in [styles.css](../../mockups/styles.css) is canonical. The values below are
 An explicit dark choice is stored as `genai-theme=dark`. Both header and workspace theme controls affect the same `body.dark` class and stored preference. Switching themes must retain the current simulation step, selected quiz choice, and open workspace. Reset demo clears the preference and returns to light.
 
 The current implementation applies the stored theme in deferred JavaScript. A flash of light content may occur on reload; pre-paint initialization is a production follow-up, not a completed feature. There is no System option in the mockup.
+
+### Web app behavior
+
+The web app changes three things. With no saved choice it follows the device's system theme (`prefers-color-scheme`). A saved choice is applied before first paint by an inline script in `app/layout.tsx`, using `data-theme="light"` or `data-theme="dark"` on `<html>` instead of `body.dark`. If browser storage is blocked, the toggle still works for the session. The `genai-theme` key and the shared header/workspace toggle are unchanged.
 
 ## Review
 
