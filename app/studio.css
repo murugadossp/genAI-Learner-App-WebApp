@@ -280,6 +280,11 @@ h3 {
   border-color: #304fe8;
   color: #fff;
 }
+.art-bottom button:not(:disabled):hover {
+  background: #243bb3;
+  border-color: #243bb3;
+  color: #fff;
+}
 .note-chip {
   position: absolute;
   right: -15px;

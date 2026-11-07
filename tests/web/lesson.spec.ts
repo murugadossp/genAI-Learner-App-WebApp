@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 for (const width of [390,768,1440]) for (const theme of ['light','dark'] as const) {
  test(`${width}px ${theme}: full journey and lesson`,async({page})=>{
   await page.setViewportSize({width,height:900});await page.emulateMedia({colorScheme:theme});await page.addInitScript(t=>localStorage.setItem('genai-theme',t),theme);
-  await page.goto('/'); await expect(page.getByRole('heading',{name:'Understand AI. Get your hands on the ideas.'})).toBeVisible();
+  await page.goto('/'); const heroButton=page.getByRole('button',{name:'Try another'}); await heroButton.hover(); await expect(heroButton).toHaveCSS('background-color','rgb(36, 59, 179)'); await expect(heroButton).toHaveCSS('color','rgb(255, 255, 255)'); await expect(page.getByRole('heading',{name:'Understand AI. Get your hands on the ideas.'})).toBeVisible();
   await page.getByRole('link',{name:'Find your starting point'}).click();await expect(page.getByRole('heading',{name:'Keep your curiosity going.'})).toBeVisible();
   await page.getByLabel('Find a topic').fill('python');await expect(page.getByRole('heading',{name:'Python for AI'})).toBeVisible();await expect(page.locator('article.coming-soon').filter({hasText:'Python for AI'})).toContainText('Coming soon');await expect(page.getByRole('link',{name:/Python for AI/})).toHaveCount(0);
   await page.getByLabel('Find a topic').fill('language models');await page.getByRole('link',{name:/How language models work/}).click();await expect(page.getByRole('heading',{name:'How GenAI Works'})).toBeVisible();
