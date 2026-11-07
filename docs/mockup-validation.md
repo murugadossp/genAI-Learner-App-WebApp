@@ -1,0 +1,60 @@
+# Mockup validation
+
+Validated 2026-11-07.
+
+## Passed
+
+- JavaScript syntax: `node --check mockups/app.js`.
+- Whitespace/conflict check: `git diff --check`.
+- 7 reproducible Node test cases (`npm test`) using jsdom: landing rendering, prediction preview changes, seven catalog cards, search match and empty results, filter selection, course groups, lesson routing, all three simulation steps, simulation reset, incorrect/correct quiz feedback, completion persistence, home completion state, theme persistence, lesson section routing, demo reset, and unknown-route fallback.
+- Prototype assets total approximately 50 KB, well below the 500 KB budget. All assets are local; no external network dependencies, backend requests, fonts, or model calls.
+
+## Still requires browser review
+
+Browser spot checks were performed in Chrome at 390px in light and dark themes; the mobile bottom bar remained visible. A 390px screenshot was captured during review. Tablet and desktop screenshots, systematic overflow checks, and measured contrast are not yet recorded. DOM tests do not substitute for these checks.
+
+Before merging, open the mockup at 390, 768, and 1440 pixel widths in both themes. Review every view, use keyboard navigation, verify back/forward, expand course chapters, and inspect long lesson/code sections. Confirm no console errors, horizontal overflow, or network-dependent resources. Check reduced-motion behavior and readable focus/contrast.
+
+## Review flow
+
+1. Landing: try another prediction and enter the studio.
+2. Home: search, filter, inspect the empty state, and continue the lesson.
+3. Course: expand chapter groups and open the sample.
+4. Lesson: step through generation, reset, answer the quiz, and mark complete.
+5. Return home; refresh to check persistence; use Reset demo.
+
+No actual learner records, publication states, or deployed lessons are changed.
+
+## Wide workspace update
+
+- The seven reproducible test cases verify three stages, sidebar removal, moving the single lab into/out of the workspace, simulation state continuity, workspace theme toggle, restored trigger focus, scroll-lock cleanup, navigation menu content, and mobile navigation markup.
+- The added checks stub jsdom dialog methods: native focus trapping, Escape handling, bottom-sheet rendering, actual viewport reflow and scroll behavior still require browser verification. Chrome was accessible for a mobile spot check; remaining checks are listed below.
+- Browser review should cover the wide lab at 1440px, stacked lab at 768px/390px, workspace open/close after stepping, both themes, Escape, Tab containment, focus restoration, and mobile bottom navigation without obscured content.
+
+## Knowledge-check clarity update
+
+The exercise now uses a distinct practice card, explicit choose-one instructions, native radio inputs in a fieldset, and a Check answer button disabled until selection. Selection alone does not grade the answer. Changing a selection clears stale feedback. Updated interaction checks are covered by the reproducible `npm test` suite. Browser visual verification remains partial.
+
+## Disabled button contrast
+
+The disabled generation button and knowledge-check action use explicit `--disabled-bg` and `--disabled-ink` tokens. They no longer inherit white-on-primary text and then fade the entire control. The values are defined for both light and dark themes so the button remains legible when the generation sequence is complete or an answer has not been selected.
+
+Disabled controls use shared semantic color tokens in both themes; primary hover styles preserve the button background. CSS and JavaScript URLs share a version to prevent mismatched cached assets.
+
+## Review follow-up
+
+`npm ci` and `npm test` passed (seven cases). In Chrome, the expanded workspace opened, Tab wrapped from the last control to the first, theme toggled, and Escape returned focus to Expand workspace. The 768px and 1440px visual passes, screenshots, browser history, overflow, and measured contrast remain pending; do not treat this as a completed browser review.
+
+## Additional browser review
+
+Chrome responsive previews were inspected at 768 × 844 and 1440 × 844 in dark mode. Captured evidence: [768px](review-screenshots/lesson-768-dark.png), [1440px](review-screenshots/lesson-1440-dark.png). These captures show the lesson introduction, not a complete page or expanded workspace review. Previous Chrome interaction confirmed workspace Tab wrap, theme toggle, Escape, and return focus.
+
+Calculated WCAG contrast ratios for the CSS token pairs: body text/background 14.27:1 light and 14.95:1 dark; primary button text/background 6.16:1 light and 8.17:1 dark; disabled text/background 7.05:1 light and 6.24:1 dark. These calculations do not cover every element or hover state.
+
+Still pending: 768px and 1440px light-mode screenshots and expanded workspaces, a complete overflow audit, and a real back/forward check. The previously captured 390px screenshot is not part of this PR. Keep the PR in draft pending this review.
+
+Chrome also captured light-mode lesson views at [768px](review-screenshots/lesson-768-light.png) and [1440px](review-screenshots/lesson-1440-light.png), and an [expanded workspace at 768px](review-screenshots/workspace-768-light.png). At 768px the workspace stages stack vertically. These images supplement, rather than replace, the previously noted pending browser checks.
+
+Chrome history check: advanced the experiment to step 1, used the lesson section menu to navigate from `#lesson/experiment` to `#lesson/mechanics`, then used browser Back and Forward. The URL changed as expected and the experiment remained at step 1 after Forward. This confirms section-history state in the browser; quiz selection and history across separate views remain covered by DOM tests only.
+
+Expanded workspace was visually reviewed in Chrome at 768px dark and 1440px in both themes. Evidence: [768px dark](review-screenshots/workspace-768-dark.png), [1440px dark](review-screenshots/workspace-1440-dark.png), and [1440px light](review-screenshots/workspace-1440-light.png). The 768px workspace stacks vertically; the 1440px workspace shows the three stages side by side. No horizontal overflow was visible in those captures. A full audit of every page and viewport remains pending; do not interpret the screenshot review as an automated overflow check.
