@@ -4,6 +4,8 @@ const routes = [
  ['app/page.tsx','../src/studio/Landing'],
  ['app/studio/page.tsx','../../src/studio/Studio'],
  ['app/course/page.tsx','../../src/studio/Course'],
+ ['app/learn/genai-basics/c2-01/page.tsx','../../../../src/lessons/genai-basics/c2-01/Lesson'],
+ ['app/learn/genai-basics/c2-06/page.tsx','../../../../src/lessons/genai-basics/c2-06/Lesson'],
  ['app/learn/genai-basics/c2-02/page.tsx','../../../../src/lessons/genai-basics/c2-02/Lesson'],
 ];
 for (const [path, target] of routes) {

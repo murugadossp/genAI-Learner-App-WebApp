@@ -1,7 +1,7 @@
 node_modules/
 .next/
 next-env.d.ts
-app/learn/genai-basics/c2-02/page.tsx
+app/learn/genai-basics/*/page.tsx
 test-results/
 playwright-report/
 tsconfig.tsbuildinfo
