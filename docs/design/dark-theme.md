@@ -54,6 +54,18 @@ Not implemented yet. These are requirements for the web app shell in PR 1 of the
 
 The web app should change three things. With no saved choice it should follow the device's system theme (`prefers-color-scheme`). A saved choice should be applied before first paint by an inline script in the root layout, using `data-theme="light"` or `data-theme="dark"` on `<html>` instead of `body.dark`. If browser storage is blocked, the toggle should still work for the session. The `genai-theme` key and the shared header/workspace toggle stay unchanged.
 
+Mechanism: CSS handles the unset default, so it works before and without JavaScript.
+
+```css
+:root { /* light tokens */ }
+html[data-theme="dark"] { /* dark tokens */ }
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) { /* dark tokens */ }
+}
+```
+
+`data-theme` is set only when the learner chooses a theme, either restored from storage before first paint or set by the toggle for the session. With no choice, the attribute is absent and the media query applies, including live changes to the device setting. Keep the dark values in one place (for example, a shared custom-property block) so the two dark selectors cannot drift.
+
 ## Review
 
 Inspect the lesson, expanded workspace, navigation sheets, knowledge check, search, and course cards. Check native radio appearance, backdrop separation, disabled button legibility, focus rings, and text on accent-soft panels. Verify there is no accidental black-on-dark or white-on-light-accent text. Browser rendering and measured contrast remain pending in the prototype validation record.

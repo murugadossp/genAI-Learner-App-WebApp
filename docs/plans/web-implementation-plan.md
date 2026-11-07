@@ -18,7 +18,7 @@ The mockup stays in the repo as the visual reference. It is not the source code 
 | Lessons | Written in JSX (`Lesson.tsx`), authored independently for web. Labs are `"use client"` components. MDX may be added later for prose-heavy lessons. |
 | Lesson location | This repo, under `src/lessons/`. |
 | Curriculum identity | Canonical lesson IDs from the content repo's `curriculum.json`; module and slug format from `module_registry.json`. |
-| Web routes | Defined for web, not copied from mobile asset paths. Shape: `/learn/<course>/<lessonId>`. |
+| Web routes | Defined for web, not copied from mobile asset paths. Shape: `/learn/<module>/<lessonId>`, where `<module>` is a `module_registry.json` key. |
 | Publication | Separate from mobile. A lesson in the repo is not learner-visible until `webStatus: 'published'`. |
 | Auth and data | Supabase, added in PR 3. Lesson pages stay static. |
 | Hosting | Vercel Hobby while use is personal and non-commercial. Before the project becomes commercial (paying learners, ads, sponsorship, or operating as a business), move to Vercel Pro or Cloudflare. |
@@ -31,7 +31,7 @@ The theme is already documented. Do not repeat token values here.
 
 - Tokens and roles: [light theme](../design/light-theme.md) and [dark theme](../design/dark-theme.md). These now include every token in the mockup CSS, plus three new ones that replace hardcoded colours: `--on-accent`, `--code-ink`, `--backdrop`.
 - Theme behaviour for the web app: [dark theme, web app behavior](../design/dark-theme.md#web-app-behavior-planned-pr-1-requirement) and the [theme contract](../design/design-system.md#6-theme-contract).
-- Canonical values: `mockups/styles.css` until PR 1 lands; then `app/tokens.css` (drafted locally, not yet committed), mapped one-to-one from it. Only the selectors change (`data-theme` on `<html>` instead of `body.dark`).
+- Canonical values: `mockups/styles.css` until PR 1 lands; then `app/tokens.css` (drafted locally, not yet committed), mapped one-to-one from it. Only the selectors change: dark tokens apply under `html[data-theme="dark"]` and under `@media (prefers-color-scheme: dark)` for `html:not([data-theme="light"])`, replacing `body.dark`. See the mechanism in the dark theme doc.
 
 PR 1 check: every token in the theme docs exists in `tokens.css` with the same value. Out of scope for PR 1: the landing page's remaining hardcoded colours, noted in the theme contract.
 
@@ -45,7 +45,7 @@ PR 1 check: every token in the theme docs exists in `tokens.css` with the same v
    ```ts
    export const meta = {
      lessonId: "c2-02",
-     course: "genai-basics",
+     module: "genai-basics", // module_registry.json key
      title: "One token at a time",
      outcome: "Explain how a model generates text one token at a time.",
      sections: [{ id: "idea", title: "The big idea" } /* … */],
@@ -88,7 +88,8 @@ Breakpoints from the mockup: 760px, 1000px (lab stacks), 1100px.
 
 - Commit read-only copies of `curriculum.json` and `module_registry.json` to `src/data/curriculum/`.
 - A `sync-curriculum` script copies them from the content repo and records the source commit SHA.
-- The build fails if a `lessonId` is not in `curriculum.json`, or if its module or slug format fails `module_registry.json`.
+- The build fails if a `lessonId` is not in `curriculum.json`, if `meta.module` is not a `module_registry.json` key, or if the `lessonId` fails that module's `slugPattern`.
+- Web lesson folders are `src/lessons/<module>/<lessonId>/`. They intentionally omit the registry's `groupFolder` (for example `ch02/`), which describes the mobile content layout, not web source paths.
 - Vercel builds cannot see the content repo, so the copies keep the check identical locally, in CI and on Vercel.
 
 ## 7. Testing
