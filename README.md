@@ -1,11 +1,23 @@
-# GenAI Learner App — Web
+# GenAI Learner — Web
 
-Placeholder. The web learner app is not started.
+An independent web learning experience for curious beginners and engineers. Curriculum topics and lesson identities are shared with `murugadossp/genAI-Learner-App`; web lessons, layout, assets, and publication readiness are authored independently. Mobile HTML is not the web lesson source.
 
-Planned scope: the browser version of the learner app, reading the same published lessons and curriculum as the iOS and Android apps.
+## Preview the design
 
-- Content and lesson paths: `murugadossp/genAI-Learner-App` (`content-site/mobile/lessons/...`, `curriculum.json`).
-- Backend: Supabase (`submit-answer`, `lesson-review`), maintained in the content repo.
-- iOS app: `murugadossp/genAI-Learner-App-IOS`. Android: `murugadossp/genAI-Learner-App-Android`.
+Open `mockups/index.html` directly, or serve this directory:
 
-Lesson path rules come from `content/curriculum/module_registry.json` in the content repo. Keep the web resolver in step with it.
+```sh
+python3 -m http.server 8765
+```
+
+Visit http://localhost:8765/mockups/.
+
+The prototype includes a landing page, learner home, course overview, and a new web sample of `c2-02`, “How a model predicts the next token.” Hash navigation supports back/forward. Try catalog search/filters, light/dark mode, the next-token simulation, the knowledge check, and demo completion. **Reset demo** clears preferences and progress stored by this prototype.
+
+All catalog cards intentionally lead to the same sample course. Other course lessons are marked preview-only. Completion is local demo state, not actual learner progress or publication status. There is no authentication, backend connection, executable code runner, or real model call.
+
+No build, external fonts, CDN, or packages are required. See [design brief](docs/design-brief.md) and [validation](docs/mockup-validation.md).
+
+## Future integration
+
+Preserve canonical curriculum slugs from the content repository. Additional subject coverage includes LLM internals, LangGraph, and architecture from `llm-concepts`. Shared learner identity can be integrated later; the mockup makes no database changes. Do not infer web readiness from mobile publication status or route web lessons to mobile HTML.
