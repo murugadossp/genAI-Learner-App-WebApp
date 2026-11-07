@@ -9,6 +9,9 @@ for (const width of [390, 768, 1440])
         theme,
       );
       await page.goto("/");
+      await expect(
+        page.getByRole("link", { name: "Try a lesson" }),
+      ).toHaveAttribute("href", "/learn/genai-basics/c2-01");
       const heroButton = page.getByRole("button", { name: "Try another" });
       await heroButton.hover();
       await expect(heroButton).toHaveCSS(

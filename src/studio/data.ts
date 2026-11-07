@@ -57,4 +57,5 @@ export const courses = [
     meta: "Architecture · Real-world reasoning",
   },
 ];
+export const firstLessonUrl = "/learn/genai-basics/c2-01";
 export const lessonUrl = "/learn/genai-basics/c2-02";

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Shell from "./Shell";
 import { Card } from "./Cards";
-import { courses, lessonUrl } from "./data";
+import { courses, firstLessonUrl } from "./data";
 export default function Landing() {
   const [word, setWord] = useState(0);
   const words = ["blue", "clear", "dark", "overcast"];
@@ -30,7 +30,7 @@ export default function Landing() {
               <Link className="button" href="/studio">
                 Find your starting point <span>↗</span>
               </Link>
-              <Link className="button secondary" href={lessonUrl}>
+              <Link className="button secondary" href={firstLessonUrl}>
                 Try a lesson <span>→</span>
               </Link>
             </div>
@@ -123,7 +123,7 @@ export default function Landing() {
               </p>
               <Link
                 className="button secondary inverse-button"
-                href={lessonUrl}
+                href={firstLessonUrl}
               >
                 Step inside a lesson ↗
               </Link>
