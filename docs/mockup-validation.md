@@ -38,3 +38,5 @@ The exercise now uses a distinct practice card, explicit choose-one instructions
 ## Disabled button contrast
 
 The disabled generation button and knowledge-check action use explicit `--disabled-bg` and `--disabled-ink` tokens. They no longer inherit white-on-primary text and then fade the entire control. The values are defined for both light and dark themes so the button remains legible when the generation sequence is complete or an answer has not been selected.
+
+A more specific rule now sets the disabled next-token button foreground, background, border, and WebKit text fill directly in both themes, to protect the label from inherited button styles. Stylesheet URL is versioned to refresh cached copies.
