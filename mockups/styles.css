@@ -1280,3 +1280,93 @@ button:disabled {
     max-width: 90vw;
   }
 }
+
+/* An explicit practice surface, distinct from the surrounding article. */
+.knowledge-check {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-top: 4px solid var(--accent);
+  border-radius: 16px;
+  padding: 28px;
+}
+.quiz-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+.quiz-heading .eyebrow {
+  color: var(--accent);
+}
+#quiz {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+#quiz legend {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.6;
+  padding: 0;
+}
+#quiz-instructions {
+  font-size: 13px;
+  margin: 12px 0 18px;
+}
+.knowledge-check .quiz-option {
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.quiz-option input {
+  width: 19px;
+  height: 19px;
+  flex: 0 0 19px;
+  margin: 3px 0 0;
+  accent-color: var(--accent);
+}
+.knowledge-check .quiz-option:hover {
+  border-color: var(--accent);
+}
+.knowledge-check .quiz-option:has(input:checked) {
+  border: 2px solid var(--accent);
+  padding: 15px;
+  background: var(--bg);
+}
+.quiz-option:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.quiz-actions {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+.knowledge-check .feedback {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 20px;
+}
+@media (max-width: 760px) {
+  .knowledge-check {
+    padding: 20px 16px;
+  }
+  .quiz-heading .pill {
+    font-size: 9px;
+  }
+}

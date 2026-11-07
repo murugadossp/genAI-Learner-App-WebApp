@@ -104,7 +104,7 @@ for _ in range(max_new_tokens):
     token = sample(probabilities)
     if token == end_token:
         break
-    context.append(token)</code></pre><p>The next call includes the new token. Generating a longer answer repeats this loop, subject to stopping rules and context limits. The example above omits implementation details such as caching.</p><div class="callout"><strong>Engineering connection:</strong> streaming exposes this incremental generation to the user. Seeing text appear early improves perceived responsiveness even while the rest of the answer is still being generated.</div></section><section id="check"><div class="eyebrow">Make the idea stick</div><h2>Likely doesn’t mean verified.</h2><p>A model assigns a high probability to the next token in a factual claim. What can you conclude?</p><div id="quiz"><button class="quiz-option" data-answer="wrong">A. The claim has been checked against a trusted source.</button><button class="quiz-option" data-answer="right">B. That token is a likely continuation given the model and context.</button><button class="quiz-option" data-answer="wrong">C. The model is retrieving an exact sentence from its training data.</button></div><div class="feedback" id="feedback" role="status"></div></section><section id="takeaway"><h2>Take this with you.</h2><p>Generation is a loop: <strong>predict → choose → append → repeat</strong>. The distribution describes possible continuations, and the decoding strategy selects among them. Neither step alone verifies a claim.</p></section><div class="end-lesson"><a class="text-link" href="#course">← Back to the learning path</a><button class="button" id="complete">${completed() ? "Completed ✓" : "Mark sample complete ✓"}</button></div><p class="micro">Completion is stored on this browser only. This is a design preview.</p></article></div><nav class="mobile-lesson-bar" aria-label="Lesson navigation"><button data-open-menu="contents">☷ Contents</button><button data-open-menu="sections">≡ Sections</button><button id="next-section">Next section ↓</button></nav><dialog id="lesson-menu" class="menu-dialog" aria-labelledby="menu-title"><div class="dialog-heading"><h2 id="menu-title">Lesson navigation</h2><button data-close-dialog="lesson-menu" aria-label="Close navigation">✕</button></div><div id="menu-links"></div></dialog><dialog id="wide-workspace" class="workspace-dialog" aria-labelledby="workspace-title"><div class="dialog-heading"><div><div class="eyebrow">Interactive workspace · simulation</div><h2 id="workspace-title">The generation loop</h2></div><div class="dialog-controls"><button data-toggle-theme aria-label="Toggle light and dark theme">◐ Theme</button><button data-close-dialog="wide-workspace">← Return to lesson</button></div></div><div id="workspace-slot"></div></dialog>`;
+    context.append(token)</code></pre><p>The next call includes the new token. Generating a longer answer repeats this loop, subject to stopping rules and context limits. The example above omits implementation details such as caching.</p><div class="callout"><strong>Engineering connection:</strong> streaming exposes this incremental generation to the user. Seeing text appear early improves perceived responsiveness even while the rest of the answer is still being generated.</div></section><section id="check" class="knowledge-check"><div class="quiz-heading"><span class="eyebrow">✎ Try it yourself</span><span class="pill">Knowledge check · 1 question</span></div><h2>Likely doesn’t mean verified.</h2><fieldset id="quiz" aria-describedby="quiz-instructions"><legend>A model assigns a high probability to the next token in a factual claim. What can you conclude?</legend><p id="quiz-instructions" class="muted">Choose one answer, then check your reasoning.</p><label class="quiz-option"><input type="radio" name="knowledge-answer" value="a" data-answer="wrong"><span><strong>A.</strong> The claim has been checked against a trusted source.</span></label><label class="quiz-option"><input type="radio" name="knowledge-answer" value="b" data-answer="right"><span><strong>B.</strong> That token is a likely continuation given the model and context.</span></label><label class="quiz-option"><input type="radio" name="knowledge-answer" value="c" data-answer="wrong"><span><strong>C.</strong> The model is retrieving an exact sentence from its training data.</span></label></fieldset><div class="quiz-actions"><button class="button" id="check-answer" disabled>Check answer →</button><span class="micro">Practice only · No score</span></div><div class="feedback" id="feedback" role="status" aria-live="polite" hidden></div></section><section id="takeaway"><h2>Take this with you.</h2><p>Generation is a loop: <strong>predict → choose → append → repeat</strong>. The distribution describes possible continuations, and the decoding strategy selects among them. Neither step alone verifies a claim.</p></section><div class="end-lesson"><a class="text-link" href="#course">← Back to the learning path</a><button class="button" id="complete">${completed() ? "Completed ✓" : "Mark sample complete ✓"}</button></div><p class="micro">Completion is stored on this browser only. This is a design preview.</p></article></div><nav class="mobile-lesson-bar" aria-label="Lesson navigation"><button data-open-menu="contents">☷ Contents</button><button data-open-menu="sections">≡ Sections</button><button id="next-section">Next section ↓</button></nav><dialog id="lesson-menu" class="menu-dialog" aria-labelledby="menu-title"><div class="dialog-heading"><h2 id="menu-title">Lesson navigation</h2><button data-close-dialog="lesson-menu" aria-label="Close navigation">✕</button></div><div id="menu-links"></div></dialog><dialog id="wide-workspace" class="workspace-dialog" aria-labelledby="workspace-title"><div class="dialog-heading"><div><div class="eyebrow">Interactive workspace · simulation</div><h2 id="workspace-title">The generation loop</h2></div><div class="dialog-controls"><button data-toggle-theme aria-label="Toggle light and dark theme">◐ Theme</button><button data-close-dialog="wide-workspace">← Return to lesson</button></div></div><div id="workspace-slot"></div></dialog>`;
 }
 const stages = [
   {
@@ -313,14 +313,17 @@ document.addEventListener("click", (e) => {
     step = 0;
     updateLab();
   }
-  if (b.dataset.answer) {
-    document
-      .querySelectorAll(".quiz-option")
-      .forEach((x) => x.classList.toggle("chosen", x === b));
-    $("#feedback").textContent =
-      b.dataset.answer === "right"
-        ? "Exactly. The probability reflects a continuation, not a fact-check. You still need evidence to verify the claim."
-        : "Not quite. Next-token prediction does not itself check a source or retrieve an exact training sentence. Try the answer that describes a continuation.";
+  if (b.id === "check-answer") {
+    const answer = document.querySelector(
+      'input[name="knowledge-answer"]:checked',
+    );
+    if (!answer) return;
+    const correct = answer.dataset.answer === "right";
+    $("#feedback").hidden = false;
+    $("#feedback").dataset.result = correct ? "correct" : "retry";
+    $("#feedback").textContent = correct
+      ? "✓ Correct. The probability reflects a likely continuation, not a fact-check. You still need evidence to verify the claim."
+      : "↻ Not quite. Next-token prediction does not itself check a source or retrieve an exact training sentence. Choose another answer and try again.";
   }
   if (b.id === "complete") {
     storage.set("genai-demo-complete", "true");
@@ -332,5 +335,11 @@ if (storage.get("genai-theme") === "dark") {
   document.body.classList.add("dark");
   $("#theme").setAttribute("aria-label", "Switch to light theme");
 }
+document.addEventListener("change", (event) => {
+  if (!event.target.matches('input[name="knowledge-answer"]')) return;
+  $("#check-answer").disabled = false;
+  $("#feedback").hidden = true;
+  $("#feedback").textContent = "";
+});
 window.addEventListener("hashchange", render);
 render();

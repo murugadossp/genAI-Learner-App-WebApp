@@ -32,3 +32,5 @@ Full curriculum authoring, account management, payments, database integration, p
 The sample lesson expands its three-stage generation experiment beyond the prose width. Context, model, and next-token distribution run horizontally when space permits and stack vertically on smaller screens. Expand workspace opens a native modal dialog with the same lab DOM node, preserving simulation state on return. The modal includes a theme toggle and an explicit Return to lesson control; native Escape dismissal also restores the lab. Both modes inherit the same light/dark semantic tokens.
 
 This is a lesson-layout prototype only. Define the reusable web lesson-authoring workflow after the owner approves the mockup.
+
+Knowledge checks use a visually distinct Try it yourself card with a question legend, native radio choices, explicit selection instructions, and a separate Check answer action. Feedback appears only after submission; learners can change their answer and retry. The card uses semantic theme tokens in both light and dark modes.
