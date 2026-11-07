@@ -75,7 +75,7 @@ button {
   border-radius: 8px;
   padding: 8px 13px;
 }
-button:hover {
+button:not(.button):not(:disabled):hover {
   background: var(--panel);
 }
 :focus-visible {
