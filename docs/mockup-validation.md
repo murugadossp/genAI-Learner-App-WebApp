@@ -7,7 +7,7 @@ Validated 2026-11-07.
 - JavaScript syntax: `node --check mockups/app.js`.
 - Whitespace/conflict check: `git diff --check`.
 - 20 DOM assertions using jsdom installed outside the repository: landing rendering, prediction preview changes, seven catalog cards, search match and empty results, filter selection, course groups, lesson routing, all three simulation steps, simulation reset, incorrect/correct quiz feedback, completion persistence, home completion state, theme persistence, lesson section routing, demo reset, and unknown-route fallback.
-- Prototype assets total approximately 33 KB, well below the 500 KB budget. All assets are local; no external network dependencies, backend requests, fonts, or model calls.
+- Prototype assets total approximately 38 KB, well below the 500 KB budget. All assets are local; no external network dependencies, backend requests, fonts, or model calls.
 
 ## Still requires browser review
 
