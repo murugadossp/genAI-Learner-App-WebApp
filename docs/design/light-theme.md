@@ -6,7 +6,7 @@ A warm, quiet canvas with crisp reading surfaces and cobalt actions. Keep large 
 
 ## Current tokens
 
-These values match `:root` in [styles.css](../../mockups/styles.css).
+CSS in [styles.css](../../mockups/styles.css) is canonical. The values below are a documentation snapshot for review; verify them against CSS when tokens change.
 
 | Token | Value | Role |
 | --- | --- | --- |

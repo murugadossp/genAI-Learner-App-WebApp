@@ -12,14 +12,14 @@ Connect a public landing page, learner home, course outline, and complete sample
 
 Deliver on a dedicated branch in `genAI-Learner-App-WebApp` as an unmerged review PR. Do not deploy or change learner publication status.
 
+See [design-system.md](design/design-system.md) for the canonical layout, breakpoint, and component rules.
+
 ## Design decisions
 
 - System sans-serif typography keeps loading immediate and the interface familiar. Geometric blocks and a manipulable prediction preview provide visual character.
 - Landing introduces the learning method; home supports return visits; a course provides sequence; the lesson gives reading and experiments most of the space.
-- Lessons prioritize a centered reading column with no permanent sidebars. A compact toolbar opens course contents and section navigation. Phones have a sticky bottom navigation bar opening bottom sheets.
 - Course cards are driven by one collection of metadata; visual roles use CSS tokens. This demonstrates UI scalability without committing to production infrastructure.
 - Canonical sample identity: `c2-02`. The sample probability distributions and chosen sequence are hand-authored simulations, not model outputs.
-- General visual layout breakpoints: 760 and 1100 pixels; the wide generation experiment stacks below 1000 pixels. The catalog moves from three columns on the landing page/two in the workspace to one on phones.
 
 ## References and boundaries
 

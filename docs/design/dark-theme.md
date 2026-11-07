@@ -6,7 +6,7 @@ Use layered charcoal-green surfaces with soft light text. The theme should prese
 
 ## Current tokens
 
-These values match `body.dark` in [styles.css](../../mockups/styles.css).
+CSS in [styles.css](../../mockups/styles.css) is canonical. The values below are a documentation snapshot for review; verify them against CSS when tokens change.
 
 | Token | Value | Role |
 | --- | --- | --- |
