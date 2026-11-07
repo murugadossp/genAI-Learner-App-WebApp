@@ -3,7 +3,7 @@ for (const width of [390,1440]) for(const theme of ['light','dark'] as const){
  test(`${width} ${theme}: token and context labs`,async({page})=>{
   await page.setViewportSize({width,height:900}); await page.emulateMedia({colorScheme:theme});
   await page.goto('/course'); await page.getByRole('link',{name:/What is a token/}).click();
-  await expect(page.getByRole('heading',{name:'Take this with you.'})).toBeVisible();await page.getByRole('button',{name:/Tokenizer ENCODE|ENCODE Tokenizer/}).click();await expect(page.locator('.pipeline-detail')).toContainText('vocabulary and rules');await page.getByRole('button',{name:'Next stage'}).click();await expect(page.locator('.pipeline-detail')).toContainText('not embedding dimensions');
+  await expect(page.getByRole('heading',{name:'Take this with you.'})).toBeVisible();await page.getByRole('button',{name:/Tokenizer ENCODE|ENCODE Tokenizer/}).click();await expect(page.locator('.pipeline-detail')).toContainText('two pieces');await page.getByRole('button',{name:'Next stage'}).click();await expect(page.locator('.pipeline-detail')).toContainText('“Hello” maps to ID 101');
   const input=page.getByLabel('Your text');await input.fill('cat elephant!');await expect(page.locator('.lab-counts')).toContainText('2 whitespace-separated words');await expect(page.locator('.lab-counts')).toContainText('4 illustrative pieces');
   await page.getByLabel(/A token is a text unit/).check();await page.getByRole('button',{name:'Check answer'}).click();await expect(page.getByRole('status')).toContainText('Correct');
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
