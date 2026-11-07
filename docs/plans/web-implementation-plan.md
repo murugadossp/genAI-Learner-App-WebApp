@@ -1,7 +1,7 @@
 # Web implementation plan
 
 Status: approved plan, PR 1 in progress on `feature/web-shell`.
-Related: Architecture decision 001 (`docs/decisions/001-web-architecture.md`, forthcoming in PR 1) · [Design system](../design/design-system.md) · [Light theme](../design/light-theme.md) · [Dark theme](../design/dark-theme.md)
+Related: Architecture decision 001 (`docs/decisions/001-web-architecture.md`) · [Design system](../design/design-system.md) · [Light theme](../design/light-theme.md) · [Dark theme](../design/dark-theme.md)
 
 ## 1. Goal
 
@@ -21,8 +21,8 @@ The mockup stays in the repo as the visual reference. It is not the source code 
 | Web routes | Defined for web, not copied from mobile asset paths. Shape: `/learn/<module>/<lessonId>`, where `<module>` is a `module_registry.json` key. |
 | Publication | Separate from mobile. A lesson in the repo is not learner-visible until `webStatus: 'published'`. |
 | Auth and data | Supabase, added in PR 3. Lesson pages stay static. |
-| Hosting | Vercel Hobby while use is personal and non-commercial. Before the project becomes commercial (paying learners, ads, sponsorship, or operating as a business), move to Vercel Pro or Cloudflare. |
-| Cloudflare fallback | Not assumed. Verified with an OpenNext test preview in PR 2. |
+| Hosting | Vercel, using a paid plan when appropriate. |
+| Hosting fallback | Not currently in scope. |
 | Vendor lock-in | No Vercel-only services (KV, Postgres, Blob). |
 
 ## 3. Theme mapping
@@ -31,7 +31,7 @@ The theme is already documented. Do not repeat token values here.
 
 - Tokens and roles: [light theme](../design/light-theme.md) and [dark theme](../design/dark-theme.md). These now include every token in the mockup CSS, plus three new ones that replace hardcoded colours: `--on-accent`, `--code-ink`, `--backdrop`.
 - Theme behaviour for the web app: [dark theme, web app behavior](../design/dark-theme.md#web-app-behavior-planned-pr-1-requirement) and the [theme contract](../design/design-system.md#6-theme-contract).
-- Canonical values: `mockups/styles.css` until PR 1 lands; then `app/tokens.css` (drafted locally, not yet committed), mapped one-to-one from it. Only the selectors change: dark tokens apply under `html[data-theme="dark"]` and under `@media (prefers-color-scheme: dark)` for `html:not([data-theme="light"])`, replacing `body.dark`. See the mechanism in the dark theme doc.
+- Canonical values: `app/tokens.css`, mapped from `mockups/styles.css`. Only the selectors change: dark tokens apply under `html[data-theme="dark"]` and under `@media (prefers-color-scheme: dark)` for `html:not([data-theme="light"])`, replacing `body.dark`. See the mechanism in the dark theme doc.
 
 PR 1 check: every token in the theme docs exists in `tokens.css` with the same value. Out of scope for PR 1: the landing page's remaining hardcoded colours, noted in the theme contract.
 
@@ -110,12 +110,12 @@ Breakpoints from the mockup: 760px, 1000px (lab stacks), 1100px.
 
 ### PR 1: Shell and sample lesson
 
-- [ ] `app/tokens.css` mapped from the mockup (drafted locally, uncommitted)
-- [ ] `docs/decisions/001-web-architecture.md` (drafted locally, uncommitted)
-- [ ] Switch the theme docs' canonical-source note from `mockups/styles.css` to `app/tokens.css`
-- [ ] Verify `tokens.css` against the light and dark theme docs, including `--on-accent`, `--code-ink`, `--backdrop`
-- [ ] Commit and push `feature/web-shell` as a draft PR
-- [ ] Confirm the chosen `next@16.x.y` is supported by `@opennextjs/cloudflare`, then pin versions
+- [x] `app/tokens.css` mapped from the mockup
+- [x] `docs/decisions/001-web-architecture.md`
+- [x] Switch the theme docs' canonical-source note from `mockups/styles.css` to `app/tokens.css`
+- [x] Verify `tokens.css` against the light and dark theme docs, including `--on-accent`, `--code-ink`, `--backdrop`
+- [x] Commit and push `feature/web-shell` as a draft PR
+- [x] Pin Next.js 16.4.5 for Vercel
 - [ ] Scaffold Next.js; theme script in `app/layout.tsx`
 - [ ] Shell components from section 5
 - [ ] Lesson contract doc (`docs/lesson-contract.md`)
@@ -132,7 +132,6 @@ Not in PR 1: Supabase, production visibility, landing, catalog and course pages.
 
 - [ ] Second lesson with a different shape (wide architecture diagram). Choose a lesson that already exists in `curriculum.json`, or register its module first.
 - [ ] General `webStatus` filter for production builds
-- [ ] OpenNext Cloudflare test preview
 - [ ] Lesson template for AI agents
 
 ### PR 3: Accounts and progress

@@ -21,3 +21,9 @@ Install test dependencies with `npm install`, then run `npm test`. The preview i
 ## Future integration
 
 Preserve canonical curriculum slugs from the content repository. Additional subject coverage includes LLM internals, LangGraph, and architecture from `llm-concepts`. Shared learner identity can be integrated later; the mockup makes no database changes. Do not infer web readiness from mobile publication status or route web lessons to mobile HTML.
+
+## Web shell preview
+
+Run `npm install` and `npm run dev`, then open http://localhost:3000. The draft sample lesson is available locally and in Vercel Preview builds. `APP_ENV=production npm run build` or Vercel Production builds generate a placeholder home page and a 404 for the draft lesson. The build script generates the route appropriate to the release environment; use the npm scripts rather than invoking Next.js directly.
+
+For browser tests, install Chromium once with `npx playwright install chromium --only-shell`, run `npm run build && npm run start` in one terminal, then run `npm run test:web` in another.

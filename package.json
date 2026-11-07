@@ -1,7 +1,29 @@
 {
   "name": "genai-learning-studio-mockup",
   "private": true,
-  "scripts": { "test": "node --test tests/*.test.mjs" },
-  "devDependencies": { "jsdom": "27.2.0" },
-  "engines": { "node": ">=22" }
+  "scripts": {
+    "dev": "node scripts/prepare-routes.mjs && next dev",
+    "build": "node scripts/check-curriculum.mjs && node scripts/prepare-routes.mjs && next build",
+    "start": "next start",
+    "test:mockup": "node --test tests/*.test.mjs",
+    "test": "npm run test:mockup",
+    "typecheck": "tsc --noEmit",
+    "test:web": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.0",
+    "@types/node": "26.6.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "jsdom": "27.2.0",
+    "typescript": "7.0.2"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "next": "16.4.5",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  }
 }

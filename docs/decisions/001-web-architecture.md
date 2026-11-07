@@ -1,6 +1,6 @@
-# Web architecture decision (proposed)
+# Web architecture decision
 
-The merged learning studio mockup is the visual reference. Build a reusable web shell using Next.js App Router and TypeScript; author web lessons independently as JSX using shared controls and tokens. Curriculum IDs and ordering remain shared with mobile; web routes and publication readiness are independent. Host previews on a suitable provider and verify OpenNext compatibility for the pinned Next.js version before relying on Cloudflare as a fallback.
+The merged learning studio mockup is the visual reference. Build a reusable web shell using Next.js App Router and TypeScript; author web lessons independently as JSX using shared controls and tokens. Curriculum IDs and ordering remain shared with mobile; web routes and publication readiness are independent. Use Vercel for previews and hosting, including a paid plan when appropriate. The scaffold pins Next.js 16.4.5.
 
 ## Open decisions
 
