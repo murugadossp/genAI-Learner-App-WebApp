@@ -24,6 +24,6 @@ Preserve canonical curriculum slugs from the content repository. Additional subj
 
 ## Web shell preview
 
-Run `npm install` and `npm run dev`, then open http://localhost:3000. The draft sample lesson is available locally and in Vercel Preview builds. `APP_ENV=production npm run build` or Vercel Production builds generate a placeholder home page and a 404 for the draft lesson. The build script generates the route appropriate to the release environment; use the npm scripts rather than invoking Next.js directly.
+Run `npm install` and `npm run dev`, then open http://localhost:3000. The landing page, studio, course overview, and draft sample lesson are available locally and in Vercel Preview builds. `APP_ENV=production npm run build` or Vercel Production builds generate a placeholder home page and 404 responses for the draft studio, course, and lesson routes. The build script generates the route appropriate to the release environment; use the npm scripts rather than invoking Next.js directly.
 
 For browser tests, install Chromium once with `npx playwright install chromium --only-shell`, run `npm run build && npm run start` in one terminal, then run `npm run test:web` in another.

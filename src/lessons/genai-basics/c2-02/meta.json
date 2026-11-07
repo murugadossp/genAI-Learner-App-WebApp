@@ -9,12 +9,16 @@
       "title": "The big idea"
     },
     {
-      "id": "lab",
-      "title": "Try the next token"
+      "id": "experiment",
+      "title": "Try the experiment"
+    },
+    {
+      "id": "mechanics",
+      "title": "Under the hood"
     },
     {
       "id": "check",
-      "title": "Check your understanding"
+      "title": "Check understanding"
     },
     {
       "id": "takeaway",

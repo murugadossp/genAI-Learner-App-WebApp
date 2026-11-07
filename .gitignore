@@ -5,3 +5,6 @@ app/learn/genai-basics/c2-02/page.tsx
 test-results/
 playwright-report/
 tsconfig.tsbuildinfo
+app/page.tsx
+app/studio/page.tsx
+app/course/page.tsx

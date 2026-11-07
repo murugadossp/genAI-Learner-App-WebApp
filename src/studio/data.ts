@@ -1,0 +1,9 @@
+export const courses = [
+{title:'AI foundations',group:'Foundations',icon:'◎',level:'Start here',body:'Build a mental model of AI, from data and training to the systems around a model.',meta:'Concepts · Everyday examples'},
+{title:'How language models work',group:'LLMs',icon:'▥',level:'Core concepts',body:'Follow the journey from tokens to predictions, context, and generation.',meta:'Visual labs · Guided explanations'},
+{title:'Python for AI',group:'Python',icon:'{ }',level:'Practical',body:'Work with data, write useful functions, and build your programming foundations.',meta:'Code examples · Exercises'},
+{title:'Mathematics you can see',group:'Mathematics',icon:'∑',level:'Foundations',body:'Make vectors, probability, and gradients tangible through visual experiments.',meta:'Visual intuition · Applied maths'},
+{title:'Retrieval & RAG',group:'RAG',icon:'⌕',level:'Build on basics',body:'Connect models to useful information. Explore retrieval, grounding, and evaluation.',meta:'System diagrams · Tradeoffs'},
+{title:'Agents & LangGraph',group:'Agents',icon:'⋈',level:'Intermediate',body:'Explore tools, state, orchestration, and resilient multi-agent workflows.',meta:'Workflow labs · Case studies'},
+{title:'Designing AI systems',group:'Systems',icon:'▧',level:'Engineering',body:'Connect architecture, evaluation, operations, and responsible AI decisions.',meta:'Architecture · Real-world reasoning'}];
+export const lessonUrl='/learn/genai-basics/c2-02';
