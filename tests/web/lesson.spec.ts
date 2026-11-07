@@ -5,7 +5,7 @@ for (const width of [390,768,1440]) for (const theme of ['light','dark'] as cons
   await page.goto('/'); await expect(page.getByRole('heading',{name:'Understand AI. Get your hands on the ideas.'})).toBeVisible();
   await page.getByRole('link',{name:'Find your starting point'}).click();await expect(page.getByRole('heading',{name:'Keep your curiosity going.'})).toBeVisible();
   await page.getByLabel('Find a topic').fill('python');await expect(page.getByRole('link',{name:/Python for AI/})).toBeVisible();
-  await page.getByRole('link',{name:/Python for AI/}).click();await expect(page.getByRole('heading',{name:'How language models work'})).toBeVisible();
+  await page.getByRole('link',{name:/Python for AI/}).click();await expect(page.getByRole('heading',{name:'How GenAI Works'})).toBeVisible();
   await page.getByRole('link',{name:/How a model predicts the next token/}).click();
   await expect(page.getByRole('heading',{name:'What the loop is doing.'})).toBeVisible();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
