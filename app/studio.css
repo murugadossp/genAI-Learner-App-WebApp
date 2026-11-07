@@ -1403,3 +1403,4 @@ button:disabled {
 .takeaway-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(1.25rem,3vw,2rem);margin:2rem 0}.article .takeaway-card h2{margin:.5rem 0;font-size:clamp(1.5rem,3vw,2rem)}.takeaway-card p{margin-bottom:0}
 .pipeline-track{display:flex;flex-direction:column;overflow:visible;padding:.5rem 0}.pipeline-unit{display:flex;flex-direction:column;align-items:stretch}.pipeline-stage{width:100%;min-height:0;gap:.3rem}.pipeline-example{font-size:.9rem;overflow-wrap:anywhere}.pipeline-arrow{text-align:center;padding:.15rem;color:var(--muted)}.pipeline-detail{min-height:0;margin-top:.4rem}.pipeline-detail p{margin:0}
 .card.coming-soon{cursor:default}.card.coming-soon:hover{transform:none;box-shadow:none}
+.coming-soon .pill{background:var(--panel);color:var(--muted);border:1px solid var(--line)}
