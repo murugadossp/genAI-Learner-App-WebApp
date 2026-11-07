@@ -44,3 +44,11 @@ Disabled controls use shared semantic color tokens in both themes; primary hover
 ## Review follow-up
 
 `npm ci` and `npm test` passed (seven cases). In Chrome, the expanded workspace opened, Tab wrapped from the last control to the first, theme toggled, and Escape returned focus to Expand workspace. The 768px and 1440px visual passes, screenshots, browser history, overflow, and measured contrast remain pending; do not treat this as a completed browser review.
+
+## Additional browser review
+
+Chrome responsive previews were inspected at 768 × 844 and 1440 × 844 in dark mode. Captured evidence: [768px](review-screenshots/lesson-768-dark.png), [1440px](review-screenshots/lesson-1440-dark.png). These captures show the lesson introduction, not a complete page or expanded workspace review. Previous Chrome interaction confirmed workspace Tab wrap, theme toggle, Escape, and return focus.
+
+Calculated WCAG contrast ratios for the CSS token pairs: body text/background 14.27:1 light and 14.95:1 dark; primary button text/background 6.16:1 light and 8.17:1 dark; disabled text/background 7.05:1 light and 6.24:1 dark. These calculations do not cover every element or hover state.
+
+Still pending: 768px and 1440px light-mode screenshots and expanded workspaces, a complete overflow audit, and a real back/forward check. The previously captured 390px screenshot is not part of this PR. Keep the PR in draft pending this review.
