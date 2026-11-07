@@ -2,5 +2,31 @@
   "module": "genai-basics",
   "lessonId": "c2-01",
   "title": "What is a token",
-  "webStatus": "draft"
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "words",
+      "title": "Words are not the unit."
+    },
+    {
+      "id": "split",
+      "title": "Try splitting text."
+    },
+    {
+      "id": "pipeline",
+      "title": "From text to numbers\u2014and back."
+    },
+    {
+      "id": "count",
+      "title": "Why the count matters."
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
+  ]
 }
