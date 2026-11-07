@@ -1,5 +1,7 @@
 # GenAI learning studio
 
+The maintained implementation guide is in [docs/design](design/README.md), including the full design system, separate light/dark theme references, and a new-page guide. This file retains the original brief and rationale.
+
 ## Enhanced design prompt
 
 Create a fresh, responsive learning studio for engineers and curious beginners learning AI. Cover foundations through Python, mathematics, LLM internals, retrieval, agents, LangGraph, and systems engineering. Use the existing projects as curriculum references, not visual templates. Author web explanations independently with more depth, wide diagrams, engineering examples, and interactive experiments.

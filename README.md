@@ -16,7 +16,7 @@ The prototype includes a landing page, learner home, course overview, and a new 
 
 All catalog cards intentionally lead to the same sample course. Other course lessons are marked preview-only. Completion is local demo state, not actual learner progress or publication status. There is no authentication, backend connection, executable code runner, or real model call.
 
-No build, external fonts, CDN, or packages are required. See [design brief](docs/design-brief.md) and [validation](docs/mockup-validation.md).
+No build, external fonts, CDN, or packages are required. See the [design documentation](docs/design/README.md), [original design brief](docs/design-brief.md), and [validation](docs/mockup-validation.md).
 
 ## Future integration
 
