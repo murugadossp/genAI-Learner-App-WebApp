@@ -14,10 +14,10 @@ Deliver on a dedicated branch in `genAI-Learner-App-WebApp` as an unmerged revie
 
 - System sans-serif typography keeps loading immediate and the interface familiar. Geometric blocks and a manipulable prediction preview provide visual character.
 - Landing introduces the learning method; home supports return visits; a course provides sequence; the lesson gives reading and experiments most of the space.
-- Desktop lessons have chapter navigation and a section index. Smaller screens collapse chapter navigation and omit the secondary index.
+- Lessons prioritize a centered reading column with no permanent sidebars. A compact toolbar opens course contents and section navigation. Phones have a sticky bottom navigation bar opening bottom sheets.
 - Course cards are driven by one collection of metadata; visual roles use CSS tokens. This demonstrates UI scalability without committing to production infrastructure.
 - Canonical sample identity: `c2-02`. The sample probability distributions and chosen sequence are hand-authored simulations, not model outputs.
-- General visual layout breakpoints: 760 and 1100 pixels. The catalog moves from three columns on the landing page/two in the workspace to one on phones.
+- General visual layout breakpoints: 760 and 1100 pixels; the wide generation experiment stacks below 1000 pixels. The catalog moves from three columns on the landing page/two in the workspace to one on phones.
 
 ## References and boundaries
 
@@ -26,3 +26,9 @@ Deliver on a dedicated branch in `genAI-Learner-App-WebApp` as an unmerged revie
 The source curriculum includes AI Foundations, How GenAI Works, prompting, machine learning, evaluation, neural networks, multimodal AI, RAG, tools and agents, AI feature design, operations, responsible AI, Python, and mathematics. The catalog groups representative topics; it does not claim to implement every course.
 
 Full curriculum authoring, account management, payments, database integration, production framework choice, and deployment remain outside this mockup.
+
+## Wide lesson prototype
+
+The sample lesson expands its three-stage generation experiment beyond the prose width. Context, model, and next-token distribution run horizontally when space permits and stack vertically on smaller screens. Expand workspace opens a native modal dialog with the same lab DOM node, preserving simulation state on return. The modal includes a theme toggle and an explicit Return to lesson control; native Escape dismissal also restores the lab. Both modes inherit the same light/dark semantic tokens.
+
+This is a lesson-layout prototype only. Define the reusable web lesson-authoring workflow after the owner approves the mockup.

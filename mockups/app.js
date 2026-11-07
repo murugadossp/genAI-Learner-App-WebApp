@@ -96,7 +96,7 @@ function course() {
   return `<div class="container">${heading("Learning path / Sample course", "How language models work", "From a sequence of tokens to a system you can reason about.")}<div class="course-layout"><div><div class="callout">Learn the mechanism, then explore its limits. This sample course connects visual intuition to the decisions you make as an engineer.</div><div class="section-head" style="margin-top:30px"><h2 style="font-size:22px">Your learning path</h2><span class="micro">Demo outline</span></div><details class="chapter" open><summary>01 &nbsp; From text to predictions</summary><div class="lesson-row"><span>○</span><span>What is a token?</span><span class="duration">Preview only</span></div><a class="lesson-row selected" href="#lesson"><span>${completed() ? "✓" : "◉"}</span><span>How a model predicts the next token</span><span class="duration">Open lesson →</span></a><div class="lesson-row"><span>○</span><span>Where models learn: pretraining and data</span><span class="duration">Preview only</span></div></details><details class="chapter"><summary>02 &nbsp; Context, knowledge & uncertainty</summary><div class="lesson-row">The context window <span class="duration">Preview only</span></div><div class="lesson-row">Why models make things up <span class="duration">Preview only</span></div></details><details class="chapter"><summary>03 &nbsp; Steering generation</summary><div class="lesson-row">Temperature and sampling <span class="duration">Preview only</span></div><div class="lesson-row">From base model to assistant <span class="duration">Preview only</span></div></details><p class="micro">Topics follow the shared curriculum. Web lessons are authored independently; these states do not represent publication status.</p></div><aside class="card aside-card"><span class="course-icon" aria-hidden="true">▥</span><h3 style="margin-top:20px">A peek inside the model</h3><p>By the end, you should be able to:</p><ul><li>Explain next-token prediction.</li><li>Read a probability distribution.</li><li>Separate likely text from verified facts.</li></ul><div class="progress"><span style="width:${completed() ? "100" : "0"}%"></span></div><p class="micro">${completed() ? "1 of 1" : "0 of 1"} sample lessons completed</p><a class="button" href="#lesson" style="width:100%">${completed() ? "Revisit sample" : "Start sample lesson"} →</a><p class="micro" style="margin-top:17px;margin-bottom:0">Prerequisite: a basic understanding of tokens.<br>No coding required for the visual lab.</p></aside></div></div>`;
 }
 function lesson() {
-  return `<div class="lesson-shell"><aside class="lesson-nav"><details ${innerWidth > 760 ? "open" : ""}><summary>How language models work</summary><a href="#course">← Course overview</a><p class="eyebrow" style="margin:25px 10px 10px">01 / Text to predictions</p><span class="muted" style="display:block;padding:10px">What is a token? · Preview</span><a class="active" href="#lesson">Next-token prediction</a><span class="muted" style="display:block;padding:10px">Pretraining & data · Preview</span><p class="micro" style="padding:10px">Independent web lesson<br>Curriculum ID: c2-02</p></details></aside><article class="article"><div class="eyebrow">How GenAI works / Lesson 02</div><h1>One token at a time.</h1><p class="lead">A language model doesn’t write an answer all at once. It repeatedly predicts what could come next.</p><div class="lesson-meta"><span>Concept + interactive lab</span><span>Beginner friendly</span><span>Web sample</span></div><section id="idea"><h2>A prediction, then another.</h2><p>Imagine the model sees <strong>“The sky is”</strong>. It assigns probabilities to possible next tokens. “Blue” might receive a high probability, but “clear” or “dark” could also fit. The model produces scores over its vocabulary; these become a probability distribution.</p><p>A decoding rule chooses a token. That token is added to the context, and the model makes a new prediction using the updated sequence. This repeated process is called <strong>autoregressive generation</strong>.</p><div class="callout"><strong>The key distinction:</strong> a probable continuation is text that fits the context. It is not necessarily a true statement about the world.</div></section><section id="experiment"><h2>Watch the context grow.</h2><p>Step through a tiny illustrative sequence. Notice that each choice changes the context for the next prediction.</p><div class="lab"><div class="lab-head"><strong>01 / Next-token lab</strong><span>SIMULATION</span></div><div class="lab-body"><div class="eyebrow">Current context</div><div class="sentence" id="sentence" aria-live="polite"></div><div id="probabilities"></div><div class="lab-actions"><button class="button small" id="next-token">Choose next token →</button><button id="restart-lab">↻ Reset</button><span class="micro" id="step-label"></span></div><p class="micro" style="margin-top:20px;margin-bottom:0">Hand-authored probabilities and preset choices, not a real model or tokenizer. Real models score a much larger vocabulary; tokens can be word fragments.</p></div></div></section><section id="mechanics"><h2>What the loop is doing.</h2><p>In a real system, the model outputs scores called <em>logits</em>. A softmax operation converts those scores to probabilities. A decoding strategy can choose the highest-probability token or sample from the distribution.</p><pre><code># Illustrative pseudocode — not executable here
+  return `<div class="lesson-shell"><div class="lesson-toolbar"><a class="text-link" href="#course">← Learning path</a><div><button data-open-menu="contents">Course contents</button><button data-open-menu="sections">In this lesson ↓</button></div></div><article class="article"><div class="eyebrow">How GenAI works / Lesson 02</div><h1>One token at a time.</h1><p class="lead">A language model doesn’t write an answer all at once. It repeatedly predicts what could come next.</p><div class="lesson-meta"><span>Concept + interactive lab</span><span>Beginner friendly</span><span>Web sample</span></div><section id="idea"><h2>A prediction, then another.</h2><p>Imagine the model sees <strong>“The sky is”</strong>. It assigns probabilities to possible next tokens. “Blue” might receive a high probability, but “clear” or “dark” could also fit. The model produces scores over its vocabulary; these become a probability distribution.</p><p>A decoding rule chooses a token. That token is added to the context, and the model makes a new prediction using the updated sequence. This repeated process is called <strong>autoregressive generation</strong>.</p><div class="callout"><strong>The key distinction:</strong> a probable continuation is text that fits the context. It is not necessarily a true statement about the world.</div></section><section id="experiment"><h2>Watch the context grow.</h2><p>Step through a tiny illustrative sequence. Notice that each choice changes the context for the next prediction.</p><div id="lab-home"><div class="lab" id="generation-lab"><div class="lab-head"><strong>01 / The generation loop</strong><button id="expand-workspace">Expand workspace ↗</button></div><div class="lab-body"><div class="generation-flow"><div class="flow-stage"><span class="eyebrow">01 / Context</span><h3>Read the sequence</h3><div class="sentence" id="sentence" aria-live="polite"></div><p class="micro">The prompt plus everything generated so far.</p></div><span class="flow-arrow" aria-hidden="true">→</span><div class="flow-stage model-stage"><span class="eyebrow">02 / Model</span><h3>Score what comes next</h3><div class="model-visual" aria-hidden="true">⠿ → ⠿ → ⠿</div><p class="micro">Learned weights produce scores. Softmax turns scores into probabilities.</p></div><span class="flow-arrow" aria-hidden="true">→</span><div class="flow-stage"><span class="eyebrow">03 / Choose & append</span><h3>One possible continuation</h3><div id="probabilities"></div></div></div><div class="loop-caption">↳ Append the chosen token to the context. Repeat with the updated sequence.</div><div class="lab-actions"><button class="button small" id="next-token">Choose next token →</button><button id="restart-lab">↻ Reset</button><span class="micro" id="step-label"></span></div><p class="micro" style="margin-top:20px;margin-bottom:0">Hand-authored probabilities and preset choices, not a real model or tokenizer. Real models score a much larger vocabulary; tokens can be word fragments.</p></div></div></div></section><section id="mechanics"><h2>What the loop is doing.</h2><p>In a real system, the model outputs scores called <em>logits</em>. A softmax operation converts those scores to probabilities. A decoding strategy can choose the highest-probability token or sample from the distribution.</p><pre><code># Illustrative pseudocode — not executable here
 context = tokenize(prompt)
 for _ in range(max_new_tokens):
     logits = model(context)
@@ -104,7 +104,7 @@ for _ in range(max_new_tokens):
     token = sample(probabilities)
     if token == end_token:
         break
-    context.append(token)</code></pre><p>The next call includes the new token. Generating a longer answer repeats this loop, subject to stopping rules and context limits. The example above omits implementation details such as caching.</p><div class="callout"><strong>Engineering connection:</strong> streaming exposes this incremental generation to the user. Seeing text appear early improves perceived responsiveness even while the rest of the answer is still being generated.</div></section><section id="check"><div class="eyebrow">Make the idea stick</div><h2>Likely doesn’t mean verified.</h2><p>A model assigns a high probability to the next token in a factual claim. What can you conclude?</p><div id="quiz"><button class="quiz-option" data-answer="wrong">A. The claim has been checked against a trusted source.</button><button class="quiz-option" data-answer="right">B. That token is a likely continuation given the model and context.</button><button class="quiz-option" data-answer="wrong">C. The model is retrieving an exact sentence from its training data.</button></div><div class="feedback" id="feedback" role="status"></div></section><section id="takeaway"><h2>Take this with you.</h2><p>Generation is a loop: <strong>predict → choose → append → repeat</strong>. The distribution describes possible continuations, and the decoding strategy selects among them. Neither step alone verifies a claim.</p></section><div class="end-lesson"><a class="text-link" href="#course">← Back to the learning path</a><button class="button" id="complete">${completed() ? "Completed ✓" : "Mark sample complete ✓"}</button></div><p class="micro">Completion is stored on this browser only. This is a design preview.</p></article><aside class="toc"><div><p class="eyebrow">In this lesson</p><a href="#lesson/idea">The big idea</a><a href="#lesson/experiment">Try the experiment</a><a href="#lesson/mechanics">Under the hood</a><a href="#lesson/check">Check understanding</a><a href="#lesson/takeaway">Take it with you</a></div></aside></div>`;
+    context.append(token)</code></pre><p>The next call includes the new token. Generating a longer answer repeats this loop, subject to stopping rules and context limits. The example above omits implementation details such as caching.</p><div class="callout"><strong>Engineering connection:</strong> streaming exposes this incremental generation to the user. Seeing text appear early improves perceived responsiveness even while the rest of the answer is still being generated.</div></section><section id="check"><div class="eyebrow">Make the idea stick</div><h2>Likely doesn’t mean verified.</h2><p>A model assigns a high probability to the next token in a factual claim. What can you conclude?</p><div id="quiz"><button class="quiz-option" data-answer="wrong">A. The claim has been checked against a trusted source.</button><button class="quiz-option" data-answer="right">B. That token is a likely continuation given the model and context.</button><button class="quiz-option" data-answer="wrong">C. The model is retrieving an exact sentence from its training data.</button></div><div class="feedback" id="feedback" role="status"></div></section><section id="takeaway"><h2>Take this with you.</h2><p>Generation is a loop: <strong>predict → choose → append → repeat</strong>. The distribution describes possible continuations, and the decoding strategy selects among them. Neither step alone verifies a claim.</p></section><div class="end-lesson"><a class="text-link" href="#course">← Back to the learning path</a><button class="button" id="complete">${completed() ? "Completed ✓" : "Mark sample complete ✓"}</button></div><p class="micro">Completion is stored on this browser only. This is a design preview.</p></article></div><nav class="mobile-lesson-bar" aria-label="Lesson navigation"><button data-open-menu="contents">☷ Contents</button><button data-open-menu="sections">≡ Sections</button><button id="next-section">Next section ↓</button></nav><dialog id="lesson-menu" class="menu-dialog" aria-labelledby="menu-title"><div class="dialog-heading"><h2 id="menu-title">Lesson navigation</h2><button data-close-dialog="lesson-menu" aria-label="Close navigation">✕</button></div><div id="menu-links"></div></dialog><dialog id="wide-workspace" class="workspace-dialog" aria-labelledby="workspace-title"><div class="dialog-heading"><div><div class="eyebrow">Interactive workspace · simulation</div><h2 id="workspace-title">The generation loop</h2></div><div class="dialog-controls"><button data-toggle-theme aria-label="Toggle light and dark theme">◐ Theme</button><button data-close-dialog="wide-workspace">← Return to lesson</button></div></div><div id="workspace-slot"></div></dialog>`;
 }
 const stages = [
   {
@@ -160,12 +160,44 @@ function filterCatalog() {
     : '<div class="empty muted">No matching paths. Try “Python” or clear your filters.</div>';
 }
 let currentView = "";
+const lessonSections = [
+  ["idea", "The big idea"],
+  ["experiment", "Try the experiment"],
+  ["mechanics", "Under the hood"],
+  ["check", "Check understanding"],
+  ["takeaway", "Take it with you"],
+];
+let dialogTrigger = null;
+function closeDialog(id) {
+  const dialog = document.getElementById(id);
+  if (dialog?.open) dialog.close();
+}
+function openDialog(id, trigger) {
+  dialogTrigger = trigger;
+  document.getElementById(id).showModal();
+  document.body.classList.add("dialog-open");
+}
+function bindDialogs() {
+  document.querySelectorAll("dialog").forEach((dialog) =>
+    dialog.addEventListener("close", () => {
+      if (dialog.id === "wide-workspace") {
+        $("#lab-home").append($("#generation-lab"));
+        $("#expand-workspace").hidden = false;
+      }
+      document.body.classList.remove("dialog-open");
+      if (dialogTrigger?.isConnected)
+        dialogTrigger.focus({ preventScroll: true });
+    }),
+  );
+}
 function render() {
   const [raw, anchor] = (location.hash.slice(1) || "landing").split("/");
   const view = ["landing", "home", "course", "lesson"].includes(raw)
     ? raw
     : "landing";
   if (currentView !== view || !anchor) {
+    document.body.classList.remove("dialog-open");
+    document.body.classList.toggle("reading-lesson", view === "lesson");
     currentView = view;
     $("#main").innerHTML = { landing, home, course, lesson }[view]();
     document.title = `${{ landing: "Learn by exploring", home: "Your learning studio", course: "How language models work", lesson: "One token at a time" }[view]} — GenAI Learner`;
@@ -181,6 +213,7 @@ function render() {
     if (view === "lesson") {
       step = 0;
       updateLab();
+      bindDialogs();
     }
     $("#main").focus({ preventScroll: true });
   }
@@ -200,15 +233,50 @@ document.addEventListener("click", (e) => {
     $("#main").focus();
     return;
   }
+  const menuLink = e.target.closest("#menu-links a");
+  if (menuLink) closeDialog("lesson-menu");
   const b = e.target.closest("button");
   if (!b) return;
-  if (b.id === "theme") {
+  if (b.dataset.openMenu) {
+    const sections = b.dataset.openMenu === "sections";
+    $("#menu-title").textContent = sections
+      ? "In this lesson"
+      : "Course contents";
+    $("#menu-links").innerHTML = sections
+      ? lessonSections
+          .map(
+            ([id, title]) =>
+              `<a href="#lesson/${id}">${title} <span>↗</span></a>`,
+          )
+          .join("")
+      : '<a href="#course">Course overview →</a><p class="micro">01 / Text to predictions</p><p class="muted">What is a token? · Preview only</p><a href="#lesson/idea">Next-token prediction →</a><p class="muted">Pretraining & data · Preview only</p>';
+    openDialog("lesson-menu", b);
+  }
+  if (b.dataset.closeDialog) closeDialog(b.dataset.closeDialog);
+  if (b.id === "expand-workspace") {
+    $("#workspace-slot").append($("#generation-lab"));
+    b.hidden = true;
+    openDialog("wide-workspace", b);
+  }
+  if (b.id === "next-section") {
+    const next = lessonSections.find(
+      ([id]) => document.getElementById(id).getBoundingClientRect().top > 120,
+    );
+    if (next) {
+      location.hash = `lesson/${next[0]}`;
+      document.getElementById(next[0]).scrollIntoView();
+    } else {
+      $("#complete").scrollIntoView();
+      $("#complete").focus({ preventScroll: true });
+    }
+  }
+  if (b.id === "theme" || b.hasAttribute("data-toggle-theme")) {
     document.body.classList.toggle("dark");
     storage.set(
       "genai-theme",
       document.body.classList.contains("dark") ? "dark" : "light",
     );
-    b.setAttribute(
+    $("#theme").setAttribute(
       "aria-label",
       `Switch to ${document.body.classList.contains("dark") ? "light" : "dark"} theme`,
     );

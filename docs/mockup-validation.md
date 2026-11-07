@@ -7,7 +7,7 @@ Validated 2026-11-07.
 - JavaScript syntax: `node --check mockups/app.js`.
 - Whitespace/conflict check: `git diff --check`.
 - 20 DOM assertions using jsdom installed outside the repository: landing rendering, prediction preview changes, seven catalog cards, search match and empty results, filter selection, course groups, lesson routing, all three simulation steps, simulation reset, incorrect/correct quiz feedback, completion persistence, home completion state, theme persistence, lesson section routing, demo reset, and unknown-route fallback.
-- Prototype assets total approximately 38 KB, well below the 500 KB budget. All assets are local; no external network dependencies, backend requests, fonts, or model calls.
+- Prototype assets total approximately 47 KB, well below the 500 KB budget. All assets are local; no external network dependencies, backend requests, fonts, or model calls.
 
 ## Still requires browser review
 
@@ -24,3 +24,9 @@ Before merging, open the mockup at 390, 768, and 1440 pixel widths in both theme
 5. Return home; refresh to check persistence; use Reset demo.
 
 No actual learner records, publication states, or deployed lessons are changed.
+
+## Wide workspace update
+
+- Original 20 DOM checks still pass. An additional 19 DOM assertions verify three stages, sidebar removal, moving the single lab into/out of the workspace, simulation state continuity, workspace theme toggle, restored trigger focus, scroll-lock cleanup, navigation menu content, and mobile navigation markup.
+- The added checks stub jsdom dialog methods: native focus trapping, Escape handling, bottom-sheet rendering, actual viewport reflow and scroll behavior still require browser verification. The browser host was retried and remains unavailable.
+- Browser review should cover the wide lab at 1440px, stacked lab at 768px/390px, workspace open/close after stepping, both themes, Escape, Tab containment, focus restoration, and mobile bottom navigation without obscured content.

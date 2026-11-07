@@ -12,7 +12,7 @@ python3 -m http.server 8765
 
 Visit http://localhost:8765/mockups/.
 
-The prototype includes a landing page, learner home, course overview, and a new web sample of `c2-02`, “How a model predicts the next token.” Hash navigation supports back/forward. Try catalog search/filters, light/dark mode, the next-token simulation, the knowledge check, and demo completion. **Reset demo** clears preferences and progress stored by this prototype.
+The prototype includes a landing page, learner home, course overview, and a new web sample of `c2-02`, “How a model predicts the next token.” Hash navigation supports back/forward. Try catalog search/filters, light/dark mode, the wide next-token simulation and its Expand workspace action, the knowledge check, and demo completion. The lesson uses compact navigation menus; on mobile, Contents, Sections, and Next section remain reachable in a sticky bottom bar. **Reset demo** clears preferences and progress stored by this prototype.
 
 All catalog cards intentionally lead to the same sample course. Other course lessons are marked preview-only. Completion is local demo state, not actual learner progress or publication status. There is no authentication, backend connection, executable code runner, or real model call.
 
