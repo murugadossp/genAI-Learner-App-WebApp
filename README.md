@@ -7,10 +7,10 @@ An independent web learning experience for curious beginners and engineers. Curr
 Open `mockups/index.html` directly, or serve this directory:
 
 ```sh
-python3 -m http.server 8765
+npm run preview:mockup
 ```
 
-Visit http://localhost:8765/mockups/.
+Visit http://127.0.0.1:3001/. The Next.js app runs separately at http://127.0.0.1:3000/.
 
 The prototype includes a landing page, learner home, course overview, and a new web sample of `c2-02`, “How a model predicts the next token.” Hash navigation supports back/forward. Try catalog search/filters, light/dark mode, the wide next-token simulation and its Expand workspace action, the knowledge check, and demo completion. The lesson uses compact navigation menus; on mobile, Contents, Sections, and Next section remain reachable in a sticky bottom bar. **Reset demo** clears preferences and progress stored by this prototype.
 
