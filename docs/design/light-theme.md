@@ -6,7 +6,7 @@ A warm, quiet canvas with crisp reading surfaces and cobalt actions. Keep large 
 
 ## Current tokens
 
-CSS is canonical: [app/tokens.css](../../app/tokens.css) for the web app, mapped one-to-one from the mockup's [styles.css](../../mockups/styles.css). The values below are a documentation snapshot; verify them against CSS when tokens change.
+CSS in [styles.css](../../mockups/styles.css) is canonical. The values below are a documentation snapshot for review; verify them against CSS when tokens change. When the web app shell lands (PR 1 in the [implementation plan](../plans/web-implementation-plan.md)), `app/tokens.css` becomes canonical and this note should be updated in that PR.
 
 | Token | Value | Role |
 | --- | --- | --- |
@@ -27,9 +27,9 @@ CSS is canonical: [app/tokens.css](../../app/tokens.css) for the web app, mapped
 | `--highlight-ink` | `#243126` | Text on `--green` / `--orange` highlight chips |
 | `--disabled-bg` | `#e2e5df` | Disabled control background |
 | `--disabled-ink` | `#454b43` | Disabled control text |
-| `--on-accent` | `#ffffff` | Text on primary (`--accent`) buttons. New in the web app |
-| `--code-ink` | `#dce8ce` | Code text on the `--dark` code surface. New in the web app |
-| `--backdrop` | `rgba(9, 18, 15, 0.65)` | Dialog backdrop. New in the web app |
+| `--on-accent` | `#ffffff` | Text on primary (`--accent`) buttons. Planned for the web app (PR 1); not in the mockup CSS |
+| `--code-ink` | `#dce8ce` | Code text on the `--dark` code surface. Planned for the web app (PR 1); not in the mockup CSS |
+| `--backdrop` | `rgba(9, 18, 15, 0.65)` | Dialog backdrop. Planned for the web app (PR 1); not in the mockup CSS |
 | `--radius` | `16px` | Base card radius reference |
 
 Use `color-scheme: light` so native controls match the theme. Primary buttons use `--on-accent` (white) over the cobalt accent. Inverse panels need their own light foreground; do not apply the default dark ink to them.

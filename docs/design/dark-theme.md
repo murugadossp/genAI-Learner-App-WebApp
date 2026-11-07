@@ -6,7 +6,7 @@ Use layered charcoal-green surfaces with soft light text. The theme should prese
 
 ## Current tokens
 
-CSS is canonical: [app/tokens.css](../../app/tokens.css) for the web app, mapped one-to-one from the mockup's [styles.css](../../mockups/styles.css). The values below are a documentation snapshot; verify them against CSS when tokens change.
+CSS in [styles.css](../../mockups/styles.css) is canonical. The values below are a documentation snapshot for review; verify them against CSS when tokens change. When the web app shell lands (PR 1 in the [implementation plan](../plans/web-implementation-plan.md)), `app/tokens.css` becomes canonical and this note should be updated in that PR.
 
 | Token | Value | Role |
 | --- | --- | --- |
@@ -27,9 +27,9 @@ CSS is canonical: [app/tokens.css](../../app/tokens.css) for the web app, mapped
 | `--highlight-ink` | `#f1f4e9` | Text on highlight chips |
 | `--disabled-bg` | `#39433d` | Disabled control background |
 | `--disabled-ink` | `#c3ccc4` | Disabled control text |
-| `--on-accent` | `#151c32` | Dark text on the light accent. New in the web app |
-| `--code-ink` | `#dce8ce` | Same as light; code text. New in the web app |
-| `--backdrop` | `rgba(9, 18, 15, 0.65)` | Same as light; dialog backdrop. New in the web app |
+| `--on-accent` | `#151c32` | Dark text on the light accent. Planned for the web app (PR 1); not in the mockup CSS |
+| `--code-ink` | `#dce8ce` | Same as light; code text. Planned for the web app (PR 1); not in the mockup CSS |
+| `--backdrop` | `rgba(9, 18, 15, 0.65)` | Same as light; dialog backdrop. Planned for the web app (PR 1); not in the mockup CSS |
 
 `--radius` remains `16px`; geometry does not change. Use `color-scheme: dark` for native controls. Primary buttons use `--on-accent` (`#151c32`) over the light accent, rather than white text. Most ordinary text uses `--ink`.
 
@@ -48,9 +48,11 @@ An explicit dark choice is stored as `genai-theme=dark`. Both header and workspa
 
 The current implementation applies the stored theme in deferred JavaScript. A flash of light content may occur on reload; pre-paint initialization is a production follow-up, not a completed feature. There is no System option in the mockup.
 
-### Web app behavior
+### Web app behavior (planned, PR 1 requirement)
 
-The web app changes three things. With no saved choice it follows the device's system theme (`prefers-color-scheme`). A saved choice is applied before first paint by an inline script in `app/layout.tsx`, using `data-theme="light"` or `data-theme="dark"` on `<html>` instead of `body.dark`. If browser storage is blocked, the toggle still works for the session. The `genai-theme` key and the shared header/workspace toggle are unchanged.
+Not implemented yet. These are requirements for the web app shell in PR 1 of the [implementation plan](../plans/web-implementation-plan.md); the mockup behaviour above remains current until then.
+
+The web app should change three things. With no saved choice it should follow the device's system theme (`prefers-color-scheme`). A saved choice should be applied before first paint by an inline script in the root layout, using `data-theme="light"` or `data-theme="dark"` on `<html>` instead of `body.dark`. If browser storage is blocked, the toggle should still work for the session. The `genai-theme` key and the shared header/workspace toggle stay unchanged.
 
 ## Review
 
