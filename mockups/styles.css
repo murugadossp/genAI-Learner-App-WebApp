@@ -15,6 +15,8 @@
   --inverse-muted: #bdcba9;
   --inverse-border: #71806f;
   --highlight-ink: #243126;
+  --disabled-bg: #e2e5df;
+  --disabled-ink: #454b43;
   color-scheme: light;
 }
 * {
@@ -35,6 +37,8 @@ body {
 }
 body.dark {
   --highlight-ink: #f1f4e9;
+  --disabled-bg: #39433d;
+  --disabled-ink: #c3ccc4;
   --bg: #171d1a;
   --paper: #222b25;
   --ink: #edf1e8;
@@ -1048,8 +1052,14 @@ dialog::backdrop {
   background: var(--accent-soft);
 }
 button:disabled {
-  opacity: 0.6;
+  background: var(--disabled-bg);
+  border-color: var(--disabled-bg);
+  color: var(--disabled-ink);
+  opacity: 1;
   cursor: default;
+}
+.button:disabled {
+  filter: none;
 }
 @media (max-width: 1000px) {
   .generation-flow {

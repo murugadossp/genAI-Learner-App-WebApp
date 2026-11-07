@@ -34,3 +34,7 @@ No actual learner records, publication states, or deployed lessons are changed.
 ## Knowledge-check clarity update
 
 The exercise now uses a distinct practice card, explicit choose-one instructions, native radio inputs in a fieldset, and a Check answer button disabled until selection. Selection alone does not grade the answer. Changing a selection clears stale feedback. Updated interaction checks are covered by the reproducible `npm test` suite. Browser visual verification remains partial.
+
+## Disabled button contrast
+
+The disabled generation button and knowledge-check action use explicit `--disabled-bg` and `--disabled-ink` tokens. They no longer inherit white-on-primary text and then fade the entire control. The values are defined for both light and dark themes so the button remains legible when the generation sequence is complete or an answer has not been selected.
