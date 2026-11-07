@@ -77,11 +77,10 @@ try {
     ["/", 200],
     ["/studio", 404],
     ["/course", 404],
-    ...lessons()
-      .map((lesson) => [
-        `/learn/${lesson.module}/${lesson.lessonId}`,
-        lesson.webStatus === "published" ? 200 : 404,
-      ]),
+    ...lessons().map((lesson) => [
+      `/learn/${lesson.module}/${lesson.lessonId}`,
+      lesson.webStatus === "published" ? 200 : 404,
+    ]),
   ]) {
     const response = await fetch(`http://127.0.0.1:${port}${path}`, {
       redirect: "manual",
