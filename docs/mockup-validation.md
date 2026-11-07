@@ -27,7 +27,7 @@ No actual learner records, publication states, or deployed lessons are changed.
 
 ## Wide workspace update
 
-- Original 20 DOM checks still pass. An additional 19 DOM assertions verify three stages, sidebar removal, moving the single lab into/out of the workspace, simulation state continuity, workspace theme toggle, restored trigger focus, scroll-lock cleanup, navigation menu content, and mobile navigation markup.
+- The seven reproducible test cases verify three stages, sidebar removal, moving the single lab into/out of the workspace, simulation state continuity, workspace theme toggle, restored trigger focus, scroll-lock cleanup, navigation menu content, and mobile navigation markup.
 - The added checks stub jsdom dialog methods: native focus trapping, Escape handling, bottom-sheet rendering, actual viewport reflow and scroll behavior still require browser verification. Chrome was accessible for a mobile spot check; remaining checks are listed below.
 - Browser review should cover the wide lab at 1440px, stacked lab at 768px/390px, workspace open/close after stepping, both themes, Escape, Tab containment, focus restoration, and mobile bottom navigation without obscured content.
 
@@ -39,4 +39,8 @@ The exercise now uses a distinct practice card, explicit choose-one instructions
 
 The disabled generation button and knowledge-check action use explicit `--disabled-bg` and `--disabled-ink` tokens. They no longer inherit white-on-primary text and then fade the entire control. The values are defined for both light and dark themes so the button remains legible when the generation sequence is complete or an answer has not been selected.
 
-A more specific rule now sets the disabled next-token button foreground, background, border, and WebKit text fill directly in both themes, to protect the label from inherited button styles. Stylesheet URL is versioned to refresh cached copies.
+Disabled controls use shared semantic color tokens in both themes; primary hover styles preserve the button background. CSS and JavaScript URLs share a version to prevent mismatched cached assets.
+
+## Review follow-up
+
+`npm ci` and `npm test` passed (seven cases). In Chrome, the expanded workspace opened, Tab wrapped from the last control to the first, theme toggled, and Escape returned focus to Expand workspace. The 768px and 1440px visual passes, screenshots, browser history, overflow, and measured contrast remain pending; do not treat this as a completed browser review.

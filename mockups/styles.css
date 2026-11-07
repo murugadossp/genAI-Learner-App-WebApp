@@ -145,7 +145,7 @@ nav a {
   font-weight: 600;
   line-height: 1.5;
 }
-.dark .button {
+.dark .button:not(:disabled) {
   color: #151c32;
 }
 .button:hover {
@@ -1433,20 +1433,4 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   border: 0 !important;
-}
-
-#generation-lab #next-token:disabled,
-#wide-workspace #next-token:disabled {
-  background-color: #e2e5df;
-  border-color: #e2e5df;
-  color: #30372f;
-  -webkit-text-fill-color: #30372f;
-  opacity: 1;
-}
-body.dark #generation-lab #next-token:disabled,
-body.dark #wide-workspace #next-token:disabled {
-  background-color: #39433d;
-  border-color: #39433d;
-  color: #edf1e8;
-  -webkit-text-fill-color: #edf1e8;
 }
