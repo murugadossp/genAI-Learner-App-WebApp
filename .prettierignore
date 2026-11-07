@@ -1,0 +1,8 @@
+node_modules/
+.next/
+src/data/curriculum/
+src/data/web-lessons.json
+app/learn/
+app/page.tsx
+app/course/
+app/studio/

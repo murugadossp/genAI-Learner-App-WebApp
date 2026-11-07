@@ -1,0 +1,76 @@
+"use client";
+import { useState } from "react";
+const turns = [
+  {
+    label: "Earlier instruction",
+    text: "Explain things with simple examples.",
+    cost: 8,
+  },
+  { label: "Earlier user", text: "What is a token?", cost: 7 },
+  { label: "Earlier assistant", text: "A token is a piece of text.", cost: 9 },
+  { label: "Latest user", text: "Can you explain context windows?", cost: 8 },
+];
+const reserve = 8;
+export function WindowLab() {
+  const [capacity, setCapacity] = useState(24);
+  let available = capacity - reserve;
+  let blocked = false;
+  const included = turns.map(() => false);
+  for (let i = turns.length - 1; i >= 0; i--) {
+    if (!blocked && turns[i].cost <= available) {
+      included[i] = true;
+      available -= turns[i].cost;
+    } else blocked = true;
+  }
+  return (
+    <div className="lab">
+      <div className="lab-head">
+        <strong>01 / Fit the conversation</strong>
+        <span className="pill">SIMULATION</span>
+      </div>
+      <div className="lab-body">
+        <label htmlFor="capacity">
+          <strong>Toy window capacity: {capacity} tokens</strong>
+        </label>
+        <input
+          className="window-slider"
+          id="capacity"
+          type="range"
+          min="16"
+          max="48"
+          step="1"
+          value={capacity}
+          onChange={(e) => setCapacity(Number(e.target.value))}
+        />
+        <p className="micro">
+          {reserve} tokens reserved for a response · {capacity - reserve}{" "}
+          available for history · {available} unused
+        </p>
+        <div className="window-turns">
+          {turns.map((turn, i) => (
+            <div
+              className={`window-turn ${included[i] ? "included" : "excluded"}`}
+              key={turn.label}
+            >
+              <div>
+                <strong>{turn.label}</strong>
+                <p>{turn.text}</p>
+              </div>
+              <span>
+                {included[i] ? "Included" : "Outside window"} · {turn.cost} toy
+                tokens
+              </span>
+            </div>
+          ))}
+        </div>
+        <p className="micro lab-disclosure">
+          Counts are invented for this exercise. This policy keeps the latest
+          turn and a contiguous suffix of older turns, so the oldest item drops
+          first regardless of its role. It does not prioritize instructions.
+          Real applications may preserve instructions, summarize, reject, or
+          select content differently.
+        </p>
+      </div>
+    </div>
+  );
+}

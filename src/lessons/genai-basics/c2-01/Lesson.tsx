@@ -1,0 +1,111 @@
+import Link from "next/link";
+import { TokenPipeline } from "./TokenPipeline";
+import { LessonFrame } from "../../LessonFrame";
+import { Check } from "../../Check";
+import { TokenLab } from "./TokenLab";
+export default function Lesson() {
+  return (
+    <LessonFrame
+      number="01"
+      title="What is a token?"
+      lead="Before a language model predicts text, that text is turned into smaller pieces. Those pieces are called tokens."
+    >
+      <section id="words">
+        <h2 tabIndex={-1}>Words are not the unit.</h2>
+        <p>
+          People tend to see a sentence as words and punctuation. A tokenizer
+          uses a vocabulary of text pieces and rules to map text to token IDs. A
+          piece may be a whole word, part of a word, whitespace combined with
+          another piece, punctuation, or another fragment.
+        </p>
+        <div className="callout">
+          <strong>Key idea:</strong> a token is a unit chosen by a tokenizer. It
+          is not necessarily a word or a single character.
+        </div>
+        <p>
+          For example, a familiar short word might be one token, while an
+          unusual name or a long word might be split into several. Exact splits
+          depend on the tokenizer. Different models can use different
+          vocabularies and produce different counts for the same text.
+        </p>
+      </section>
+      <section id="split">
+        <h2 tabIndex={-1}>Try splitting text.</h2>
+        <p>
+          Change the text and compare the word count with the pieces below. This
+          is a simple demonstration of splitting; it does not reproduce any
+          model’s tokenizer.
+        </p>
+        <TokenLab />
+      </section>
+      <section id="pipeline">
+        <h2 tabIndex={-1}>From text to numbers—and back.</h2>
+        <p>
+          At input, the tokenizer converts text into a sequence of IDs from its
+          vocabulary. The model works with representations of those IDs, using
+          the surrounding sequence as context. When the model generates output,
+          it predicts token IDs; a decoder converts the selected IDs back into
+          text.
+        </p>
+        <TokenPipeline />
+        <p>
+          The visible text of a token is useful for illustration, but the model
+          processes IDs and learned numerical representations. An ID is not the
+          meaning of a word by itself: its role depends on the model and the
+          context.
+        </p>
+      </section>
+      <section id="count">
+        <h2 tabIndex={-1}>Why the count matters.</h2>
+        <p>
+          A model’s context window limits how much input and output it can work
+          with at once. Usage and costs may also be measured in tokens,
+          depending on the service. Counts are not reliably equal to word
+          counts, especially for unfamiliar names, code, punctuation, and
+          different languages.
+        </p>
+        <p>
+          For an actual application, use the tokenizer and counting guidance for
+          the model you deploy. A character or word estimate can be useful for
+          planning, but it is not an exact count.
+        </p>
+        <div className="callout">
+          <strong>Try comparing:</strong> a short familiar phrase, a long
+          technical term, and a name. Do not assume the same number of words
+          means the same token count.
+        </div>
+      </section>
+      <Check
+        id="check"
+        question="Which statement best describes a token?"
+        options={[
+          "A token is a text unit selected by a tokenizer, and it can be part of a word.",
+          "A token is always exactly one word.",
+          "Every model must split the same text in exactly the same way.",
+        ]}
+        correct={0}
+        wrongFeedback={[
+          "",
+          "A word can split into multiple pieces; token and word counts need not match.",
+          "Different tokenizers can use different vocabularies and split text differently.",
+        ]}
+        explanation="Tokenizers use vocabularies of pieces, so a word may be one token or several, depending on the tokenizer."
+      />
+      <section id="takeaway">
+        <div className="takeaway-card">
+          <span className="eyebrow">THE TAKEAWAY</span>
+          <h2>Take this with you.</h2>
+          <p>
+            Text is encoded into token IDs, the model works with the sequence,
+            and output IDs are decoded back into text. Token counts affect
+            context and often usage; a real tokenizer is the source of the exact
+            split.
+          </p>
+        </div>
+        <Link className="text-link" href="/learn/genai-basics/c2-02">
+          Next: How a model predicts the next token →
+        </Link>
+      </section>
+    </LessonFrame>
+  );
+}

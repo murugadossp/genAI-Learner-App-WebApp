@@ -1,0 +1,121 @@
+import Link from "next/link";
+import { LessonFrame } from "../../LessonFrame";
+import { Check } from "../../Check";
+import { WindowLab } from "./WindowLab";
+export default function Lesson() {
+  return (
+    <LessonFrame
+      number="06"
+      title="The context window"
+      lead="A model can only work with a bounded amount of context at a time. What happens when a conversation grows? How can an application choose what to include?"
+    >
+      <section id="context">
+        <h2 tabIndex={-1}>What the model can see.</h2>
+        <p>
+          For a generation, the application sends a sequence of tokens to the
+          model. This can include instructions, conversation turns, retrieved
+          documents, and the user’s latest request. The context window is the
+          model’s limit on the sequence it can process for that request,
+          typically counted in tokens.
+        </p>
+        <p>
+          Generated tokens also occupy space in the sequence. Exact accounting
+          and limits vary by model and service, so check the specific model’s
+          documentation when building an application.
+        </p>
+        <div className="callout">
+          <strong>Key idea:</strong> a long chat in the interface is not proof
+          that every earlier message is present in the model’s current context.
+        </div>
+      </section>
+      <section id="window">
+        <h2 tabIndex={-1}>Make room in a toy window.</h2>
+        <p>
+          Adjust the capacity. This example reserves room for a new answer,
+          keeps the newest message, then includes older turns in order while
+          they fit. It is one possible application strategy, not a rule every
+          model or chat app follows.
+        </p>
+        <WindowLab />
+      </section>
+      <section id="selection">
+        <h2 tabIndex={-1}>Who chooses what stays?</h2>
+        <p>
+          The application assembles the request. It might send a recent slice of
+          conversation, summarize older turns, retrieve relevant facts, or ask
+          the user to start a fresh conversation. Some systems use other
+          policies. Simply exceeding a limit does not guarantee an API will
+          automatically remove old messages; an application or service may
+          reject the request instead.
+        </p>
+        <p>
+          Truncation can lose an important constraint. A summary can help
+          preserve useful information but can also omit details or introduce
+          errors. Retrieved passages add relevant material but consume context
+          too. Inspect the assembled request when debugging surprising behavior.
+        </p>
+      </section>
+      <section id="memory">
+        <h2 tabIndex={-1}>Context, weights, and external memory.</h2>
+        <p>
+          <strong>Context</strong> is the information supplied in the current
+          request. <strong>Model weights</strong> are parameters learned during
+          training; they are not a transcript of the current chat.{" "}
+          <strong>External memory</strong> is information stored outside the
+          model by an application, such as a saved preference or document, and
+          must be selected and supplied when needed.
+        </p>
+        <div className="callout">
+          <strong>Example:</strong> a stored preference is not automatically
+          visible to the model. The app has to retrieve it and include it in the
+          request, subject to its own rules and available space.
+        </div>
+      </section>
+      <section id="budget">
+        <h2 tabIndex={-1}>Plan a budget.</h2>
+        <p>
+          A practical request budget includes instructions, user and assistant
+          messages, retrieved material, tool results, and space for the
+          response. Token counts depend on the actual tokenizer. A larger window
+          can hold more material, but it does not by itself guarantee that every
+          detail will be used correctly.
+        </p>
+        <pre>
+          <code>{`available input ≈ window limit − reserved output\nrequest = instructions + history + retrieved material + latest message`}</code>
+        </pre>
+        <p>
+          This is a planning model, not a universal billing formula. Follow the
+          model provider’s counting rules and test with representative requests.
+        </p>
+      </section>
+      <Check
+        id="check"
+        question="An earlier detail is no longer in the current request. What can you conclude?"
+        options={[
+          "The model can always recall the full conversation anyway.",
+          "The detail has automatically become a model weight.",
+          "The model can use that detail only if it is made available through the current request or another supported mechanism.",
+        ]}
+        correct={2}
+        wrongFeedback={[
+          "A model does not automatically see messages omitted from its current request.",
+          "A conversation does not automatically update the model’s trained weights.",
+          "",
+        ]}
+        explanation="The application must provide relevant information in the current context or through an explicitly supported mechanism; the current chat does not automatically update model weights."
+      />
+      <section id="takeaway">
+        <h2 tabIndex={-1}>Take this with you.</h2>
+        <p>
+          The context window bounds what can be processed at once. The app
+          decides what to send, while weights and external storage serve
+          different roles. When information disappears, inspect both the
+          selection strategy and the token budget.
+        </p>
+        <Link className="text-link" href="/learn/genai-basics/c2-02">
+          Review: How a model predicts the next token →
+        </Link>
+      </section>
+    </LessonFrame>
+  );
+}

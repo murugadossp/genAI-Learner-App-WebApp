@@ -6,7 +6,7 @@ A warm, quiet canvas with crisp reading surfaces and cobalt actions. Keep large 
 
 ## Current tokens
 
-CSS in [styles.css](../../mockups/styles.css) is canonical. The values below are a documentation snapshot for review; verify them against CSS when tokens change. When the web app shell lands (PR 1 in the [implementation plan](../plans/web-implementation-plan.md)), `app/tokens.css` becomes canonical and this note should be updated in that PR.
+[app/tokens.css](../../app/tokens.css) is the canonical web token source. The values below are a documentation snapshot; verify them against CSS when tokens change.
 
 | Token | Value | Role |
 | --- | --- | --- |

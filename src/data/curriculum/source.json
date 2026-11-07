@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/murugadossp/genAI-Learner-App",
+  "commit": "d2bc3bf85d3abb352ea72dc537268bf1e6b8a3e7",
+  "files": [
+    "content/curriculum/curriculum.json",
+    "content/curriculum/module_registry.json"
+  ]
+}

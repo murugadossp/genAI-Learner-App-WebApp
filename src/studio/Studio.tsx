@@ -1,0 +1,105 @@
+"use client";
+import Link from "next/link";
+import { useState } from "react";
+import Shell from "./Shell";
+import { Card } from "./Cards";
+import { courses, lessonUrl } from "./data";
+export default function Studio() {
+  const [filter, setFilter] = useState("All");
+  const [query, setQuery] = useState("");
+  const filtered = courses.filter(
+    (c) =>
+      (filter === "All" || c.group === filter) &&
+      Object.values(c).join(" ").toLowerCase().includes(query.toLowerCase()),
+  );
+  return (
+    <Shell>
+      <div className="container">
+        <div className="workspace">
+          <aside className="sidebar" aria-label="Studio navigation">
+            <Link className="active" href="/studio">
+              ◫ &nbsp; My learning
+            </Link>
+            <Link href="#catalog">▦ &nbsp; Explore paths</Link>
+            <Link href={lessonUrl}>⌁ &nbsp; Try a lab</Link>
+            <div className="sidebar-note">
+              <strong>Your next “aha” awaits.</strong>
+              <p>Small steps add up to a clearer picture.</p>
+              <span className="pill">Demo workspace</span>
+            </div>
+          </aside>
+          <div>
+            <div className="page-heading">
+              <div className="eyebrow">Your learning studio</div>
+              <h1>Keep your curiosity going.</h1>
+              <p className="muted">
+                Pick up an idea, or find a new one to explore.
+              </p>
+            </div>
+            <div className="resume">
+              <div>
+                <div className="eyebrow">Continue learning · demo progress</div>
+                <h2>
+                  One token.
+                  <br />A world of possibilities.
+                </h2>
+                <p className="muted">How a model predicts the next token</p>
+                <Link className="button" href={lessonUrl}>
+                  Continue lesson <span>→</span>
+                </Link>
+              </div>
+              <div className="resume-art" aria-hidden="true">
+                <span>The</span>
+                <span>sky</span>
+                <span className="resume-token">?</span>
+              </div>
+            </div>
+            <div className="section-head" id="catalog">
+              <div>
+                <div className="eyebrow">Choose your next direction</div>
+                <h2>Explore learning paths</h2>
+              </div>
+              <span className="micro">7 topic collections</span>
+            </div>
+            <label className="micro" htmlFor="search">
+              Find a topic
+            </label>
+            <input
+              className="search"
+              id="search"
+              type="search"
+              placeholder="Search AI, Python, agents…"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <div className="filters" aria-label="Filter paths">
+              {["All", ...courses.map((c) => c.group)].map((x) => (
+                <button
+                  key={x}
+                  className={x === filter ? "active" : ""}
+                  aria-pressed={x === filter}
+                  onClick={() => setFilter(x)}
+                >
+                  {x}
+                </button>
+              ))}
+            </div>
+            <p className="micro">
+              Explore the available chapter; more learning paths are coming
+              soon.
+            </p>
+            <div className="grid" aria-live="polite">
+              {filtered.length ? (
+                filtered.map((c) => <Card key={c.title} course={c} />)
+              ) : (
+                <div className="empty muted">
+                  No matching paths. Try “Python” or clear your filters.
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </Shell>
+  );
+}

@@ -1,0 +1,118 @@
+"use client";
+import { useState } from "react";
+const steps = [
+  {
+    name: "Input text",
+    type: "01 / TEXT",
+    example: "Hello!",
+    description:
+      "A user sends “Hello!”. We will follow this same example through a made-up tokenizer and a hypothetical reply.",
+  },
+  {
+    name: "Split into tokens",
+    type: "02 / TOKENIZER",
+    example: "“Hello”  ·  “!”",
+    description:
+      "In our toy vocabulary, “Hello!” splits into two pieces: “Hello” and “!”. Real tokenizers may split the same text differently.",
+  },
+  {
+    name: "Look up input IDs",
+    type: "03 / ENCODE",
+    example: "“Hello” → 101     “!” → 42",
+    description:
+      "Our toy vocabulary assigns “Hello” the ID 101 and “!” the ID 42. The model receives the sequence [101, 42]. These are token IDs, not embedding dimensions.",
+  },
+  {
+    name: "Predict a reply",
+    type: "04 / MODEL",
+    example: "[101, 42]  →  73  →  42",
+    description:
+      "For this hypothetical run, the model scores possible next tokens and a decoding strategy selects ID 73. With that token added to the context, it predicts again and selects ID 42. A stopping rule then ends the response. The choices are illustrative, not a real model prediction.",
+  },
+  {
+    name: "Collect output IDs",
+    type: "05 / GENERATION",
+    example: "[73, 42]",
+    description:
+      "The generated reply is a sequence of two selected IDs: 73 followed by 42. Each ID was selected in a separate prediction step.",
+  },
+  {
+    name: "Decode the IDs",
+    type: "06 / DECODER",
+    example: "73 → “Hi”     42 → “!”",
+    description:
+      "The same toy vocabulary maps ID 73 back to “Hi” and ID 42 back to “!”. The decoder joins these pieces into displayable text.",
+  },
+  {
+    name: "Output text",
+    type: "07 / TEXT",
+    example: "Hi!",
+    description:
+      "The application displays “Hi!”. This is a hypothetical response, not a claim about what a specific model would generate.",
+  },
+];
+export function TokenPipeline() {
+  const [index, setIndex] = useState(0);
+  return (
+    <div className="pipeline" aria-label="Text generation architecture">
+      <div className="lab-head">
+        <strong>02 / Follow one example</strong>
+        <span className="pill">INTERACTIVE DIAGRAM</span>
+      </div>
+      <div className="pipeline-body">
+        <p>
+          Follow <strong>“Hello!”</strong> from input to a hypothetical{" "}
+          <strong>“Hi!”</strong> reply. Select each stage or use Next to see
+          what changes.
+        </p>
+        <p className="micro">
+          The vocabulary, IDs, split, and model choices are invented for this
+          example. Actual tokenizers and model outputs differ.
+        </p>
+        <div className="pipeline-track" aria-label="Pipeline stages">
+          {steps.map((item, i) => (
+            <div className="pipeline-unit" key={item.name}>
+              <button
+                className={`pipeline-stage ${index === i ? "pipeline-active" : ""}`}
+                aria-pressed={index === i}
+                onClick={() => setIndex(i)}
+              >
+                <span className="eyebrow">{item.type}</span>
+                <strong>{item.name}</strong>
+                <span className="pipeline-example">{item.example}</span>
+              </button>
+              {index === i && (
+                <div className="pipeline-detail">
+                  <p>{item.description}</p>
+                </div>
+              )}
+              {i < steps.length - 1 && (
+                <span className="pipeline-arrow" aria-hidden="true">
+                  ↓
+                </span>
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="visually-hidden" role="status" aria-live="polite">
+          {steps[index].name}: {steps[index].description}
+        </div>
+        <div className="pipeline-controls">
+          <button disabled={index === 0} onClick={() => setIndex(index - 1)}>
+            ← Previous
+          </button>
+          <span className="micro">
+            {index + 1} of {steps.length}
+          </span>
+          <button
+            className="button small"
+            disabled={index === steps.length - 1}
+            onClick={() => setIndex(index + 1)}
+          >
+            Next stage →
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}

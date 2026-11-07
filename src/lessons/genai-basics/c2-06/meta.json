@@ -1,0 +1,36 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c2-06",
+  "title": "The context window",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "context",
+      "title": "What the model can see."
+    },
+    {
+      "id": "window",
+      "title": "Make room in a toy window."
+    },
+    {
+      "id": "selection",
+      "title": "Who chooses what stays?"
+    },
+    {
+      "id": "memory",
+      "title": "Context, weights, and external memory."
+    },
+    {
+      "id": "budget",
+      "title": "Plan a budget."
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
+  ]
+}

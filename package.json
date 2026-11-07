@@ -1,7 +1,33 @@
 {
   "name": "genai-learning-studio-mockup",
   "private": true,
-  "scripts": { "test": "node --test tests/*.test.mjs" },
-  "devDependencies": { "jsdom": "27.2.0" },
-  "engines": { "node": ">=22" }
+  "scripts": {
+    "dev": "node scripts/check-curriculum.mjs && node scripts/prepare-routes.mjs && next dev",
+    "build": "node scripts/check-curriculum.mjs && node scripts/prepare-routes.mjs && next build",
+    "start": "next start",
+    "test:mockup": "node --test tests/*.test.mjs",
+    "test": "npm run test:mockup && npm run build && npm run test:web && npm run test:production",
+    "typecheck": "node scripts/check-curriculum.mjs && tsc --noEmit",
+    "test:web": "playwright test",
+    "preview:mockup": "python3 -m http.server 3001 --bind 127.0.0.1 --directory mockups",
+    "test:production": "node scripts/test-production-gating.mjs",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,json}\" \"scripts/*.mjs\" \"tests/web/*.ts\" app/layout.tsx playwright.config.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.0",
+    "@types/node": "26.6.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "jsdom": "27.2.0",
+    "prettier": "3.9.10",
+    "typescript": "7.0.2"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "next": "16.4.5",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  }
 }

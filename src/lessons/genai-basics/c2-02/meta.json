@@ -1,0 +1,28 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c2-02",
+  "title": "One token at a time",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "idea",
+      "title": "The big idea"
+    },
+    {
+      "id": "experiment",
+      "title": "Try the experiment"
+    },
+    {
+      "id": "mechanics",
+      "title": "Under the hood"
+    },
+    {
+      "id": "check",
+      "title": "Check understanding"
+    },
+    {
+      "id": "takeaway",
+      "title": "Take it with you"
+    }
+  ]
+}

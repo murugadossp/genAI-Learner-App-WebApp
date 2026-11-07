@@ -1,1 +1,11 @@
 node_modules/
+.next/
+next-env.d.ts
+app/learn/*/*/page.tsx
+test-results/
+playwright-report/
+tsconfig.tsbuildinfo
+app/page.tsx
+app/studio/page.tsx
+app/course/page.tsx
+src/data/web-lessons.json
