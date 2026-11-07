@@ -78,8 +78,10 @@ try {
     ["/studio", 404],
     ["/course", 404],
     ...lessons()
-      .filter((lesson) => lesson.webStatus === "draft")
-      .map((lesson) => [`/learn/${lesson.module}/${lesson.lessonId}`, 404]),
+      .map((lesson) => [
+        `/learn/${lesson.module}/${lesson.lessonId}`,
+        lesson.webStatus === "published" ? 200 : 404,
+      ]),
   ]) {
     const response = await fetch(`http://127.0.0.1:${port}${path}`, {
       redirect: "manual",
