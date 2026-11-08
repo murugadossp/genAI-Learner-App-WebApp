@@ -22,55 +22,65 @@ for (const width of [390, 768, 1440])
         .evaluateAll((els) => els.map((e) => e.id));
       expect(ids).toEqual(meta.sections.map((s) => s.id));
 
-      const result = page.getByTestId("result");
-      const members = page.getByTestId("membership");
-      const status = page.locator(".lab").getByRole("status");
-
-      // Default: classify with hand-written rules is AI only.
-      await expect(result).toContainText("Classify with hand-written rules");
-      await expect(members.nth(0)).toContainText("Inside");
-      await expect(members.nth(1)).toContainText("Outside");
-      await expect(page.locator('[data-current="true"]')).toHaveAttribute(
+      // Each concept section has an image that loaded and a ring diagram.
+      for (const id of ["ai", "ml", "dl", "genai"]) {
+        const section = page.locator(`#${id}`);
+        const img = section.locator("img");
+        await img.scrollIntoViewIfNeeded();
+        await expect
+          .poll(() => img.evaluate((el: HTMLImageElement) => el.naturalWidth))
+          .toBeGreaterThan(0);
+        await expect(img).toHaveAttribute("alt", /.{20,}/);
+        await expect(
+          section.getByRole("img", { name: /Nested rings/ }),
+        ).toHaveCount(1);
+      }
+      await expect(
+        page
+          .locator("#dl")
+          .getByRole("img", { name: /Highlighted: Deep learning/ }),
+      ).toBeVisible();
+      await expect(page.locator("#ml [data-current='true']")).toHaveAttribute(
         "data-level",
-        "0",
+        "1",
       );
 
-      // A simple learned model is ML but not deep learning.
-      await page.getByLabel(/A simple learned model/).check();
-      await expect(members.nth(1)).toContainText("Inside");
-      await expect(members.nth(2)).toContainText("Outside");
-      await expect(result).toContainText("Innermost ring reached: Machine");
-      await expect(status).toContainText("Innermost ring: Machine learning");
+      // Sorter: wrong (too far in), wrong (too far out), correct, change, reset.
+      const score = page.getByTestId("score");
+      const fb = page.getByTestId("item-feedback");
+      const item = (n: number) => page.locator("#sorter ol > li").nth(n);
+      await expect(score).toContainText("0 of 6");
+      await item(0).getByLabel("Machine learning").check();
+      await expect(fb.first()).toContainText("further in than it goes");
+      await item(1).getByLabel("Artificial intelligence").check();
+      await expect(item(1).getByTestId("item-feedback")).toContainText(
+        "more specific ring",
+      );
+      await item(1).getByLabel("Machine learning").check();
+      await expect(item(1).getByTestId("item-feedback")).toContainText("Right");
+      await item(0).getByLabel("Artificial intelligence").check();
+      await expect(score).toContainText("2 of 6");
 
-      // A deep network cannot generate; the generative one can.
-      await page.getByLabel(/A deep neural network/).check();
-      await page.getByLabel(/Generate/).check();
-      await expect(result).toContainText("A poor fit");
-      await expect(result).toContainText("next ring");
-      await page.getByLabel(/A generative neural network/).check();
-      await expect(result).toContainText("A natural fit");
-      for (let i = 0; i < 4; i++)
-        await expect(members.nth(i)).toContainText("Inside");
-
-      // Theme switch keeps lab state.
+      // Theme switch keeps sorter state.
       await page
         .getByRole("button", { name: "Switch color theme" })
         .first()
         .click();
-      await expect(
-        page.getByLabel(/A generative neural network/),
-      ).toBeChecked();
-      await expect(result).toContainText("A natural fit");
+      await expect(score).toContainText("2 of 6");
+      await expect(item(1).getByLabel("Machine learning")).toBeChecked();
+
+      // Keyboard: arrow keys move within an item's radio group.
+      await item(2).getByLabel("Artificial intelligence").focus();
+      await page.keyboard.press("ArrowDown");
+      await expect(item(2).getByLabel("Machine learning")).toBeChecked();
 
       // Reset.
-      await page.getByRole("button", { name: "Reset lab" }).click();
-      await expect(result).toContainText("Classify with hand-written rules");
-      await expect(status).toContainText("Lab reset.");
-
-      // Keyboard: arrow keys move within the approach radio group.
-      await page.getByLabel(/Hand-written rules/).focus();
-      await page.keyboard.press("ArrowDown");
-      await expect(page.getByLabel(/A simple learned model/)).toBeChecked();
+      await page
+        .locator("#sorter")
+        .getByRole("button", { name: "Reset" })
+        .click();
+      await expect(score).toContainText("0 of 6");
+      await expect(fb).toHaveCount(0);
 
       // Quiz: wrong feedback, retry, correct.
       await page.getByLabel(/It is not AI, because nothing/).check();

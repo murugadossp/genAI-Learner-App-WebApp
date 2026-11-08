@@ -1,0 +1,130 @@
+"use client";
+import { useId, useState } from "react";
+import { ringNames } from "./RingDiagram";
+import styles from "./lesson.module.css";
+
+const items = [
+  {
+    text: "A rule: if the subject says “WINNER” and the message has three or more links, mark it spam.",
+    ring: 0,
+    why: "A person wrote the rule and nothing was learned from data, so it is AI but outside machine learning.",
+  },
+  {
+    text: "A spam model fitted to thousands of labelled emails. It learns how much to weigh clues a person chose, such as link count.",
+    ring: 1,
+    why: "It learned from examples, so it is machine learning. A person chose the clues and it is not a many-layer network, so it is not deep learning.",
+  },
+  {
+    text: "A many-layer network reads the raw message text and learns its own clues to decide spam or not spam.",
+    ring: 2,
+    why: "It is deep learning, learning its own clues. It only labels messages, so it is not generative.",
+  },
+  {
+    text: "A model trained to write a brand-new reply to a message, in a tone you ask for.",
+    ring: 3,
+    why: "It is a deep model trained to produce new content, which is generative AI. It is also inside the three outer rings.",
+  },
+  {
+    text: "A rule: show the newest saved article from a topic the reader starred.",
+    ring: 0,
+    why: "Another hand-written rule. Simple and predictable, with nothing learned.",
+  },
+  {
+    text: "A parcel-time estimate fitted to past deliveries, using a straight-line fit on distance and weekday.",
+    ring: 1,
+    why: "Fitted from examples, so it is machine learning. A straight-line fit is not a many-layer network, so it is not deep learning.",
+  },
+];
+
+export function Sorter() {
+  const uid = useId();
+  const [answers, setAnswers] = useState<(number | null)[]>(
+    items.map(() => null),
+  );
+  const [message, setMessage] = useState("");
+  const right = answers.filter((a, i) => a === items[i].ring).length;
+  const choose = (i: number, ring: number) => {
+    setAnswers((prev) => prev.map((a, j) => (j === i ? ring : a)));
+    setMessage(
+      ring === items[i].ring
+        ? `Item ${i + 1}: correct, ${ringNames[ring]}.`
+        : `Item ${i + 1}: not quite.`,
+    );
+  };
+  return (
+    <div className="lab">
+      <div className="lab-head">
+        <strong>Sort Postbox’s parts into rings</strong>
+        <span className="pill">PRACTICE</span>
+      </div>
+      <div className="lab-body">
+        <p>
+          For each part of Postbox, choose the <strong>innermost</strong> ring
+          it belongs to. You can change an answer at any time.
+        </p>
+        <ol className={styles.items}>
+          {items.map((item, i) => {
+            const a = answers[i];
+            return (
+              <li className={styles.item} key={item.text}>
+                <fieldset>
+                  <legend>
+                    {i + 1}. {item.text}
+                  </legend>
+                  <div className={styles.ringChoices}>
+                    {ringNames.map((name, r) => (
+                      <label className={styles.choice} key={name}>
+                        <input
+                          type="radio"
+                          name={`${uid}-${i}`}
+                          checked={a === r}
+                          onChange={() => choose(i, r)}
+                        />
+                        <span>{name}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+                {a !== null && (
+                  <p
+                    className={styles.itemFeedback}
+                    data-ok={a === item.ring}
+                    data-testid="item-feedback"
+                  >
+                    {a === item.ring ? "✓ Right. " : "↻ Not quite. "}
+                    {a === item.ring
+                      ? item.why
+                      : a < item.ring
+                        ? `It is inside ${ringNames[a]}, but it belongs to a more specific ring too. ${item.why}`
+                        : `That is further in than it goes. ${item.why}`}
+                  </p>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+        <div className={styles.score}>
+          <strong data-testid="score">
+            {right} of {items.length} correct
+          </strong>
+          <button
+            type="button"
+            onClick={() => {
+              setAnswers(items.map(() => null));
+              setMessage("Sorter reset.");
+            }}
+          >
+            Reset
+          </button>
+        </div>
+        <div role="status" aria-live="polite" className="visually-hidden">
+          {message}
+        </div>
+        <p className="micro lab-disclosure">
+          Postbox is an invented mail app, and each part is a sketch of how that
+          kind of approach works, not a description of a real product.
+        </p>
+      </div>
+    </div>
+  );
+}

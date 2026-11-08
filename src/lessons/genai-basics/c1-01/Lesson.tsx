@@ -1,14 +1,34 @@
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
-import { RingsLab } from "./RingsLab";
+import { RingDiagram } from "./RingDiagram";
+import { Sorter } from "./Sorter";
 import styles from "./lesson.module.css";
+
+function Figure({
+  src,
+  alt,
+  caption,
+}: {
+  src: string;
+  alt: string;
+  caption: string;
+}) {
+  return (
+    <figure className={styles.figure}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={alt} width={1200} height={800} loading="lazy" />
+      <figcaption>{caption}</figcaption>
+    </figure>
+  );
+}
+
 export default function Lesson() {
   return (
     <LessonFrame
       number="01"
       chapter={{ label: "AI foundations", href: "/course/chapter-1" }}
       title="How AI, ML, deep learning and GenAI fit together"
-      lead="These four terms are often used as if they meant the same thing. They are nested: each one is a special case of the one around it. This lesson shows the nesting, and why a system built from hand-written rules still counts."
+      lead="These four terms are often used as if they meant the same thing. They are nested: each one is a special case of the one around it. We take them one at a time, from the outside in."
     >
       <section id="big-picture">
         <h2 tabIndex={-1}>AI is the whole field, not one technology.</h2>
@@ -17,80 +37,125 @@ export default function Lesson() {
           field of building systems that do tasks which normally take human
           intelligence, such as recognising a pattern, making a decision,
           planning a route or producing language. The definition is about the
-          task. It does not say how the system must be built, and there is more
-          than one way to build it.
+          task. It does not say how the system must be built.
         </p>
         <p>
           Throughout this lesson we follow <strong>Postbox</strong>, an invented
-          mail app. It has four jobs: <strong>predict</strong> when a parcel
-          arrives, <strong>classify</strong> a message as spam or not,{" "}
-          <strong>recommend</strong> an article to read next, and{" "}
-          <strong>generate</strong> a draft reply. Those are jobs, which is what
-          a system does. The rings below are about <em>how</em> it is built to
-          do them.
+          mail app. It has jobs like <strong>predicting</strong> when a parcel
+          arrives, <strong>classifying</strong> a message as spam or not,{" "}
+          <strong>recommending</strong> an article, and{" "}
+          <strong>generating</strong> a draft reply. Those jobs are{" "}
+          <em>what</em> a system does. The four rings are about <em>how</em> it
+          is built to do them.
         </p>
-        <p>
-          There are four ways to build such a job, from plainest to most
-          powerful. <strong>Rules:</strong> a person writes every step.{" "}
-          <strong>Machine learning:</strong> the system learns from examples.{" "}
-          <strong>Deep learning:</strong> learning with large, many-layer
-          networks. <strong>Generative AI:</strong> deep learning that makes new
-          text, images or audio. Each one sits inside the one before it, as the
-          rings in the lab show.
-        </p>
+        <RingDiagram current={0} />
         <div className="callout">
           <strong>Key idea:</strong> learning is one way to build AI. It is not
           the definition of AI. A system built entirely from rules that a person
           wrote is still AI; it is just not machine learning.
         </div>
       </section>
-      <section id="lab">
-        <h2 tabIndex={-1}>Pick a job, then pick how it is built.</h2>
+      <section id="ai">
+        <h2 tabIndex={-1}>Artificial intelligence: the outer ring.</h2>
+        <Figure
+          src="/lessons/c1-01/ai-rules.jpg"
+          alt="A person writing if-then rules on cards that feed a simple machine sorting envelopes into two trays."
+          caption="Rules written by a person, doing a job by themselves."
+        />
         <p>
-          Choose one of Postbox’s jobs and one way of building it. The rings
-          show which of the four groups that build belongs to. Try classifying
-          with hand-written rules, then with a simple learned model, and watch
-          how the picture changes. Then try <em>generate</em> with a deep
-          network that is not generative.
+          The outer ring holds every method for getting a machine to do such a
+          task, whether a person designed it by hand or it was learned. Classic
+          examples are rule-based programs, search and planning.
         </p>
-        <RingsLab />
+        <div className={styles.example}>
+          <strong>In Postbox</strong>
+          <p>
+            “If the subject says WINNER and the message has three or more links,
+            mark it spam.” A person wrote that rule. Nothing was learned, and it
+            is still AI.
+          </p>
+        </div>
+        <RingDiagram current={0} />
       </section>
-      <section id="rings">
-        <h2 tabIndex={-1}>Reading the rings.</h2>
-        <ul className={styles.defs}>
-          <li>
-            <strong>Artificial intelligence</strong>, the outer ring. Any
-            technique that gets a machine to do such a task, hand-built or
-            learned. Classic examples include search and planning programs and
-            rule-based systems.
-          </li>
-          <li>
-            <strong>Machine learning</strong>. The system’s behaviour comes from
-            patterns fitted to example data, not from a rule a person wrote for
-            each case. Postbox’s spam model was not told “three links means
-            spam”; it was shown many labelled emails and adjusted its own
-            values.
-          </li>
-          <li>
-            <strong>Deep learning</strong>. Machine learning with neural
-            networks that have many layers, which can learn their own features
-            from raw input such as text or pixels. Not all machine learning is
-            deep: simpler models, such as a straight-line fit or a small
-            decision tree, are still machine learning.
-          </li>
-          <li>
-            <strong>Generative AI</strong>. Models trained to produce new
-            content, such as text, images, audio or code. Today’s are mostly
-            built with deep learning. Not all deep learning generates: a deep
-            network that labels messages as spam does not write anything.
-          </li>
-        </ul>
+      <section id="ml">
+        <h2 tabIndex={-1}>Machine learning: learning from examples.</h2>
+        <Figure
+          src="/lessons/c1-01/ai-ml.jpg"
+          alt="Many example envelopes tagged with ticks and crosses flow into a machine that learns a pattern and sorts a new envelope on its own."
+          caption="Show the system many examples and let it find the pattern."
+        />
         <p>
-          The reading rule is one-directional. A generative model is also deep
-          learning, machine learning and AI. The reverse does not hold:
-          Postbox’s keyword rule is AI, but it is outside machine learning
-          because nothing was learned from data.
+          In <strong>machine learning</strong>, the behaviour comes from
+          patterns fitted to example data, not from a rule a person wrote for
+          each case. The system adjusts its own internal values until it does
+          well on the examples.
         </p>
+        <div className={styles.example}>
+          <strong>In Postbox</strong>
+          <p>
+            A spam model is shown thousands of emails labelled spam or not. A
+            person picks the clues, such as link count, and the model learns how
+            much each clue should matter. Nobody wrote “three links means spam”.
+          </p>
+        </div>
+        <RingDiagram current={1} />
+      </section>
+      <section id="dl">
+        <h2 tabIndex={-1}>Deep learning: many layers.</h2>
+        <Figure
+          src="/lessons/c1-01/ai-dl.jpg"
+          alt="A neural network drawn as many columns of connected nodes, turning a raw envelope image on the left into a sorted result on the right."
+          caption="Many layers, each building on the one before."
+        />
+        <p>
+          <strong>Deep learning</strong> is machine learning with neural
+          networks that have many layers. Those layers can learn their own clues
+          straight from raw input such as text or pixels, so a person does not
+          have to choose them. Not all machine learning is deep: a simple
+          straight-line fit to past data is machine learning but not deep
+          learning.
+        </p>
+        <div className={styles.example}>
+          <strong>In Postbox</strong>
+          <p>
+            A many-layer network reads the raw message text and learns its own
+            clues, such as phrasing and layout, to decide spam or not spam. It
+            only labels messages. It does not write anything.
+          </p>
+        </div>
+        <RingDiagram current={2} />
+      </section>
+      <section id="genai">
+        <h2 tabIndex={-1}>Generative AI: making something new.</h2>
+        <Figure
+          src="/lessons/c1-01/ai-genai.jpg"
+          alt="A machine producing something new: a blank page filling with a freshly written letter, next to a small painting and a sound wave."
+          caption="New text, images or audio, not a stored copy."
+        />
+        <p>
+          <strong>Generative AI</strong> is deep learning trained to produce new
+          content, such as text, images, audio or code. Today’s systems are
+          mostly built this way. Not all deep learning generates: the spam
+          network above labels messages and writes nothing.
+        </p>
+        <div className={styles.example}>
+          <strong>In Postbox</strong>
+          <p>
+            A generative model writes a new draft reply in the tone you ask for.
+            The draft is new text, not a stored template, and it can be wrong,
+            so you read it before sending.
+          </p>
+        </div>
+        <RingDiagram current={3} />
+        <p>
+          Read the rings in one direction. A generative model is also deep
+          learning, machine learning and AI. The reverse does not hold: the
+          keyword rule is AI, but it is outside machine learning.
+        </p>
+      </section>
+      <section id="sorter">
+        <h2 tabIndex={-1}>Where does each one sit?</h2>
+        <Sorter />
       </section>
       <section id="limits">
         <h2 tabIndex={-1}>Where the picture is too tidy.</h2>

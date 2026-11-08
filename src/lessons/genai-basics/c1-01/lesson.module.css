@@ -132,3 +132,91 @@
   margin: 0 0 1rem;
   font-weight: 600;
 }
+.figure {
+  margin: 0 0 1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f6f4ee;
+}
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.figure figcaption {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  background: var(--panel);
+}
+.where {
+  margin: 1rem 0;
+  padding: 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+}
+.where p {
+  margin: 0.6rem 0 0;
+  font-size: 0.88rem;
+}
+.example {
+  margin: 1rem 0;
+  padding: 0.8rem 1rem;
+  border-left: 4px solid var(--accent);
+  background: var(--panel);
+  border-radius: 0 10px 10px 0;
+}
+.example p {
+  margin: 0.2rem 0 0;
+}
+.items {
+  display: grid;
+  gap: 0.9rem;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+.item {
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+}
+.item fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.item legend {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  padding: 0;
+}
+.ringChoices {
+  display: grid;
+  gap: 0.4rem;
+}
+@media (min-width: 700px) {
+  .ringChoices {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.itemFeedback {
+  margin: 0.7rem 0 0;
+  padding: 0.6rem 0.8rem;
+  border-radius: 9px;
+  background: var(--bg);
+  border-left: 4px solid var(--line);
+  font-size: 0.9rem;
+}
+.itemFeedback[data-ok="true"] {
+  border-left-color: var(--accent);
+}
+.score {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
