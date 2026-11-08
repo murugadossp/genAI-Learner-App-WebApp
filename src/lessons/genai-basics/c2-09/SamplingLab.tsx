@@ -132,19 +132,20 @@ export function SamplingLab() {
   const top = base.indexOf(Math.max(...base));
   const label = temp === 0 ? "0 (always take the top choice)" : temp.toFixed(1);
 
+  const drawn = sc.choices
+    .map((c, i) => (counts[i] > 0 ? `${c.word} ${counts[i]}` : ""))
+    .filter(Boolean)
+    .join(", ");
+  const announce = `Temperature ${temp === 0 ? "0" : temp.toFixed(1)}. Top choice ${sc.choices[top].word} at ${pct(final[top])}. Draw set ${seed}, ${DRAWS} draws: ${drawn}.`;
   const first = useRef(true);
   useEffect(() => {
     if (first.current) {
       first.current = false;
       return;
     }
-    const t = setTimeout(() => {
-      setMessage(
-        `Temperature ${temp === 0 ? "0" : temp.toFixed(1)}. Top choice ${sc.choices[top].word} at ${pct(final[top])}.`,
-      );
-    }, 600);
+    const t = setTimeout(() => setMessage(announce), 600);
     return () => clearTimeout(t);
-  }, [temp, sid, mode, seed, top, final, sc.choices]);
+  }, [announce]);
 
   const reset = () => {
     setSid("story");

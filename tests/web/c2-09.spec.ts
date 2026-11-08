@@ -68,7 +68,10 @@ for (const width of [390, 768, 1440])
       ).toHaveCount(3);
 
       // Draw again changes the seed but keeps probabilities.
+      const live = page.locator(".lab").getByRole("status");
+      await expect(live).toContainText("Draw set 1");
       await page.getByRole("button", { name: /Draw 20 again/ }).click();
+      await expect(live).toContainText("Draw set 2");
       const counts = await page
         .getByTestId("count")
         .evaluateAll((els) =>
