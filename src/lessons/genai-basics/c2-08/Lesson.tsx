@@ -12,9 +12,13 @@ export default function Lesson() {
       <section id="cutoff">
         <h2 tabIndex={-1}>Training stops at a date.</h2>
         <p>
-          Pretraining uses text gathered up to a point in time. After that the
-          weights are fixed. The last date covered by that text is often called
-          the model’s <strong>knowledge cutoff</strong> or training cutoff.
+          Pretraining uses text gathered up to a point in time. Later stages
+          such as instruction tuning and other post-training adjust the model,
+          and they can add some newer information, but they do not rebuild its
+          broad knowledge. The last date that the bulk of its training text
+          covers is often called the model’s <strong>knowledge cutoff</strong>.
+          Once training is finished and the model is deployed, its weights stay
+          fixed until the provider releases a new version.
         </p>
         <p>
           The cutoff is only the start of the gap. A model is typically released
