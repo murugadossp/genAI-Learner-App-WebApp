@@ -20,25 +20,31 @@ for (const width of [390, 768, 1440])
 
       const answer = page.getByTestId("answer");
       const slider = page.getByLabel(/Work before answering/);
-      await expect(answer).toContainText("Answer: 216");
+      await expect(answer).toContainText(
+        "Answer: Asha: cat, Ben: dog, Chen: fish",
+      );
       await expect(answer).toContainText("Does not match");
       await expect(slider).toBeDisabled();
 
       await page.getByLabel(/prompt says/).check();
-      await expect(page.getByTestId("shown")).toContainText(
-        "4 trips × 18 = 72",
+      await expect(page.getByTestId("shown")).toContainText("in that order");
+      await expect(answer).toContainText(
+        "Answer: Asha: cat, Ben: dog, Chen: fish",
       );
-      await expect(answer).toContainText("Answer: 216");
 
       await page.getByLabel(/Reasoning model: works first/).check();
       await expect(slider).toBeEnabled();
       await slider.fill("2");
-      await expect(answer).toContainText("Answer: 216");
+      await expect(answer).toContainText(
+        "Answer: Asha: cat, Ben: dog, Chen: fish",
+      );
       await slider.fill("3");
       await expect(page.locator(".lab").getByRole("status")).toContainText(
-        "Answer: 189",
+        "Answer: Asha: fish, Ben: cat, Chen: dog",
       );
-      await expect(answer).toContainText("Answer: 189");
+      await expect(answer).toContainText(
+        "Answer: Asha: fish, Ben: cat, Chen: dog",
+      );
       await expect(answer).toContainText("Matches the worked answer");
       await expect(page.getByTestId("work")).toContainText("Discard it");
       const cost3 = await page.getByTestId("cost").innerText();
@@ -53,8 +59,8 @@ for (const width of [390, 768, 1440])
       await expect(page.getByTestId("shown")).toContainText("only the answer");
 
       // Simple sum: right from the start, extra work only adds cost.
-      await page.getByLabel(/Quick sum/).check();
-      await expect(answer).toContainText("Answer: 42");
+      await page.getByLabel(/Quick fact/).check();
+      await expect(answer).toContainText("Answer: Paris");
       await expect(answer).toContainText("extra work only added cost");
       await slider.fill("0");
       await expect(answer).toContainText("Raise the limit");
@@ -66,12 +72,14 @@ for (const width of [390, 768, 1440])
         .first()
         .click();
       await expect(slider).toHaveValue("4");
-      await expect(answer).toContainText("Answer: 42");
+      await expect(answer).toContainText("Answer: Paris");
 
       // Reset.
       await page.getByRole("button", { name: "Reset lab" }).click();
       await expect(slider).toHaveValue("0");
-      await expect(answer).toContainText("Answer: 216");
+      await expect(answer).toContainText(
+        "Answer: Asha: cat, Ben: dog, Chen: fish",
+      );
 
       // Keyboard operation of the slider.
       await page.getByLabel(/Reasoning model: works first/).check();

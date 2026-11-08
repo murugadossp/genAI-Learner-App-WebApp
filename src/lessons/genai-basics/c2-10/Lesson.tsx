@@ -29,7 +29,7 @@ export default function Lesson() {
         <figure className={styles.figure}>
           <Image
             src={diagram}
-            alt="Two lanes. Quick reply: the ferry puzzle goes straight to the answer 216, marked wrong, a first guess with no checking. Reasoning model: the ferry puzzle goes through working text (list the facts, try 216 and spot the slip, recompute and check) to the answer 189, marked right."
+            alt="Two lanes. Quick reply: a pet puzzle goes straight to the answer Asha cat, Ben dog, Chen fish, marked wrong, a first guess with no checking. Reasoning model: the same puzzle goes through working text (list the clues, try a first answer and spot the slip, fix it and check) to the answer Asha fish, Ben cat, Chen dog, marked right."
             sizes="(min-width: 760px) 720px, 100vw"
           />
           <figcaption className="micro">
@@ -43,18 +43,71 @@ export default function Lesson() {
           use that room well.
         </div>
       </section>
+      <section id="example">
+        <h2 tabIndex={-1}>Watch one question get worked through.</h2>
+        <p>
+          Here is one puzzle with no calculation in it, so all that matters is
+          using the clues.{" "}
+          <strong>
+            Asha, Ben and Chen each own a different pet: a cat, a dog or a fish.
+            Asha is allergic to fur. Chen does not own the cat. Who owns which
+            pet?
+          </strong>
+        </p>
+        <h3>A quick reply</h3>
+        <p>
+          It answers at once: “Asha has the cat, Ben has the dog, Chen has the
+          fish.” That is just the names and pets paired in the order they were
+          listed. It sounds fine, and it breaks the first clue, because Asha is
+          allergic to fur. Nothing in the reply checked it.
+        </p>
+        <h3>A reasoning model</h3>
+        <p>
+          It writes working before it answers. In this lesson’s toy it goes:
+        </p>
+        <ol>
+          <li>
+            <strong>List the clues.</strong> Say what is known before guessing.
+          </li>
+          <li>
+            <strong>Try a first answer.</strong> The same pairing in order.
+          </li>
+          <li>
+            <strong>Test it and repair it.</strong> Asha cannot have the cat, so
+            discard the attempt. Only the fish has no fur, so Asha has the fish.
+            Chen does not have the cat, so Chen has the dog and Ben has the cat.
+          </li>
+          <li>
+            <strong>Check.</strong> Both clues hold for the new answer.
+          </li>
+        </ol>
+        <p>
+          The steps above are the whole difference you can see: a first guess, a
+          test against the clues, a repair and a check. The next section lets
+          you mix and match: pick how the model answers, and change how much
+          working it gets.
+        </p>
+        <div className="callout">
+          <strong>Note:</strong> the words in these steps are scripted for the
+          lesson, not produced by a real model. A real reasoning model writes
+          its own working and it varies from run to run.
+        </div>
+      </section>
       <section id="compare">
         <h2 tabIndex={-1}>Compare a quick reply with reasoned work.</h2>
         <p>Try the lab in this order:</p>
         <ol>
-          <li>Leave the ferry puzzle and the quick model. It answers 216.</li>
+          <li>
+            Leave the pet puzzle and the quick model. It answers at once, and
+            the answer breaks a clue.
+          </li>
           <li>Switch to the ordinary model told to show its steps.</li>
           <li>
             Switch to the reasoning model and raise the work slider one step at
             a time. Watch the answer change at step 3, and the cost keep rising.
           </li>
           <li>
-            Pick the one-step sum and see extra work add cost without changing
+            Pick the one-step fact and see extra work add cost without changing
             the answer.
           </li>
         </ol>
@@ -82,7 +135,7 @@ export default function Lesson() {
           <li>
             <strong>It helps most on multi-step problems.</strong> Maths,
             planning, tricky code and puzzles with a catch benefit. A simple
-            lookup or rewrite usually does not, as the sum showed.
+            lookup or rewrite usually does not, as the quick fact showed.
           </li>
           <li>
             <strong>It can still be wrong.</strong> More working tends to help
@@ -102,7 +155,7 @@ export default function Lesson() {
         <p>
           When an app shows you reasoning, you are reading text. Some products
           show the model’s working, some show a shorter summary written for
-          display, and some show nothing. In the lab, pick the ferry puzzle, set
+          display, and some show nothing. In the lab, pick the pet puzzle, set
           the reasoning model to 3 or more steps, and compare “summary” with
           “full work”: the summary leaves out the discarded first attempt. That
           is a toy, but the caution is real. Research has found that written

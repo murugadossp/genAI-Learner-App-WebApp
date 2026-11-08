@@ -2,7 +2,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import styles from "./lesson.module.css";
 
-type PId = "ferry" | "sum";
+type PId = "pets" | "fact";
 type Mode = "quick" | "prompted" | "reasoning";
 type Show = "full" | "summary" | "none";
 
@@ -12,6 +12,7 @@ type Problem = {
   text: string;
   truth: string;
   quick: string;
+  discarded: string;
   promptedSteps: string[];
   promptedAnswer: string;
   promptedNote: string;
@@ -21,66 +22,72 @@ type Problem = {
 
 const problems: Problem[] = [
   {
-    id: "ferry",
-    label: "Ferry puzzle (several steps, one catch)",
-    text: "A ferry makes 4 trips a day and carries 18 passengers on a full trip. The first trip each day is only half full. How many passengers does it carry in 3 days?",
-    truth: "189",
-    quick: "216",
+    id: "pets",
+    label: "Pet puzzle (needs several clues)",
+    text: "Asha, Ben and Chen each own a different pet: a cat, a dog or a fish. Asha is allergic to fur. Chen does not own the cat. Who owns which pet?",
+    truth: "Asha: fish, Ben: cat, Chen: dog",
+    quick: "Asha: cat, Ben: dog, Chen: fish",
+    discarded: "Asha: cat, Ben: dog, Chen: fish",
     promptedSteps: [
-      "Each trip carries 18 passengers.",
-      "4 trips × 18 = 72 passengers a day.",
-      "72 × 3 days = 216.",
+      "The pets are a cat, a dog and a fish.",
+      "The owners are Asha, Ben and Chen, in that order.",
+      "So Asha has the cat, Ben has the dog and Chen has the fish.",
     ],
-    promptedAnswer: "216",
+    promptedAnswer: "Asha: cat, Ben: dog, Chen: fish",
     promptedNote:
-      "The toy writes tidy steps, but they follow the most familiar pattern and skip the half-full trip. In real models, asking for steps often does help; it just is not a guarantee, and it is not the same as being trained to work first.",
+      "The toy writes tidy steps, but they just pair names and pets in listed order and never use the clues. In real models, asking for steps often does help; it just is not a guarantee, and it is not the same as being trained to work first.",
     work: [
       {
-        text: "List the facts: 4 trips a day, 18 when full, first trip half full, 3 days.",
+        text: "List the clues: Asha is allergic to fur. Chen does not own the cat. The pets are a cat, a dog and a fish.",
         cost: 60,
-        answer: "216",
+        answer: "Asha: cat, Ben: dog, Chen: fish",
       },
       {
-        text: "First attempt: 4 × 18 × 3 = 216.",
+        text: "First attempt: pair them in order. Asha has the cat, Ben the dog, Chen the fish.",
         cost: 50,
-        answer: "216",
+        answer: "Asha: cat, Ben: dog, Chen: fish",
       },
       {
-        text: "Re-read the facts. The first trip carries 9, not 18, so 216 is too high. Discard it. One day is 9 + 3 × 18 = 63, and 3 days is 189.",
+        text: "Test the first attempt against the clues. Asha is allergic to fur, so she cannot have the cat. Discard it. Only the fish has no fur, so Asha has the fish. Chen does not have the cat, so Chen has the dog and Ben has the cat.",
         cost: 90,
-        answer: "189",
+        answer: "Asha: fish, Ben: cat, Chen: dog",
       },
       {
-        text: "Check: 189 is less than 216 by 27, which is 3 days × 9 empty seats. That matches.",
+        text: "Check both clues against the new answer: Asha has the fish, so no fur. Chen has the dog, not the cat. Both hold.",
         cost: 60,
-        answer: "189",
+        answer: "Asha: fish, Ben: cat, Chen: dog",
       },
     ],
     summary: [
-      { at: 1, text: "Noted the half-full first trip." },
-      { at: 3, text: "Worked out one day, then three days." },
-      { at: 4, text: "Checked the result." },
+      { at: 1, text: "Listed the clues." },
+      { at: 3, text: "Used the clues to rule options out." },
+      { at: 4, text: "Checked the answer against the clues." },
     ],
   },
   {
-    id: "sum",
-    label: "Quick sum (one step)",
-    text: "What is 15 + 27?",
-    truth: "42",
-    quick: "42",
-    promptedSteps: ["15 + 27 = 42."],
-    promptedAnswer: "42",
+    id: "fact",
+    label: "Quick fact (one step)",
+    text: "What is the capital city of France?",
+    truth: "Paris",
+    quick: "Paris",
+    discarded: "",
+    promptedSteps: ["The capital city of France is Paris."],
+    promptedAnswer: "Paris",
     promptedNote:
-      "A single step needs no help. Asking for steps changes the length of the reply, not the answer.",
+      "A single fact needs no help. Asking for steps changes the length of the reply, not the answer.",
     work: [
-      { text: "Read the sum: 15 + 27.", cost: 20, answer: "42" },
-      { text: "15 + 20 = 35, then 35 + 7 = 42.", cost: 30, answer: "42" },
-      { text: "Check by adding 27 + 15: also 42.", cost: 30, answer: "42" },
-      { text: "Nothing new to check. Answer 42.", cost: 20, answer: "42" },
+      { text: "Read the question: a capital city.", cost: 20, answer: "Paris" },
+      { text: "France’s capital is Paris.", cost: 30, answer: "Paris" },
+      { text: "Nothing conflicts with that.", cost: 30, answer: "Paris" },
+      {
+        text: "Nothing new to check. Answer Paris.",
+        cost: 20,
+        answer: "Paris",
+      },
     ],
     summary: [
-      { at: 2, text: "Added the numbers." },
-      { at: 3, text: "Checked the result." },
+      { at: 2, text: "Recalled the capital." },
+      { at: 3, text: "Checked nothing conflicts." },
     ],
   },
 ];
@@ -120,7 +127,7 @@ function run(p: Problem, mode: Mode, budget: number) {
   const answer = used.length ? used[used.length - 1].answer : p.quick;
   const cost = BASE + used.reduce((n, w) => n + w.cost, 0);
   const note =
-    p.id === "sum"
+    p.id === "fact"
       ? budget === 0
         ? "The answer is right with no extra work. Raise the limit to see what more work adds."
         : "In this toy the answer was right from the start, so extra work only added cost."
@@ -133,7 +140,7 @@ function run(p: Problem, mode: Mode, budget: number) {
 }
 
 export function ReasoningLab() {
-  const [pid, setPid] = useState<PId>("ferry");
+  const [pid, setPid] = useState<PId>("pets");
   const [mode, setMode] = useState<Mode>("quick");
   const [budget, setBudget] = useState(0);
   const [show, setShow] = useState<Show>("summary");
@@ -157,7 +164,7 @@ export function ReasoningLab() {
     return () => clearTimeout(t);
   }, [p, mode, budget]);
   const reset = () => {
-    setPid("ferry");
+    setPid("pets");
     setMode("quick");
     setBudget(0);
     setShow("summary");
@@ -167,7 +174,7 @@ export function ReasoningLab() {
   return (
     <div className="lab">
       <div className="lab-head">
-        <strong>01 / Same question, three ways to answer</strong>
+        <strong>01 / Mix and match: same question, three ways to answer</strong>
         <span className="pill">SIMULATION</span>
       </div>
       <div className="lab-body">
@@ -300,10 +307,11 @@ export function ReasoningLab() {
                   {show === "none" && (
                     <p className="micro">No steps, only the answer below.</p>
                   )}
-                  {show === "summary" && budget >= 3 && pid === "ferry" && (
+                  {show === "summary" && budget >= 3 && pid === "pets" && (
                     <p className="micro">
-                      The summary leaves out the discarded first attempt (216).
-                      It is a shorter text, not a copy of the work.
+                      The summary leaves out the discarded first attempt (
+                      {p.discarded}). It is a shorter text, not a copy of the
+                      work.
                     </p>
                   )}
                 </div>

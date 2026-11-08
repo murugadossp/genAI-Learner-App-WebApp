@@ -97,7 +97,9 @@ button.scenarioBtn[aria-pressed="true"]:not(:disabled):hover {
   border: 2px solid var(--line);
   border-radius: var(--radius);
   padding: 1.25rem;
-  transition: border-color 0.2s, background 0.2s;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
   position: relative;
 }
 
@@ -329,7 +331,9 @@ button.primaryBtn {
   background: var(--accent);
   color: var(--on-accent);
   cursor: pointer;
-  transition: opacity 0.15s ease, filter 0.15s ease;
+  transition:
+    opacity 0.15s ease,
+    filter 0.15s ease;
 }
 
 button.primaryBtn:not(:disabled):hover {
