@@ -1,0 +1,14 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c2-04",
+  "title": "From base model to assistant",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "two-jobs", "title": "A predictor is not an assistant." },
+    { "id": "lab", "title": "Guess which reply is base vs assistant." },
+    { "id": "tuning", "title": "What instruction tuning changes." },
+    { "id": "prompt-fallacy", "title": "Why a prompt wrapper is not enough." },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
