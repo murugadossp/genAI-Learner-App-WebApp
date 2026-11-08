@@ -1,0 +1,14 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c2-08",
+  "title": "Knowledge cutoff and fresh information",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "cutoff", "title": "Training stops at a date." },
+    { "id": "timeline", "title": "Move the cutoff on a toy timeline." },
+    { "id": "edges", "title": "The edge is blurry, and it is not a wall." },
+    { "id": "fresh", "title": "How newer facts reach an answer." },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
