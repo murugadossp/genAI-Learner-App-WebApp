@@ -130,7 +130,9 @@ export function SpotLab() {
                 data-result={result}
                 data-testid="claim"
               >
-                <fieldset>
+                <fieldset
+                  aria-describedby={shown ? `${c.id}-verdict` : undefined}
+                >
                   <legend>“{c.text}”</legend>
                   {options.map((o) => (
                     <label key={o.v}>
@@ -148,7 +150,7 @@ export function SpotLab() {
                   ))}
                 </fieldset>
                 {shown && (
-                  <p className={styles.verdict}>
+                  <p id={`${c.id}-verdict`} className={styles.verdict}>
                     <strong>
                       {marks[c.id] === c.truth
                         ? "✓ Right. "
@@ -199,7 +201,9 @@ export function SpotLab() {
           aria-live="polite"
           className={done ? styles.note : "visually-hidden"}
         >
-          {done ? `You matched ${score} of ${set.claims.length} verdicts.` : ""}
+          {done
+            ? `You matched ${score} of ${set.claims.length} verdicts. Each claim now shows its own verdict and explanation, and its group is described by it.`
+            : ""}
         </div>
         <p className="micro lab-disclosure">
           The library, the notice and both answers are invented and scripted.

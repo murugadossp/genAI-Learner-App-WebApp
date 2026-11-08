@@ -53,6 +53,11 @@ for (const width of [390, 768, 1440])
       await expect(page.getByText("You matched")).toHaveCount(0);
       await check.click();
       await expect(page.getByText("You matched 2 of 4")).toBeVisible();
+      await expect(claims.nth(0).locator("fieldset")).toHaveAttribute(
+        "aria-describedby",
+        "a1-verdict",
+      );
+      await expect(page.locator("#a1-verdict")).toContainText("Verdict:");
 
       // Theme switch keeps lab state.
       await page
