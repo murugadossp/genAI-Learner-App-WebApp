@@ -39,7 +39,7 @@ Run `format:check` and `typecheck` before opening a PR. New code must be Prettie
 
 ## Boundaries
 
-- Do not merge, publish, deploy or push without the user's instruction.
+- Do not merge, mark a PR ready, publish or deploy without the user's instruction. Pushing is allowed only where a workflow says so: the lesson commands push their own `lessons/<lessonId>` branch and open a draft PR. Otherwise do not push without being asked.
 - Do not copy content between lessons or from mobile lesson files.
 - Do not commit generated route files, `node_modules` or secrets.
 
@@ -51,5 +51,5 @@ Reusable skills live in `skills/<name>/SKILL.md`. Read the relevant one before t
 
 Slash commands (`.claude/commands/`):
 
-- `/write-web-lesson <module> <lessonId>`: author a lesson as a draft with its report.
-- `/review-web-lesson <module> <lessonId>`: QA an existing lesson and fill in its report.
+- `/write-web-lesson <module> <lessonId>`: author a lesson as a draft with its report, in its own worktree (`../genai-learner-<lessonId>`, branch `lessons/<lessonId>`), and open a draft PR.
+- `/review-web-lesson <module> <lessonId>` or `<PR number>`: read-only review in the lesson's worktree (or a detached review worktree); returns findings in chat and posts to the PR only with `--post` or an explicit request.
