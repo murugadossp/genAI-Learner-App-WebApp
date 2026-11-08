@@ -124,8 +124,8 @@ export function BlankLab() {
               {level.id === "many"
                 ? "Strong evidence: one year dominates, and the sentence is right to the extent that the documents are."
                 : level.id === "thin"
-                  ? "Weak evidence: several years compete. The sentence still reads exactly the same."
-                  : "No evidence: the years are equally likely, yet a complete, confident-sounding sentence still comes out. Ask again and the year changes while the tone does not."}
+                  ? "Weak evidence: in this toy several years compete. The sentence still reads exactly the same."
+                  : "No evidence: in this toy the years are equally likely, yet a complete, confident-sounding sentence still comes out. Ask again and the year changes while the tone does not."}
             </p>
             <div role="status" aria-live="polite" className="visually-hidden">
               {sentence}

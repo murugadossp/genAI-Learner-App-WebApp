@@ -83,8 +83,9 @@ export function SpotLab() {
   const [setId, setSetId] = useState<"without" | "with">("without");
   const [marks, setMarks] = useState<Record<string, Verdict>>({});
   const [revealed, setRevealed] = useState<Record<string, boolean>>({});
+  // revealed is keyed by claim id so correcting one mark keeps other feedback.
   const set = sets[setId];
-  const done = revealed[setId];
+  const done = set.claims.every((c) => revealed[c.id]);
   const score = set.claims.filter((c) => marks[c.id] === c.truth).length;
   const allMarked = set.claims.every((c) => marks[c.id]);
   return (
@@ -116,7 +117,8 @@ export function SpotLab() {
         <h3>{set.title}</h3>
         <ul className={styles.claims}>
           {set.claims.map((c) => {
-            const result = done
+            const shown = revealed[c.id];
+            const result = shown
               ? marks[c.id] === c.truth
                 ? "right"
                 : "wrong"
@@ -138,14 +140,14 @@ export function SpotLab() {
                         checked={marks[c.id] === o.v}
                         onChange={() => {
                           setMarks((m) => ({ ...m, [c.id]: o.v }));
-                          setRevealed((r) => ({ ...r, [setId]: false }));
+                          setRevealed((r) => ({ ...r, [c.id]: false }));
                         }}
                       />
                       {o.label}
                     </label>
                   ))}
                 </fieldset>
-                {done && (
+                {shown && (
                   <p className={styles.verdict}>
                     <strong>
                       {marks[c.id] === c.truth
@@ -165,7 +167,12 @@ export function SpotLab() {
             type="button"
             className="button"
             disabled={!allMarked}
-            onClick={() => setRevealed((r) => ({ ...r, [setId]: true }))}
+            onClick={() =>
+              setRevealed((r) => ({
+                ...r,
+                ...Object.fromEntries(set.claims.map((c) => [c.id, true])),
+              }))
+            }
           >
             Check my marks →
           </button>
@@ -178,7 +185,10 @@ export function SpotLab() {
                   Object.entries(m).filter(([k]) => !ids.includes(k)),
                 ),
               );
-              setRevealed((r) => ({ ...r, [setId]: false }));
+              setRevealed((r) => ({
+                ...r,
+                ...Object.fromEntries(ids.map((id) => [id, false])),
+              }));
             }}
           >
             Clear this answer

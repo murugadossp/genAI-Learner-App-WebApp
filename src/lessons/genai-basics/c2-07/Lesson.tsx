@@ -52,8 +52,8 @@ export default function Lesson() {
           </li>
           <li>
             <strong>2. Candidates</strong>
-            Several years get scores. With little evidence they are close
-            together.
+            Several years get scores. In the toy these are close together when
+            evidence is thin; in a real model they may not be.
           </li>
           <li>
             <strong>3. Choice</strong>
@@ -65,6 +65,12 @@ export default function Lesson() {
             records how weak the evidence was.
           </li>
         </ol>
+        <p>
+          Be careful with that toy detail: the flat scores in the lab are an
+          invented assumption. A real model can give an unsupported answer a
+          high score too, so a model being “sure” internally does not prove the
+          claim is supported.
+        </p>
         <p>
           This is why errors tend to be specific, such as dates, names, numbers,
           quotations and citations: these are slots whose <em>form</em> is easy
@@ -95,9 +101,11 @@ export default function Lesson() {
         <p>
           <strong>Grounding</strong> means giving the model trustworthy material
           to work from, such as a pasted document or text retrieved by the app,
-          and asking it to answer from that material. In the lab, Answer B did
-          much better than Answer A because the notice was in the request, in
-          the context window you studied in the last lesson.
+          and asking it to answer from that material. In the lab, Answer B was
+          deliberately written to show the typical benefit: a notice in the
+          request, in the context window you studied in the last lesson, gives
+          the model something to stay close to. The two answers are scripted, so
+          they illustrate the idea rather than prove how often it works.
         </p>
         <p>
           Grounding reduces unsupported answers, but it does not remove them.

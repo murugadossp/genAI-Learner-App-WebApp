@@ -46,12 +46,20 @@ for (const width of [390, 768, 1440])
       await expect(page.getByText("You matched 1 of 4")).toBeVisible();
       await expect(claims.nth(0)).toContainText("Contradicts the notice");
 
+      // Correcting one mark keeps the other claims\' feedback.
+      await claims.nth(0).getByLabel("Contradicts the notice").check();
+      await expect(claims.nth(0)).not.toContainText("Verdict:");
+      await expect(claims.nth(1)).toContainText("Verdict:");
+      await expect(page.getByText("You matched")).toHaveCount(0);
+      await check.click();
+      await expect(page.getByText("You matched 2 of 4")).toBeVisible();
+
       // Theme switch keeps lab state.
       await page
         .getByRole("button", { name: "Switch color theme" })
         .first()
         .click();
-      await expect(page.getByText("You matched 1 of 4")).toBeVisible();
+      await expect(page.getByText("You matched 2 of 4")).toBeVisible();
       await expect(sentence).toContainText("1964");
 
       // Answer B is independent.
