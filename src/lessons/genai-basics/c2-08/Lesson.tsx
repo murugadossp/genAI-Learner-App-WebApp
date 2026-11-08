@@ -118,7 +118,7 @@ export default function Lesson() {
           "Coverage before the cutoff is uneven, and facts change. The policy it quoted may be older than today’s policy.",
           "Tone is not evidence. Unless the app supplied a source, nothing was checked.",
         ]}
-        explanation="Training text ends at a cutoff and newer facts can only reach an answer through the request or a tool, so give it a current, trusted source and verify."
+        explanation="Training text ends at a cutoff and a model cannot be relied on for facts newer than that, and the dependable way to add them is the request or a tool, so give it a current, trusted source and verify."
       />
       <section id="takeaway">
         <div className="takeaway-card">
@@ -126,9 +126,9 @@ export default function Lesson() {
           <h2 tabIndex={-1}>Take this with you.</h2>
           <p>
             Training text ends at a cutoff, thins near it, and is never
-            complete. Newer facts arrive through the request or a tool, only as
-            good as their source. For date-sensitive questions, supply a current
-            source.
+            complete. The dependable way to add newer facts is through the
+            request or a tool, only as good as their source. For date-sensitive
+            questions, supply a current source.
           </p>
         </div>
         <Link className="text-link" href="/learn/genai-basics/c2-06">

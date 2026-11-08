@@ -315,7 +315,9 @@ export function CutoffLab() {
           not lookup tables and do not publish a per-event coverage score. What
           is real is the general pattern: training text stops at some date,
           writing about recent events is often still thin at that point, and
-          newer facts can only arrive through the request or a tool.
+          newer facts are best supplied through the request or a tool, because a
+          model’s own coverage of recent events is unreliable (some may enter
+          through post-training).
         </p>
       </div>
     </div>
