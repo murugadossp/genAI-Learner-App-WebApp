@@ -69,7 +69,6 @@ export default function Lesson() {
           <em>what</em> a system does. The four rings are about <em>how</em> it
           is built to do them.
         </p>
-        <RingDiagram current={0} />
         <div className="callout">
           <strong>Key idea:</strong> learning is one way to build AI. It is not
           the definition of AI. A system built entirely from rules that a person
@@ -84,19 +83,31 @@ export default function Lesson() {
           caption="Rules written by a person, doing a job by themselves."
         />
         <p>
-          The outer ring holds every method for getting a machine to do such a
-          task, whether a person designed it by hand or it was learned. Classic
-          examples are rule-based programs, search and planning.
+          <strong>Artificial intelligence</strong> is the whole box in the
+          picture below. Everything inside it, machine learning included, is a
+          kind of AI. So the outer ring is not a separate, simpler thing. It is
+          the field, and it has two broad families: systems whose behaviour was{" "}
+          <em>designed by people</em>, and systems that <em>learn</em> it. The
+          next three sections are the learning family. This one is the designed
+          family.
+        </p>
+        <p>
+          Designed AI can be large. A route planner searches a whole road map
+          for the shortest way using costs that people set. A chess program
+          searches millions of positions and scores them with rules chess
+          experts wrote. An expert system can hold thousands of rules. None of
+          them learned anything from data, and all of them are classic AI.
         </p>
         <div className={styles.example}>
           <strong>In Postbox</strong>
           <p>
-            “If the subject says WINNER and the message has three or more links,
-            mark it spam.” A person wrote that rule. Nothing was learned, and it
-            is still AI.
+            Postbox could use a hand-written rule such as “if the subject says
+            WINNER and the message has three or more links, mark it spam.” That
+            is the smallest kind of designed AI. It counts, but it is the simple
+            end of the family, not what AI looks like.
           </p>
         </div>
-        <RingDiagram current={0} />
+        <RingDiagram current={0} wholeField />
       </section>
       <section id="ml">
         <h2 tabIndex={-1}>Machine learning: learning from examples.</h2>

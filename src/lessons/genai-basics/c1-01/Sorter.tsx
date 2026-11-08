@@ -4,7 +4,7 @@ import { ringNames } from "./RingDiagram";
 import styles from "./lesson.module.css";
 
 const glosses = [
-  "Hand-written rules. Nothing is learned.",
+  "Designed by people, with rules or search. Nothing is learned.",
   "Learns from examples, but is not a many-layer network.",
   "A many-layer network. It labels or scores, and does not write new content.",
   "A deep model that makes new text, images or audio.",
@@ -12,9 +12,9 @@ const glosses = [
 
 const items = [
   {
-    text: "A rule: if the subject says “WINNER” and the message has three or more links, mark it spam.",
+    text: "A route planner that searches a road map for the shortest way, using costs that a person set for each road.",
     ring: 0,
-    why: "A person wrote the rule and nothing was learned from data, so it is AI but outside machine learning.",
+    why: "People designed the search and set the costs, and nothing was learned from data, so it is AI but outside machine learning.",
   },
   {
     text: "A spam model fitted to thousands of labelled emails. It learns how much to weigh clues a person chose, such as link count.",
@@ -32,7 +32,7 @@ const items = [
     why: "It is a deep model trained to produce new content, which is generative AI. It is also inside the three outer rings.",
   },
   {
-    text: "A rule: show the newest saved article from a topic the reader starred.",
+    text: "A rule in Postbox: show the newest saved article from a topic the reader starred.",
     ring: 0,
     why: "Another hand-written rule. Simple and predictable, with nothing learned.",
   },
