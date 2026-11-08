@@ -93,9 +93,11 @@ export default function Lesson() {
         <p>
           The factual prompt in the lab shows the trap. When the model’s top
           choice is wrong, lowering the temperature makes it wrong more
-          reliably. Raising the temperature gives the right answer more chances,
-          but also gives poor ones more chances. Neither setting adds knowledge,
-          which is why the previous lessons on making things up and on knowledge
+          reliably. Raising it from near zero gives the right answer a real
+          chance, but flattening also feeds the poorer choices: in this lab the
+          chance of Canberra peaks around 0.8 to 1.0 and then slowly falls.
+          Neither direction adds knowledge or reliably improves accuracy, which
+          is why the previous lessons on making things up and on knowledge
           cutoffs point to sources and checks instead.
         </p>
         <ul>

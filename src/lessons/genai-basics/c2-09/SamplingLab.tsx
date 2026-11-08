@@ -115,7 +115,8 @@ export function draw(probs: number[], seed: number) {
   return counts;
 }
 
-const pct = (p: number) => `${Math.round(p * 1000) / 10}%`;
+const pct = (p: number) =>
+  p > 0 && p < 0.0005 ? "<0.1%" : `${Math.round(p * 1000) / 10}%`;
 
 export function SamplingLab() {
   const [sid, setSid] = useState<Scenario["id"]>("story");

@@ -54,6 +54,8 @@ for (const width of [390, 768, 1440])
         "Chance of the correct answer, Canberra: 1.8%",
       );
       await expect(summary).toContainText("98.2%");
+      // Tiny but non-zero chances are not shown as 0%.
+      await expect(probs.nth(2)).toHaveText("<0.1%");
       await slider.fill("1");
       await expect(summary).toContainText("Canberra: 34.2%");
 
