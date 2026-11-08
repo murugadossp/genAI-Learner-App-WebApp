@@ -151,3 +151,28 @@ for (const width of [390, 768, 1440])
       ).toBeTruthy();
     });
   }
+
+test("320px: the lab table stays inside the lab in its widest state", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 320, height: 900 });
+  await page.goto("/learn/genai-basics/c2-09");
+  await page.getByLabel(/Factual/).check();
+  await page.getByLabel(/Top-p/).check();
+  const fits = await page.evaluate(() => {
+    const lab = document.querySelector(".lab")!.getBoundingClientRect();
+    const cells = [
+      ...document.querySelectorAll(
+        '[data-testid="choices"] th, [data-testid="choices"] td',
+      ),
+    ];
+    return {
+      cellsInside: cells.every(
+        (c) => c.getBoundingClientRect().right <= lab.right,
+      ),
+      docFits: document.documentElement.scrollWidth <= innerWidth,
+    };
+  });
+  expect(fits.cellsInside).toBe(true);
+  expect(fits.docFits).toBe(true);
+});
