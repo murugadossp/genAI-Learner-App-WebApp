@@ -14,6 +14,8 @@ The GenAI Learner web app: a Next.js 16 (App Router) + strict TypeScript learnin
 - `npm run typecheck`: curriculum check plus `tsc --noEmit` (strict).
 - `npm test`: mockup tests, production build, Playwright (`tests/web/*.spec.ts`) and `test:production`. This is what CI runs after `format:check`.
 - `npm run test:production`: builds in a temp copy with `APP_ENV=production` and checks that draft lessons return 404 and published ones 200.
+- `npm run lesson:write -- <module> <lessonId> [notes]`: launch `agy` in interactive session with `write-web-lesson`.
+- `npm run lesson:review -- <module> <lessonId>`: launch `agy` to review an existing lesson.
 
 Run `format:check` and `typecheck` before opening a PR. New code must be Prettier-formatted or CI fails.
 
@@ -53,3 +55,13 @@ Slash commands (`.claude/commands/`):
 
 - `/write-web-lesson <module> <lessonId>`: author a lesson as a draft with its report.
 - `/review-web-lesson <module> <lessonId>`: QA an existing lesson and fill in its report.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+## This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
