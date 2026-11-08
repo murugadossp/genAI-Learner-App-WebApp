@@ -29,6 +29,15 @@ export default function Lesson() {
           a system does. The rings below are about <em>how</em> it is built to
           do them.
         </p>
+        <p>
+          There are four ways to build such a job, from plainest to most
+          powerful. <strong>Rules:</strong> a person writes every step.{" "}
+          <strong>Machine learning:</strong> the system learns from examples.{" "}
+          <strong>Deep learning:</strong> learning with large, many-layer
+          networks. <strong>Generative AI:</strong> deep learning that makes new
+          text, images or audio. Each one sits inside the one before it, as the
+          rings in the lab show.
+        </p>
         <div className="callout">
           <strong>Key idea:</strong> learning is one way to build AI. It is not
           the definition of AI. A system built entirely from rules that a person
@@ -39,10 +48,10 @@ export default function Lesson() {
         <h2 tabIndex={-1}>Pick a job, then pick how it is built.</h2>
         <p>
           Choose one of Postbox’s jobs and one way of building it. The rings
-          show which groups that build belongs to. Try classifying with
-          hand-written rules, then with a simple learned model, and watch how
-          the picture changes. Then try <em>generate</em> with a deep network
-          that is not generative.
+          show which of the four groups that build belongs to. Try classifying
+          with hand-written rules, then with a simple learned model, and watch
+          how the picture changes. Then try <em>generate</em> with a deep
+          network that is not generative.
         </p>
         <RingsLab />
       </section>

@@ -6,22 +6,22 @@ const tasks = [
   {
     id: "predict",
     label: "Predict",
-    hint: "estimate a number: when does this parcel arrive?",
+    hint: "Guess a number, such as how many days until a parcel arrives.",
   },
   {
     id: "classify",
     label: "Classify",
-    hint: "sort into a category: is this message spam?",
+    hint: "Put something in a group, such as spam or not spam.",
   },
   {
     id: "recommend",
     label: "Recommend",
-    hint: "rank options: which saved article next?",
+    hint: "Pick what to show next, such as the next article to read.",
   },
   {
     id: "generate",
     label: "Generate",
-    hint: "write something new: draft a reply",
+    hint: "Write something new, such as a draft reply.",
   },
 ] as const;
 type TaskId = (typeof tasks)[number]["id"];
@@ -30,25 +30,25 @@ const approaches = [
   {
     id: "rules",
     label: "Hand-written rules",
-    hint: "a person writes every rule; nothing is learned",
+    hint: "A person writes every rule. Nothing is learned.",
     rings: 1,
   },
   {
     id: "learned",
     label: "A simple learned model",
-    hint: "fitted to many examples, using features a person chose",
+    hint: "Learns from many examples, using clues a person picked, such as how many links a message has.",
     rings: 2,
   },
   {
     id: "deep",
     label: "A deep neural network",
-    hint: "many layers; learns its own features from raw input",
+    hint: "Also learns from examples, but finds its own clues in raw text or pixels. Built from many layers.",
     rings: 3,
   },
   {
     id: "generative",
     label: "A generative neural network",
-    hint: "a deep model trained to produce new text, images or audio",
+    hint: "A deep network trained to write new text, or make images or audio.",
     rings: 4,
   },
 ] as const;
@@ -182,10 +182,14 @@ export function RingsLab() {
         <span className="pill">ILLUSTRATIVE</span>
       </div>
       <div className="lab-body">
+        <p className={styles.howto}>
+          Make a choice in each step. The rings, the Inside/Outside list and the
+          card below them update to show what that build looks like.
+        </p>
         <div className={styles.grid}>
           <div className={styles.panel}>
             <fieldset>
-              <legend>The job Postbox must do</legend>
+              <legend>Step 1. What does Postbox need to do?</legend>
               {tasks.map((x) => (
                 <label className={styles.choice} key={x.id}>
                   <input
@@ -205,7 +209,7 @@ export function RingsLab() {
               ))}
             </fieldset>
             <fieldset>
-              <legend>How it is built</legend>
+              <legend>Step 2. How is it built?</legend>
               {approaches.map((x) => (
                 <label className={styles.choice} key={x.id}>
                   <input
