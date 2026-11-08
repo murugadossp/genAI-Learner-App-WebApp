@@ -305,8 +305,8 @@ export function AssistantLab() {
           <p className={styles.wrapperDesc}>
             Some believe adding a system prompt like{" "}
             <em>“You are a helpful assistant”</em> turns a base model into an
-            assistant without training. Here is what a raw base model actually
-            does with that prefix:
+            assistant without training. Here is an illustrative example of how a
+            raw base model typically continues that prefix:
           </p>
           <div className={styles.tokenPreview}>
             {scenario.wrapperBaseOutput}
@@ -352,27 +352,29 @@ export function AssistantLab() {
                 &lt;|end_header_id|&gt;
               </span>
             </div>
-            <div style={{ color: "var(--accent)" }}>
-              [Model generates its answer here]
+            <div className={styles.modelResponse}>
+              {scenario.tokensView.assistantTokens}
             </div>
             <div>
               <span className={styles.specialToken}>&lt;|eot_id|&gt;</span>
             </div>
           </div>
           <p className={styles.wrapperDesc}>
-            These delimiter tokens prevent the model from hallucinating a
-            continuation of the user’s sentence and signal that an assistant
-            reply is required.
+            These delimiter tokens establish clear speaker boundaries, signaling
+            when the user turn has ended and prompting the model to generate as
+            the assistant (though boundary confusions and prompt injections can
+            still occur).
           </p>
         </div>
       )}
 
       <div className={styles.disclosure}>
-        <strong>Simulation disclosure:</strong> Sample completions are
-        illustrative examples of typical raw base model patterns (list
-        continuation, exam questions, document completion) versus
-        instruction-tuned conversational models (SFT). Exact continuations vary
-        across model checkpoints, temperature, and sampling seeds.
+        <strong>Simulation disclosure:</strong> Sample completions, prompt
+        wrapper outputs, and delimiter token traces are illustrative examples of
+        typical raw base model patterns (list continuation, exam questions,
+        document completion) versus instruction-tuned conversational models
+        (SFT). Exact continuations vary across model checkpoints, prompting
+        templates, temperature, and sampling seeds.
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
 import { AssistantLab } from "./AssistantLab";
+import styles from "./lesson.module.css";
 
 export default function Lesson() {
   return (
@@ -24,7 +25,7 @@ export default function Lesson() {
           <em>“Write three reasons why honey doesn’t spoil,”</em> it might not
           answer you. Instead, it might generate:
         </p>
-        <pre>
+        <pre className={styles.pre}>
           <code>{`Write three reasons why honey doesn't spoil.\nWrite three reasons why bread goes stale.\nWrite three reasons why milk curdles.`}</code>
         </pre>
         <p>
@@ -61,11 +62,12 @@ export default function Lesson() {
           through <strong>Supervised Fine-Tuning (SFT)</strong>.
         </p>
         <p>
-          Instead of reading raw web pages, the model is trained on hundreds of
-          thousands of carefully authored demonstrations consisting of paired
-          turns:
+          Instead of reading raw web pages, the model is trained on tens of
+          thousands of carefully authored demonstrations (for example,
+          InstructGPT used ~13,000 demonstration pairs, while Llama 2 SFT used
+          ~27,500) consisting of paired turns:
         </p>
-        <pre>
+        <pre className={styles.pre}>
           <code>{`User: Explain photosynthesis in simple terms for a 10-year-old.\nAssistant: Photosynthesis is how plants make their food using sunlight, water, and air...`}</code>
         </pre>
         <p>
@@ -74,10 +76,14 @@ export default function Lesson() {
         </p>
         <ul>
           <li>
-            <strong>Turn boundaries:</strong> Special delimiter tokens (such as{" "}
-            <code>&lt;|im_start|&gt;user</code> and{" "}
-            <code>&lt;|im_start|&gt;assistant</code>) teach the model when to
-            stop listening and start answering.
+            <strong>Turn boundaries:</strong> Special delimiter tokens (such as
+            Llama 3’s{" "}
+            <code className={styles.inlineCode}>
+              &lt;|start_header_id|&gt;user&lt;|end_header_id|&gt;
+            </code>{" "}
+            or ChatML’s{" "}
+            <code className={styles.inlineCode}>&lt;|im_start|&gt;user</code>)
+            teach the model when to stop listening and start answering.
           </li>
           <li>
             <strong>Instruction following:</strong> The weights adjust so that
@@ -105,7 +111,7 @@ export default function Lesson() {
           A common misconception is that an assistant is just a raw base model
           with a hidden system prompt prepended, such as:
         </p>
-        <pre>
+        <pre className={styles.pre}>
           <code>
             {`"You are a helpful assistant. Please answer this query: " + user_input`}
           </code>
@@ -135,7 +141,7 @@ export default function Lesson() {
           "Because base models automatically discard any text appearing before the first colon or question mark.",
         ]}
         correct={1}
-        explanation="A raw base model is purely a pattern completer. Adding 'You are a helpful assistant' simply makes it predict what typically follows that phrase on the internet (e.g. continuing with more assistant descriptions, dialogues, or unrelated questions). Instruction tuning updates the actual model weights on thousands of instruction-response pairs so it learns to follow commands."
+        explanation="A raw base model is purely a pattern completer. Adding 'You are a helpful assistant' simply makes it predict what typically follows that phrase on the internet (e.g. continuing with more assistant descriptions, dialogues, or unrelated questions). Instruction tuning updates the actual model weights on tens of thousands of instruction-response pairs so it learns to follow commands."
         wrongFeedback={[
           "Base models produce natural language fluently—in fact, they are trained on billions of pages of natural text. The limitation is that they complete text patterns rather than obeying instructions.",
           "",
@@ -145,8 +151,9 @@ export default function Lesson() {
       />
 
       <section id="takeaway">
-        <h2 tabIndex={-1}>Take this with you.</h2>
-        <div className="callout">
+        <div className="takeaway-card">
+          <span className="eyebrow">THE TAKEAWAY</span>
+          <h2 tabIndex={-1}>Take this with you.</h2>
           <p>
             <strong>
               Pretraining builds the knowledge; instruction tuning builds the
@@ -162,12 +169,12 @@ export default function Lesson() {
           </p>
         </div>
         <p>
-          Next up: see how parameter count and model size affect a model’s
-          capacity and performance.
+          Next available lesson: see how the context window limits how much text
+          a model can process at once.
         </p>
         <div className="end-lesson">
-          <Link className="text-link" href="/learn/genai-basics/c2-05">
-            Next lesson: Parameters and model size →
+          <Link className="text-link" href="/learn/genai-basics/c2-06">
+            Next available lesson: The context window →
           </Link>
         </div>
       </section>

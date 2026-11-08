@@ -106,6 +106,47 @@ for (const width of [390, 768, 1440])
       await page.getByRole("button", { name: "Check answer" }).click();
       await expect(quizStatus).toContainText("Correct");
 
+      // Verify visually distinct takeaway card and working next lesson link
+      await expect(page.locator(".takeaway-card")).toBeVisible();
+      const nextLink = page.getByRole("link", {
+        name: "Next available lesson: The context window →",
+      });
+      await expect(nextLink).toHaveAttribute(
+        "href",
+        "/learn/genai-basics/c2-06",
+      );
+
+      // Verify contrast ratio on status message
+      const contrastRatio = await page.evaluate(() => {
+        function lum(r: number, g: number, b: number) {
+          const a = [r, g, b].map((v) => {
+            v /= 255;
+            return v <= 0.03928
+              ? v / 12.92
+              : Math.pow((v + 0.055) / 1.055, 2.4);
+          });
+          return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+        }
+        function parseRgb(str: string) {
+          const m = str.match(/\d+/g);
+          return m
+            ? ([Number(m[0]), Number(m[1]), Number(m[2])] as [
+                number,
+                number,
+                number,
+              ])
+            : ([0, 0, 0] as [number, number, number]);
+        }
+        const statusEl = document.querySelector("[role='status']");
+        if (!statusEl) return 0;
+        const fg = getComputedStyle(statusEl).color;
+        const bg = getComputedStyle(statusEl).backgroundColor;
+        const l1 = lum(...parseRgb(fg));
+        const l2 = lum(...parseRgb(bg));
+        return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+      });
+      expect(contrastRatio).toBeGreaterThan(4.5);
+
       // No horizontal overflow
       expect(
         await page.evaluate(

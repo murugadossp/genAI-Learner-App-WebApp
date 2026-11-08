@@ -108,12 +108,36 @@ button.scenarioBtn[aria-pressed="true"]:not(:disabled):hover {
 
 .cardCorrect {
   border-color: #2e7d32;
-  background: rgba(46, 125, 50, 0.08);
+  background: #f4faf4;
+}
+
+:global(html[data-theme="dark"]) .cardCorrect {
+  border-color: #66bb6a;
+  background: #192b1b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :global(html:not([data-theme="light"])) .cardCorrect {
+    border-color: #66bb6a;
+    background: #192b1b;
+  }
 }
 
 .cardIncorrect {
   border-color: #c62828;
-  background: rgba(198, 40, 40, 0.06);
+  background: #fdf5f5;
+}
+
+:global(html[data-theme="dark"]) .cardIncorrect {
+  border-color: #ef5350;
+  background: #2b1819;
+}
+
+@media (prefers-color-scheme: dark) {
+  :global(html:not([data-theme="light"])) .cardIncorrect {
+    border-color: #ef5350;
+    background: #2b1819;
+  }
 }
 
 .cardHeader {
@@ -132,20 +156,44 @@ button.scenarioBtn[aria-pressed="true"]:not(:disabled):hover {
 .badge {
   font-size: 0.75rem;
   font-weight: 600;
-  padding: 0.2rem 0.6rem;
+  padding: 0.25rem 0.65rem;
   border-radius: 999px;
   background: var(--panel);
   color: var(--muted);
 }
 
 .badgeAssistant {
-  background: var(--green);
+  background: #dce9a7;
   color: #1b3d1c;
 }
 
+:global(html[data-theme="dark"]) .badgeAssistant {
+  background: #233e24;
+  color: #d4ebd5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :global(html:not([data-theme="light"])) .badgeAssistant {
+    background: #233e24;
+    color: #d4ebd5;
+  }
+}
+
 .badgeBase {
-  background: var(--orange);
+  background: #f5c38a;
   color: #4a2800;
+}
+
+:global(html[data-theme="dark"]) .badgeBase {
+  background: #3e2612;
+  color: #fedbb2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :global(html:not([data-theme="light"])) .badgeBase {
+    background: #3e2612;
+    color: #fedbb2;
+  }
 }
 
 .completion {
@@ -201,15 +249,43 @@ button.selectBtn[aria-pressed="true"]:not(:disabled):hover {
 }
 
 .statusSuccess {
-  background: rgba(46, 125, 50, 0.12);
-  color: #1e5a22;
+  background: #eef7ee;
+  color: #1b5e20;
   border-left: 4px solid #2e7d32;
 }
 
+:global(html[data-theme="dark"]) .statusSuccess {
+  background: #172b1a;
+  color: #c8e6c9;
+  border-left: 4px solid #66bb6a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :global(html:not([data-theme="light"])) .statusSuccess {
+    background: #172b1a;
+    color: #c8e6c9;
+    border-left: 4px solid #66bb6a;
+  }
+}
+
 .statusTryAgain {
-  background: rgba(198, 40, 40, 0.1);
-  color: #8c1b1b;
+  background: #fdeeed;
+  color: #b71c1c;
   border-left: 4px solid #c62828;
+}
+
+:global(html[data-theme="dark"]) .statusTryAgain {
+  background: #2d1617;
+  color: #ffcdd2;
+  border-left: 4px solid #ef5350;
+}
+
+@media (prefers-color-scheme: dark) {
+  :global(html:not([data-theme="light"])) .statusTryAgain {
+    background: #2d1617;
+    color: #ffcdd2;
+    border-left: 4px solid #ef5350;
+  }
 }
 
 .explanationBox {
@@ -336,10 +412,31 @@ button.secondaryBtn[aria-pressed="true"]:not(:disabled):hover {
   font-weight: bold;
 }
 
+.modelResponse {
+  color: var(--accent);
+  font-style: italic;
+}
+
 .disclosure {
   font-size: 0.8rem;
   color: var(--muted);
   border-left: 2px solid var(--line);
   padding-left: 0.75rem;
   margin-top: 1rem;
+}
+
+.pre {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+}
+
+.pre code {
+  display: block !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+}
+
+.inlineCode {
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
