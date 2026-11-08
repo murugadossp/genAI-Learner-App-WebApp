@@ -79,7 +79,7 @@ export default function Lesson() {
         <h2 tabIndex={-1}>Artificial intelligence: the outer ring.</h2>
         <Figure
           src="/lessons/c1-01/ai-rules.jpg"
-          alt="A road map with a start and an end pin and a highlighted shortest route. Labels: Designed by people; Map and road costs set by people; Search finds the shortest route; Nothing is learned from data."
+          alt="A road map with a start and an end pin and a highlighted shortest route. Labels: Designed AI; A map and road costs set by people; A search finds the shortest route; Behaviour is designed, not learned."
           caption="Designed AI: people set the map and the costs, and a search finds the route."
         />
         <p>
@@ -92,11 +92,14 @@ export default function Lesson() {
           family.
         </p>
         <p>
-          Designed AI can be large. A route planner searches a whole road map
-          for the shortest way using costs that people set. A chess program
-          searches millions of positions and scores them with rules chess
-          experts wrote. An expert system can hold thousands of rules. None of
-          them learned anything from data, and all of them are classic AI.
+          Designed AI can be large. Take a simple route planner: it searches a
+          whole road map for the shortest way, using costs that people set by
+          hand. A chess program of the classic kind searches millions of
+          positions and scores them with rules that chess experts wrote. An
+          expert system can hold thousands of rules. In these versions nothing
+          is learned from data, and all of them are classic AI. (Real route
+          planners and chess engines often add learning on top, which is why the
+          families overlap in real products.)
         </p>
         <div className={styles.example}>
           <strong>In Postbox</strong>
