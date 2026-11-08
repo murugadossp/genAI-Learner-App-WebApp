@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c2-05",
   "title": "Parameters and model size",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     { "id": "idea", "title": "Parameters are learned numbers." },
     { "id": "dial", "title": "Turn the size dial." },
