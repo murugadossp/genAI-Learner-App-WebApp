@@ -14,8 +14,6 @@ The GenAI Learner web app: a Next.js 16 (App Router) + strict TypeScript learnin
 - `npm run typecheck`: curriculum check plus `tsc --noEmit` (strict).
 - `npm test`: mockup tests, production build, Playwright (`tests/web/*.spec.ts`) and `test:production`. This is what CI runs after `format:check`.
 - `npm run test:production`: builds in a temp copy with `APP_ENV=production` and checks that draft lessons return 404 and published ones 200.
-- `npm run lesson:write -- <module> <lessonId> [notes]`: launch `agy` in interactive session with `write-web-lesson`.
-- `npm run lesson:review -- <module> <lessonId>`: launch `agy` to review an existing lesson.
 
 Run `format:check` and `typecheck` before opening a PR. New code must be Prettier-formatted or CI fails.
 
@@ -50,6 +48,8 @@ Run `format:check` and `typecheck` before opening a PR. New code must be Prettie
 Reusable skills live in `skills/<name>/SKILL.md`. Read the relevant one before the task it covers. Claude Code finds them through the `.claude/skills` link and Codex through `.agents/skills`; other tools can read the files directly. A separately installed global copy of a skill can be older than this one, so prefer the repo copy.
 
 - `skills/write-web-lesson`: plan, build, verify and report on an interactive web lesson from a curriculum module and lesson ID. The report template is `skills/write-web-lesson/references/report-template.md`; save each report to `docs/lesson-reports/<module>/<lessonId>.md`.
+
+Authoring and review are done by these skills and their slash commands. There are no separate shell scripts for them.
 
 Slash commands (`.claude/commands/`):
 
