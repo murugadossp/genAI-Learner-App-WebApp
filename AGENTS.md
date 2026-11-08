@@ -26,7 +26,8 @@ Run `format:check` and `typecheck` before opening a PR. New code must be Prettie
 - `app/`: layout and CSS (`tokens.css`, `studio.css`). Route `page.tsx` files are generated and gitignored. Never edit them.
 - `tests/web/`: Playwright specs. `tests/*.test.mjs`: mockup tests.
 - `docs/`: `plans/web-implementation-plan.md`, `decisions/001-web-architecture.md`, `design/` (tokens, themes, review checklist).
-- `skills/`: reusable agent skills (see below).
+- `skills/`: reusable agent skills (see below). `.claude/skills` links to it and `.claude/commands/` holds slash commands.
+- `docs/lesson-reports/`: one report per lesson (`<module>/<lessonId>.md`).
 
 ## Conventions
 
@@ -42,10 +43,13 @@ Run `format:check` and `typecheck` before opening a PR. New code must be Prettie
 - Do not copy content between lessons or from mobile lesson files.
 - Do not commit generated route files, `node_modules` or secrets.
 
-## Skills
+## Skills and commands
 
-Reusable skills live in `skills/<name>/SKILL.md`.
+Reusable skills live in `skills/<name>/SKILL.md`. Read the relevant one before the task it covers. Claude Code finds them through the `.claude/skills` link; other tools can read the files directly.
 
-- `skills/write-web-lesson`: plan and build a new interactive web lesson from a curriculum module and lesson ID.
+- `skills/write-web-lesson`: plan, build, verify and report on an interactive web lesson from a curriculum module and lesson ID. The report template is `skills/write-web-lesson/references/report-template.md`; save each report to `docs/lesson-reports/<module>/<lessonId>.md`.
 
-Read the relevant `SKILL.md` before the task it covers. Some tools only auto-discover skills in their own folder (for example `.claude/skills/`); if yours does not find these, read the file directly.
+Slash commands (`.claude/commands/`):
+
+- `/write-web-lesson <module> <lessonId>`: author a lesson as a draft with its report.
+- `/review-web-lesson <module> <lessonId>`: QA an existing lesson and fill in its report.
