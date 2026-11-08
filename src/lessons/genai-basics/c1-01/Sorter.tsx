@@ -12,9 +12,9 @@ const glosses = [
 
 const items = [
   {
-    text: "A route planner that searches a road map for the shortest way, using costs that a person set for each road.",
+    text: "A tic-tac-toe computer player that follows rules people wrote: win if it can, otherwise block, otherwise take the centre.",
     ring: 0,
-    why: "People designed the search and set the costs, and nothing was learned from data, so it is AI but outside machine learning.",
+    why: "People wrote the rules and nothing was learned from data, so it is AI but outside machine learning.",
   },
   {
     text: "A spam model fitted to thousands of labelled emails. It learns how much to weigh clues a person chose, such as link count.",
