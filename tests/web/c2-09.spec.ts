@@ -23,6 +23,25 @@ for (const width of [390, 768, 1440])
         .evaluateAll((els) => els.map((e) => e.id));
       expect(ids).toEqual(meta.sections.map((s) => s.id));
 
+      // The "where it sits" section: network zone, sampling zone, worked table.
+      const flow = page.getByTestId("flow");
+      await expect(flow.locator('[data-zone="network"]')).toContainText(
+        "logit",
+      );
+      await expect(flow.locator('[data-zone="sampling"]')).toContainText(
+        "divide each logit by T",
+      );
+      const worked = page.getByTestId("worked");
+      await expect(worked.getByRole("row", { name: /Sydney/ })).toContainText(
+        "51.0%",
+      );
+      await expect(worked.getByRole("row", { name: /Sydney/ })).toContainText(
+        "66.9%",
+      );
+      await expect(worked.getByRole("row", { name: /Auckland/ })).toContainText(
+        "<0.1%",
+      );
+
       // Four explanatory illustrations load and have descriptive alt text.
       const figures = page.locator("article figure img");
       await expect(figures).toHaveCount(4);
@@ -78,6 +97,8 @@ for (const width of [390, 768, 1440])
       await expect(probs.nth(2)).toHaveText("<0.1%");
       await slider.fill("1");
       await expect(summary).toContainText("Canberra: 34.2%");
+      // The lab agrees with the worked table in the lesson text.
+      await expect(probs.first()).toHaveText("51%");
       await expect(page.locator(".lab-disclosure")).toContainText(
         "ranks a common mix-up just above the correct answer",
       );

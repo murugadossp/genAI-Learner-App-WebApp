@@ -9,6 +9,10 @@
       "title": "The model scores choices; sampling picks one."
     },
     {
+      "id": "where",
+      "title": "Where temperature sits: after the network, before the pick."
+    },
+    {
       "id": "settings",
       "title": "Three settings, three different jobs."
     },

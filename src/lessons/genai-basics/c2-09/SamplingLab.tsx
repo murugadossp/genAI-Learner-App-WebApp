@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useId, useRef, useState } from "react";
 import styles from "./lesson.module.css";
+import { softmax } from "./sampling";
 
 type Scenario = {
   id: "story" | "fact";
@@ -53,19 +54,7 @@ type TrimId = (typeof trims)[number]["id"];
 
 const DRAWS = 20;
 
-export function softmax(scores: number[], temperature: number) {
-  if (temperature <= 0) {
-    const top = scores.indexOf(Math.max(...scores));
-    return scores.map((_, i) => (i === top ? 1 : 0));
-  }
-  const scaled = scores.map((s) => s / temperature);
-  const m = Math.max(...scaled);
-  const exps = scaled.map((s) => Math.exp(s - m));
-  const sum = exps.reduce((a, b) => a + b, 0);
-  return exps.map((e) => e / sum);
-}
-
-export function trim(probs: number[], mode: TrimId) {
+function trim(probs: number[], mode: TrimId) {
   const order = probs
     .map((p, i) => [p, i] as const)
     .sort((a, b) => b[0] - a[0]);
@@ -222,7 +211,7 @@ export function SamplingLab() {
           <thead>
             <tr>
               <th scope="col">Candidate</th>
-              <th scope="col">Invented score</th>
+              <th scope="col">Invented logit</th>
               <th scope="col">Chance of being picked</th>
               <th scope="col">Of {DRAWS} draws</th>
             </tr>

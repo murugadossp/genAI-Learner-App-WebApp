@@ -8,6 +8,20 @@ import pipelineImg from "./images/pipeline.png";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
 import { SamplingLab } from "./SamplingLab";
+import { softmax } from "./sampling";
+
+const demo = [
+  { word: "Sydney", logit: 2.6 },
+  { word: "Canberra", logit: 2.2 },
+  { word: "Melbourne", logit: 1.0 },
+  { word: "Perth", logit: -0.2 },
+  { word: "Auckland", logit: -1.0 },
+];
+const logits = demo.map((d) => d.logit);
+const atOne = softmax(logits, 1);
+const atHalf = softmax(logits, 0.5);
+const pct = (p: number) =>
+  p > 0 && p < 0.0005 ? "<0.1%" : `${(Math.round(p * 1000) / 10).toFixed(1)}%`;
 export default function Lesson() {
   return (
     <LessonFrame
@@ -38,6 +52,108 @@ export default function Lesson() {
           probabilities before a token is drawn. A lower value concentrates
           probability on the top choices, and a higher value flattens it. The
           model’s underlying scores are the same either way.
+        </div>
+      </section>
+      <section id="where">
+        <h2 tabIndex={-1}>
+          Where temperature sits: after the network, before the pick.
+        </h2>
+        <p>
+          To see what temperature changes, it helps to see where it acts. A
+          language model is a neural network. Given the text so far, its layers
+          turn it into a final set of numbers: one raw score for every token in
+          the model’s vocabulary, which can run to tens of thousands of tokens
+          or more. Those raw scores are called <strong>logits</strong>. They are
+          not probabilities: they can be negative, and they do not add up to
+          anything in particular.
+        </p>
+        <p>
+          Everything up to the logits is the trained network, and its weights
+          are fixed while you use it. Temperature is not part of that network.
+          It is a step applied to the logits afterwards, at generation time:
+          divide every logit by the temperature, then turn the results into
+          probabilities with softmax, then optionally trim and pick. Because the
+          network is untouched, you can change the setting on every request
+          without retraining anything, and it does not change how much work the
+          network does.
+        </p>
+        <div className={styles.flow} data-testid="flow">
+          <div className={styles.zone} data-zone="network">
+            <h3>Inside the network (trained, weights fixed)</h3>
+            <ol>
+              <li>Your text becomes tokens</li>
+              <li>Layers of the network process the tokens</li>
+              <li>
+                The final layer outputs one <strong>logit</strong> per
+                vocabulary token
+              </li>
+            </ol>
+          </div>
+          <div className={styles.zone} data-zone="sampling">
+            <h3>Sampling step (settings you choose)</h3>
+            <ol>
+              <li>
+                <strong>Temperature:</strong> divide each logit by T
+              </li>
+              <li>
+                <strong>Softmax:</strong> turn the scaled logits into
+                probabilities
+              </li>
+              <li>
+                <strong>Top-k / top-p:</strong> optionally drop candidates
+              </li>
+              <li>
+                <strong>Pick</strong> one token at random from what is left
+              </li>
+            </ol>
+          </div>
+          <p className={`${styles.loop} micro`}>
+            The chosen token is added to the text and the whole sequence runs
+            again, so the network produces a fresh set of logits for every token
+            generated.
+          </p>
+        </div>
+        <p>
+          Here are the lab’s invented logits for the prompt “The capital of
+          Australia is …” at two temperatures. The ranking never changes.
+          Dividing by a smaller temperature stretches the gaps between logits,
+          and softmax turns bigger gaps into more lopsided probabilities.
+        </p>
+        <table className={styles.table} data-testid="worked">
+          <caption className="visually-hidden">
+            Invented logits, scaled logits and probabilities at temperature 1
+            and temperature 0.5
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Candidate</th>
+              <th scope="col">Logit</th>
+              <th scope="col">Chance at T = 1</th>
+              <th scope="col">Logit ÷ 0.5</th>
+              <th scope="col">Chance at T = 0.5</th>
+            </tr>
+          </thead>
+          <tbody>
+            {demo.map((d, i) => (
+              <tr key={d.word}>
+                <th scope="row">{d.word}</th>
+                <td>{d.logit.toFixed(1)}</td>
+                <td>{pct(atOne[i])}</td>
+                <td>{(d.logit / 0.5).toFixed(1)}</td>
+                <td>{pct(atHalf[i])}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p className="micro">
+          The logits are invented for teaching. Real logits come from a trained
+          network, and their scale and spread differ between models and prompts,
+          so a given temperature does not mean the same thing across models.
+        </p>
+        <div className="callout">
+          <strong>Key idea:</strong> temperature is a post-processing step on
+          the network’s output scores. It does not make the network know more or
+          less. It only changes how the same scores are turned into a choice.
         </div>
       </section>
       <section id="settings">
@@ -130,9 +246,9 @@ export default function Lesson() {
         <h2 tabIndex={-1}>What the dial does to the scores.</h2>
         <ol>
           <li>
-            <strong>Divide.</strong> Each candidate’s raw score is divided by
-            the temperature. Below 1 this stretches the gaps between scores.
-            Above 1 it shrinks them.
+            <strong>Divide.</strong> Each candidate’s raw score (its logit) is
+            divided by the temperature. Below 1 this stretches the gaps between
+            scores. Above 1 it shrinks them.
           </li>
           <li>
             <strong>Convert.</strong> A function called softmax turns the
