@@ -30,6 +30,9 @@ for (const width of [390, 768, 1440])
 
       // Move the cutoff past the change: thin coverage first, then well covered.
       await slider.fill("19");
+      await expect(page.locator(".lab").getByRole("status")).toContainText(
+        "Cutoff month 19. Unsteady",
+      );
       await expect(answer).toContainText("Unsteady");
       await expect(answer).toContainText("6 coins or 5 coins");
       await slider.fill("21");

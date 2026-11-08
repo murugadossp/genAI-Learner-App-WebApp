@@ -1,5 +1,5 @@
 "use client";
-import { useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import styles from "./lesson.module.css";
 
 const TODAY = 24;
@@ -154,10 +154,20 @@ export function CutoffLab() {
   const uid = useId();
   const res = answer(q, s, cutoff);
   const qLabel = questions.find((x) => x.id === q)!.label;
-  const announce = (nq: QId, ns: SId) => {
-    const r = answer(nq, ns, cutoff);
-    setMessage(`${tagText[r.status]}. Answer: ${r.text}`);
-  };
+  const first = useRef(true);
+  useEffect(() => {
+    if (first.current) {
+      first.current = false;
+      return;
+    }
+    const t = setTimeout(() => {
+      const r = answer(q, s, cutoff);
+      setMessage(
+        `Cutoff month ${cutoff}. ${tagText[r.status]}. Answer: ${r.text}`,
+      );
+    }, 600);
+    return () => clearTimeout(t);
+  }, [cutoff, q, s]);
   const lastBefore = events.filter((e) => e.month <= cutoff).length;
   const truth =
     q === "today"
@@ -252,7 +262,6 @@ export function CutoffLab() {
                     checked={q === x.id}
                     onChange={() => {
                       setQ(x.id);
-                      announce(x.id, s);
                     }}
                   />
                   <span>{x.label}</span>
@@ -269,7 +278,6 @@ export function CutoffLab() {
                     checked={s === x.id}
                     onChange={() => {
                       setS(x.id);
-                      announce(q, x.id);
                     }}
                   />
                   <span>{x.label}</span>
