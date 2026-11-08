@@ -7,9 +7,17 @@ description: Create or substantially revise an interactive curriculum-aligned we
 
 Create a detailed, accurate web learning experience from the requested curriculum topic. Use the [lesson template](references/lesson-template.md) as a flexible starting point, not as prescribed prose or a fixed visual design. Invent fresh, topic-appropriate explanations, examples, questions, and interactions; do not copy the contents of existing lessons as a template.
 
+## Set up an isolated workspace
+
+Every lesson gets its own git worktree, branch and draft PR, so lessons can be built in parallel without touching each other or `main`. Do this before editing anything:
+
+1. Confirm the module and lesson ID (see below), then `git fetch origin main`.
+2. From the main checkout run `git worktree add ../genai-learner-<lessonId> -b lessons/<lessonId> origin/main`. If the branch or worktree already exists, reuse it after checking it is clean; do not overwrite someone else's work.
+3. Work only inside that worktree. Run `npm ci` there, since each worktree needs its own `node_modules`.
+
 ## Ground the lesson
 
-1. Read `AGENTS.md` (commands, layout, conventions, boundaries), `docs/plans/web-implementation-plan.md`, the current curriculum snapshot and module registry in `src/data/curriculum/`, and the relevant shared components and tests. Check actual code when plans and implementation differ. If no module or lesson can be identified unambiguously, ask for it rather than inventing a curriculum entry.
+1. Read `AGENTS.md` (commands, layout, conventions, boundaries), `docs/plans/web-implementation-plan.md`, the current curriculum snapshot and module registry in `src/data/curriculum/`, and the relevant shared components and tests. Check actual code when plans and implementation differ. If no module or lesson can be identified unambiguously, offer a pick list of the next missing curriculum lessons (or ask for it) rather than inventing a curriculum entry.
 2. Locate the canonical lesson ID, outcome, misconception, prerequisites, and adjacent lessons. Use the topic and scope as the contract; do not copy mobile lesson pages or infer web readiness from mobile status. Use authoritative sources when needed to establish technical accuracy; distinguish verified facts from an illustrative assumption.
 3. Plan the learning progression and a concrete, topic-appropriate interaction before coding. Explain the mechanism, not just terminology: introduce a mental model, use a consistent worked example, let the learner inspect or change something, connect the result to its implications and limits, then check understanding and summarize. Adapt the structure and depth to the subject.
 
@@ -24,8 +32,17 @@ Create a detailed, accurate web learning experience from the requested curriculu
 
 ## Verify and report
 
-Add or update meaningful Playwright coverage for the lesson. Check 390, 768, and 1440px in light and dark themes; inspect the rendered lesson for readability, contrast, bounded overflow and correct section order. Exercise the actual interaction, quiz selection, wrong feedback, retry and theme persistence. If the lab has an expanded workspace, test state, keyboard focus, Escape and return focus. Verify the draft is excluded from production; run the checks listed in `AGENTS.md` (`format:check`, `typecheck`, `npm test`). Report manual screen-reader or browser checks only if performed, and identify any untested cases.
+Add or update meaningful Playwright coverage for the lesson. Check 390, 768, and 1440px in light and dark themes; inspect the rendered lesson for readability, contrast, bounded overflow and correct section order. Exercise the actual interaction, quiz selection, wrong feedback, retry and theme persistence. If the lab has an expanded workspace, test state, keyboard focus, Escape and return focus. Verify production matches `webStatus` (a draft returns 404; a published lesson, including a revision of one, returns 200 with its status unchanged); run the checks listed in `AGENTS.md` (`format:check`, `typecheck`, `npm test`). Report manual screen-reader or browser checks only if performed, and identify any untested cases.
 
 ## Report
 
-Write the report with [the report template](references/report-template.md): fill every section with real evidence (commands run and their results, the viewport and theme matrix, a fidelity log of verified versus invented values, decisions and deviations, what was not tested, and publication readiness). Save it to `docs/lesson-reports/<module>/<lessonId>.md`, put the same text in the PR description, and give the user a short summary with a link. Mark anything not performed as "not tested". Do not merge, publish, change `webStatus` to `published`, or deploy solely because a lesson was authored; follow the user's explicit instructions and the repository's publication workflow.
+Write the report with [the report template](references/report-template.md): fill every section with real evidence (commands run and their results, the viewport and theme matrix, a fidelity log of verified versus invented values, decisions and deviations, what was not tested, and publication readiness). Save it to `docs/lesson-reports/<module>/<lessonId>.md` and mark anything not performed as "not tested".
+
+## Deliver
+
+1. Commit the lesson, its tests and the report on `lessons/<lessonId>`. A new lesson is `webStatus: "draft"`. When revising a lesson that already exists, leave its `webStatus` exactly as it is (a published lesson must stay published, or its production route will 404) unless the user explicitly asks to change it.
+2. Push the branch and open a **draft** PR against `main` titled `Draft lesson: <lessonId> <title>`, using the report as the PR description (`gh pr create --draft --base main --body-file docs/lesson-reports/<module>/<lessonId>.md`). If `gh` or push access is unavailable, say so and give the branch name and the exact commands instead. Because the PR and head commit do not exist when the report is written, the saved report file says "see PR description" for those two fields. Right after the PR is created, update the PR description (`gh pr edit`, or the REST API if GraphQL is blocked) so its Branch and PR, and Head commit, lines hold the real values, and refresh the head commit if you push further commits.
+3. Wait for CI and report its result. Fix failures caused by the lesson, such as formatting.
+4. Give the user a short summary with the PR link and the worktree path, then stop and ask what to do next.
+
+Never merge, mark the PR ready, publish (`webStatus: "published"`), or deploy unless the user explicitly asks. Remove the worktree only after the PR is merged or closed and the user agrees (`git worktree remove ../genai-learner-<lessonId>`).

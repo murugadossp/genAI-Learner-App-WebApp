@@ -1,4 +1,4 @@
 interface:
   display_name: "Write Web Lesson"
-  short_description: "Create interactive, curriculum-aligned web lessons"
+  short_description: "Create interactive web lessons, each in its own worktree and draft PR"
   default_prompt: "Use $write-web-lesson to create an interactive web lesson from a curriculum module and lesson ID."
