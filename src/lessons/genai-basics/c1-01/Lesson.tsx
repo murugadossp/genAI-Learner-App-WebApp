@@ -79,8 +79,8 @@ export default function Lesson() {
         <h2 tabIndex={-1}>Artificial intelligence: the outer ring.</h2>
         <Figure
           src="/lessons/c1-01/ai-rules.jpg"
-          alt="A person writing if-then rules on cards that feed a simple machine sorting envelopes into two trays."
-          caption="Rules written by a person, doing a job by themselves."
+          alt="A road map with a start and an end pin and a highlighted shortest route. Labels: Designed by people; Map and road costs set by people; Search finds the shortest route; Nothing is learned from data."
+          caption="Designed AI: people set the map and the costs, and a search finds the route."
         />
         <p>
           <strong>Artificial intelligence</strong> is the whole box in the
@@ -113,7 +113,7 @@ export default function Lesson() {
         <h2 tabIndex={-1}>Machine learning: learning from examples.</h2>
         <Figure
           src="/lessons/c1-01/ai-ml.jpg"
-          alt="Many example envelopes tagged with ticks and crosses flow into a machine that learns a pattern and sorts a new envelope on its own."
+          alt="Labelled example envelopes flow into a machine that then sorts a new message into a ticked or crossed tray. Labels: Machine learning; Many labelled examples; The machine learns the pattern; Sorts a new message."
           caption="Show the system many examples and let it find the pattern."
         />
         <p>
@@ -136,7 +136,7 @@ export default function Lesson() {
         <h2 tabIndex={-1}>Deep learning: many layers.</h2>
         <Figure
           src="/lessons/c1-01/ai-dl.jpg"
-          alt="A neural network drawn as many columns of connected nodes, turning a raw envelope image on the left into a sorted result on the right."
+          alt="An envelope enters a neural network with many layers and a result tray comes out. Labels: Deep learning; Raw input: the message text; Many layers, each finds richer clues; Output: spam or not spam."
           caption="Many layers, each building on the one before."
         />
         <p>
@@ -161,7 +161,7 @@ export default function Lesson() {
         <h2 tabIndex={-1}>Generative AI: making something new.</h2>
         <Figure
           src="/lessons/c1-01/ai-genai.jpg"
-          alt="A machine producing something new: a blank page filling with a freshly written letter, next to a small painting and a sound wave."
+          alt="A speech bubble feeds a machine that outputs a page, a painting and a sound wave. Labels: Generative AI; Your request; A model trained to generate; New text, image or audio."
           caption="New text, images or audio, not a stored copy."
         />
         <p>
