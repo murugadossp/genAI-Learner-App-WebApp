@@ -79,8 +79,9 @@ export default function Lesson() {
           guaranteed, because other details of how a service runs the model can
           differ. High temperatures give rarer tokens a real chance. Because
           each token is conditioned on the ones before it, one unlikely pick can
-          send the rest of the text somewhere unusual, and an odd choice like
-          “sandwich” in the lab is the kind that compounds.
+          send the rest of the text somewhere unusual. The lab draws single
+          tokens, so it shows how a rare choice like “sandwich” becomes
+          possible, not how it carries forward.
         </p>
         <p>
           Which values are allowed, which defaults apply, and whether you can
@@ -127,9 +128,9 @@ export default function Lesson() {
         question="A team sets temperature to 0 for a question-answering feature because they want correct answers. What is the best description of what that achieves?"
         options={[
           "It guarantees that the answers are factually correct, since the model only uses what it knows best.",
-          "It makes the model check its answers against reliable sources before replying.",
-          "It makes the output more consistent by favouring the most likely token, but a likely answer can still be wrong, so they still need checks.",
-          "It makes the model refuse to say anything unsafe, because low temperature removes risky options.",
+          "It makes the model check its answers against reliable sources before it replies to the user.",
+          "It makes the output more consistent by favouring the most likely token, but that answer can still be wrong.",
+          "It makes the model refuse to say anything unsafe, because low temperature removes the risky options.",
         ]}
         correct={2}
         wrongFeedback={[
