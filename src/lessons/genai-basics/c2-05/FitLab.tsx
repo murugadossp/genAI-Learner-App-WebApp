@@ -182,11 +182,13 @@ export function FitLab() {
         <p className="micro lab-disclosure">
           Everything here is invented: the hidden pattern, the noisy examples
           and the errors, which are root-mean-square gaps between the curve and
-          the dots. The “model” is a curve fitted by least squares, not a neural
-          network, and its “parameters” are curve coefficients. Real language
-          models have millions to billions of weights arranged in layers and are
-          trained very differently, so this shows the idea of capacity versus
-          data, not how any real model behaves.
+          the dots. The held-out dots also pick the “lowest” size here, which
+          makes that figure slightly optimistic. The “model” is a curve fitted
+          by least squares, not a neural network, and its “parameters” are curve
+          coefficients. Real language models have millions to billions of
+          weights arranged in layers and are trained very differently, so this
+          shows the idea of capacity versus data, not how any real model
+          behaves.
         </p>
       </div>
     </div>

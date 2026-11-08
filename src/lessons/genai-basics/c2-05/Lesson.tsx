@@ -71,10 +71,14 @@ export default function Lesson() {
         </ol>
         <p>
           The training error only ever improves as the dial goes up, which is
-          why it is a poor judge of quality. The held-out error is the honest
-          signal. With 40 examples, the extra numbers are mostly harmless, but
-          they still did not beat a moderate size. Extra capacity needs enough
-          data to constrain it, and even then it is not guaranteed to help.
+          why it is a poor judge of quality. The held-out error is a more honest
+          signal. Here we also use it to compare sizes, so the lowest value is a
+          little optimistic, and a real project would keep a separate, untouched
+          test set for the final estimate (a later lesson covers training,
+          validation and test sets). With 40 examples, the extra numbers are
+          mostly harmless, but they still did not beat a moderate size. Extra
+          capacity needs enough data to constrain it, and even then it is not
+          guaranteed to help.
         </p>
         <p>
           Real language models are not polynomial curves, and very large
@@ -90,9 +94,11 @@ export default function Lesson() {
         <p>
           Size has a concrete price even when it does not buy quality. Every
           parameter is a number that must be stored and used, so a bigger model
-          needs more memory and more computation for each token it produces.
-          Storing the weights alone takes the parameter count times the bytes
-          per number. The sizes below are hypothetical examples.
+          needs more memory, and a bigger dense model also needs more
+          computation for each token it produces. Some designs use only part of
+          their parameters for each token, so the count alone does not fix the
+          compute. Storing the weights alone takes the parameter count times the
+          bytes per number. The sizes below are hypothetical examples.
         </p>
         <div className={styles.tableWrap}>
           <table className={styles.table}>
