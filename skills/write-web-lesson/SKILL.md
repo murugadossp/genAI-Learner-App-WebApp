@@ -17,7 +17,7 @@ Every lesson gets its own git worktree, branch and draft PR, so lessons can be b
 
 ## Ground the lesson
 
-1. Read `AGENTS.md` (commands, layout, conventions, boundaries), `docs/plans/web-implementation-plan.md`, the current curriculum snapshot and module registry in `src/data/curriculum/`, and the relevant shared components and tests. Check actual code when plans and implementation differ. If no module or lesson can be identified unambiguously, ask for it rather than inventing a curriculum entry.
+1. Read `AGENTS.md` (commands, layout, conventions, boundaries), `docs/plans/web-implementation-plan.md`, the current curriculum snapshot and module registry in `src/data/curriculum/`, and the relevant shared components and tests. Check actual code when plans and implementation differ. If no module or lesson can be identified unambiguously, offer a pick list of the next missing curriculum lessons (or ask for it) rather than inventing a curriculum entry.
 2. Locate the canonical lesson ID, outcome, misconception, prerequisites, and adjacent lessons. Use the topic and scope as the contract; do not copy mobile lesson pages or infer web readiness from mobile status. Use authoritative sources when needed to establish technical accuracy; distinguish verified facts from an illustrative assumption.
 3. Plan the learning progression and a concrete, topic-appropriate interaction before coding. Explain the mechanism, not just terminology: introduce a mental model, use a consistent worked example, let the learner inspect or change something, connect the result to its implications and limits, then check understanding and summarize. Adapt the structure and depth to the subject.
 

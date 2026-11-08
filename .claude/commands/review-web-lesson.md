@@ -9,7 +9,7 @@ Read `AGENTS.md` and `skills/write-web-lesson/SKILL.md` first.
 
 **Find the lesson, read-only**
 
-1. Resolve the module, lesson ID and PR (from the arguments, or from `lessons/<lessonId>`).
+1. Resolve the module, lesson ID and PR (from the arguments, or from `lessons/<lessonId>`). If none were given, do not guess: collect candidates from open PRs on `lessons/*` branches (`gh pr list --state open`, or the REST API if GraphQL is blocked), existing worktrees (`git worktree list`) and lessons under `src/lessons/`, then ask the user to pick with AskUserQuestion (up to four, newest PR first, labelled with lesson ID, title and PR number, plus "Other"). If AskUserQuestion is unavailable, list them in plain text and ask. Wait for the answer before doing anything else.
 2. If a worktree for `lessons/<lessonId>` already exists (`git worktree list`), review it in place.
 3. Otherwise create a separate detached worktree at the PR head or `origin/lessons/<lessonId>` (`git worktree add --detach ../genai-learner-review-<lessonId> <ref>`) and review there. Remove only a worktree you created, when done.
 
