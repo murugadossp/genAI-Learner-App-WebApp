@@ -1,0 +1,167 @@
+.grid {
+  display: grid;
+  gap: 1.25rem;
+}
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1.1fr;
+  }
+}
+.levels {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+.levels button,
+.actions button {
+  min-height: 44px;
+  text-align: left;
+}
+.levels button[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+.panel {
+  padding: 1rem;
+  background: var(--panel);
+  border-radius: 12px;
+  align-self: start;
+}
+.prompt,
+.answer {
+  padding: 0.85rem;
+  background: var(--bg);
+  border-radius: 9px;
+  overflow-wrap: anywhere;
+}
+.answer {
+  font-size: 1.15rem;
+  border-left: 3px solid var(--accent);
+}
+.row {
+  display: grid;
+  grid-template-columns: 4rem 1fr 3rem;
+  gap: 0.75rem;
+  align-items: center;
+  margin: 0.6rem 0;
+  font-size: 0.85rem;
+}
+.row[data-picked="true"] {
+  font-weight: 700;
+}
+.bar {
+  height: 12px;
+  background: var(--bg);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.bar span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+.note {
+  margin-top: 0.75rem;
+  padding: 0.7rem 0.85rem;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 0 9px 9px 0;
+  font-size: 0.9rem;
+}
+.flow {
+  display: grid;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+}
+.flow li {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+}
+.flow li strong {
+  display: block;
+}
+@media (min-width: 900px) {
+  .flow {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.source {
+  padding: 0.85rem 1rem;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+  margin: 0.75rem 0;
+}
+.claims {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+.claim {
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+}
+.claim fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+}
+.claim legend {
+  overflow-wrap: anywhere;
+}
+.claim label {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+}
+.claim input {
+  accent-color: var(--accent);
+}
+.claim[data-result="right"] {
+  border-left: 4px solid var(--accent);
+}
+.claim[data-result="wrong"] {
+  border-left: 4px solid var(--orange);
+}
+.verdict {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+.tabs button {
+  min-height: 44px;
+}
+.tabs button[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+.habits {
+  padding-left: 1.25rem;
+}

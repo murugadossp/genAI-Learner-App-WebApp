@@ -1,0 +1,18 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c2-07",
+  "title": "Why models make things up",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "idea", "title": "A fluent sentence is not a checked sentence." },
+    { "id": "blank", "title": "Fill the blank, with or without evidence." },
+    { "id": "mechanism", "title": "Why the wording never warns you." },
+    { "id": "spot", "title": "Spot the invented claim." },
+    {
+      "id": "grounding",
+      "title": "What grounding helps with, and what it does not."
+    },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
