@@ -12,8 +12,8 @@
     "preview:mockup": "python3 -m http.server 3001 --bind 127.0.0.1 --directory mockups",
     "test:production": "node scripts/test-production-gating.mjs",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,json}\" \"scripts/*.mjs\" \"tests/web/*.ts\" app/layout.tsx playwright.config.ts",
-    "lesson:write": "./scripts/agy-write-lesson.sh",
-    "lesson:review": "./scripts/agy-review-lesson.sh"
+    "lesson:write": "./scripts/write-lesson.sh",
+    "lesson:review": "./scripts/review-lesson.sh"
   },
   "devDependencies": {
     "@playwright/test": "1.65.0",
