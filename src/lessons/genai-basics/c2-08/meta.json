@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c2-08",
   "title": "Knowledge cutoff and fresh information",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     { "id": "cutoff", "title": "Training stops at a date." },
     { "id": "timeline", "title": "Move the cutoff on a toy timeline." },
