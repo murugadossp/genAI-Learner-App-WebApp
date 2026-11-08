@@ -1,8 +1,28 @@
 ---
-description: QA a web lesson and produce or update its lesson report
-argument-hint: <module> <lessonId>
+description: Read-only review of a web lesson (by lesson or PR), returned as findings; posts nothing unless asked
+argument-hint: <module> <lessonId> | <PR number> [--post]
 ---
 
-Review the existing web lesson: $ARGUMENTS
+Review the web lesson: $ARGUMENTS
 
-Read `AGENTS.md` and `skills/write-web-lesson/SKILL.md`. Do not rewrite the lesson. Check it against the "Review before delivery" list in `skills/write-web-lesson/references/lesson-template.md`, run the commands in `AGENTS.md`, and inspect the rendered lesson at 390, 768 and 1440px in light and dark themes. Fill in `docs/lesson-reports/<module>/<lessonId>.md` from `skills/write-web-lesson/references/report-template.md`, marking anything not tested. List validated problems by severity. Do not change `webStatus`, merge or publish.
+Read `AGENTS.md` and `skills/write-web-lesson/SKILL.md` first.
+
+**Find the lesson, read-only**
+
+1. Resolve the module, lesson ID and PR (from the arguments, or from `lessons/<lessonId>`).
+2. If a worktree for `lessons/<lessonId>` already exists (`git worktree list`), review it in place.
+3. Otherwise create a separate detached worktree at the PR head or `origin/lessons/<lessonId>` (`git worktree add --detach ../genai-learner-review-<lessonId> <ref>`) and review there. Remove only a worktree you created, when done.
+
+**Rules**
+
+- Do not edit, commit or push lesson files. Do not change `webStatus`, merge, mark ready, publish or deploy. Running the checks in `AGENTS.md` and a build is fine because it only creates ignored output.
+- Do not write or overwrite the lesson report file. Use the report already in the PR as evidence.
+- Do not post anything to GitHub (comments, reviews, approvals) unless the arguments include `--post` or the user explicitly asks in this session.
+
+**Review**
+
+Check the lesson against the "Review before delivery" list in `skills/write-web-lesson/references/lesson-template.md`, run the commands in `AGENTS.md`, and inspect the rendered lesson at 390, 768 and 1440px in light and dark themes. Compare the PR's report with what you actually verified.
+
+**Return in chat**
+
+Reviewed commit and PR, CI status, validated findings (file and line, severity, priority P0 to P4, blocking or not), what you verified, what you could not test, and a recommended decision (comment, request changes, or approve if clean). Only with `--post` or an explicit request: post these as PR review comments and say exactly what was posted.

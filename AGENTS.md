@@ -52,4 +52,4 @@ Reusable skills live in `skills/<name>/SKILL.md`. Read the relevant one before t
 Slash commands (`.claude/commands/`):
 
 - `/write-web-lesson <module> <lessonId>`: author a lesson as a draft with its report, in its own worktree (`../genai-learner-<lessonId>`, branch `lessons/<lessonId>`), and open a draft PR.
-- `/review-web-lesson <module> <lessonId>`: QA an existing lesson and fill in its report.
+- `/review-web-lesson <module> <lessonId>` or `<PR number>`: read-only review in the lesson's worktree (or a detached review worktree); returns findings in chat and posts to the PR only with `--post` or an explicit request.
