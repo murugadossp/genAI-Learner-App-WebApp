@@ -32,7 +32,7 @@ Every lesson gets its own git worktree, branch and draft PR, so lessons can be b
 
 ## Verify and report
 
-Add or update meaningful Playwright coverage for the lesson. Check 390, 768, and 1440px in light and dark themes; inspect the rendered lesson for readability, contrast, bounded overflow and correct section order. Exercise the actual interaction, quiz selection, wrong feedback, retry and theme persistence. If the lab has an expanded workspace, test state, keyboard focus, Escape and return focus. Verify the draft is excluded from production; run the checks listed in `AGENTS.md` (`format:check`, `typecheck`, `npm test`). Report manual screen-reader or browser checks only if performed, and identify any untested cases.
+Add or update meaningful Playwright coverage for the lesson. Check 390, 768, and 1440px in light and dark themes; inspect the rendered lesson for readability, contrast, bounded overflow and correct section order. Exercise the actual interaction, quiz selection, wrong feedback, retry and theme persistence. If the lab has an expanded workspace, test state, keyboard focus, Escape and return focus. Verify production matches `webStatus` (a draft returns 404; a published lesson, including a revision of one, returns 200 with its status unchanged); run the checks listed in `AGENTS.md` (`format:check`, `typecheck`, `npm test`). Report manual screen-reader or browser checks only if performed, and identify any untested cases.
 
 ## Report
 
