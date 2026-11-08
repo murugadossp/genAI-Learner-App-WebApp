@@ -123,7 +123,7 @@ function run(p: Problem, mode: Mode, budget: number) {
     p.id === "sum"
       ? budget === 0
         ? "The answer is right with no extra work. Raise the limit to see what more work adds."
-        : "The answer was right from the start. Extra work only added cost."
+        : "In this toy the answer was right from the start, so extra work only added cost."
       : budget < 3
         ? "Not enough work yet. The toy still holds its first guess."
         : budget === 3
@@ -265,6 +265,11 @@ export function ReasoningLab() {
               <>
                 <div className={styles.trace} data-testid="work">
                   <strong>Work the model did (toy trace)</strong>
+                  <span className="micro">
+                    {" "}
+                    Inspection view for this lesson: an app would not normally
+                    show you this.
+                  </span>
                   {r.steps.length ? (
                     <ol>
                       {r.steps.map((s) => (
@@ -333,9 +338,10 @@ export function ReasoningLab() {
           step is a simplification. A real reasoning model does not step through
           a fixed script, and its output varies. What is real is the general
           pattern: working through intermediate text before answering can help
-          on multi-step problems, costs extra time and generated text, and does
-          not help a one-step question. The toy also does not show how any
-          specific product displays reasoning, which differs between products.
+          on multi-step problems, costs extra time and generated text, and often
+          adds little on a one-step question (in this toy, nothing). The toy
+          also does not show how any specific product displays reasoning, which
+          differs between products.
         </p>
       </div>
     </div>

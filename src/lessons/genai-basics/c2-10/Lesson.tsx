@@ -12,12 +12,12 @@ export default function Lesson() {
       <section id="idea">
         <h2 tabIndex={-1}>Some models work first, then answer.</h2>
         <p>
-          A model that answers right away has one chance to get a multi-step
-          problem right, because it writes the answer first and any working
-          comes after. A <strong>reasoning model</strong> is trained to produce
-          intermediate work, such as breaking the problem down, trying an
-          approach, noticing a mistake and retrying, before it writes its final
-          reply. It is still predicting one token at a time, as in{" "}
+          A model can answer a multi-step problem directly, with no written
+          working before the answer. A <strong>reasoning model</strong> is
+          trained to produce intermediate work, such as breaking the problem
+          down, trying an approach, noticing a mistake and retrying, before it
+          writes its final reply. It is still predicting one token at a time, as
+          in{" "}
           <Link className="text-link" href="/learn/genai-basics/c2-02">
             how a model predicts the next token
           </Link>
@@ -64,9 +64,10 @@ export default function Lesson() {
             lookup or rewrite usually does not, as the sum showed.
           </li>
           <li>
-            <strong>It can still be wrong.</strong> More working improves the
-            odds. It does not turn a model into a checker of facts, and it can
-            reason at length toward a wrong answer.
+            <strong>It can still be wrong.</strong> More working tends to help
+            on average, but how much depends on the model and the task, and it
+            can be wasted. It does not turn a model into a checker of facts, and
+            it can reason at length toward a wrong answer.
           </li>
           <li>
             <strong>Often there is a dial.</strong> Some products and APIs let

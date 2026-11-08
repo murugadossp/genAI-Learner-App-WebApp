@@ -55,7 +55,7 @@ for (const width of [390, 768, 1440])
       // Simple sum: right from the start, extra work only adds cost.
       await page.getByLabel(/Quick sum/).check();
       await expect(answer).toContainText("Answer: 42");
-      await expect(answer).toContainText("Extra work only added cost");
+      await expect(answer).toContainText("extra work only added cost");
       await slider.fill("0");
       await expect(answer).toContainText("Raise the limit");
       await slider.fill("4");
