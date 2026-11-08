@@ -1,0 +1,14 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c2-05",
+  "title": "Parameters and model size",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "idea", "title": "Parameters are learned numbers." },
+    { "id": "dial", "title": "Turn the size dial." },
+    { "id": "mechanism", "title": "Capacity is not quality." },
+    { "id": "scale", "title": "What size costs." },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
