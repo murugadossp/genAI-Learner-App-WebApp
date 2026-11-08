@@ -244,7 +244,11 @@ export function SamplingLab() {
                 <td>
                   <span className={styles.meter}>
                     <span className={styles.bar} aria-hidden="true">
-                      <span style={{ width: `${final[i] * 100}%` }} />
+                      <span
+                        style={{
+                          width: `${Math.round(final[i] * 1000) / 10}%`,
+                        }}
+                      />
                     </span>
                     <span data-testid="prob">
                       {final[i] === 0 && base[i] > 0

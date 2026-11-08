@@ -12,6 +12,11 @@ for (const width of [390, 768, 1440])
         (t) => localStorage.setItem("genai-theme", t),
         theme,
       );
+      const problems: string[] = [];
+      page.on("console", (m) => {
+        if (m.type() === "error") problems.push(m.text());
+      });
+      page.on("pageerror", (e) => problems.push(e.message));
       await page.goto("/learn/genai-basics/c2-09");
       const ids = await page
         .locator("article section[id]")
@@ -113,6 +118,9 @@ for (const width of [390, 768, 1440])
       await page.getByLabel(/more consistent by favouring/).check();
       await page.getByRole("button", { name: "Check answer" }).click();
       await expect(status).toContainText("Correct");
+
+      // No hydration or other console errors during the whole journey.
+      expect(problems).toEqual([]);
 
       expect(
         await page.evaluate(
