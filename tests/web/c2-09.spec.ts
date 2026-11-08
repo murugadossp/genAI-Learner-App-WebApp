@@ -58,6 +58,9 @@ for (const width of [390, 768, 1440])
       await expect(probs.nth(2)).toHaveText("<0.1%");
       await slider.fill("1");
       await expect(summary).toContainText("Canberra: 34.2%");
+      await expect(page.locator(".lab-disclosure")).toContainText(
+        "ranks a common mix-up just above the correct answer",
+      );
 
       // Top-k removes choices; remaining chances still add up.
       await page.getByLabel(/Top-k/).check();

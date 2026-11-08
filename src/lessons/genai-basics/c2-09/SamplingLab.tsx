@@ -276,14 +276,14 @@ export function SamplingLab() {
         </div>
         <p className="micro lab-disclosure">
           Everything here is invented: the candidate words, their scores, and
-          the idea that the model’s mix-up is a close second. The “draws” come
-          from a seeded random generator, so they repeat until you press Draw
-          again. The arithmetic is the real part: dividing scores by the
-          temperature, converting them to probabilities with softmax, then
-          optionally trimming with top-k or top-p, is how common sampling
-          settings are described. This is a toy, not a live model, and no
-          provider’s exact implementation. Names, ranges and defaults for these
-          settings differ between providers and models.
+          the idea that the model ranks a common mix-up just above the correct
+          answer. The “draws” come from a seeded random generator, so they
+          repeat until you press Draw again. The arithmetic is the real part:
+          dividing scores by the temperature, converting them to probabilities
+          with softmax, then optionally trimming with top-k or top-p, is how
+          common sampling settings are described. This is a toy, not a live
+          model, and no provider’s exact implementation. Names, ranges and
+          defaults for these settings differ between providers and models.
         </p>
       </div>
     </div>
