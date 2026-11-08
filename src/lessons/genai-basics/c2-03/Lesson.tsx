@@ -24,7 +24,8 @@ export default function Lesson() {
           A tempting picture is that the model stores documents and looks up the
           answer when you ask. That is not how a standard language model
           answers. At answer time it runs its fixed weights over your input.
-          Anything it “knows” was folded into those weights earlier.
+          What a base model “knows” from pretraining was folded into those
+          weights earlier.
         </p>
         <div className="callout">
           <strong>Key idea:</strong> the data shapes the weights during
@@ -68,9 +69,9 @@ export default function Lesson() {
           </li>
         </ol>
         <p>
-          Pretraining objective is predicting text, not checking facts. When the
-          data is mostly right, predictions tend to be right too, but nothing in
-          the objective guarantees truth.
+          The pretraining objective is predicting text, not checking facts. When
+          the data is mostly right, predictions tend to be right too, but
+          nothing in the objective guarantees truth.
         </p>
       </section>
       <section id="limits">
@@ -83,9 +84,9 @@ export default function Lesson() {
         </p>
         <p>
           Training also stops. Information published afterwards is not in the
-          weights. An application can supply it in the request, as you saw with
-          context windows, or retrieve it from outside, but that is the app
-          adding information, not the model having learned it. Later lessons
+          weights. An application can supply it in the request (a later lesson
+          covers context windows) or retrieve it from outside, but that is the
+          app adding information, not the model having learned it. Later lessons
           cover how base models become assistants, why models make things up,
           and knowledge cutoffs.
         </p>
@@ -107,13 +108,16 @@ export default function Lesson() {
         explanation="Pretraining fixes the weights. New information reaches the model only through more training or by being included in the request."
       />
       <section id="takeaway">
-        <h2 tabIndex={-1}>Take this with you.</h2>
-        <p>
-          Pretraining turns a large body of text into weights. Whatever the data
-          over- or under-represents, the model can echo, and it does not look
-          anything up at answer time. If an answer is wrong or stale, ask what
-          the training data contained and what the app supplied.
-        </p>
+        <div className="takeaway-card">
+          <span className="eyebrow">THE TAKEAWAY</span>
+          <h2 tabIndex={-1}>Take this with you.</h2>
+          <p>
+            Pretraining turns a large body of text into weights. Whatever the
+            data over- or under-represents, the model can echo, and it does not
+            look anything up at answer time. If an answer is wrong or stale, ask
+            what the training data contained and what the app supplied.
+          </p>
+        </div>
         <Link className="text-link" href="/learn/genai-basics/c2-02">
           Review: How a model predicts the next token →
         </Link>

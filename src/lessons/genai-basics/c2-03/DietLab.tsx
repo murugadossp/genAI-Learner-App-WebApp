@@ -127,13 +127,25 @@ export function DietLab() {
               Train.
             </p>
             <div className={styles.presets}>
-              <button type="button" onClick={() => setDraft(dietA)}>
+              <button
+                type="button"
+                aria-pressed={same(draft, dietA)}
+                onClick={() => setDraft(dietA)}
+              >
                 Preset A: mostly casual posts
               </button>
-              <button type="button" onClick={() => setDraft(dietB)}>
+              <button
+                type="button"
+                aria-pressed={same(draft, dietB)}
+                onClick={() => setDraft(dietB)}
+              >
                 Preset B: mostly reference pages
               </button>
-              <button type="button" onClick={() => setDraft([])}>
+              <button
+                type="button"
+                aria-pressed={draft.length === 0}
+                onClick={() => setDraft([])}
+              >
                 Clear
               </button>
             </div>
@@ -172,6 +184,10 @@ export function DietLab() {
             </button>
             <h3 style={{ margin: "1rem 0 0.5rem" }}>Trained model, asked:</h3>
             <p className={styles.prompt}>{prompt} …</p>
+            <p className="micro">
+              Trained on {trained.length} of {docs.length} documents ({total}{" "}
+              match this prompt).
+            </p>
             {total === 0 ? (
               <p className="micro">
                 No examples of this pattern in the training snapshot. This toy

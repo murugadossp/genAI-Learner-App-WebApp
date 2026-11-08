@@ -110,3 +110,11 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+.presets button {
+  min-height: 44px;
+}
+.presets button[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  font-weight: 600;
+}
