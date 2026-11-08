@@ -40,6 +40,27 @@ export default function Lesson() {
           task. It does not say how the system must be built.
         </p>
         <p>
+          We take the four terms one at a time, from the outside in. Each one is
+          a more specific way of doing the one before it:
+        </p>
+        <ol className={styles.roadmap}>
+          <li>
+            <strong>Artificial intelligence:</strong> any way of getting a
+            machine to do such a task.
+          </li>
+          <li>
+            <strong>Machine learning:</strong> the machine learns the pattern
+            from examples.
+          </li>
+          <li>
+            <strong>Deep learning:</strong> learning with a many-layer network.
+          </li>
+          <li>
+            <strong>Generative AI:</strong> deep learning that makes new text,
+            images or audio.
+          </li>
+        </ol>
+        <p>
           Throughout this lesson we follow <strong>Postbox</strong>, an invented
           mail app. It has jobs like <strong>predicting</strong> when a parcel
           arrives, <strong>classifying</strong> a message as spam or not,{" "}

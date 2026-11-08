@@ -220,3 +220,12 @@
   align-items: center;
   flex-wrap: wrap;
 }
+.roadmap {
+  margin: 1rem 0;
+  padding: 0.9rem 1rem 0.9rem 2.2rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  display: grid;
+  gap: 0.35rem;
+}

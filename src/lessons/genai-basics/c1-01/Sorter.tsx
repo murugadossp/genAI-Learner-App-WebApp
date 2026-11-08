@@ -3,6 +3,13 @@ import { useId, useState } from "react";
 import { ringNames } from "./RingDiagram";
 import styles from "./lesson.module.css";
 
+const glosses = [
+  "Hand-written rules. Nothing is learned.",
+  "Learns from examples, but is not a many-layer network.",
+  "A many-layer network. It labels or scores, and does not write new content.",
+  "A deep model that makes new text, images or audio.",
+];
+
 const items = [
   {
     text: "A rule: if the subject says “WINNER” and the message has three or more links, mark it spam.",
@@ -59,8 +66,10 @@ export function Sorter() {
       </div>
       <div className="lab-body">
         <p>
-          For each part of Postbox, choose the <strong>innermost</strong> ring
-          it belongs to. You can change an answer at any time.
+          For each part of Postbox, pick the{" "}
+          <strong>one description that fits best</strong>. A deep network is
+          also machine learning and AI, but pick the most specific ring, which
+          is the innermost one that fits. You can change an answer at any time.
         </p>
         <ol className={styles.items}>
           {items.map((item, i) => {
@@ -80,7 +89,10 @@ export function Sorter() {
                           checked={a === r}
                           onChange={() => choose(i, r)}
                         />
-                        <span>{name}</span>
+                        <span className={styles.choiceText}>
+                          <strong>{name}</strong>
+                          <small>{glosses[r]}</small>
+                        </span>
                       </label>
                     ))}
                   </div>
