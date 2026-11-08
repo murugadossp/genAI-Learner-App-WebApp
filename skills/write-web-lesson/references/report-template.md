@@ -5,8 +5,8 @@ Copy this template to `docs/lesson-reports/<module>/<lessonId>.md`, fill every s
 ## 1. Summary
 
 - **Module / lesson ID:** [registry key / canonical slug]
-- **Branch and PR:** [branch] / [PR link or "not opened"]
-- **Head commit:** [short SHA]
+- **Branch and PR:** [branch] / [PR link]. In the saved file write "see PR description"; the PR description holds the real values.
+- **Head commit:** [short SHA]. In the saved file write "see PR description"; update the PR description when the head changes.
 - **webStatus (read from `meta.json` at the reviewed commit):** [draft / published]
 - **Status changed by this work:** [no / yes, and who asked for it]. Agents do not publish unless the user asks.
 - **Date and author:** [date, agent or person]

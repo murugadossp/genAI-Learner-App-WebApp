@@ -40,8 +40,8 @@ Write the report with [the report template](references/report-template.md): fill
 
 ## Deliver
 
-1. Commit the lesson, its tests and the report on `lessons/<lessonId>`. Keep the lesson `webStatus: "draft"`.
-2. Push the branch and open a **draft** PR against `main` titled `Draft lesson: <lessonId> <title>`, using the report as the PR description (`gh pr create --draft --base main --body-file docs/lesson-reports/<module>/<lessonId>.md`). If `gh` or push access is unavailable, say so and give the branch name and the exact commands instead.
+1. Commit the lesson, its tests and the report on `lessons/<lessonId>`. A new lesson is `webStatus: "draft"`. When revising a lesson that already exists, leave its `webStatus` exactly as it is (a published lesson must stay published, or its production route will 404) unless the user explicitly asks to change it.
+2. Push the branch and open a **draft** PR against `main` titled `Draft lesson: <lessonId> <title>`, using the report as the PR description (`gh pr create --draft --base main --body-file docs/lesson-reports/<module>/<lessonId>.md`). If `gh` or push access is unavailable, say so and give the branch name and the exact commands instead. Because the PR and head commit do not exist when the report is written, the saved report file says "see PR description" for those two fields. Right after the PR is created, update the PR description (`gh pr edit`, or the REST API if GraphQL is blocked) so its Branch and PR, and Head commit, lines hold the real values, and refresh the head commit if you push further commits.
 3. Wait for CI and report its result. Fix failures caused by the lesson, such as formatting.
 4. Give the user a short summary with the PR link and the worktree path, then stop and ask what to do next.
 
