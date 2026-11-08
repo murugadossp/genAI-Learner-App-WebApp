@@ -1,7 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
 import { ReasoningLab } from "./ReasoningLab";
+import diagram from "./reasoning-diagram.png";
+import styles from "./lesson.module.css";
 export default function Lesson() {
   return (
     <LessonFrame
@@ -23,6 +26,17 @@ export default function Lesson() {
           </Link>
           . The difference is that many of those tokens are working, not answer.
         </p>
+        <figure className={styles.figure}>
+          <Image
+            src={diagram}
+            alt="Two lanes. Quick reply: the ferry puzzle goes straight to the answer 216, marked wrong, a first guess with no checking. Reasoning model: the ferry puzzle goes through working text (list the facts, try 216 and spot the slip, recompute and check) to the answer 189, marked right."
+            sizes="(min-width: 760px) 720px, 100vw"
+          />
+          <figcaption className="micro">
+            The same question, answered two ways. The example and its numbers
+            are invented for this lesson.
+          </figcaption>
+        </figure>
         <div className="callout">
           <strong>Key idea:</strong> a reasoning model gives itself room to
           think in text before it commits to an answer, and it was trained to
@@ -31,12 +45,19 @@ export default function Lesson() {
       </section>
       <section id="compare">
         <h2 tabIndex={-1}>Compare a quick reply with reasoned work.</h2>
-        <p>
-          Start with the ferry puzzle and the quick model, then switch to the
-          ordinary model asked to show its steps, then to the reasoning model.
-          Raise the work limit one step at a time and watch the answer and the
-          cost. Finish by switching to the one-step sum.
-        </p>
+        <p>Try the lab in this order:</p>
+        <ol>
+          <li>Leave the ferry puzzle and the quick model. It answers 216.</li>
+          <li>Switch to the ordinary model told to show its steps.</li>
+          <li>
+            Switch to the reasoning model and raise the work slider one step at
+            a time. Watch the answer change at step 3, and the cost keep rising.
+          </li>
+          <li>
+            Pick the one-step sum and see extra work add cost without changing
+            the answer.
+          </li>
+        </ol>
         <ReasoningLab />
       </section>
       <section id="training">
