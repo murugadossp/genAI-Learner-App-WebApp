@@ -1,0 +1,20 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c2-09",
+  "title": "Temperature and sampling",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "spread",
+      "title": "The model scores choices; sampling picks one."
+    },
+    { "id": "lab", "title": "Turn the temperature dial." },
+    { "id": "how", "title": "What the dial does to the scores." },
+    {
+      "id": "limits",
+      "title": "Temperature is not a truth or safety setting."
+    },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}

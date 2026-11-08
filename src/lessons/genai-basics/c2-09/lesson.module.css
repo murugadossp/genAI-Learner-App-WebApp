@@ -1,0 +1,96 @@
+.row {
+  border: 0;
+  padding: 0;
+  margin: 0 0 0.75rem;
+}
+.row legend {
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.choice {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  min-height: 44px;
+  padding: 0.35rem 0;
+  cursor: pointer;
+}
+.choice input {
+  margin-top: 0.3rem;
+  accent-color: var(--accent);
+}
+.prompt {
+  font-size: 1.2rem;
+  margin: 0.5rem 0 0.2rem;
+}
+.slider {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0.75rem 0 1rem;
+}
+.slider input {
+  width: 100%;
+  accent-color: var(--accent);
+  min-height: 44px;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+.table th,
+.table td {
+  text-align: left;
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+.table thead th {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.table tr[data-removed="yes"] {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+.meter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.bar {
+  flex: 0 0 5rem;
+  height: 10px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.bar span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+}
+.right {
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.summary {
+  padding: 0.75rem 0.9rem;
+  background: var(--panel);
+  border-left: 4px solid var(--accent);
+  border-radius: 9px;
+  overflow-wrap: anywhere;
+}
+.actions {
+  margin-top: 0.75rem;
+}
+@media (max-width: 520px) {
+  .table th,
+  .table td {
+    padding: 0.35rem 0.25rem;
+  }
+}
