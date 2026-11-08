@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c2-04",
   "title": "From base model to assistant",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     { "id": "two-jobs", "title": "A predictor is not an assistant." },
     { "id": "lab", "title": "Guess which reply is base vs assistant." },
