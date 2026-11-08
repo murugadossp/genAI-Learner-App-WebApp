@@ -80,12 +80,12 @@ export default function Lesson() {
         <p>
           When an app shows you reasoning, you are reading text. Some products
           show the model’s working, some show a shorter summary written for
-          display, and some show nothing. In the lab, switch the reasoning model
-          to “summary” and compare it with the full work: the summary left out
-          the discarded first attempt. That is a toy, but the caution is real.
-          Research has found that written reasoning does not always reflect what
-          actually drove the answer, so a clean explanation is not proof of how
-          the answer was reached.
+          display, and some show nothing. In the lab, pick the ferry puzzle, set
+          the reasoning model to 3 or more steps, and compare “summary” with
+          “full work”: the summary leaves out the discarded first attempt. That
+          is a toy, but the caution is real. Research has found that written
+          reasoning does not always reflect what actually drove the answer, so a
+          clean explanation is not proof of how the answer was reached.
         </p>
         <p>
           Treat the steps as useful evidence you can check, not as a window into

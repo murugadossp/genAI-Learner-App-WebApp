@@ -121,7 +121,9 @@ function run(p: Problem, mode: Mode, budget: number) {
   const cost = BASE + used.reduce((n, w) => n + w.cost, 0);
   const note =
     p.id === "sum"
-      ? "The answer was right from the start. Extra work only added cost."
+      ? budget === 0
+        ? "The answer is right with no extra work. Raise the limit to see what more work adds."
+        : "The answer was right from the start. Extra work only added cost."
       : budget < 3
         ? "Not enough work yet. The toy still holds its first guess."
         : budget === 3
@@ -201,7 +203,10 @@ export function ReasoningLab() {
             </fieldset>
             <div className={styles.slider}>
               <label htmlFor={`${uid}-b`}>
-                <strong>Work before answering:</strong> {budget} of 4 steps
+                <strong>Work before answering:</strong>{" "}
+                {mode === "reasoning"
+                  ? `${budget} of 4 steps`
+                  : "reasoning model only"}
               </label>
               <input
                 id={`${uid}-b`}

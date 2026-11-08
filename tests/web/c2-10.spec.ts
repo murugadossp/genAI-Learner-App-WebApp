@@ -56,6 +56,9 @@ for (const width of [390, 768, 1440])
       await page.getByLabel(/Quick sum/).check();
       await expect(answer).toContainText("Answer: 42");
       await expect(answer).toContainText("Extra work only added cost");
+      await slider.fill("0");
+      await expect(answer).toContainText("Raise the limit");
+      await slider.fill("4");
 
       // Theme switch keeps lab state.
       await page
