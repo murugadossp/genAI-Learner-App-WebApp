@@ -8,13 +8,33 @@
       "id": "spread",
       "title": "The model scores choices; sampling picks one."
     },
-    { "id": "lab", "title": "Turn the temperature dial." },
-    { "id": "how", "title": "What the dial does to the scores." },
+    {
+      "id": "settings",
+      "title": "Three settings, three different jobs."
+    },
+    {
+      "id": "lab",
+      "title": "Turn the temperature dial."
+    },
+    {
+      "id": "how",
+      "title": "What the dial does to the scores."
+    },
+    {
+      "id": "mix",
+      "title": "Real systems often mix them."
+    },
     {
       "id": "limits",
       "title": "Temperature is not a truth or safety setting."
     },
-    { "id": "check", "title": "Check your understanding." },
-    { "id": "takeaway", "title": "Take this with you." }
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
   ]
 }

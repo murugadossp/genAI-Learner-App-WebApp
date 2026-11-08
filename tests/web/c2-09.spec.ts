@@ -23,6 +23,21 @@ for (const width of [390, 768, 1440])
         .evaluateAll((els) => els.map((e) => e.id));
       expect(ids).toEqual(meta.sections.map((s) => s.id));
 
+      // Four explanatory illustrations load and have descriptive alt text.
+      const figures = page.locator("article figure img");
+      await expect(figures).toHaveCount(4);
+      for (let i = 0; i < 4; i++) {
+        const img = figures.nth(i);
+        await img.scrollIntoViewIfNeeded();
+        await expect
+          .poll(() => img.evaluate((e: HTMLImageElement) => e.naturalWidth))
+          .toBeGreaterThan(0);
+        expect(((await img.getAttribute("alt")) ?? "").length).toBeGreaterThan(
+          40,
+        );
+      }
+      await page.evaluate(() => window.scrollTo(0, 0));
+
       const slider = page.getByLabel(/^Temperature/);
       const summary = page.getByTestId("summary");
       const probs = page.getByTestId("prob");
@@ -76,6 +91,13 @@ for (const width of [390, 768, 1440])
       await expect(
         page.locator('[data-testid="choice-row"][data-removed="yes"]'),
       ).toHaveCount(3);
+
+      // The lesson text says top-p keeps 4 of 8 on the story prompt at T=1.
+      await page.getByLabel(/Open-ended/).check();
+      await expect(
+        page.locator('[data-testid="choice-row"][data-removed="yes"]'),
+      ).toHaveCount(4);
+      await page.getByLabel(/Factual/).check();
 
       // Draw again changes the seed but keeps probabilities.
       const live = page.locator(".lab").getByRole("status");
