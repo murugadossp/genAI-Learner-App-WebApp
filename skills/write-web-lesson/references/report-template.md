@@ -7,7 +7,8 @@ Copy this template to `docs/lesson-reports/<module>/<lessonId>.md`, fill every s
 - **Module / lesson ID:** [registry key / canonical slug]
 - **Branch and PR:** [branch] / [PR link or "not opened"]
 - **Head commit:** [short SHA]
-- **webStatus:** draft (the agent does not publish)
+- **webStatus (read from `meta.json` at the reviewed commit):** [draft / published]
+- **Status changed by this work:** [no / yes, and who asked for it]. Agents do not publish unless the user asks.
 - **Date and author:** [date, agent or person]
 
 ## 2. Curriculum alignment
@@ -69,7 +70,7 @@ Screenshots saved at: [path or "none"]
 - [ ] Expanded workspace (if any): state kept, Escape closes, focus returns
 - [ ] Theme switch does not reset lab or quiz state
 - [ ] Internal links use `next/link`
-- [ ] Draft route is 404 in production
+- [ ] Production route matches `webStatus`: draft returns 404, published returns 200
 
 ## 7. Not tested / limitations
 
@@ -79,8 +80,10 @@ Screenshots saved at: [path or "none"]
 
 ## 8. Publication readiness
 
-- **Needed before publishing:** [content review, screen-reader pass, course page or learning-path changes]
-- **Publish step (human decision):** a PR changing `webStatus` to `published` in `meta.json`, with `test:production` passing.
+- **Current status and route:** [draft or published] and whether `/learn/<module>/<lessonId>` is live in production.
+- **Production navigation (separate from the lesson route):** state whether `/`, `/studio` and `/course` are the placeholder or 404 in production. While they are, a published lesson is reachable only by direct URL, and its "Learning path" and "Next lesson" links may lead to 404. Say so plainly, and do not describe the lesson as reachable through the live site unless navigation is also published.
+- **Needed before publishing or linking:** [content review, screen-reader pass, course page or learning-path changes]
+- **Publish step (human decision):** a PR changing `webStatus` to `published` in `meta.json`, with `test:production` passing. Navigation changes are a separate decision.
 
 ## 9. Reviewer handoff
 
