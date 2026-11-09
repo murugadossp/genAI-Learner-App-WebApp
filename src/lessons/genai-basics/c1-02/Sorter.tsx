@@ -129,8 +129,9 @@ export function Sorter() {
         </div>
         <p className="micro lab-disclosure">
           These are short descriptions of what each kind of feature gives back.
-          They are not descriptions of any real product. Each feature is written
-          so that one job fits best.
+          They are not descriptions of any real product. Here, “predict” means
+          estimating a number and “classify” means choosing a label from a fixed
+          list. Each feature is written so that one job fits best.
         </p>
       </div>
     </div>
