@@ -90,3 +90,7 @@
 .tableWrap {
   overflow-x: auto;
 }
+.mix td:last-child,
+.mix th:last-child {
+  white-space: nowrap;
+}
