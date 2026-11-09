@@ -23,8 +23,8 @@ if (existsSync(root))
         unlinkSync(path);
     }
 const routes = [
-  ["app/page.tsx", "../src/studio/Landing", false],
-  ["app/studio/page.tsx", "../../src/studio/Studio", false],
+  ["app/page.tsx", "../src/studio/Landing", true],
+  ["app/studio/page.tsx", "../../src/studio/Studio", true],
   ["app/course/page.tsx", "../../src/studio/Course", true],
   ["app/course/chapter-1/page.tsx", "../../../src/studio/CourseChapter1", true],
   [
