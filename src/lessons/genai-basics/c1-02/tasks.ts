@@ -1,12 +1,12 @@
 export const tasks = [
   {
     name: "Predict",
-    asks: "What number or value is likely?",
-    gives: "An estimate, such as an amount or a time.",
+    asks: "What value is likely?",
+    gives: "An estimate of an amount or a time, usually a number.",
   },
   {
     name: "Classify",
-    asks: "Which group does this belong to?",
+    asks: "Which group does this belong to right now?",
     gives: "A label chosen from a fixed list.",
   },
   {
