@@ -14,7 +14,7 @@ Run the whole release without stopping to ask: sync, (optionally) publish lesson
 
 ## Never do
 
-- Force-push, rewrite history, delete remote branches or `main`, or merge with failing or pending CI. (Deleting your own unpushed local `publish/*` branch, as steps 4.2 and 4.5 say, is allowed.)
+- Force-push, rewrite history, delete remote branches or `main`, or merge with failing or pending CI. (Deleting your own unpushed local `publish/*` branch, as step 4.5 says, is allowed.)
 - Continue to a later step after any step says to stop. A stop ends the whole run, including the deploy.
 - Edit generated route files (`app/**/page.tsx`), the curriculum snapshot, or the gating logic in `scripts/prepare-routes.mjs` and `scripts/lesson-registry.mjs` to make a check pass.
 - Promote a preview build (`vercel promote`). Gating is decided at build time from `VERCEL_ENV`, so a preview build would expose drafts. Always rebuild with `vercel deploy --prod`.
@@ -32,7 +32,7 @@ Run the whole release without stopping to ask: sync, (optionally) publish lesson
    4. Run `npm run format:check`, `npm run typecheck` and `npm run test:production`. If `format:check` fails on files you changed, run `npx prettier --write` on those files and retry once. Any other failure: stop, leave the branch unpushed, and report the output.
    5. The publish PR changes only `meta.json` files. If publishing needs an app or test change (for example a course card with no `href`, which renders "Coming soon"), do not make it here: delete the unpushed local branch (`git checkout main && git branch -D <branch>`), report what needs fixing, and stop. Such changes go through a normal reviewed PR first.
    6. Commit, `git push -u origin HEAD`, then `gh pr create --title "Publish <ids>" --body "<lessons, checks run, open report items>"` and note the PR number `<n>` it prints.
-   7. Checks register a few seconds after the PR opens, and `gh pr checks` exits 0 when none are reported yet. Poll until `gh pr checks <n> --json name -q length` is above 0, then `gh pr checks <n> --watch --fail-fast`. If CI fails, run `git checkout main`, report the failing check, and stop. Do not merge or deploy.
+   7. Checks register a few seconds after the PR opens, and until then `gh pr checks` prints "no checks reported" and exits non-zero, which looks like a failure. Poll (every few seconds, up to about a minute) until `gh pr view <n> --json statusCheckRollup -q '.statusCheckRollup | length'` is above 0, then run `gh pr checks <n> --watch --fail-fast`. Exit 0 means all checks passed; exit 8 means still pending (keep watching); any other non-zero exit means a check failed. If no checks ever register, stop and report instead of merging. If CI fails, run `git checkout main`, report the failing check, and stop. Do not merge or deploy.
    8. `gh pr merge <n> --merge`, then `git checkout main && git pull --ff-only`.
 5. **Deploy.** From `main` run `vercel deploy --prod --yes`. Capture the production URL and the alias line. A failed build: report the Vercel error and stop.
 6. **Verify live.** Against the production alias (`https://gen-ai-learner-app-web-app.vercel.app`), `curl -s -o /dev/null -w '%{http_code}'` these paths: `/`, `/studio`, `/course`, `/course/chapter-1`, `/course/chapter-p1` (200 only if a python-for-ai lesson is published, else 404), and every lesson in `src/lessons/<module>/<lessonId>/meta.json` at `/learn/<module>/<lessonId>` (200 if `published`, 404 if `draft`). Check the `/` body separately (`! curl -s <alias>/ | grep -qi "coming soon"` must succeed; `grep -c` exits 1 when the count is 0), because the status check discards the body. Any mismatch is a failure: report it, do not claim success.
@@ -48,4 +48,4 @@ Run the whole release without stopping to ask: sync, (optionally) publish lesson
 
 - `vercel ls` takes `-e production`, `-n <limit>` and `--json`; use the JSON for timestamps, since the table only shows relative ages.
 - `vercel deploy --prod` uploads the local checkout, so deploy only from a clean, synced `main`.
-- Production gating means `/studio`, lessons and `/course/chapter-p1` follow `webStatus`; verification is against `meta.json`, not memory.
+- Production gating means lessons and `/course/chapter-p1` follow `webStatus`; verification is against `meta.json`, not memory.
