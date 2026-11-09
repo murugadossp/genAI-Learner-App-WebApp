@@ -22,8 +22,8 @@ Read `AGENTS.md` and `skills/write-web-lesson/SKILL.md` first.
 
 **Review**
 
-Check the lesson against the "Review before delivery" list in `skills/write-web-lesson/references/lesson-template.md`, run the commands in `AGENTS.md`, and inspect the rendered lesson at 390, 768 and 1440px in light and dark themes. Compare the PR's report with what you actually verified.
+Check the lesson against the "Review before delivery" list in `skills/write-web-lesson/references/lesson-template.md`, run the commands in `AGENTS.md`, and inspect the rendered lesson (delete old screenshots first so a stale file is not read as new; check that every image's arrows teach nothing false) at 390, 768 and 1440px in light and dark themes. Compare the PR's report with what you actually verified.
 
 **Return in chat**
 
-Reviewed commit (full SHA, matching the PR head) and PR, CI status, validated findings (file and line, severity, priority P0 to P4, blocking or not), what you verified, what you could not test, and a recommended decision (comment, request changes, or approve if clean). Only with `--post` or an explicit request: post these as PR review comments and say exactly what was posted.
+Reviewed commit (full SHA, matching the PR head), whether that head includes a merge of `main` (and if it was merged after an earlier review, say so), and PR, CI status, validated findings (file and line, severity, priority P0 to P4, blocking or not), what you verified, what you could not test, and a recommended decision (comment, request changes, or approve if clean). Only with `--post` or an explicit request: post these as PR review comments and say exactly what was posted.
