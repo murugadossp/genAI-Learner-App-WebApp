@@ -52,7 +52,7 @@ Use independent, read-only reviewers at three points. Each gate has its own job,
 
 1. **Plan review, before writing.** Give Codex (or another independent reviewer) the plan: outline, running example with its constraints and unique answer, the criterion for any categories, the planned interaction and quiz, and the list of claims that cannot be verified. Ask for factual, teaching and scope problems. One or two rounds.
 2. **Content review, after the lesson passes its checks.** The same reviewer reads the written lesson, quiz and feedback text, alt text and any shortened passages for accuracy, clarity for a beginner, and consistency with the plan. Up to four rounds. Success is two clean rounds in a row. If round four ends without that (a validated P2+ finding in round four, or a finding in round three followed by only one clean round), stop, deliver with the open findings and the last round's state listed in the report, and ask the user how to proceed.
-3. **Final review, after the draft PR is open and CI has run.** Run `/review-web-lesson` (read-only, on the exact PR head SHA) for conformance, accessibility, responsive layout, tests, and whether the report matches the evidence. Fix validated findings with new commits and review the new head again. Record the result and the reviewed SHA in the PR description, not in the report: the report cannot name the head it is committed in, and the final review is not a report checklist item. Any later commit that changes a file other than `docs/lesson-reports/` needs a new review. A report-only commit does not; the PR description then says the head is the reviewed SHA plus report-only commits.
+3. **Final review, after the draft PR is open and CI has run.** Run `/review-web-lesson` (read-only, on the exact PR head SHA) for conformance, accessibility, responsive layout, tests, and whether the report matches the evidence. Fix validated findings with new commits, wait for CI to pass on the new head, and review that head again. Do not finish while CI is pending or failing. Record the result and the reviewed SHA in the PR description, not in the report: the report cannot name the head it is committed in, and the final review is not a report checklist item. Any later commit that changes a file other than `docs/lesson-reports/` needs a new review. A report-only commit does not; the PR description then says the head is the reviewed SHA plus report-only commits.
 
 Rules for every gate:
 
@@ -63,7 +63,7 @@ Rules for every gate:
 - Record every plan and content round (gate, reviewer, findings, action or rejection reason) in the report's review log. The final review is recorded in the PR description with the reviewed SHA.
 - `/review-web-lesson` posts nothing to GitHub unless the user asks.
 
-Checklist, in this order. The report's gate checklist line holds the plan, checks, content and logging items. The draft PR, CI and `/review-web-lesson` items are recorded only in the PR description, because they describe the head the report is committed in:
+Checklist, in this order. The report's gate checklist line holds the plan, checks, content and logging items. The draft PR, CI on the final head and `/review-web-lesson` items are recorded only in the PR description, because they describe the head the report is committed in:
 
 - [ ] Plan review done and its findings handled
 - [ ] Lesson passes its own checks (`format:check`, `typecheck`, `npm test`)
