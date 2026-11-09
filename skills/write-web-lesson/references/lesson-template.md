@@ -48,5 +48,5 @@ Metadata must match the registry's module and slug rules, and its ordered sectio
 - Paragraphs are one or two sentences, steps are lists, and every definition, example and practice item uses the same criterion for the categories.
 - Practice items state the facts needed to answer them, and explanations are announced to screen readers.
 - Check sections and metadata in order, contrast in both themes, and local overflow at mobile, tablet and desktop widths.
-- The plan, content and final reviews were run and logged, and every claim that could not be verified is marked unverified.
+- The plan and content reviews were run and logged in the report (the final review is not part of the report; the reviewer is that final review), and every claim that could not be verified is marked unverified.
 - Run the repository's actual formatting, build, browser and production-gating commands. Record real results and separately flag any manual browser or screen-reader review not performed.

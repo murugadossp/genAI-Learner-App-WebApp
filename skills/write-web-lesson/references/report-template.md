@@ -56,7 +56,7 @@ List anything uncertain that a subject-matter reviewer should check.
 | ----------------------------- | ----- | -------- | ------- | ------------------------- |
 | [gate]                        | [n]   | [tool]   | [text]  | [fixed / rejected: why]   |
 
-Gate checklist: [ ] plan review handled  [ ] checks pass  [ ] content review done  [ ] draft PR open, CI green  [ ] final review done (reviewed SHA is in the PR description, not here)  [ ] every plan and content round logged
+Gate checklist: [ ] plan review handled  [ ] checks pass  [ ] content review done  [ ] draft PR open, CI green  [ ] every plan and content round logged (the final review is recorded in the PR description, not in this report)
 
 Stopped after: [two clean rounds / round cap with open findings listed / reviewer unavailable, and what was used instead].
 
