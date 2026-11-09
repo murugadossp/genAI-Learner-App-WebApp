@@ -1,4 +1,4 @@
-.example, .diagram {
+.example {
   margin: 1rem 0;
   padding: 1rem;
   border: 1px solid var(--line);
@@ -6,5 +6,5 @@
   background: var(--panel);
 }
 .example p { margin: .35rem 0 0; }
-.diagram { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
-.diagram span { padding: .35rem .6rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); }
+.figure { margin: 1rem 0; }
+.figure img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }

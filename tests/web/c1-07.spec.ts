@@ -16,6 +16,18 @@ for (const width of [390, 768, 1440]) {
           .locator("article section[id]")
           .evaluateAll((els) => els.map((el) => el.id)),
       ).toEqual(meta.sections.map((s) => s.id));
+      for (const section of ["verify", "protect", "responsibility"]) {
+        const picture = page.locator(`#${section} img`);
+        await picture.scrollIntoViewIfNeeded();
+        expect((await picture.getAttribute("alt"))?.length).toBeGreaterThan(40);
+        await expect
+          .poll(() =>
+            picture.evaluate(
+              (img: HTMLImageElement) => img.complete && img.naturalWidth > 0,
+            ),
+          )
+          .toBe(true);
+      }
       const practice = page.locator("#practice");
       await practice.getByLabel(/include the private attendee names/).check();
       await practice.getByRole("button", { name: "Check answer" }).click();

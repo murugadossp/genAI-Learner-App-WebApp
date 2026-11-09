@@ -1,3 +1,7 @@
+import Image from "next/image";
+import verifyImage from "./assets/verify.jpg";
+import protectImage from "./assets/protect.jpg";
+import responsibilityImage from "./assets/responsibility.jpg";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "./Check";
 import styles from "./lesson.module.css";
@@ -40,20 +44,23 @@ export default function Lesson() {
           sounds certain. To <strong>verify</strong> a claim, compare it with a
           relevant, reliable source outside the answer.
         </p>
-        <div
-          className={styles.diagram}
-          aria-label="Compare the AI claim with the current official schedule, then correct the notice if needed."
-        >
-          <span>AI claim</span>
-          <span>Compare with</span>
-          <span>Current official schedule</span>
-          <span>Correct notice if needed</span>
-        </div>
         <p>
-          The assistant drafts “Doors open at 9.” Maya compares that claim with
-          the organizer’s current schedule, which says 10. She corrects the
-          notice to 10; the polished sentence alone did not establish the time.
+          The assistant drafts “Doors open at 9 a.m.” Maya compares that claim
+          with the organizer’s current schedule, which says 10 a.m. She corrects
+          the notice to 10 a.m.; the polished sentence alone did not establish
+          the time.
         </p>
+        <figure className={styles.figure}>
+          <Image
+            src={verifyImage}
+            alt="AI draft says 9; Official schedule says 10. Maya compares them and the Checked notice says 10."
+            sizes="(max-width: 760px) 100vw, 720px"
+          />
+          <figcaption className="micro">
+            Maya compares the two times and corrects the notice. Both times are
+            in the morning.
+          </figcaption>
+        </figure>
         <p>
           For a bus trip, check the operator’s current timetable. If you cannot
           find a reliable check, treat the claim as unconfirmed instead of
@@ -67,19 +74,22 @@ export default function Lesson() {
           Like checking what is on a document before handing it over, look at a
           prompt before sending it.
         </p>
-        <div
-          className={styles.diagram}
-          aria-label="Keep the private attendee list out of the prompt; use only the public event details needed for the task."
-        >
-          <span>Private attendee list</span>
-          <span>Keep out of prompt</span>
-          <span>Use public details</span>
-        </div>
         <p>
           Maya needs a public notice, not attendee names or contact details. She
           uses only the public event details needed for the draft and leaves the
           private list out.
         </p>
+        <figure className={styles.figure}>
+          <Image
+            src={protectImage}
+            alt="Public details go into the Prompt; the Private list stays separate behind a stop sign."
+            sizes="(max-width: 760px) 100vw, 720px"
+          />
+          <figcaption className="micro">
+            Maya chooses to keep the private list out. The barrier represents
+            her choice, not a feature of the tool.
+          </figcaption>
+        </figure>
         <p>
           For a generic question about preparing for a doctor’s visit, you can
           leave out personal medical details. Removing names does not guarantee
@@ -111,14 +121,6 @@ export default function Lesson() {
           sending. AI can help make a draft; it does not take over your
           responsibility for what you choose to use or share.
         </p>
-        <div
-          className={styles.diagram}
-          aria-label="Maya reviews the AI draft, then the organizer approves the public notice."
-        >
-          <span>AI draft</span>
-          <span>Maya reviews</span>
-          <span>Organizer approves</span>
-        </div>
         <p>
           Maya checks the notice against the current schedule and asks the
           organizer to approve it before publication. In this example, Maya is
@@ -126,6 +128,16 @@ export default function Lesson() {
           people or organizations may also have responsibilities in real
           situations.
         </p>
+        <figure className={styles.figure}>
+          <Image
+            src={responsibilityImage}
+            alt="AI draft, then Maya reviews it, then Organizer approves the notice in this example."
+            sizes="(max-width: 760px) 100vw, 720px"
+          />
+          <figcaption className="micro">
+            In Maya’s example, review comes before the organizer’s approval.
+          </figcaption>
+        </figure>
         <p>
           Before sending an AI-drafted email, review its facts, tone and
           recipients yourself. For consequential decisions, involve the
