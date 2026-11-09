@@ -1,0 +1,19 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c9-02",
+  "title": "Workflows versus agents",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "two-ways", "title": "Who picks the next step?" },
+    { "id": "workflow", "title": "A workflow: the code sets the order." },
+    {
+      "id": "agent-loop",
+      "title": "An agent loop: the model picks each step."
+    },
+    { "id": "decision-point", "title": "A coded branch is still a workflow." },
+    { "id": "combine", "title": "Most real systems mix the two." },
+    { "id": "try-it", "title": "Sort five systems." },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
