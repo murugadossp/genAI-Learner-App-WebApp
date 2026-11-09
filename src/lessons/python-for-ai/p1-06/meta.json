@@ -1,0 +1,24 @@
+{
+  "module": "python-for-ai",
+  "lessonId": "p1-06",
+  "title": "Dictionaries",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "roadmap", "title": "Dictionaries: Looking things up by name." },
+    { "id": "pairs", "title": "Keys and values: Reading a pair." },
+    { "id": "missing", "title": "Missing keys: KeyError vs defaults." },
+    {
+      "id": "changing",
+      "title": "Changing existing pairs and adding new ones."
+    },
+    {
+      "id": "nested",
+      "title": "Nested dictionaries: Following a path of keys."
+    },
+    { "id": "choosing", "title": "Choosing between a list and a dictionary." },
+    { "id": "practice", "title": "Practice: Updating and adding pairs." },
+    { "id": "lab", "title": "Try the ticket drawer sandbox." },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
