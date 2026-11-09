@@ -32,9 +32,9 @@ const items = [
     why: "It is a deep model trained to produce new content, which is what today’s generative AI is. It is also inside the three outer rings.",
   },
   {
-    text: "A rule in Postbox: show the newest saved article from a topic the reader starred.",
+    text: "A Postbox helper with several hundred hand-written rules that weigh the sender, the wording and any deadline to decide how urgent each message is. It was never trained on data.",
     ring: 0,
-    why: "Another hand-written rule. Simple and predictable, with nothing learned.",
+    why: "People wrote all the rules, and nothing was learned. It makes a judgement a person would normally make, so it is rule-based AI.",
   },
   {
     text: "A parcel-time estimate fitted to past deliveries, using a straight-line fit on distance and weekday.",
