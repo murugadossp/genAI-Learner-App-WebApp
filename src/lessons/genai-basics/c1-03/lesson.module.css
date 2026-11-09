@@ -1,0 +1,152 @@
+.tableWrap {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table caption {
+  text-align: left;
+  font-size: 0.85rem;
+  padding-bottom: 0.4rem;
+  color: var(--muted, inherit);
+}
+.table th,
+.table td {
+  text-align: left;
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.newRow td {
+  font-weight: 700;
+  background: var(--panel);
+}
+.roleTag {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-top: 0.15rem;
+}
+.roleTag[data-role="Label"] {
+  color: var(--accent);
+}
+.diagram {
+  margin: 1rem 0;
+}
+.card {
+  display: grid;
+  gap: 0;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+@media (min-width: 600px) {
+  .card {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.side {
+  padding: 0.8rem 1rem;
+  background: var(--panel);
+}
+.side ul {
+  list-style: none;
+  margin: 0.3rem 0 0;
+  padding: 0;
+}
+.side p {
+  margin: 0.3rem 0 0;
+}
+.tag {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.diagram[data-focus="example"] .card {
+  border-color: var(--accent);
+}
+.diagram[data-focus="features"] .side[data-part="features"],
+.diagram[data-focus="label"] .side[data-part="label"] {
+  outline: 3px solid var(--accent);
+  outline-offset: -3px;
+}
+.task {
+  margin: 1rem 0;
+  padding: 0.8rem 1rem;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+}
+.task fieldset,
+.goalPick {
+  border: 0;
+  margin: 0.4rem 0 0;
+  padding: 0;
+}
+.task legend,
+.goalPick legend {
+  font-weight: 700;
+  padding: 0;
+}
+.option,
+.choice {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+}
+.option input,
+.choice input {
+  accent-color: var(--accent);
+}
+.itemFeedback {
+  margin: 0.5rem 0 0;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg);
+  border-left: 4px solid var(--line);
+  border-radius: 8px;
+}
+.itemFeedback[data-ok="true"] {
+  border-left-color: var(--accent);
+}
+.worked {
+  margin: 1rem 0;
+  padding: 0.7rem 1rem;
+  background: var(--panel);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+}
+.worked p {
+  margin: 0.25rem 0 0;
+}
+.items {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  display: grid;
+  gap: 0.8rem;
+}
+.item fieldset {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.6rem 0.9rem;
+  margin: 0;
+}
+.item legend {
+  font-weight: 700;
+  padding: 0 0.3rem;
+}
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+.score {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
