@@ -100,9 +100,10 @@ try {
     const html = await response.text();
     if (path === "/" && !html.includes("coming soon"))
       throw new Error("Production home is not the placeholder");
+    // /studio is not served in production, so no served page may link to it.
+    if (expected === 200 && path !== "/" && html.includes('href="/studio'))
+      throw new Error(`${path}: links to /studio`);
     if (path.startsWith("/course")) {
-      if (html.includes('href="/studio'))
-        throw new Error(`${path}: links to /studio`);
       const published = new Set(
         lessons()
           .filter((lesson) => lesson.webStatus === "published")
