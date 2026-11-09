@@ -1,0 +1,147 @@
+.example {
+  margin: 1rem 0;
+  padding: 0.8rem 1rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.example p {
+  margin: 0.25rem 0;
+}
+.replies {
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+@media (min-width: 700px) {
+  .replies {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.reply {
+  margin: 0;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  background: var(--bg);
+}
+.reply p {
+  margin: 0.25rem 0;
+}
+.gridFigure {
+  margin: 1rem 0;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 4.6rem 1fr 1fr;
+  gap: 0.35rem;
+  align-items: stretch;
+}
+.corner {
+  display: block;
+}
+.colHead,
+.rowHead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.35rem 0.25rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--muted);
+  border: 2px solid transparent;
+  border-radius: 8px;
+}
+.cell {
+  display: flex;
+  align-items: center;
+  min-height: 3.4rem;
+  padding: 0.5rem 0.55rem;
+  font-size: 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+.grid[data-focus="stakes"] .rowHead,
+.grid[data-focus="checkable"] .colHead,
+.grid[data-focus="levels"] .rowHead,
+.grid[data-focus="levels"] .colHead {
+  color: var(--ink);
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+.grid[data-focus="levels"] .cell {
+  min-height: 5.5rem;
+  color: var(--ink);
+}
+.items {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  display: grid;
+  gap: 1rem;
+}
+.item {
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  display: grid;
+  gap: 0.6rem;
+}
+.taskText {
+  margin: 0;
+}
+.item fieldset {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.5rem 0.9rem;
+  margin: 0;
+}
+.item legend {
+  font-weight: 700;
+  padding: 0 0.3rem;
+}
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+.choice {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+}
+.choice input {
+  accent-color: var(--accent);
+}
+.itemFeedback {
+  margin: 0;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg);
+  border-left: 4px solid var(--line);
+  border-radius: 8px;
+}
+.itemFeedback[data-ok="true"] {
+  border-left-color: var(--accent);
+}
+.level {
+  margin: 0;
+  padding: 0.6rem 0.8rem;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  color: var(--ink);
+}
+.score {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
