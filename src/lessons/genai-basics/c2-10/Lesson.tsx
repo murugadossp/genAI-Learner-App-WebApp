@@ -16,9 +16,10 @@ export default function Lesson() {
         <h2 tabIndex={-1}>Some models work first, then answer.</h2>
         <p>
           Think of a student sitting a test. One student writes the answer
-          straight away. Another jots rough working first, spots a mistake, and
-          fixes it. A <strong>reasoning model</strong> is the second student: it
-          writes working text before it gives its final answer.
+          straight away. Another jots rough working first, and may spot a
+          mistake and fix it, though they can also miss one. A{" "}
+          <strong>reasoning model</strong> is built to work like the second
+          student: it writes working text before it gives its final answer.
         </p>
         <p>
           It is still a language model writing one piece of text at a time, as
@@ -31,7 +32,7 @@ export default function Lesson() {
         <figure className={styles.figure}>
           <Image
             src={diagram}
-            alt="Two lanes. Quick reply: a pet puzzle goes straight to the answer Asha cat, Ben dog, Chen fish, marked wrong, a first guess with no checking. Reasoning model: the same puzzle goes through working text (read the clues, make a guess, check and fix it, check again) to the answer Asha fish, Ben cat, Chen dog, marked right."
+            alt="Two lanes. Quick reply: a puzzle where three people each have a different pet goes straight to the answer Asha cat, Ben dog, Chen fish, marked wrong, a first guess with no checking. Reasoning model: the same puzzle goes through working text (read the clues, make a guess, check and fix it, check again) to the answer Asha fish, Ben cat, Chen dog, marked right."
             sizes="(min-width: 760px) 720px, 100vw"
           />
           <figcaption className="micro">
