@@ -2,7 +2,7 @@
   "module": "python-for-ai",
   "lessonId": "p1-02",
   "title": "Operators",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     {
       "id": "arithmetic-and-chunks",

@@ -1,0 +1,30 @@
+{
+  "module": "python-for-ai",
+  "lessonId": "p1-03",
+  "title": "Strings",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "quotes-and-multiline",
+      "title": "Quotes: Choosing boundaries for prompts and text."
+    },
+    {
+      "id": "cleaning-and-immutability",
+      "title": "Cleaning and immutability: Stripping whitespace and lowercasing."
+    },
+    {
+      "id": "replace-and-split",
+      "title": "Transforming: Replacing tokens and splitting words."
+    },
+    {
+      "id": "fstrings-and-prompts",
+      "title": "F-strings: Interpolating dynamic prompts safely."
+    },
+    {
+      "id": "lab",
+      "title": "Inspect string transformations in the AI prompt sandbox."
+    },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
