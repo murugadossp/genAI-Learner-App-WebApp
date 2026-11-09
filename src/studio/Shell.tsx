@@ -1,5 +1,9 @@
 import Link from "next/link";
 import { ThemeToggle } from "../components/ThemeToggle";
+// /studio is a design preview and is not served in production.
+const production =
+  process.env.VERCEL_ENV === "production" ||
+  process.env.APP_ENV === "production";
 export default function Shell({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -14,14 +18,25 @@ export default function Shell({ children }: { children: React.ReactNode }) {
           genai<span className="brand-light">/ learner</span>
         </Link>
         <nav aria-label="Main">
-          <Link href="/studio">Explore</Link>
-          <Link href="/studio#catalog">Learning paths</Link>
+          {production ? (
+            <>
+              <Link href="/course/chapter-1">AI foundations</Link>
+              <Link href="/course">How language models work</Link>
+            </>
+          ) : (
+            <>
+              <Link href="/studio">Explore</Link>
+              <Link href="/studio#catalog">Learning paths</Link>
+            </>
+          )}
         </nav>
         <div className="header-actions">
           <ThemeToggle />
-          <Link className="button small" href="/studio">
-            Enter the studio <span>↗</span>
-          </Link>
+          {!production && (
+            <Link className="button small" href="/studio">
+              Enter the studio <span>↗</span>
+            </Link>
+          )}
         </div>
       </header>
       <main id="main" tabIndex={-1}>

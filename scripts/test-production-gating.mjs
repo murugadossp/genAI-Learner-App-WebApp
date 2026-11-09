@@ -76,9 +76,17 @@ try {
   for (const [path, expected] of [
     ["/", 200],
     ["/studio", 404],
-    ["/course", 404],
-    ["/course/chapter-1", 404],
-    ["/course/chapter-p1", 404],
+    ["/course", 200],
+    ["/course/chapter-1", 200],
+    [
+      "/course/chapter-p1",
+      lessons().some(
+        (lesson) =>
+          lesson.module === "python-for-ai" && lesson.webStatus === "published",
+      )
+        ? 200
+        : 404,
+    ],
     ...lessons().map((lesson) => [
       `/learn/${lesson.module}/${lesson.lessonId}`,
       lesson.webStatus === "published" ? 200 : 404,
@@ -89,8 +97,22 @@ try {
     });
     if (response.status !== expected)
       throw new Error(`${path}: expected ${expected}, got ${response.status}`);
-    if (path === "/" && !(await response.text()).includes("coming soon"))
+    const html = await response.text();
+    if (path === "/" && !html.includes("coming soon"))
       throw new Error("Production home is not the placeholder");
+    // /studio is not served in production, so no served page may link to it.
+    if (expected === 200 && path !== "/" && html.includes('href="/studio'))
+      throw new Error(`${path}: links to /studio`);
+    if (path.startsWith("/course")) {
+      const published = new Set(
+        lessons()
+          .filter((lesson) => lesson.webStatus === "published")
+          .map((lesson) => `/learn/${lesson.module}/${lesson.lessonId}`),
+      );
+      for (const [, href] of html.matchAll(/href="(\/learn\/[^"#?]+)/g))
+        if (!published.has(href))
+          throw new Error(`${path}: links to unpublished ${href}`);
+    }
     console.log(`${path}: ${response.status}`);
   }
 } finally {
