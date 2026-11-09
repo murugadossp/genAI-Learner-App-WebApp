@@ -42,21 +42,21 @@ List anything uncertain that a subject-matter reviewer should check.
 
 ### Commands
 
-| Command                   | Result      | Notes                 |
-| ------------------------- | ----------- | --------------------- |
-| `npm run format:check`    | [pass/fail] |                       |
-| `npm run typecheck`       | [pass/fail] |                       |
-| `npm test`                | [pass/fail] | [specs added/changed] |
-| `npm run test:production` | [pass/fail] | draft returns 404; published (incl. a revision) returns 200 |
+| Command                   | Result      | Notes                                                                                                           |
+| ------------------------- | ----------- | --------------------------------------------------------------------------------------------------------------- |
+| `npm run format:check`    | [pass/fail] |                                                                                                                 |
+| `npm run typecheck`       | [pass/fail] |                                                                                                                 |
+| `npm test`                | [pass/fail] | [specs added/changed]                                                                                           |
+| `npm run test:production` | [pass/fail] | draft returns 404; published (incl. a revision) returns 200                                                     |
 | CI run                    | [link]      | optional: the commit tested when the report was written. CI on the final head is recorded in the PR description |
 
 ### Review log
 
 | Gate (plan / content) | Round | Reviewer | Finding | Action or reason rejected |
-| ----------------------------- | ----- | -------- | ------- | ------------------------- |
-| [gate]                        | [n]   | [tool]   | [text]  | [fixed / rejected: why]   |
+| --------------------- | ----- | -------- | ------- | ------------------------- |
+| [gate]                | [n]   | [tool]   | [text]  | [fixed / rejected: why]   |
 
-Gate checklist: [ ] plan review handled  [ ] checks pass  [ ] content review done  [ ] every plan and content round logged (the final review is recorded in the PR description, not in this report)
+Gate checklist: [ ] plan review handled [ ] checks pass [ ] content review done [ ] every plan and content round logged (the final review is recorded in the PR description, not in this report)
 
 Stopped after: [two clean rounds / round cap with open findings listed / reviewer unavailable, and what was used instead].
 
@@ -76,6 +76,8 @@ Screenshots saved at: [path or "none"]
 
 - [ ] Sections render in the same order as `meta.json`
 - [ ] No horizontal overflow; text readable; contrast acceptable in both themes
+- [ ] Active interactive controls maintain high contrast on hover without falling back to light panel backgrounds
+- [ ] Conceptual diagrams (if any) load, have descriptive alt text (>40 chars), and are verified in Playwright tests
 - [ ] Interaction responds meaningfully, including reset
 - [ ] Wrong answer shows its specific feedback; retry works; correct answer is not always in the same position as other lessons
 - [ ] Keyboard operation and visible focus throughout
