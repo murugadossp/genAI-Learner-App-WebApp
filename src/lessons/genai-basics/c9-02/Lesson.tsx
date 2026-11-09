@@ -1,12 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
 import styles from "./lesson.module.css";
-import workflowImg from "./images/workflow.png";
-import agentLoopImg from "./images/agent-loop.png";
-import combinedImg from "./images/combined.png";
 import { WorkflowLab } from "./WorkflowLab";
+import { AgentLoopDiagram, CombinedDiagram, WorkflowDiagram } from "./Diagrams";
 
 export default function Lesson() {
   return (
@@ -29,15 +26,21 @@ export default function Lesson() {
             step.
           </li>
           <li>
-            <strong>Agent loop:</strong> the model chooses the next action while
-            the system runs. The action runs, the model reads the result, and it
-            chooses again until it stops.
+            <strong>Agent loop:</strong> the model chooses the next step while
+            the system runs. The system runs that step, the model reads the
+            result, and it chooses again until it stops.
           </li>
           <li>
             <strong>Combination:</strong> fixed steps around one or more agent
             loops.
           </li>
         </ul>
+        <p>
+          In this lesson, a <strong>step</strong> is one thing the system does,
+          such as looking up an account. A <strong>tool</strong> is a function
+          the system runs on the model&apos;s behalf. &ldquo;Run a tool&rdquo;
+          in the diagram means the system runs that function.
+        </p>
         <div className="callout">
           <strong>Key question:</strong> at run time, does the code or the model
           choose the next step?
@@ -60,15 +63,15 @@ export default function Lesson() {
         </p>
         <ol>
           <li>Classify the ticket by topic. This one is billing.</li>
-          <li>Check its urgency. This one is low.</li>
+          <li>
+            Check its urgency. The system looks for words such as
+            &ldquo;urgent&rdquo;, &ldquo;outage&rdquo; or &ldquo;blocked&rdquo;.
+            This ticket has none, so its urgency is low.
+          </li>
           <li>Route the ticket to the billing team.</li>
         </ol>
         <figure className={styles.figure}>
-          <Image
-            src={workflowImg}
-            alt="Three boxes in a row, labelled Classify ticket, Check urgency and Route ticket, joined by arrows that point from left to right. A caption says the order is fixed and decided by code."
-            sizes="(max-width: 760px) 100vw, 760px"
-          />
+          <WorkflowDiagram />
           <figcaption className="micro">
             Each step runs in order. The code decides what comes next.
           </figcaption>
@@ -88,24 +91,19 @@ export default function Lesson() {
         <h2 tabIndex={-1}>An agent loop: the model picks each step.</h2>
         <p>
           Now a different ticket: &ldquo;My account is locked and I cannot log
-          in.&rdquo; In an agent loop, the model chooses the next action. It
-          might choose to look up the account. The system runs that lookup and
-          returns the result. The model reads the result and chooses again.
+          in.&rdquo; In an agent loop, the model chooses the next step. It might
+          choose to look up the account. The system runs that lookup and returns
+          the result. The model reads the result and chooses again.
         </p>
         <ol>
-          <li>The model picks an action, such as looking up the account.</li>
-          <li>The system runs the action and returns the result.</li>
+          <li>The model picks a step, such as looking up the account.</li>
+          <li>The system runs the step and returns the result.</li>
           <li>
-            The model reads the result, then either picks another action or
-            stops.
+            The model reads the result, then either picks another step or stops.
           </li>
         </ol>
         <figure className={styles.figure}>
-          <Image
-            src={agentLoopImg}
-            alt="Three boxes in a circle, labelled Model picks next step, Run a tool and Model reads result, with arrows that go clockwise around the circle. A caption says the model picks the next step each time."
-            sizes="(max-width: 760px) 100vw, 760px"
-          />
+          <AgentLoopDiagram />
           <figcaption className="micro">
             The model chooses the next step after each result.
           </figcaption>
@@ -134,7 +132,10 @@ export default function Lesson() {
         <p>
           The rule is written in code, so the code still picks the path. That
           keeps this a workflow. In this example, the classifier is a simple
-          keyword scan, which keeps the rule easy to follow.
+          keyword scan, which keeps the rule easy to follow. The confidence is a
+          score from 0 to 1 that the classifier reports for its own answer. Here
+          it comes from that simple scan, so treat it as an illustration, not a
+          measured accuracy.
         </p>
         <div className="callout">
           <strong>Common mix-up:</strong> a model call inside a fixed step does
@@ -184,11 +185,7 @@ export default function Lesson() {
           </li>
         </ol>
         <figure className={styles.figure}>
-          <Image
-            src={combinedImg}
-            alt="Three boxes in a row, labelled Intake, Investigate and File ticket, with arrows from left to right. The Investigate box has a dashed outline to show it is the open-ended step. A caption says there are fixed steps around one open-ended step."
-            sizes="(max-width: 760px) 100vw, 760px"
-          />
+          <CombinedDiagram />
           <figcaption className="micro">
             Keep the open-ended step small, and cap how many steps it can take.
           </figcaption>
@@ -216,7 +213,7 @@ export default function Lesson() {
 
       <Check
         id="check"
-        question="A support system always runs the same three steps. One step calls a model to write a summary. The code, not the model, decides what runs next. What is this system?"
+        question="A support system runs three steps in a fixed sequence. One step calls a model to write a one-sentence summary. The model is never asked which step to run next. What is this system?"
         options={[
           "An agent loop, because it uses a model.",
           "A workflow, because the code sets the order of the steps.",

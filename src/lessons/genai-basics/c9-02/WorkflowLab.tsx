@@ -13,7 +13,7 @@ const kinds = [
   },
   {
     name: "Combination",
-    means: "fixed steps, with one open-ended agent loop inside them.",
+    means: "fixed steps, with one or more open-ended agent loops inside them.",
   },
 ] as const;
 
@@ -39,9 +39,9 @@ const items = [
     why: "The model writes a summary inside one fixed step. It does not choose what runs next.",
   },
   {
-    text: "A rule sends tickets with confidence below 0.70 to an extra review step. Other tickets go straight to routing. The rule is code.",
-    kind: 0,
-    why: "A coded rule picks the path. A branch chosen by a rule is still a workflow.",
+    text: "A trip planner searches for flights, reads the prices, and decides whether to search another date. It keeps going until it has a plan it judges good enough, then stops.",
+    kind: 1,
+    why: "The model chooses each search and decides when to stop. That is the loop.",
   },
 ];
 

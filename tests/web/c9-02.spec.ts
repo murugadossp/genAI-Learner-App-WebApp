@@ -26,27 +26,27 @@ for (const width of [390, 768, 1440])
         .evaluateAll((els) => els.map((e) => e.id));
       expect(ids).toEqual(meta.sections.map((s) => s.id));
 
-      // Three concept illustrations load and have descriptive alt text.
-      const figures = page.locator("article figure img");
+      // Three code-drawn diagrams are visible and have descriptive titles.
+      const figures = page.locator("article figure svg");
       await expect(figures).toHaveCount(3);
       for (let i = 0; i < 3; i++) {
-        const img = figures.nth(i);
-        await img.scrollIntoViewIfNeeded();
-        await expect(img).toBeVisible();
-        await expect
-          .poll(() =>
-            img.evaluate((el) => {
-              const image = el as HTMLImageElement;
-              return image.complete && image.naturalWidth > 0;
-            }),
-          )
-          .toBe(true);
-        const alt = (await img.getAttribute("alt")) ?? "";
-        expect(alt.length).toBeGreaterThan(40);
+        const svg = figures.nth(i);
+        await svg.scrollIntoViewIfNeeded();
+        await expect(svg).toBeVisible();
+        const title = (await svg.locator("title").textContent()) ?? "";
+        expect(title.replace(/\s+/g, " ").trim().length).toBeGreaterThan(40);
       }
-      await expect(figures.nth(0)).toHaveAttribute("alt", /Classify ticket/);
-      await expect(figures.nth(1)).toHaveAttribute("alt", /Run a tool/);
-      await expect(figures.nth(2)).toHaveAttribute("alt", /dashed outline/);
+      await expect(figures.nth(0).locator("title")).toContainText(
+        "Classify ticket",
+      );
+      await expect(figures.nth(1).locator("title")).toContainText("Run a tool");
+      await expect(figures.nth(2).locator("title")).toContainText(
+        "dashed outline",
+      );
+      // The diagram text is real SVG text, so it can be read by name.
+      await expect(figures.nth(1).locator("text").first()).toHaveText(
+        "Model picks",
+      );
 
       // Lab: a wrong answer gets specific feedback; the score updates.
       const lab = page.locator("fieldset", {
