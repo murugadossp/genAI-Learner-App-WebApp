@@ -21,6 +21,7 @@ Copy this template to `docs/lesson-reports/<module>/<lessonId>.md`, fill every s
 ## 3. What was built
 
 - **Files added or changed:** [list]
+- **Content added after user feedback (if any):** [what was asked and what changed]
 - **Interaction:** [learner action, observable change, insight]
 - **Knowledge check:** [question, correct option position, one line per wrong option's feedback]
 - **Shared code touched:** [`LessonFrame`, `Check`, `Course.tsx`, none] and why. Confirm existing lessons render unchanged.
@@ -59,6 +60,8 @@ List anything uncertain that a subject-matter reviewer should check.
 Gate checklist: [ ] plan review handled [ ] checks pass [ ] content review done [ ] every plan and content round logged (the final review is recorded in the PR description, not in this report)
 
 Stopped after: [two clean rounds / round cap with open findings listed / reviewer unavailable, and what was used instead].
+
+Round count: [number of content rounds and whether two clean rounds in a row were reached]. If the user requested a substantial expansion after review, list those rounds as a new count and say so.
 
 Stacking: [not stacked / stacked on `<parent-branch>`, PR base, and plan to rebase onto `main`].
 
