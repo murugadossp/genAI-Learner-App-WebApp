@@ -47,7 +47,7 @@ List anything uncertain that a subject-matter reviewer should check.
 | `npm run format:check`    | [pass/fail] |                       |
 | `npm run typecheck`       | [pass/fail] |                       |
 | `npm test`                | [pass/fail] | [specs added/changed] |
-| `npm run test:production` | [pass/fail] | draft returns 404     |
+| `npm run test:production` | [pass/fail] | draft returns 404; published (incl. a revision) returns 200 |
 | CI run                    | [link]      | tested commit `[sha]`; CI on later commits is in the PR description |
 
 ### Review log
