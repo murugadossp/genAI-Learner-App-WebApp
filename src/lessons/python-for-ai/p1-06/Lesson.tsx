@@ -230,8 +230,19 @@ len(ticket)                # 4 (new pair inserted)`}</Code>
           such as <code>ticket[&quot;priorty&quot;] = &quot;low&quot;</code>,
           Python does not raise an error. Instead, it quietly creates a new
           fourth key named <code>&quot;priorty&quot;</code> and leaves{" "}
-          <code>&quot;priority&quot;</code> completely unchanged.
+          <code>&quot;priority&quot;</code> completely unchanged. (Each card
+          above starts from the original 3-pair ticket. Run in order, as below,
+          the ticket ends with 5 pairs.)
         </p>
+        <Code label="Running all three assignments in order">{`ticket = {'id': 'T-204', 'topic': 'billing', 'priority': 'high'}
+ticket['priority'] = 'low'    # update existing key
+ticket['assignee'] = 'Sam'    # insert new key
+ticket['priorty'] = 'low'     # typo: adds a new key
+ticket
+# {'id': 'T-204', 'topic': 'billing', 'priority': 'low',
+#  'assignee': 'Sam', 'priorty': 'low'}
+len(ticket)
+# 5  (3 pairs, plus 'assignee', plus the misspelt 'priorty')`}</Code>
         <p>
           Everyday analogy: drawer labels. Writing on an existing label replaces
           the label card; writing on a blank drawer adds a new drawer to the
