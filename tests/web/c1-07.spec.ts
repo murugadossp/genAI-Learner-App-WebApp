@@ -25,8 +25,10 @@ for (const width of [390, 768, 1440]) {
         /.+/,
       );
       await practice.getByRole("button", { name: "Try again" }).click();
-      await practice.getByLabel(/public event name and schedule/).check();
-      await practice.getByRole("button", { name: "Check answer" }).click();
+      await practice.getByLabel(/public event name and schedule/).focus();
+      await page.keyboard.press("Space");
+      await page.keyboard.press("Tab");
+      await page.keyboard.press("Enter");
       await expect(practice.getByRole("status")).toContainText("Correct");
       await page
         .getByRole("button", { name: "Switch color theme" })
@@ -43,6 +45,12 @@ for (const width of [390, 768, 1440]) {
       await quiz.getByLabel(/Maya: she checks/).check();
       await quiz.getByRole("button", { name: "Check answer" }).click();
       await expect(quiz.getByRole("status")).toContainText("Correct");
+      await page
+        .getByRole("button", { name: "Switch color theme" })
+        .first()
+        .click();
+      await expect(quiz.getByRole("status")).toContainText("Correct");
+      await expect(quiz.getByLabel(/Maya: she checks/)).toBeChecked();
       expect(
         await page.evaluate(
           () => document.documentElement.scrollWidth <= innerWidth,
