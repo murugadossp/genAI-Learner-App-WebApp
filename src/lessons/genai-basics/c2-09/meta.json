@@ -1,0 +1,44 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c2-09",
+  "title": "Temperature and sampling",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "spread",
+      "title": "The model scores choices; sampling picks one."
+    },
+    {
+      "id": "where",
+      "title": "Where temperature sits: after the network, before the pick."
+    },
+    {
+      "id": "settings",
+      "title": "Three settings, three different jobs."
+    },
+    {
+      "id": "lab",
+      "title": "Turn the temperature dial."
+    },
+    {
+      "id": "how",
+      "title": "What the dial does to the scores."
+    },
+    {
+      "id": "mix",
+      "title": "Real systems often mix them."
+    },
+    {
+      "id": "limits",
+      "title": "Temperature is not a truth or safety setting."
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
+  ]
+}
