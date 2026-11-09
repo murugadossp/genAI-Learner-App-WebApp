@@ -1,7 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
 import { TypeLab } from "./TypeLab";
+import memoryModelImg from "./python-memory-model.png";
 import styles from "./lesson.module.css";
 
 export default function Lesson() {
@@ -58,6 +60,19 @@ export default function Lesson() {
           simply moves the name tag <code>count</code> to point to the new
           number 4.
         </p>
+        <figure className={styles.figure}>
+          <Image
+            src={memoryModelImg}
+            alt="Infographic showing Python's memory model in two panels. Left panel illustrates variables as name tags pointing to objects in memory: 'max_tokens' and 'prompt_limit' point to the same integer object 500, 'temperature' points to float 0.7, and 'count' points to 4 while leaving previous value 3 unreferenced for garbage collection. Right panel illustrates that types belong to values rather than names: 'raw_limit' points to string object '500' while 'token_budget' points to integer object 500, showing that types live inside the objects in memory."
+            sizes="(min-width: 900px) 760px, 100vw"
+            priority
+          />
+          <figcaption className="micro">
+            Python memory model: variables are name tags pointing to objects in
+            memory. Reassignment moves the tag; types live inside the values,
+            not the names.
+          </figcaption>
+        </figure>
       </section>
 
       <section id="core-types">

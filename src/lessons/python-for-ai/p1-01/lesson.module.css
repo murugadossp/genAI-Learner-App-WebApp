@@ -401,3 +401,22 @@
   margin: 0;
   line-height: 1.4;
 }
+
+.figure {
+  margin: 1.5rem 0;
+}
+
+.figure img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.figure figcaption {
+  margin-top: 0.5rem;
+  color: var(--muted);
+}

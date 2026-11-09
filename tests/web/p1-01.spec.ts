@@ -25,6 +25,17 @@ for (const width of [390, 768, 1440])
         "Python for AI / Lesson 01",
       );
 
+      // Verify memory model illustration loads with valid alt text
+      const diagram = page.locator("article figure img");
+      await expect(diagram).toHaveCount(1);
+      await diagram.scrollIntoViewIfNeeded();
+      await expect
+        .poll(() => diagram.evaluate((e: HTMLImageElement) => e.naturalWidth))
+        .toBeGreaterThan(0);
+      expect(
+        ((await diagram.getAttribute("alt")) ?? "").length,
+      ).toBeGreaterThan(40);
+
       // Verify lab container exists
       const lab = page.getByRole("region", {
         name: "Interactive Python Type Sandbox",
