@@ -32,9 +32,9 @@ const items = [
     why: "It is a deep model trained to produce new content, which is what today’s generative AI is. It is also inside the three outer rings.",
   },
   {
-    text: "A Postbox helper with several hundred hand-written rules that weigh the sender, the wording and any deadline to decide how urgent each message is. It was never trained on data.",
+    text: "A classic chess program that searches possible moves several steps ahead and scores each position with a formula chess experts wrote. It was never trained on data.",
     ring: 0,
-    why: "People wrote all the rules, and nothing was learned. It makes a judgement a person would normally make, so it is rule-based AI.",
+    why: "People designed the search and the scoring, and nothing was learned. Searching ahead to choose a move is a classic AI technique.",
   },
   {
     text: "A parcel-time estimate fitted to past deliveries, using a straight-line fit on distance and weekday.",

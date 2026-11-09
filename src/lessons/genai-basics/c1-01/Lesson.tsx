@@ -102,9 +102,9 @@ export default function Lesson() {
           The same family scales up. A chess program of the classic kind
           searches millions of positions and scores them with rules chess
           experts wrote. A route planner searches a road map using costs people
-          set. An expert system can hold thousands of rules. (Real versions
-          often add learning on top, which is why the families overlap in real
-          products.)
+          set. An expert system stores knowledge about a field and reasons from
+          it to an answer. (Real versions often add learning on top, which is
+          why the families overlap in real products.)
         </p>
         <div className={styles.example}>
           <strong>In Postbox</strong>
@@ -112,9 +112,12 @@ export default function Lesson() {
             Postbox could start with one hand-written rule such as “if the
             subject says WINNER and the message has three or more links, mark it
             spam.” On its own, a single rule like that is borderline: most
-            people would call it ordinary software. Rule-based AI means many
-            such rules working together on a judgement a person would normally
-            make, as the tic-tac-toe player does.
+            people would call it ordinary software. What makes designed systems
+            AI is the kind of job and method, such as searching ahead or
+            reasoning from stored knowledge to make a judgement a person would
+            normally make, as the tic-tac-toe player does. How many rules there
+            are does not decide it, and the line between AI and ordinary
+            software depends on context.
           </p>
         </div>
         <RingDiagram current={0} wholeField />
