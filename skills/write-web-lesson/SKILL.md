@@ -63,7 +63,7 @@ Rules for every gate:
 - Record every plan and content round (gate, reviewer, findings, action or rejection reason) in the report's review log. The final review is recorded in the PR description with the reviewed SHA.
 - `/review-web-lesson` posts nothing to GitHub unless the user asks.
 
-Checklist, in this order. Tick it in the report's gate checklist line, except the `/review-web-lesson` item, which is recorded only in the PR description:
+Checklist, in this order. The report's gate checklist line holds the plan, checks, content and logging items. The draft PR, CI and `/review-web-lesson` items are recorded only in the PR description, because they describe the head the report is committed in:
 
 - [ ] Plan review done and its findings handled
 - [ ] Lesson passes its own checks (`format:check`, `typecheck`, `npm test`)
