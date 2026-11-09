@@ -123,17 +123,27 @@ export default function Lesson() {
       </section>
       <section id="ml">
         <h2 tabIndex={-1}>Machine learning: learning from examples.</h2>
+        <p>
+          In <strong>machine learning</strong>, the system learns a pattern from
+          examples, so a person does not have to write a rule for every case.
+          People still design how it learns. The system adjusts its internal
+          values to improve its performance on the examples.
+        </p>
+        <p>
+          In this simplified example, <strong>training</strong> uses messages
+          labelled spam or not to fit a model. The{" "}
+          <strong>learned model</strong> is the result of that training.
+        </p>
+        <p>
+          Later, when we <strong>use</strong> that same model, a new message
+          goes into it and it predicts a label, such as spam. The prediction can
+          be wrong; using the model here does not train it again.
+        </p>
         <Figure
           src="/lessons/c1-01/ai-ml.jpg"
-          alt="Labelled example envelopes flow into a machine that then sorts a new message into a ticked or crossed tray. Labels: Machine learning; Many labelled examples; The machine learns the pattern; Sorts a new message."
-          caption="Show the system many examples and let it find the pattern."
+          alt="Training uses Labelled examples to fit a Learned model. Use sends a New message into the same model, which predicts Spam."
+          caption="A simplified example: training fits the model; later, a new message goes in and a predicted label comes out."
         />
-        <p>
-          In <strong>machine learning</strong>, the system learns the pattern
-          from examples, so a person does not have to write a rule for every
-          case. People still design how it learns. The system adjusts its own
-          internal values until it does well on the examples.
-        </p>
         <div className={styles.example}>
           <strong>In Postbox</strong>
           <p>
