@@ -235,10 +235,10 @@ export default function Lesson() {
         </p>
         <div className={styles.codePanel}>
           <div className={styles.codeComment}>
-            # Environment variables always return strings
+            # Provide a fallback default string if unset
           </div>
           <p className={styles.codeLine}>
-            raw_limit = &quot;1000&quot;{" "}
+            raw_limit = os.getenv(&quot;MAX_TOKENS&quot;, &quot;1000&quot;){" "}
             <span className={styles.codeComment}># type is str</span>
           </p>
           <div className={styles.codeComment}>
@@ -256,10 +256,26 @@ export default function Lesson() {
             <span className={styles.codeComment}># type is float (0.7)</span>
           </p>
         </div>
-        <p>
-          If the string cannot be parsed as the target type, Python raises a{" "}
-          <code>ValueError</code>:
-        </p>
+        <p>Two different errors can occur during configuration loading:</p>
+        <ul>
+          <li>
+            <strong>
+              Missing variables (<code>TypeError</code>):
+            </strong>{" "}
+            If <code>os.getenv(&quot;MAX_TOKENS&quot;)</code> is unset without a
+            default, it returns <code>None</code>. Passing <code>None</code> to{" "}
+            <code>int()</code> raises a <code>TypeError</code>. Setting a
+            fallback default string prevents this.
+          </li>
+          <li>
+            <strong>
+              Invalid text (<code>ValueError</code>):
+            </strong>{" "}
+            If the string cannot be parsed as a number (such as{" "}
+            <code>int(&quot;unlimited&quot;)</code>), Python raises a{" "}
+            <code>ValueError</code>.
+          </li>
+        </ul>
         <div className={styles.codePanel}>
           <p className={styles.codeLine}>
             int(&quot;unlimited&quot;){" "}

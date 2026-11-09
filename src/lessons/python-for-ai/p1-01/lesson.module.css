@@ -125,16 +125,17 @@
 }
 
 .codeVar {
-  color: var(--orange);
+  color: var(--inverse-ink);
   font-weight: 600;
 }
 
 .codeOp {
-  color: var(--inverse-ink);
+  color: var(--inverse-muted);
 }
 
 .codeVal {
-  color: var(--green);
+  color: var(--code-ink);
+  font-weight: 600;
 }
 
 .memoryDiagram {

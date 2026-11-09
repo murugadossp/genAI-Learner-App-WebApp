@@ -77,7 +77,7 @@ export function TypeLab() {
     opButtons = [
       { id: "op1", label: "+ 100 (numeric)" },
       { id: "op2", label: '+ "100" (text)' },
-      { id: "op3", label: "API validation" },
+      { id: "op3", label: "Client type check" },
     ];
 
     if (selectedOp === "op1") {
@@ -112,14 +112,14 @@ export function TypeLab() {
       if (!isStringWrapped) {
         opResult = {
           isError: false,
-          code: "isinstance(max_tokens, int)  # Result: True",
-          desc: "Valid! The AI provider API accepts this parameter as a generation limit.",
+          code: "isinstance(max_tokens, int)  # Client type check: True",
+          desc: "Valid type: The parameter satisfies the client-side integer schema before sending to the model API.",
         };
       } else {
         opResult = {
           isError: true,
-          code: "isinstance(max_tokens, int)  # Result: False (is str)",
-          desc: 'Validation error: The API expects an integer, but received "500" as text. The API call fails.',
+          code: "isinstance(max_tokens, int)  # Client type check: False (is str)",
+          desc: 'Type check failed: The client parameter check expects an integer, but received "500" as text. The request is rejected before reaching the server.',
         };
       }
     }
@@ -127,7 +127,7 @@ export function TypeLab() {
     opButtons = [
       { id: "op1", label: "* 2 (scale)" },
       { id: "op2", label: "+ 0.1 (shift)" },
-      { id: "op3", label: "API validation" },
+      { id: "op3", label: "Client type check" },
     ];
 
     if (selectedOp === "op1") {
@@ -162,14 +162,14 @@ export function TypeLab() {
       if (!isStringWrapped) {
         opResult = {
           isError: false,
-          code: "isinstance(temperature, float)  # Result: True",
-          desc: "Valid! Expected float parameter accepted by LLM API.",
+          code: "isinstance(temperature, float)  # Client type check: True",
+          desc: "Valid type: Satisfies the float parameter requirement for model sampling.",
         };
       } else {
         opResult = {
           isError: true,
-          code: "isinstance(temperature, float)  # Result: False (is str)",
-          desc: 'Validation error: Expected float, got "0.7" (str).',
+          code: "isinstance(temperature, float)  # Client type check: False (is str)",
+          desc: 'Type check failed: Expected float, got "0.7" (str). Client validation rejects the request.',
         };
       }
     }
@@ -177,7 +177,7 @@ export function TypeLab() {
     opButtons = [
       { id: "op1", label: '+ "-preview"' },
       { id: "op2", label: ".upper()" },
-      { id: "op3", label: "API validation" },
+      { id: "op3", label: "Client type check" },
     ];
 
     if (selectedOp === "op1") {
@@ -195,8 +195,8 @@ export function TypeLab() {
     } else {
       opResult = {
         isError: false,
-        code: "isinstance(model_name, str)  # Result: True",
-        desc: "Valid string identifier accepted by LLM client.",
+        code: "isinstance(model_name, str)  # Client type check: True",
+        desc: "Illustrative type check: The SDK confirms model_name is a string. Note that remote provider APIs still validate if the model identifier actually exists and is active for your API key.",
       };
     }
   } else {
@@ -204,7 +204,7 @@ export function TypeLab() {
     opButtons = [
       { id: "op1", label: "not stream" },
       { id: "op2", label: 'bool("False") gotcha' },
-      { id: "op3", label: "API validation" },
+      { id: "op3", label: "Client type check" },
     ];
 
     if (selectedOp === "op1") {
@@ -231,14 +231,14 @@ export function TypeLab() {
       if (!isStringWrapped) {
         opResult = {
           isError: false,
-          code: "isinstance(stream, bool)  # Result: True",
-          desc: "Valid boolean flag enabling streaming output.",
+          code: "isinstance(stream, bool)  # Client type check: True",
+          desc: "Valid type: Boolean flag matches the streaming parameter type.",
         };
       } else {
         opResult = {
           isError: true,
-          code: "isinstance(stream, bool)  # Result: False (is str)",
-          desc: 'Validation error: Expected bool, received "True" (str).',
+          code: "isinstance(stream, bool)  # Client type check: False (is str)",
+          desc: 'Type check failed: Expected bool, received "True" (str). Client validation fails.',
         };
       }
     }
