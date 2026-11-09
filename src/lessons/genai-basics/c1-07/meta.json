@@ -1,0 +1,15 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c1-07",
+  "title": "Using AI responsibly",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "roadmap", "title": "Three habits for using AI with care." },
+    { "id": "verify", "title": "Verify claims before relying on them." },
+    { "id": "protect", "title": "Protect information before you share it." },
+    { "id": "practice", "title": "Choose what Maya shares." },
+    { "id": "responsibility", "title": "Keep a person responsible." },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
