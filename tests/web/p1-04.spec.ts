@@ -30,9 +30,12 @@ for (const width of [390, 768, 1440])
       await expect
         .poll(() => diagram.evaluate((e: HTMLImageElement) => e.naturalWidth))
         .toBeGreaterThan(0);
-      expect(
-        ((await diagram.getAttribute("alt")) ?? "").length,
-      ).toBeGreaterThan(40);
+      const altText = (await diagram.getAttribute("alt")) ?? "";
+      expect(altText.length).toBeGreaterThan(40);
+      expect(altText).toContain("0-based positive indices 0, 1, 2, 3");
+      expect(altText).toContain("negative indices -4, -3, -2, -1");
+      expect(altText).toContain("retrieved_docs[0:2]");
+      expect(altText).toContain("retrieved_docs = retrieved_docs.append()");
 
       // Verify ListMemoryVisual diagram
       const visual = page.locator(
@@ -72,6 +75,34 @@ for (const width of [390, 768, 1440])
         (e) => getComputedStyle(e).backgroundColor,
       );
       expect(activeBg).not.toBe(labBg);
+
+      // Verify WCAG AA contrast ratio (>= 4.5:1) between text color and background on hover
+      const contrastRatio = await activePresetBtn.evaluate((e) => {
+        const parseRgb = (colorStr: string) => {
+          const match = colorStr.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+          return match
+            ? [Number(match[1]), Number(match[2]), Number(match[3])]
+            : [0, 0, 0];
+        };
+        const srgbToLin = (c: number) => {
+          const s = c / 255;
+          return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+        };
+        const getLuminance = (rgb: number[]) =>
+          0.2126 * srgbToLin(rgb[0]) +
+          0.7152 * srgbToLin(rgb[1]) +
+          0.0722 * srgbToLin(rgb[2]);
+
+        const cs = getComputedStyle(e);
+        const fg = parseRgb(cs.color);
+        const bg = parseRgb(cs.backgroundColor);
+        const l1 = getLuminance(fg);
+        const l2 = getLuminance(bg);
+        const lighter = Math.max(l1, l2);
+        const darker = Math.min(l1, l2);
+        return (lighter + 0.05) / (darker + 0.05);
+      });
+      expect(contrastRatio).toBeGreaterThanOrEqual(4.5);
 
       // Switch to Chat History preset
       await lab.getByRole("button", { name: "Chat History" }).click();
@@ -113,15 +144,22 @@ for (const width of [390, 768, 1440])
       await expect(lab.getByLabel(/Index 3/)).toContainText("clamped_rule");
 
       // Test trap: Trigger Bug
-      await lab
-        .getByRole("button", { name: "Trigger Bug: docs = docs.append()" })
-        .click();
+      const triggerBugBtn = lab.getByRole("button", {
+        name: "Trigger Bug: docs = docs.append()",
+      });
+      await triggerBugBtn.click();
       await expect(lab).toContainText(
         "⚠️ The .append() Return Trap Triggered!",
       );
       await expect(lab).toContainText("rebound to None");
       await expect(lab).toContainText("AttributeError");
       await expect(lab).toContainText("TypeError");
+
+      // Verify focus moved into the trapped view (restore button is focused)
+      const restoreBtn = lab.getByRole("button", {
+        name: "Restore reference (Simulation demo)",
+      });
+      await expect(restoreBtn).toBeFocused();
 
       // Theme toggle preserves trap state
       await page
@@ -132,16 +170,13 @@ for (const width of [390, 768, 1440])
         "⚠️ The .append() Return Trap Triggered!",
       );
 
-      // Restore list reference and verify the underlying list preserved items
-      await lab
-        .getByRole("button", {
-          name: "Restore reference (Simulation demo)",
-        })
-        .click();
+      // Restore list reference and verify the underlying list preserved items & focus returns to trigger bug button
+      await restoreBtn.click();
       await expect(lab).not.toContainText(
         "⚠️ The .append() Return Trap Triggered!",
       );
       await expect(lab).toContainText("len(retrieved_docs) = 5");
+      await expect(triggerBugBtn).toBeFocused();
 
       // Reset sandbox
       await lab.getByRole("button", { name: "Reset sandbox" }).click();

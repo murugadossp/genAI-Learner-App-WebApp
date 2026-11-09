@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "./lesson.module.css";
 
 interface Preset {
@@ -45,6 +45,19 @@ export function ListLab() {
   const [lastActionMsg, setLastActionMsg] = useState<string>(
     "Loaded preset: RAG Candidates (4 items)",
   );
+
+  const restoreBtnRef = useRef<HTMLButtonElement>(null);
+  const triggerBugBtnRef = useRef<HTMLButtonElement>(null);
+  const prevIsTrapTriggeredRef = useRef<boolean>(isTrapTriggered);
+
+  useEffect(() => {
+    if (isTrapTriggered && !prevIsTrapTriggeredRef.current) {
+      restoreBtnRef.current?.focus();
+    } else if (!isTrapTriggered && prevIsTrapTriggeredRef.current) {
+      triggerBugBtnRef.current?.focus();
+    }
+    prevIsTrapTriggeredRef.current = isTrapTriggered;
+  }, [isTrapTriggered]);
 
   const handleSelectPreset = (p: Preset) => {
     setSelectedPresetId(p.id);
@@ -211,6 +224,7 @@ export function ListLab() {
             </em>
           </p>
           <button
+            ref={restoreBtnRef}
             type="button"
             className={styles.restoreBtn}
             onClick={() => {
@@ -411,6 +425,7 @@ export function ListLab() {
                     .append()
                   </button>
                   <button
+                    ref={triggerBugBtnRef}
                     type="button"
                     className={styles.trapBtn}
                     onClick={handleAppendTrap}
