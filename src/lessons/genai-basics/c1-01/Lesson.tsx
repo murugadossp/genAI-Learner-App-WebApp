@@ -56,8 +56,8 @@ export default function Lesson() {
             <strong>Deep learning:</strong> learning with a many-layer network.
           </li>
           <li>
-            <strong>Generative AI:</strong> deep learning that makes new text,
-            images or audio.
+            <strong>Generative AI:</strong> models that make new text, images or
+            audio. Today’s well-known ones are built with deep learning.
           </li>
         </ol>
         <p>
@@ -173,10 +173,14 @@ export default function Lesson() {
           caption="New text, images or audio, not a stored copy."
         />
         <p>
-          <strong>Generative AI</strong> is deep learning trained to produce new
-          content, such as text, images, audio or code. Today’s systems are
-          mostly built this way. Not all deep learning generates: the spam
-          network above labels messages and writes nothing.
+          <strong>Generative AI</strong> is about producing new content, such as
+          text, images, audio or code. The generative systems you hear about
+          today, such as chatbots and image tools, are built with deep learning,
+          which is why this ring is drawn inside deep learning. Generating is
+          what a system does, not one particular technology, so simpler older
+          methods can generate too, but their output is clumsy by comparison.
+          And not all deep learning generates: the spam network above labels
+          messages and writes nothing.
         </p>
         <div className={styles.example}>
           <strong>In Postbox</strong>
@@ -188,8 +192,8 @@ export default function Lesson() {
         </div>
         <RingDiagram current={3} />
         <p>
-          Read the rings in one direction. A generative model is also deep
-          learning, machine learning and AI. The reverse does not hold: the
+          Read the rings in one direction. A modern generative model is also
+          deep learning, machine learning and AI. The reverse does not hold: the
           keyword rule is AI, but it is outside machine learning.
         </p>
       </section>
@@ -218,9 +222,11 @@ export default function Lesson() {
             mistakes.
           </li>
           <li>
-            <strong>Some diagrams draw it differently.</strong> Generative AI is
-            sometimes described as a use of deep learning rather than a ring of
-            its own. The nesting idea holds either way.
+            <strong>The rings simplify.</strong> Generating new content is a
+            capability that simpler methods can have too, so the innermost ring
+            really stands for today’s deep generative models. Some diagrams
+            describe generative AI as a use of deep learning rather than a ring
+            of its own. The nesting idea holds either way.
           </li>
         </ul>
       </section>
@@ -249,9 +255,10 @@ export default function Lesson() {
           <p>
             AI is the whole field, and rules count. Machine learning is the part
             where behaviour is fitted from examples, deep learning is the part
-            that uses many-layer networks, and generative AI is the part that
-            produces new content. Each is inside the one before it. When you
-            meet an “AI” product, ask what job it does and how it was built.
+            that uses many-layer networks, and generative AI is the part, built
+            today with deep learning, that produces new content. Each is inside
+            the one before it. When you meet an “AI” product, ask what job it
+            does and how it was built.
           </p>
         </div>
       </section>

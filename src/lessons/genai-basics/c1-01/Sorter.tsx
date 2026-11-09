@@ -17,9 +17,9 @@ const items = [
     why: "People wrote the rules and nothing was learned from data, so it is AI but outside machine learning.",
   },
   {
-    text: "A spam model fitted to thousands of labelled emails. It learns how much to weigh clues a person chose, such as link count.",
+    text: "A spam model that adds up weighted clue counts, such as the number of links and certain words. The weights were fitted to thousands of labelled emails.",
     ring: 1,
-    why: "It learned from examples, so it is machine learning. A person chose the clues and it is not a many-layer network, so it is not deep learning.",
+    why: "Its weights were learned from examples, so it is machine learning. A single weighted sum of clues a person chose is not a many-layer network, so it is not deep learning.",
   },
   {
     text: "A many-layer network reads the raw message text and learns its own clues to decide spam or not spam.",
@@ -27,9 +27,9 @@ const items = [
     why: "It is deep learning, learning its own clues. It only labels messages, so it is not generative.",
   },
   {
-    text: "A model trained to write a brand-new reply to a message, in a tone you ask for.",
+    text: "A large many-layer network trained to write a brand-new reply to a message, in a tone you ask for.",
     ring: 3,
-    why: "It is a deep model trained to produce new content, which is generative AI. It is also inside the three outer rings.",
+    why: "It is a deep model trained to produce new content, which is what today’s generative AI is. It is also inside the three outer rings.",
   },
   {
     text: "A rule in Postbox: show the newest saved article from a topic the reader starred.",
@@ -50,13 +50,16 @@ export function Sorter() {
   );
   const [message, setMessage] = useState("");
   const right = answers.filter((a, i) => a === items[i].ring).length;
+  const feedback = (i: number, ring: number) => {
+    const item = items[i];
+    if (ring === item.ring) return `Right. ${item.why}`;
+    return ring < item.ring
+      ? `Not quite. It is inside ${ringNames[ring]}, but it belongs to a more specific ring too. ${item.why}`
+      : `Not quite. That is further in than it goes. ${item.why}`;
+  };
   const choose = (i: number, ring: number) => {
     setAnswers((prev) => prev.map((a, j) => (j === i ? ring : a)));
-    setMessage(
-      ring === items[i].ring
-        ? `Item ${i + 1}: correct, ${ringNames[ring]}.`
-        : `Item ${i + 1}: not quite.`,
-    );
+    setMessage(`Item ${i + 1}. ${feedback(i, ring)}`);
   };
   return (
     <div className="lab">
@@ -76,7 +79,9 @@ export function Sorter() {
             const a = answers[i];
             return (
               <li className={styles.item} key={item.text}>
-                <fieldset>
+                <fieldset
+                  aria-describedby={a !== null ? `${uid}-fb-${i}` : undefined}
+                >
                   <legend>
                     {i + 1}. {item.text}
                   </legend>
@@ -99,16 +104,13 @@ export function Sorter() {
                 </fieldset>
                 {a !== null && (
                   <p
+                    id={`${uid}-fb-${i}`}
                     className={styles.itemFeedback}
                     data-ok={a === item.ring}
                     data-testid="item-feedback"
                   >
-                    {a === item.ring ? "✓ Right. " : "↻ Not quite. "}
-                    {a === item.ring
-                      ? item.why
-                      : a < item.ring
-                        ? `It is inside ${ringNames[a]}, but it belongs to a more specific ring too. ${item.why}`
-                        : `That is further in than it goes. ${item.why}`}
+                    {a === item.ring ? "✓ " : "↻ "}
+                    {feedback(i, a)}
                   </p>
                 )}
               </li>

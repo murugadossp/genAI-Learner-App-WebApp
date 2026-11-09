@@ -40,6 +40,9 @@ for (const width of [390, 768, 1440])
           .locator("#dl")
           .getByRole("img", { name: /Highlighted: Deep learning/ }),
       ).toBeVisible();
+      await expect(page.locator("#genai")).toContainText(
+        "simpler older methods can generate too",
+      );
       await expect(page.locator("#ml [data-current='true']")).toHaveAttribute(
         "data-level",
         "1",
@@ -51,6 +54,13 @@ for (const width of [390, 768, 1440])
       const item = (n: number) => page.locator("#sorter ol > li").nth(n);
       await expect(score).toContainText("0 of 6");
       await item(0).getByLabel("Machine learning").check();
+      await expect(page.locator("#sorter").getByRole("status")).toContainText(
+        "further in than it goes",
+      );
+      await expect(item(0).locator("fieldset")).toHaveAttribute(
+        "aria-describedby",
+        /.+/,
+      );
       await expect(fb.first()).toContainText("further in than it goes");
       await item(1).getByLabel("Artificial intelligence").check();
       await expect(item(1).getByTestId("item-feedback")).toContainText(
