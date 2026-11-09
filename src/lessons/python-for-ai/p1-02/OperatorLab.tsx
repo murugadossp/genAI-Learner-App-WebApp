@@ -268,8 +268,8 @@ export function OperatorLab() {
               <p className={styles.calcMeaning}>
                 Counts completed chunks.{" "}
                 {useFloatTotal
-                  ? "Because total is float, result is float 2.0."
-                  : "Both operands are int, so result is int 2."}
+                  ? `Because total is float, result is float ${displayQuotient}.`
+                  : `Both operands are int, so result is int ${displayQuotient}.`}
               </p>
             </div>
 

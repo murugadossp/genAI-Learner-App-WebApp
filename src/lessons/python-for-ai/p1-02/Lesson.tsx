@@ -1,8 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
 import { TokenChunkVisual } from "./TokenChunkVisual";
 import { OperatorLab } from "./OperatorLab";
+import operatorsDiagramImg from "./python-operators-model.jpg";
 import styles from "./lesson.module.css";
 
 export default function Lesson() {
@@ -121,6 +123,21 @@ export default function Lesson() {
           <code>2 ^ 10</code> evaluates to <code>8</code>, not <code>1024</code>
           ! Always use <code>**</code> for exponentiation.
         </div>
+
+        <figure className={styles.figure}>
+          <Image
+            src={operatorsDiagramImg}
+            alt="Infographic illustrating Python operators for AI pipelines in three panels: Division trio showing 1350 tokens partitioned into two 500-token chunks and 350 remainder tokens; Powers versus XOR showing 2 ** 10 = 1024 contrasted with bitwise 2 ^ 10 = 8; and Assignment versus Equality showing count = 500 assigning a value and count == 500 evaluating to True."
+            sizes="(min-width: 900px) 760px, 100vw"
+            priority
+          />
+          <figcaption className="micro">
+            Core operator mental model: true division produces floats, floor
+            division and modulo partition chunks and remainders, <code>**</code>{" "}
+            scales powers (while <code>^</code> is bitwise XOR), and{" "}
+            <code>==</code> compares values without mutating variables.
+          </figcaption>
+        </figure>
       </section>
 
       <section id="comparisons">
@@ -311,7 +328,7 @@ export default function Lesson() {
             code.
           </p>
         </div>
-        <Link className="text-link" href="/course?chapter=P1">
+        <Link className="text-link" href="/course/chapter-p1">
           Next up: Strings in Chapter P1 →
         </Link>
       </section>

@@ -32,6 +32,17 @@ for (const width of [390, 768, 1440])
       await expect(figure).toContainText("Chunk 2 (500)");
       await expect(figure).toContainText("Remainder (350)");
 
+      // Verify infographic image loads with valid alt text (>40 chars)
+      const diagram = page.locator("article figure img");
+      await expect(diagram).toHaveCount(1);
+      await diagram.scrollIntoViewIfNeeded();
+      await expect
+        .poll(() => diagram.evaluate((e: HTMLImageElement) => e.naturalWidth))
+        .toBeGreaterThan(0);
+      expect(
+        ((await diagram.getAttribute("alt")) ?? "").length,
+      ).toBeGreaterThan(40);
+
       // Verify lab container exists
       const lab = page.getByRole("region", {
         name: "AI Pipeline Operator Sandbox",
@@ -151,7 +162,7 @@ for (const width of [390, 768, 1440])
       // Check course link
       await expect(
         page.locator("a", { hasText: "Next up: Strings in Chapter P1 →" }),
-      ).toHaveAttribute("href", "/course?chapter=P1");
+      ).toHaveAttribute("href", "/course/chapter-p1");
 
       // Bounded horizontal scroll check
       expect(

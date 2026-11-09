@@ -137,6 +137,14 @@ button.choiceBtn.choiceBtnActive:not(:disabled):hover {
   margin: 1.5rem 0;
 }
 
+.figure img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
 .figureContent {
   width: 100%;
   border: 1px solid var(--line);
