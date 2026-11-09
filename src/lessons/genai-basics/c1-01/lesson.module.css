@@ -1,0 +1,231 @@
+.grid {
+  display: grid;
+  gap: 1.25rem;
+}
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1.1fr;
+  }
+}
+.panel {
+  padding: 1rem;
+  background: var(--panel);
+  border-radius: 12px;
+  align-self: start;
+}
+.panel fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+.panel legend {
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.choice {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  min-height: 44px;
+  padding: 0.35rem 0;
+  cursor: pointer;
+}
+.choice input {
+  margin-top: 0.3rem;
+  accent-color: var(--accent);
+}
+.choiceText small {
+  display: block;
+  color: var(--muted);
+}
+.rings {
+  display: grid;
+  gap: 0.9rem;
+  align-content: start;
+}
+.ring {
+  position: relative;
+  padding: 2.1rem 0.7rem 0.7rem;
+  border: 2px dashed var(--line);
+  border-radius: 14px;
+  background: var(--bg);
+  color: var(--muted);
+}
+.ring[data-member="true"] {
+  border-style: solid;
+  border-color: var(--accent);
+  background: var(--paper);
+  color: var(--ink);
+}
+.ring[data-current="true"] {
+  border-width: 3px;
+  background: var(--accent-soft);
+}
+.ringLabel {
+  position: absolute;
+  top: 0.55rem;
+  left: 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.membership {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.88rem;
+}
+.membership li {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  color: var(--muted);
+}
+.membership li[data-in="true"] {
+  color: var(--ink);
+}
+.mark {
+  font-weight: 700;
+  min-width: 2.6rem;
+}
+.result {
+  padding: 0.9rem;
+  background: var(--bg);
+  border-radius: 9px;
+  border-left: 4px solid var(--accent);
+  overflow-wrap: anywhere;
+}
+.result h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+}
+.fit {
+  display: inline-block;
+  margin: 0 0 0.5rem;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: var(--paper);
+}
+.fit[data-fit="strong"] {
+  border-color: var(--accent);
+}
+.fit[data-fit="poor"] {
+  border-style: dashed;
+}
+.defs {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+.defs li {
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+}
+.howto {
+  margin: 0 0 1rem;
+  font-weight: 600;
+}
+.figure {
+  margin: 0 0 1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f6f4ee;
+}
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.figure figcaption {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  background: var(--panel);
+}
+.where {
+  margin: 1rem 0;
+  padding: 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+}
+.where p {
+  margin: 0.6rem 0 0;
+  font-size: 0.88rem;
+}
+.example {
+  margin: 1rem 0;
+  padding: 0.8rem 1rem;
+  border-left: 4px solid var(--accent);
+  background: var(--panel);
+  border-radius: 0 10px 10px 0;
+}
+.example p {
+  margin: 0.2rem 0 0;
+}
+.items {
+  display: grid;
+  gap: 0.9rem;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+.item {
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+}
+.item fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.item legend {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  padding: 0;
+}
+.ringChoices {
+  display: grid;
+  gap: 0.4rem;
+}
+@media (min-width: 700px) {
+  .ringChoices {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.itemFeedback {
+  margin: 0.7rem 0 0;
+  padding: 0.6rem 0.8rem;
+  border-radius: 9px;
+  background: var(--bg);
+  border-left: 4px solid var(--line);
+  font-size: 0.9rem;
+}
+.itemFeedback[data-ok="true"] {
+  border-left-color: var(--accent);
+}
+.score {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.roadmap {
+  margin: 1rem 0;
+  padding: 0.9rem 1rem 0.9rem 2.2rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  display: grid;
+  gap: 0.35rem;
+}
