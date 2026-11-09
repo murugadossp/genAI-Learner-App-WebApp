@@ -77,7 +77,7 @@ export default function Lesson() {
         <figure className={styles.figure}>
           <Image
             src={listsDiagramImg}
-            alt="Educational 3-panel diagram illustrating Python list memory and operations: Panel 1 shows dual indexing for a 4-item list with 0-based positive indices 0, 1, 2, 3 from the head and negative indices -4, -3, -2, -1 from the tail. Panel 2 shows context window slicing docs[1:3] extracting items at indices 1 and 2 ('shipping_faq' and 'order_tracking') and stopping before index 3. Panel 3 contrasts in-place mutation docs.append('user_profile') adding an item to the existing list in memory against the fatal rebinding bug docs = docs.append(...) which destroys the reference and rebinds the variable to None."
+            alt="Educational 3-panel diagram illustrating Python list memory and operations: Panel 1 shows dual indexing for a 4-item list with 0-based positive indices 0, 1, 2, 3 from the head and negative indices -4, -3, -2, -1 from the tail. Panel 2 shows context window slicing docs[1:3] extracting items at indices 1 and 2 ('shipping_faq' and 'order_tracking') and stopping before index 3. Panel 3 contrasts in-place mutation docs.append('profile') adding an item to the existing list in memory against the fatal rebinding bug docs = docs.append(...) which destroys the reference and rebinds the variable to None."
             sizes="(max-width: 768px) 100vw, 720px"
             priority
           />

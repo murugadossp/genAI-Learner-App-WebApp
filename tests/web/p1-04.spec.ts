@@ -36,6 +36,7 @@ for (const width of [390, 768, 1440])
       expect(altText).toContain("negative indices -4, -3, -2, -1");
       expect(altText).toContain("docs[1:3]");
       expect(altText).toContain("'shipping_faq' and 'order_tracking'");
+      expect(altText).toContain("docs.append('profile')");
       expect(altText).toContain("docs = docs.append");
 
       // Verify ListMemoryVisual diagram
