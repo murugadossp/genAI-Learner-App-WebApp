@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c1-06",
   "title": "What AI is good and bad at",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     { "id": "fluent", "title": "Fluent is not the same as correct." },
     { "id": "strengths", "title": "Where AI can often help." },
