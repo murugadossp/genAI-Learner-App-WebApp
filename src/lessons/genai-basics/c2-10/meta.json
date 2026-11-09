@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c2-10",
   "title": "Reasoning models",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     { "id": "idea", "title": "Some models work first, then answer." },
     { "id": "example", "title": "Watch one question get worked through." },

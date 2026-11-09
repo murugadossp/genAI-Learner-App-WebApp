@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c1-03",
   "title": "Data, examples, features and labels",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     { "id": "big-idea", "title": "Learning starts with examples." },
     { "id": "example", "title": "In our table, an example is one row." },
