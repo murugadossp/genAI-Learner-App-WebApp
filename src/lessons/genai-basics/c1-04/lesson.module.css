@@ -1,0 +1,136 @@
+.map {
+  margin: 1rem 0;
+}
+.mapList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.mapPart {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+}
+.mapPart[data-active="true"],
+.mapGlue[data-active="true"] {
+  border: 2px solid var(--accent);
+  background: var(--accent-soft);
+}
+.mapGlue {
+  margin-top: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  color: var(--muted);
+}
+.mapGlue[data-active="true"] {
+  color: var(--ink);
+}
+.badge {
+  justify-self: start;
+  margin-left: 0.5rem;
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.cards {
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+@media (min-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.card {
+  padding: 0.9rem 1rem;
+  background: var(--panel);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+}
+.card h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1.05rem;
+}
+.card p {
+  margin: 0.25rem 0;
+}
+.example {
+  margin: 1rem 0;
+  padding: 0.8rem 1rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.example p {
+  margin: 0.25rem 0;
+}
+.step {
+  margin: 1rem 0;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.step p {
+  margin: 0.3rem 0;
+}
+.items {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  display: grid;
+  gap: 1rem;
+}
+.item fieldset {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.7rem 0.9rem;
+  margin: 0;
+}
+.item legend {
+  font-weight: 700;
+  padding: 0 0.3rem;
+}
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+.choice {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+}
+.choice input {
+  accent-color: var(--accent);
+}
+.itemFeedback {
+  margin: 0.5rem 0 0;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg);
+  border-left: 4px solid var(--line);
+  border-radius: 8px;
+}
+.itemFeedback[data-ok="true"] {
+  border-left-color: var(--accent);
+}
+.score {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
