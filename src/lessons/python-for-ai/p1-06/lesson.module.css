@@ -1,0 +1,289 @@
+.exampleBox {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.1rem;
+  margin: 1rem 0;
+}
+
+.exampleBox p {
+  margin: 0.35rem 0 0;
+}
+
+.figure {
+  margin: 1.25rem 0;
+}
+
+.figure img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  display: block;
+}
+
+.figure figcaption {
+  margin-top: 0.45rem;
+}
+
+.codePanel {
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  margin: 0.85rem 0;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  overflow-x: auto;
+  min-width: 0;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  margin: 1rem 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.compareTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.compareTable th,
+.compareTable td {
+  text-align: left;
+  padding: 0.65rem 0.8rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.compareTable th {
+  background: var(--panel);
+  font-weight: 600;
+}
+
+.compareTable tr:last-child td {
+  border-bottom: none;
+}
+
+.typeCell {
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+@media (max-width: 540px) {
+  .compareTable,
+  .compareTable thead,
+  .compareTable tbody,
+  .compareTable th,
+  .compareTable td,
+  .compareTable tr {
+    display: block;
+  }
+
+  .compareTable thead {
+    display: none;
+  }
+
+  .compareTable tr {
+    border-bottom: 2px solid var(--line);
+    padding: 0.85rem;
+  }
+
+  .compareTable tr:last-child {
+    border-bottom: none;
+  }
+
+  .compareTable td {
+    border: none;
+    padding: 0.35rem 0;
+  }
+
+  .compareTable td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: var(--muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+}
+
+.labContainer {
+  padding: 1.1rem;
+  margin: 1.25rem 0;
+}
+
+.labTitle {
+  margin: 0.2rem 0 0;
+  font-size: 1.15rem;
+}
+
+.presetRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.85rem 0 0.5rem;
+}
+
+.presetBtn,
+.secondaryActionBtn,
+.resetBtn {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+button.presetBtn[aria-pressed="true"],
+button.presetBtn.presetBtnActive,
+button.presetBtn.presetBtnActive:not(:disabled):hover {
+  background: var(--accent) !important;
+  color: var(--on-accent) !important;
+  border-color: var(--accent) !important;
+}
+
+.resetBtn {
+  background: var(--panel);
+}
+
+.labGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 860px) {
+  .labGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.inspectorCard {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  padding: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.controlStack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.resultBox {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  min-width: 0;
+}
+
+.resultRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.resultRow code {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.resultLabel {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.errorNote,
+.infoNote {
+  margin-top: 0.25rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  overflow-wrap: break-word;
+}
+
+.errorNote {
+  border-left: 3px solid var(--orange);
+}
+
+.dictPre {
+  margin: 0;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  color: var(--ink);
+}
+
+.qa dt {
+  font-weight: 700;
+  margin-top: 0.6rem;
+}
+
+.qa dd {
+  margin: 0.15rem 0 0;
+}
+
+.nestedInspector {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.codePanelSmall {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.6rem 0.8rem;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 0.85rem;
+  overflow-x: auto;
+}
+
+.successNote {
+  margin-top: 0.25rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--ink);
+  background: var(--paper);
+}
