@@ -124,10 +124,13 @@ export default function Lesson() {
         <h2 tabIndex={-1}>Where this picture is too tidy.</h2>
         <ul>
           <li>
-            <strong>Features can blur.</strong> The jobs overlap. A recommender
-            may use a guess about what you will like, and a feature may do two
-            jobs, such as classifying a message and then generating a reply.
-            Name each part by its purpose and what it gives back.
+            <strong>Features can blur.</strong> The jobs overlap. Predicting a
+            yes/no outcome looks like classifying; the difference is whether the
+            answer is still unknown (predict) or you are labelling something
+            already there (classify). A recommender may use a guess about what
+            you will like, and a feature may do two jobs, such as classifying a
+            message and then generating a reply. Name each part by its purpose
+            and what it gives back.
           </li>
           <li>
             <strong>The list is not complete.</strong> These five are common
