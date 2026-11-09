@@ -8,6 +8,9 @@ export function LessonFrame({
   embedded = false,
   toolbar,
   footer = true,
+  chapterLabel = "How GenAI works",
+  courseHref = "/course",
+  courseLabel = "Learning path",
 }: {
   number: string;
   title: string;
@@ -16,21 +19,26 @@ export function LessonFrame({
   embedded?: boolean;
   toolbar?: React.ReactNode;
   footer?: boolean;
+  chapterLabel?: string;
+  courseHref?: string;
+  courseLabel?: string;
 }) {
   const body = (
     <div className="lesson-shell">
       <div className="lesson-toolbar">
-        <Link className="text-link" href="/course">
-          ← Learning path
+        <Link className="text-link" href={courseHref}>
+          ← {courseLabel}
         </Link>
         {toolbar ?? (
-          <Link className="text-link" href="/course">
+          <Link className="text-link" href={courseHref}>
             Chapter contents
           </Link>
         )}
       </div>
       <article className="article">
-        <div className="eyebrow">How GenAI works / Lesson {number}</div>
+        <div className="eyebrow">
+          {chapterLabel} / Lesson {number}
+        </div>
         <h1>{title}</h1>
         <p className="lead">{lead}</p>
         <div className="lesson-meta">
@@ -41,8 +49,11 @@ export function LessonFrame({
         {children}
         {footer && (
           <div className="end-lesson">
-            <Link className="text-link" href="/course">
-              ← Back to the learning path
+            <Link className="text-link" href={courseHref}>
+              ← Back to{" "}
+              {courseLabel === "Learning path"
+                ? "the learning path"
+                : courseLabel}
             </Link>
           </div>
         )}
