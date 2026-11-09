@@ -1,0 +1,96 @@
+.cards {
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+@media (min-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.card {
+  padding: 0.9rem 1rem;
+  background: var(--panel);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  overflow-wrap: anywhere;
+}
+.card h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1.05rem;
+}
+.card p {
+  margin: 0.25rem 0;
+}
+.items {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  display: grid;
+  gap: 1rem;
+}
+.item fieldset {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.7rem 0.9rem;
+  margin: 0;
+}
+.item legend {
+  font-weight: 700;
+  padding: 0 0.3rem;
+}
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+.choice {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+}
+.choice input {
+  accent-color: var(--accent);
+}
+.itemFeedback {
+  margin: 0.5rem 0 0;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg);
+  border-left: 4px solid var(--line);
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+.itemFeedback[data-ok="true"] {
+  border-left-color: var(--accent);
+}
+.score {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.mix {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+.mix th,
+.mix td {
+  text-align: left;
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+.tableWrap {
+  overflow-x: auto;
+}
+.mix td:last-child,
+.mix th:last-child {
+  white-space: nowrap;
+}
