@@ -89,13 +89,14 @@ len(ticket)                # 3, because there are 3 pairs`}</Code>
         <figure className={styles.figure}>
           <Image
             src={pairsImage}
-            alt="Diagram displaying three key-value pairs side-by-side: keys 'id', 'topic', and 'priority' point to stored values 'T-204', 'billing', and 'high'. A code panel shows ticket['topic'] returning 'billing' with len(ticket) equal to 3, with a note explaining that ticket[0] raises KeyError because dictionaries do not use index positions."
+            alt="Filing cabinet analogy diagram: a wooden cabinet has three drawers with handle labels 'id', 'topic', and 'priority' acting as keys, with cards pulled out on the right showing the stored values 'T-204', 'billing', and 'high'."
             sizes="(max-width: 760px) 100vw, 720px"
             priority
           />
           <figcaption className="micro">
-            Each key points directly to its stored value. You look up a value by
-            its key name, not by counting positions.
+            Each key is like a drawer label that points directly to its stored
+            value. You look up a value by its key name, not by counting
+            positions.
           </figcaption>
         </figure>
         <p>
@@ -134,34 +135,32 @@ len(ticket)                # 3, because there are 3 pairs`}</Code>
       <section id="missing">
         <h2 tabIndex={-1}>Missing keys: KeyError vs defaults.</h2>
         <p>
-          Suppose the ticket does not have an <code>&quot;assignee&quot;</code>{" "}
-          key yet. How you ask determines what happens:
+          Suppose the ticket does not have an <code>&quot;owner&quot;</code> key
+          yet. How you ask determines what happens:
         </p>
         <ul>
           <li>
-            <code>ticket[&quot;assignee&quot;]</code> halts execution with{" "}
-            <code>KeyError: &apos;assignee&apos;</code>.
+            <code>ticket[&quot;owner&quot;]</code> halts execution with{" "}
+            <code>KeyError: &apos;owner&apos;</code>.
           </li>
           <li>
-            <code>
-              ticket.get(&quot;assignee&quot;, &quot;unassigned&quot;)
-            </code>{" "}
+            <code>ticket.get(&quot;owner&quot;, &quot;unassigned&quot;)</code>{" "}
             returns the fallback default <code>&apos;unassigned&apos;</code>.
           </li>
           <li>
-            <code>ticket.get(&quot;assignee&quot;)</code> with no second
-            argument returns <code>None</code> without an error.
+            <code>ticket.get(&quot;owner&quot;)</code> with no second argument
+            returns <code>None</code> without an error.
           </li>
         </ul>
         <Code label="Asking for a missing key two ways">{`ticket = {"id": "T-204", "topic": "billing", "priority": "high"}
-ticket['assignee']                        # KeyError: 'assignee'
-ticket.get('assignee', 'unassigned')      # 'unassigned'
-ticket.get('assignee')                    # None
-'assignee' in ticket                      # False (safe membership check)`}</Code>
+ticket['owner']                        # KeyError: 'owner'
+ticket.get('owner', 'unassigned')      # 'unassigned'
+ticket.get('owner')                    # None
+'owner' in ticket                      # False (safe membership check)`}</Code>
         <figure className={styles.figure}>
           <Image
             src={missingImage}
-            alt="A comparison showing bracket lookup ticket['assignee'] leading to an error box labelled KeyError: 'assignee', while ticket.get('assignee', 'unassigned') returns a safe default card labelled 'unassigned'."
+            alt="Filing cabinet diagram illustrating missing key access: looking up missing drawer 'owner' using ticket['owner'] hits a red KeyError stop sign, while ticket.get('owner', 'unassigned') safely returns 'unassigned' as a fallback default."
             sizes="(max-width: 760px) 100vw, 720px"
           />
           <figcaption className="micro">
@@ -172,7 +171,7 @@ ticket.get('assignee')                    # None
         </figure>
         <p>
           You can also test membership safely using the <code>in</code>{" "}
-          operator: <code>&quot;assignee&quot; in ticket</code> evaluates to{" "}
+          operator: <code>&quot;owner&quot; in ticket</code> evaluates to{" "}
           <code>False</code> without error. In a plain Python dict, reading with
           brackets, <code>.get()</code>, or <code>in</code> never modifies the
           dictionary.
@@ -269,7 +268,7 @@ nested_ticket['plan']                # KeyError: 'plan'`}</Code>
         <figure className={styles.figure}>
           <Image
             src={nestedImage}
-            alt="An outer box labelled 'customer' holds an inner dictionary with keys 'name' storing 'Ana' and 'plan' storing 'pro'. Step-by-step navigation shows nested_ticket['customer']['plan'] reading the outer dictionary first, then extracting 'pro' from the inner dictionary."
+            alt="Filing cabinet analogy for nested dictionaries: an outer drawer labeled 'customer' holds two inner compartments labeled 'name' (storing 'Ana') and 'plan' (storing 'pro'). Curved arrows demonstrate ticket['customer']['plan'] opening 'customer' first and extracting 'pro' from 'plan'."
             sizes="(max-width: 760px) 100vw, 720px"
           />
           <figcaption className="micro">
@@ -344,7 +343,7 @@ nested_ticket['plan']                # KeyError: 'plan'`}</Code>
         <figure className={styles.figure}>
           <Image
             src={choosingImage}
-            alt="Side-by-side comparison between list (ordered sequence indexed by position 0, 1, 2) and dictionary (record indexed by named keys like 'id' and 'topic')."
+            alt="Side-by-side comparison diagram: a list card shows numbered slots 0, 1, and 2 with queue[0] returning 'T-204' by position index, while a dictionary card shows drawer 'topic' with ticket['topic'] returning 'billing' by key name. A summary bar emphasizes: know the position, use a list; know the name, use a dictionary."
             sizes="(max-width: 760px) 100vw, 720px"
           />
           <figcaption className="micro">
