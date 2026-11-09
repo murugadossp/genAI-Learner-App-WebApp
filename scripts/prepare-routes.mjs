@@ -25,16 +25,16 @@ if (existsSync(root))
 const routes = [
   ["app/page.tsx", "../src/studio/Landing", false],
   ["app/studio/page.tsx", "../../src/studio/Studio", false],
-  ["app/course/page.tsx", "../../src/studio/Course", false],
-  [
-    "app/course/chapter-1/page.tsx",
-    "../../../src/studio/CourseChapter1",
-    false,
-  ],
+  ["app/course/page.tsx", "../../src/studio/Course", true],
+  ["app/course/chapter-1/page.tsx", "../../../src/studio/CourseChapter1", true],
   [
     "app/course/chapter-p1/page.tsx",
     "../../../src/studio/CourseChapterP1",
-    false,
+    // Published once the module has a published lesson.
+    lessons().some(
+      (meta) =>
+        meta.module === "python-for-ai" && meta.webStatus === "published",
+    ),
   ],
   ...lessons().map((meta) => [
     `app/learn/${meta.module}/${meta.lessonId}/page.tsx`,
