@@ -145,3 +145,13 @@
   flex-wrap: wrap;
   margin: 1rem 0;
 }
+.figure {
+  margin: 1rem 0;
+}
+.figure img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}

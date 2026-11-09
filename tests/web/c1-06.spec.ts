@@ -24,6 +24,22 @@ for (const width of [390, 768, 1440])
         .evaluateAll((els) => els.map((e) => e.id));
       expect(ids).toEqual(meta.sections.map((s) => s.id));
 
+      for (const section of ["fluent", "strengths", "weak-spots"]) {
+        const illustration = page.locator(`#${section} figure img`);
+        await illustration.scrollIntoViewIfNeeded();
+        expect(
+          (await illustration.getAttribute("alt"))?.length,
+        ).toBeGreaterThan(40);
+        await expect
+          .poll(() =>
+            illustration.evaluate(
+              (image: HTMLImageElement) =>
+                image.complete && image.naturalWidth > 0,
+            ),
+          )
+          .toBe(true);
+      }
+
       // Grid diagrams: same grid in three sections, with descriptive alt text.
       for (const id of ["stakes", "checkable", "levels"]) {
         const grid = page.locator(`#${id} [role="img"]`);

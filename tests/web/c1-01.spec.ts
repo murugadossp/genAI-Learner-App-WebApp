@@ -35,6 +35,10 @@ for (const width of [390, 768, 1440])
           section.getByRole("img", { name: /Nested rings/ }),
         ).toHaveCount(1);
       }
+      await expect(page.locator("#ml img")).toHaveAttribute(
+        "alt",
+        /Labelled examples.*Learned model.*New message.*Spam/,
+      );
       await expect(
         page
           .locator("#dl")
