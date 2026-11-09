@@ -47,6 +47,17 @@ for (const width of [390, 768, 1440])
       await expect(lab).toContainText("<class 'int'>");
       await expect(lab.locator('[role="status"]')).toContainText("600");
 
+      // Verify active preset maintains high contrast on hover (not overridden by global button hover)
+      const maxTokensBtn = lab.getByRole("button", { name: "max_tokens" });
+      await maxTokensBtn.hover();
+      const activeBg = await maxTokensBtn.evaluate(
+        (e) => getComputedStyle(e).backgroundColor,
+      );
+      const labBg = await lab.evaluate(
+        (e) => getComputedStyle(e).backgroundColor,
+      );
+      expect(activeBg).not.toBe(labBg);
+
       // Operation test: click '+ "100" (text)' -> raises TypeError
       await lab.getByRole("button", { name: '+ "100" (text)' }).click();
       await expect(lab.locator('[role="status"]')).toContainText("TypeError");
