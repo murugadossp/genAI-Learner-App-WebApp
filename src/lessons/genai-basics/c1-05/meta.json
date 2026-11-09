@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c1-05",
   "title": "Training vs inference",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     {
       "id": "two-jobs",
