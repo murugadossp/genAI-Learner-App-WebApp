@@ -125,7 +125,7 @@ export function Trace() {
         <PartsMap
           active={s.part ? [s.part] : []}
           appCode={s.part === null}
-          caption="Leaf Buddy is invented. The parts are the same ones shown above."
+          caption="Leaf Buddy is invented. The parts are the ones introduced above."
         />
         <p className="micro lab-disclosure">
           Leaf Buddy is an invented app. The answers, the tip and the rule are
