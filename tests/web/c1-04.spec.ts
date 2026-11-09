@@ -29,6 +29,21 @@ for (const width of [390, 768, 1440])
         "Tool",
       ]);
 
+      // Each conceptual illustration loads and describes its labels.
+      const figures = page.locator("#the-model figure, #around-it figure");
+      await expect(figures).toHaveCount(4);
+      for (const img of await figures.locator("img").all()) {
+        await img.scrollIntoViewIfNeeded();
+        expect((await img.getAttribute("alt"))?.length).toBeGreaterThan(40);
+        await expect
+          .poll(() =>
+            img.evaluate(
+              (el: HTMLImageElement) => el.complete && el.naturalWidth > 0,
+            ),
+          )
+          .toBe(true);
+      }
+
       // Trace: step through, back, reset, theme persistence.
       const trace = page.locator("#trace");
       const step = trace.getByTestId("trace-step");

@@ -1,6 +1,10 @@
+import Image from "next/image";
+import modelImage from "./assets/model.jpg";
+import interfaceImage from "./assets/interface.jpg";
+import dataSourceImage from "./assets/data-source.jpg";
+import toolImage from "./assets/tool.jpg";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
-import { PartsMap } from "./PartsMap";
 import { Trace } from "./Trace";
 import { Sorter } from "./Sorter";
 import styles from "./lesson.module.css";
@@ -61,10 +65,16 @@ export default function Lesson() {
             the weather, so it cannot use them.
           </p>
         </div>
-        <PartsMap
-          active={["model"]}
-          caption="The same four parts appear in every section. Here the model is in use."
-        />
+        <figure className={styles.figure}>
+          <Image
+            src={modelImage}
+            alt="Leaf Buddy: a Photo goes into the Model, which produces a Plant guess of tomato plant."
+            sizes="(max-width: 760px) 100vw, 720px"
+          />
+          <figcaption className="micro">
+            The photo is the input; the model’s plant guess is the output.
+          </figcaption>
+        </figure>
       </section>
       <section id="around-it">
         <h2 tabIndex={-1}>Three parts around the model.</h2>
@@ -79,6 +89,17 @@ export default function Lesson() {
             <p>
               <em>Leaf Buddy:</em> the camera button and the result card.
             </p>
+            <figure className={styles.figure}>
+              <Image
+                src={interfaceImage}
+                alt="Leaf Buddy screens show a Camera button and a Result card for a tomato plant."
+                sizes="(max-width: 760px) 100vw, 720px"
+              />
+              <figcaption className="micro">
+                The interface is where a person takes the photo and reads the
+                result.
+              </figcaption>
+            </figure>
           </li>
           <li className={styles.card}>
             <h3>Data source</h3>
@@ -86,6 +107,17 @@ export default function Lesson() {
             <p>
               <em>Leaf Buddy:</em> a list of watering tips written by gardeners.
             </p>
+            <figure className={styles.figure}>
+              <Image
+                src={dataSourceImage}
+                alt="Leaf Buddy uses a Plant guess to look in a Care list and find a Watering tip."
+                sizes="(max-width: 760px) 100vw, 720px"
+              />
+              <figcaption className="micro">
+                App code uses the plant guess to look up the stored tip; it does
+                not change the list.
+              </figcaption>
+            </figure>
           </li>
           <li className={styles.card}>
             <h3>Tool</h3>
@@ -93,6 +125,17 @@ export default function Lesson() {
             <p>
               <em>Leaf Buddy:</em> a weather service that says if rain is due.
             </p>
+            <figure className={styles.figure}>
+              <Image
+                src={toolImage}
+                alt="The App sends an Ask to the Weather service, which sends a rainy Forecast back to the app."
+                sizes="(max-width: 760px) 100vw, 720px"
+              />
+              <figcaption className="micro">
+                The app asks the weather service and receives its forecast in
+                return.
+              </figcaption>
+            </figure>
           </li>
         </ul>
         <p>
@@ -100,11 +143,6 @@ export default function Lesson() {
           glue, not a fourth thing to sort. In Leaf Buddy it holds one rule: if
           rain is due, add “skip today”.
         </p>
-        <PartsMap
-          active={["interface", "data", "tool"]}
-          appCode
-          caption="Here the three parts around the model are in use, with the app code that joins them."
-        />
       </section>
       <section id="trace">
         <h2 tabIndex={-1}>Follow one photo through Leaf Buddy.</h2>
