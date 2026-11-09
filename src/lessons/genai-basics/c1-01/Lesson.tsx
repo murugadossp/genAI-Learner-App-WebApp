@@ -129,8 +129,9 @@ export default function Lesson() {
         />
         <p>
           In <strong>machine learning</strong>, the system learns the pattern
-          from examples instead of following rules a person wrote. It adjusts
-          its own internal values until it does well on the examples.
+          from examples, so a person does not have to write a rule for every
+          case. People still design the method. The system adjusts its own
+          internal values until it does well on the examples.
         </p>
         <div className={styles.example}>
           <strong>In Postbox</strong>
