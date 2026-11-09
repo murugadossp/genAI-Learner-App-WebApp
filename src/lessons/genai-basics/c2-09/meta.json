@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c2-09",
   "title": "Temperature and sampling",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     {
       "id": "spread",
