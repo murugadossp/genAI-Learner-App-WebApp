@@ -110,11 +110,12 @@ Playwright at 390, 768 and 1440 px, light and dark. Checks: lab interaction, Che
 
 | Item | Status |
 | --- | --- |
-| Shared Chapter 9 course page and route | Written; verify with `format:check`, `typecheck`, build |
+| Shared Chapter 9 course page and route | Done on `ch09/foundation`: format, typecheck, build and production gating pass |
+| Image generation test (agy, gemini-3.8-flash-medium) | Done: three diagrams generated, checked by eye. One needed a retry after a timeout |
+| `c9-02` Workflows versus agents | Draft on `lessons/c9-02` (stacked on `ch09/foundation`): 133-test suite passes. Report written. Plan and content reviews not run |
+| `c9-04`, `c9-05`, `c9-06` | Not started |
 | Plan review (Codex) | Not started |
-| Lesson builds | Not started |
-| Image generation test (agy) | Not started |
-| Content reviews, draft PRs | Not started |
+| Content reviews, draft PRs, pushes | Not started. Nothing pushed |
 
 ## 10. Open questions
 
