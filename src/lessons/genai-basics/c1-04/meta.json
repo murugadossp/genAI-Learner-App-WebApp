@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c1-04",
   "title": "A model is not the app",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     { "id": "not-one-thing", "title": "An app is more than its model." },
     { "id": "the-model", "title": "The model is the learned part." },
