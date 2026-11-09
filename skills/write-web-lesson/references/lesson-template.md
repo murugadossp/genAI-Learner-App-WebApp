@@ -41,5 +41,8 @@ Metadata must match the registry's module and slug rules, and its ordered sectio
 - The lesson meets its curriculum outcome without silently expanding into adjacent topics.
 - Every example and visual is original for this topic, technically consistent, and explicit about its fidelity; no copied lesson prose or answers.
 - Interactive controls are labelled and usable with keyboard and touch. Test reset, wrong feedback, retry, focus, and state preservation where applicable.
+- The worked example is plain, needs no side skill, states every constraint it relies on, and has a unique answer. Prose, interaction, image text and alt text use the same wording.
+- A worked example appears before the interaction, and the interaction has ordered "try this" steps.
+- Claims that could not be checked against a primary source are hedged in the lesson and listed as unverified in the report.
 - Check sections and metadata in order, contrast in both themes, and local overflow at mobile, tablet and desktop widths.
 - Run the repository's actual formatting, build, browser and production-gating commands. Record real results and separately flag any manual browser or screen-reader review not performed.
