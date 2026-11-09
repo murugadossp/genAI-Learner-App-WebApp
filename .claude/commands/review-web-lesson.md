@@ -26,4 +26,4 @@ Check the lesson against the "Review before delivery" list in `skills/write-web-
 
 **Return in chat**
 
-Reviewed commit (full SHA, matching the PR head) and PR, CI status, validated findings (file and line, severity, priority P0 to P4, blocking or not), what you verified, what you could not test, and a recommended decision (comment, request changes, or approve if clean). Only with `--post` or an explicit request: post these as PR review comments and say exactly what was posted.
+Reviewed commit (full SHA, matching the PR head), whether that head includes a merge of `main` (and if it was merged after an earlier review, say so), and PR, CI status, validated findings (file and line, severity, priority P0 to P4, blocking or not), what you verified, what you could not test, and a recommended decision (comment, request changes, or approve if clean). Only with `--post` or an explicit request: post these as PR review comments and say exactly what was posted.

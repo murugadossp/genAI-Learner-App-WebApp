@@ -66,7 +66,7 @@ Rules for every gate:
 - A round is clean when it has no validated finding of P2 or higher.
 - Validate each finding before acting. Fix the real ones and give a reason for any you reject. Do not "fix" a claim you cannot verify: mark it unverified for a human reviewer.
 - If Codex is unavailable, use a second independent reviewer (a separate session or agent) and say so in the report.
-- Tell the reviewer what earlier rounds already fixed. A Codex review can take over ten minutes: run it in the background and do not start a second copy.
+- Tell the reviewer what earlier rounds already fixed, and the decisions deliberately kept (criterion wording, hedges, scope exclusions) so settled points are not re-raised. A Codex review can take over ten minutes: run it in the background and do not start a second copy.
 - Record every plan and content round (gate, reviewer, findings, action or rejection reason) in the report's review log. The final review is recorded in the PR description with the reviewed SHA.
 - `/review-web-lesson` posts nothing to GitHub unless the user asks.
 
