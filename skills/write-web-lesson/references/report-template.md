@@ -27,9 +27,9 @@ Copy this template to `docs/lesson-reports/<module>/<lessonId>.md`, fill every s
 
 ## 4. Truth and fidelity log
 
-| Claim or value                  | Verified fact or invented? | Source (URL, doc) | Where it is disclosed in the lesson |
-| ------------------------------- | -------------------------- | ----------------- | ----------------------------------- |
-| [example number, rule, diagram] | [verified / illustrative]  | [source]          | [section id]                        |
+| Claim or value                  | Verified fact or invented?             | Source (URL, doc) | Where it is disclosed in the lesson |
+| ------------------------------- | -------------------------------------- | ----------------- | ----------------------------------- |
+| [example number, rule, diagram] | [verified / unverified / illustrative] | [source]          | [section id]                        |
 
 List anything uncertain that a subject-matter reviewer should check.
 
@@ -47,8 +47,20 @@ List anything uncertain that a subject-matter reviewer should check.
 | `npm run format:check`    | [pass/fail] |                       |
 | `npm run typecheck`       | [pass/fail] |                       |
 | `npm test`                | [pass/fail] | [specs added/changed] |
-| `npm run test:production` | [pass/fail] | draft returns 404     |
-| CI run on head commit     | [link]      |                       |
+| `npm run test:production` | [pass/fail] | draft returns 404; published (incl. a revision) returns 200 |
+| CI run                    | [link]      | optional: the commit tested when the report was written. CI on the final head is recorded in the PR description |
+
+### Review log
+
+| Gate (plan / content) | Round | Reviewer | Finding | Action or reason rejected |
+| ----------------------------- | ----- | -------- | ------- | ------------------------- |
+| [gate]                        | [n]   | [tool]   | [text]  | [fixed / rejected: why]   |
+
+Gate checklist: [ ] plan review handled  [ ] checks pass  [ ] content review done  [ ] every plan and content round logged (the final review is recorded in the PR description, not in this report)
+
+Stopped after: [two clean rounds / round cap with open findings listed / reviewer unavailable, and what was used instead].
+
+Stacking: [not stacked / stacked on `<parent-branch>`, PR base, and plan to rebase onto `main`].
 
 ### Rendered checks (mark each cell: pass, fail, or not tested)
 
