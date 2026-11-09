@@ -1,15 +1,13 @@
 export const tasks = [
   {
     name: "Predict",
-    asks: "What is likely to happen, or be true, that we do not know yet?",
-    gives:
-      "An estimate of something unknown, such as an amount, a time or a yes/no outcome.",
+    asks: "What number is likely?",
+    gives: "A number, such as an amount or a time.",
   },
   {
     name: "Classify",
     asks: "Which group does this belong to right now?",
-    gives:
-      "A label chosen from a fixed list for something already in front of it.",
+    gives: "A label chosen from a fixed list.",
   },
   {
     name: "Recommend",
