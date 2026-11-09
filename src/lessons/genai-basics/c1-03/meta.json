@@ -1,0 +1,17 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c1-03",
+  "title": "Data, examples, features and labels",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "big-idea", "title": "Learning starts with examples." },
+    { "id": "example", "title": "In our table, an example is one row." },
+    { "id": "features", "title": "Features are the clues." },
+    { "id": "label", "title": "The label is the answer." },
+    { "id": "lab", "title": "The goal decides the label." },
+    { "id": "new-case", "title": "A new case to guess has no label yet." },
+    { "id": "limits", "title": "Where this picture is too tidy." },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
