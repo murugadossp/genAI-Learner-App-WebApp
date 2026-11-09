@@ -78,6 +78,7 @@ try {
     ["/studio", 404],
     ["/course", 404],
     ["/course/chapter-1", 404],
+    ["/course/chapter-p1", 404],
     ...lessons().map((lesson) => [
       `/learn/${lesson.module}/${lesson.lessonId}`,
       lesson.webStatus === "published" ? 200 : 404,

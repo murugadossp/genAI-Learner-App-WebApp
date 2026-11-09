@@ -4,7 +4,9 @@ import Shell from "./Shell";
 import curriculum from "../data/curriculum/curriculum.json";
 const availableLessons: { module: string; lessonId: string }[] = webLessons;
 export type ChapterCopy = {
-  chapterId: number;
+  chapterId: number | string;
+  module?: string;
+  icon?: string;
   eyebrow: string;
   subtitle: string;
   callout: string;
@@ -16,6 +18,7 @@ export default function ChapterCourse({ copy }: { copy: ChapterCopy }) {
   const chapter = curriculum.chapters.find(
     (chapter) => chapter.id === copy.chapterId,
   )!;
+  const moduleKey = copy.module ?? "genai-basics";
   return (
     <Shell>
       <div className="container">
@@ -36,12 +39,11 @@ export default function ChapterCourse({ copy }: { copy: ChapterCopy }) {
               {chapter.lessons.map((lesson) =>
                 availableLessons.some(
                   (item) =>
-                    item.module === "genai-basics" &&
-                    item.lessonId === lesson.slug,
+                    item.module === moduleKey && item.lessonId === lesson.slug,
                 ) ? (
                   <Link
                     className="lesson-row selected"
-                    href={`/learn/genai-basics/${lesson.slug}`}
+                    href={`/learn/${moduleKey}/${lesson.slug}`}
                     key={lesson.slug}
                   >
                     <span>◉</span>
@@ -64,7 +66,7 @@ export default function ChapterCourse({ copy }: { copy: ChapterCopy }) {
           </div>
           <aside className="card aside-card">
             <span className="course-icon" aria-hidden="true">
-              ▥
+              {copy.icon ?? "▥"}
             </span>
             <h3 className="aside-title">{copy.asideTitle}</h3>
             <p>By the end, you should be able to:</p>

@@ -1,0 +1,18 @@
+{
+  "module": "python-for-ai",
+  "lessonId": "p1-01",
+  "title": "Variables and Data Types",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "names-and-values", "title": "Names point to values in memory." },
+    { "id": "core-types", "title": "Four primitive types power AI code." },
+    { "id": "sandbox", "title": "Inspect variables and types in the sandbox." },
+    { "id": "quotes-matter", "title": "Quotes create text, not numbers." },
+    {
+      "id": "conversions",
+      "title": "Converting types safely for model inputs."
+    },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
