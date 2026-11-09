@@ -27,9 +27,9 @@ Copy this template to `docs/lesson-reports/<module>/<lessonId>.md`, fill every s
 
 ## 4. Truth and fidelity log
 
-| Claim or value                  | Verified fact or invented? | Source (URL, doc) | Where it is disclosed in the lesson |
-| ------------------------------- | -------------------------- | ----------------- | ----------------------------------- |
-| [example number, rule, diagram] | [verified / illustrative]  | [source]          | [section id]                        |
+| Claim or value                  | Verified fact or invented?             | Source (URL, doc) | Where it is disclosed in the lesson |
+| ------------------------------- | -------------------------------------- | ----------------- | ----------------------------------- |
+| [example number, rule, diagram] | [verified / unverified / illustrative] | [source]          | [section id]                        |
 
 List anything uncertain that a subject-matter reviewer should check.
 
@@ -49,6 +49,14 @@ List anything uncertain that a subject-matter reviewer should check.
 | `npm test`                | [pass/fail] | [specs added/changed] |
 | `npm run test:production` | [pass/fail] | draft returns 404     |
 | CI run on head commit     | [link]      |                       |
+
+### Review log
+
+| Gate (plan / content / final) | Round | Reviewer | Finding | Action or reason rejected |
+| ----------------------------- | ----- | -------- | ------- | ------------------------- |
+| [gate]                        | [n]   | [tool]   | [text]  | [fixed / rejected: why]   |
+
+Stopped after: [two clean rounds / round cap / reviewer unavailable, and what was used instead].
 
 ### Rendered checks (mark each cell: pass, fail, or not tested)
 
