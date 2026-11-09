@@ -34,8 +34,9 @@ for (const width of [390, 768, 1440])
       expect(altText.length).toBeGreaterThan(40);
       expect(altText).toContain("0-based positive indices 0, 1, 2, 3");
       expect(altText).toContain("negative indices -4, -3, -2, -1");
-      expect(altText).toContain("retrieved_docs[0:2]");
-      expect(altText).toContain("retrieved_docs = retrieved_docs.append()");
+      expect(altText).toContain("docs[1:3]");
+      expect(altText).toContain("'shipping_faq' and 'order_tracking'");
+      expect(altText).toContain("docs = docs.append");
 
       // Verify ListMemoryVisual diagram
       const visual = page.locator(
