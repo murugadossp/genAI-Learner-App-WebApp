@@ -24,18 +24,16 @@ for (const width of [390, 768, 1440])
         .evaluateAll((els) => els.map((e) => e.id));
       expect(ids).toEqual(meta.sections.map((s) => s.id));
 
-      // Diagram highlights the focused phase.
-      await expect(
-        page.locator("#training").getByTestId("phase-training"),
-      ).toContainText("In focus");
-      await expect(
-        page.locator("#training").getByTestId("phase-inference"),
-      ).not.toContainText("In focus");
-
       // Images render with descriptive alt text.
       for (const [section, alt] of [
         ["#two-jobs", /Training.*Learned settings.*v1.*Inference/],
-        ["#change", /One request.*Hint.*v1.*Training again.*v2/],
+        ["#training", /Labelled emails.*Training.*Learned settings: v1/],
+        ["#inference", /New email.*Learned settings: v1.*Tag: delivery/],
+        ["#chat", /One request.*Hint.*Learned settings: v1.*Tag: billing/],
+        [
+          "#change",
+          /Learned settings: v1.*New labelled emails.*Training again.*Learned settings: v2/,
+        ],
       ] as const) {
         const img = page.locator(`${section} figure img`);
         await img.scrollIntoViewIfNeeded();
@@ -49,6 +47,14 @@ for (const width of [390, 768, 1440])
           )
           .toBeTruthy();
       }
+
+      // Worked examples and questions are present.
+      await expect(page.locator("#training")).toContainText(
+        "“I was charged twice.” was labelled billing.",
+      );
+      await expect(page.locator("#inference li")).toHaveCount(4);
+      await expect(page.locator("#chat")).toContainText("Call me Sam");
+      await expect(page.locator("#questions h3")).toHaveCount(3);
 
       // Lab.
       const lab = page.locator("#lab");

@@ -1,44 +1,3 @@
-.map {
-  margin: 1rem 0;
-}
-.phases {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 0.5rem;
-}
-.phase,
-.settings {
-  display: grid;
-  gap: 0.15rem;
-  padding: 0.7rem 0.9rem;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: var(--panel);
-}
-.settings {
-  border-style: dashed;
-  color: var(--muted);
-}
-.phase[data-active="true"] {
-  border: 2px solid var(--accent);
-  background: var(--accent-soft);
-}
-.badge {
-  justify-self: start;
-  padding: 0.05rem 0.5rem;
-  border-radius: 999px;
-  border: 1px solid var(--accent);
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--ink);
-}
-@media (min-width: 900px) {
-  .phases {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
 .example {
   margin: 1rem 0;
   padding: 0.8rem 1rem;
@@ -121,4 +80,9 @@
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--panel);
+}
+.example ul,
+.example ol {
+  margin: 0.4rem 0 0.4rem 1.25rem;
+  padding: 0;
 }
