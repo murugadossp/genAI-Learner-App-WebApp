@@ -1,6 +1,7 @@
 export const courses = [
   {
     title: "AI foundations",
+    href: "/course/chapter-1",
     group: "Foundations",
     icon: "◎",
     level: "Start here",

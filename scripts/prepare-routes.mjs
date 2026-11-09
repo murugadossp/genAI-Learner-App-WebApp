@@ -26,6 +26,16 @@ const routes = [
   ["app/page.tsx", "../src/studio/Landing", false],
   ["app/studio/page.tsx", "../../src/studio/Studio", false],
   ["app/course/page.tsx", "../../src/studio/Course", false],
+  [
+    "app/course/chapter-1/page.tsx",
+    "../../../src/studio/CourseChapter1",
+    false,
+  ],
+  [
+    "app/course/chapter-p1/page.tsx",
+    "../../../src/studio/CourseChapterP1",
+    false,
+  ],
   ...lessons().map((meta) => [
     `app/learn/${meta.module}/${meta.lessonId}/page.tsx`,
     `../../../../src/lessons/${meta.module}/${meta.lessonId}/Lesson`,

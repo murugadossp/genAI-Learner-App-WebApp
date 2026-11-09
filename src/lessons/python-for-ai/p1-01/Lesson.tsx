@@ -9,9 +9,7 @@ import styles from "./lesson.module.css";
 export default function Lesson() {
   return (
     <LessonFrame
-      chapterLabel="Python for AI"
-      courseHref="/course?chapter=P1"
-      courseLabel="Python for AI"
+      chapter={{ label: "Python for AI", href: "/course/chapter-p1" }}
       number="01"
       title="Variables and Data Types"
       lead="Every prompt, temperature setting, and model response in Python is stored under a name and shaped by its data type. Understanding how Python names values and checks types is the first step in building reliable AI systems."

@@ -8,9 +8,10 @@ export function LessonFrame({
   embedded = false,
   toolbar,
   footer = true,
-  chapterLabel = "How GenAI works",
-  courseHref = "/course",
-  courseLabel = "Learning path",
+  chapter = { label: "How GenAI works", href: "/course" },
+  chapterLabel,
+  courseHref,
+  courseLabel,
 }: {
   number: string;
   title: string;
@@ -19,25 +20,30 @@ export function LessonFrame({
   embedded?: boolean;
   toolbar?: React.ReactNode;
   footer?: boolean;
+  chapter?: { label: string; href: string };
   chapterLabel?: string;
   courseHref?: string;
   courseLabel?: string;
 }) {
+  const activeChapter = {
+    label: chapterLabel ?? chapter.label,
+    href: courseHref ?? chapter.href,
+  };
   const body = (
     <div className="lesson-shell">
       <div className="lesson-toolbar">
-        <Link className="text-link" href={courseHref}>
-          ← {courseLabel}
+        <Link className="text-link" href={activeChapter.href}>
+          ← {courseLabel ?? "Learning path"}
         </Link>
         {toolbar ?? (
-          <Link className="text-link" href={courseHref}>
+          <Link className="text-link" href={activeChapter.href}>
             Chapter contents
           </Link>
         )}
       </div>
       <article className="article">
         <div className="eyebrow">
-          {chapterLabel} / Lesson {number}
+          {activeChapter.label} / Lesson {number}
         </div>
         <h1>{title}</h1>
         <p className="lead">{lead}</p>
@@ -49,11 +55,11 @@ export function LessonFrame({
         {children}
         {footer && (
           <div className="end-lesson">
-            <Link className="text-link" href={courseHref}>
+            <Link className="text-link" href={activeChapter.href}>
               ← Back to{" "}
-              {courseLabel === "Learning path"
-                ? "the learning path"
-                : courseLabel}
+              {courseLabel && courseLabel !== "Learning path"
+                ? courseLabel
+                : "the learning path"}
             </Link>
           </div>
         )}
