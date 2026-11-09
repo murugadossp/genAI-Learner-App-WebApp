@@ -4,6 +4,7 @@ import { join, resolve, basename } from "node:path";
 import { spawn } from "node:child_process";
 import { createServer } from "node:net";
 import { lessons } from "./lesson-registry.mjs";
+import { chapterRoutes } from "./chapters.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const dir = await mkdtemp(join(tmpdir(), "web-production-check-"));
@@ -77,16 +78,11 @@ try {
     ["/", 200],
     ["/studio", 200],
     ["/course", 200],
-    ["/course/chapter-1", 200],
-    [
-      "/course/chapter-p1",
-      lessons().some(
-        (lesson) =>
-          lesson.module === "python-for-ai" && lesson.webStatus === "published",
-      )
-        ? 200
-        : 404,
-    ],
+    // Every chapter course page: public exactly when it has a published lesson.
+    ...chapterRoutes().map((chapter) => [
+      chapter.url,
+      chapter.published ? 200 : 404,
+    ]),
     ...lessons().map((lesson) => [
       `/learn/${lesson.module}/${lesson.lessonId}`,
       lesson.webStatus === "published" ? 200 : 404,
