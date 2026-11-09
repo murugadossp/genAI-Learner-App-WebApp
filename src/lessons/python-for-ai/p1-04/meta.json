@@ -1,0 +1,30 @@
+{
+  "module": "python-for-ai",
+  "lessonId": "p1-04",
+  "title": "Lists",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "ordered-sequences-and-syntax",
+      "title": "Ordered sequences: Constructing lists for AI pipelines."
+    },
+    {
+      "id": "indexing-and-negative-indices",
+      "title": "Indexing: Accessing elements from head and tail."
+    },
+    {
+      "id": "slicing-and-context-windows",
+      "title": "Slicing: Extracting sublists for prompt context budgets."
+    },
+    {
+      "id": "mutability-and-append-trap",
+      "title": "Mutability: In-place updates and the .append() trap."
+    },
+    {
+      "id": "lab",
+      "title": "Inspect list operations in the AI context sandbox."
+    },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
