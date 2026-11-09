@@ -11,7 +11,7 @@
       "title": "An agent loop: the model picks each step."
     },
     { "id": "decision-point", "title": "A coded branch is still a workflow." },
-    { "id": "combine", "title": "Most real systems mix the two." },
+    { "id": "combine", "title": "Many systems mix the two." },
     { "id": "try-it", "title": "Sort five systems." },
     { "id": "check", "title": "Check your understanding." },
     { "id": "takeaway", "title": "Take this with you." }

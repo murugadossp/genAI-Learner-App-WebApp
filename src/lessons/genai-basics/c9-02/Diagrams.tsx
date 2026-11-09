@@ -89,14 +89,15 @@ export function AgentLoopDiagram() {
     <svg
       role="img"
       aria-labelledby="c9-02-loop-title"
-      viewBox="0 0 400 340"
+      viewBox="0 0 400 400"
       xmlns="http://www.w3.org/2000/svg"
     >
       <title id="c9-02-loop-title">
         Three boxes in a loop. The top box, Model picks next step, has an arrow
         to Run a tool at the bottom right. Run a tool has an arrow to Model
-        reads result at the bottom left, which has an arrow back up to the top
-        box.
+        reads result at the bottom left. From Model reads result, an arrow goes
+        back up to the top box, and another goes down to a Stop box that ends
+        the loop.
       </title>
       <defs>
         <Arrowhead name="loop" />
@@ -180,6 +181,36 @@ export function AgentLoopDiagram() {
         fill="var(--ink)"
       >
         result
+      </text>
+      <line
+        x1="100"
+        y1="325"
+        x2="100"
+        y2="344"
+        stroke="var(--muted)"
+        strokeWidth="2"
+        markerEnd={`url(#${arrowId("loop")})`}
+      />
+      <rect
+        x="25"
+        y="346"
+        width="150"
+        height="40"
+        rx="10"
+        fill="var(--panel)"
+        stroke="var(--muted)"
+        strokeWidth="2"
+        strokeDasharray="6 5"
+      />
+      <text
+        x="100"
+        y="373"
+        textAnchor="middle"
+        fontSize="19"
+        fontWeight="600"
+        fill="var(--ink)"
+      >
+        Stop
       </text>
       <line
         x1="256"

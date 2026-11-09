@@ -164,7 +164,7 @@ export default function Lesson() {
       </section>
 
       <section id="combine">
-        <h2 tabIndex={-1}>Most real systems mix the two.</h2>
+        <h2 tabIndex={-1}>Many systems mix the two.</h2>
         <p>
           A common design keeps most steps fixed and gives one step to an agent
           loop. For the locked-account ticket, the system might:
@@ -192,8 +192,8 @@ export default function Lesson() {
         </figure>
         <p>
           The fixed steps are easy to test and audit. The open-ended step
-          handles cases a rule cannot predict, and it is the hardest part to
-          test. This is a common pattern, not a rule.
+          handles cases that are hard to specify as rules in advance, and it is
+          the hardest part to test. This is one common pattern, not a rule.
         </p>
       </section>
 

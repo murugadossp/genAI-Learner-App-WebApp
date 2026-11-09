@@ -5,7 +5,8 @@ import styles from "./lesson.module.css";
 const kinds = [
   {
     name: "Workflow",
-    means: "the code sets every step and its order in advance.",
+    means:
+      "the code decides which steps run and in what order, using rules written in advance.",
   },
   {
     name: "Agent loop",
@@ -39,7 +40,7 @@ const items = [
     why: "The model writes a summary inside one fixed step. It does not choose what runs next.",
   },
   {
-    text: "A trip planner searches for flights, reads the prices, and decides whether to search another date. It keeps going until it has a plan it judges good enough, then stops.",
+    text: "A trip planner uses a model that searches for flights, reads the prices, and chooses whether to search another date. It keeps going until the model judges the plan good enough, then stops.",
     kind: 1,
     why: "The model chooses each search and decides when to stop. That is the loop.",
   },
