@@ -17,14 +17,14 @@ Target: `src/lessons/genai-basics/c9-NN/` in this repo, curriculum Chapter 9 "To
 | Publication | Every new lesson starts as `draft`. Nothing is pushed or published without an instruction | AGENTS boundaries |
 | Provenance | The source is the author's own llm-concepts project. Content is re-authored for the web, and each report's fidelity log names the source file it was adapted from | Keeps the verified/invented split visible |
 
-## 2. Shared prerequisite (done in this branch)
+## 2. Shared prerequisite (superseded by PR #49)
 
-- `src/studio/CourseChapter9.tsx`: course page for Chapter 9, same pattern as `CourseChapter1` and `CourseChapterP1`. Copy is written for the chapter, not taken from the source.
-- `scripts/prepare-routes.mjs`: route `app/course/chapter-9`, published only once a `genai-basics` lesson with a `c9-` ID is published (same gating as `chapter-p1`).
+- The first version of this branch added a hand-written Chapter 9 page, route and `.gitignore` line. That has been removed from this branch.
+- PR #49 (`course-pages-general`) replaces the per-chapter pages with one generic chapter page. It generates a page for any chapter with web lessons, with copy from the curriculum. Chapter 9 gets its page from that, once a `c9-` lesson is published.
 - `LessonFrame` needs no change. Lessons pass their own `chapter={{ label, href }}`, which is already supported (see `c1-01`).
-- Not changed: `src/studio/Course.tsx` (still chapter 2 at `/course`). It is a default, not a problem for Chapter 9.
+- Not changed: `src/studio/Course.tsx` (still chapter 2 at `/course`).
 
-Open: the course page still has hand-written copy per chapter. A data-driven chapter page is a later change; it is not needed for these four lessons.
+Open: the first draft's hand-written copy is gone. Chapter 9 copy will come from the curriculum data via #49.
 
 ## 3. Mapping
 
