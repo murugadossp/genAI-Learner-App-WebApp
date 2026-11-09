@@ -32,6 +32,24 @@ for (const width of [390, 768, 1440])
         page.locator("#training").getByTestId("phase-inference"),
       ).not.toContainText("In focus");
 
+      // Images render with descriptive alt text.
+      for (const [section, alt] of [
+        ["#two-jobs", /Training.*Learned settings.*v1.*Inference/],
+        ["#change", /One request.*Hint.*v1.*Training again.*v2/],
+      ] as const) {
+        const img = page.locator(`${section} figure img`);
+        await img.scrollIntoViewIfNeeded();
+        await expect(img).toHaveAttribute("alt", alt);
+        await expect
+          .poll(() =>
+            img.evaluate((el) => {
+              const i = el as HTMLImageElement;
+              return i.complete && i.naturalWidth > 0;
+            }),
+          )
+          .toBeTruthy();
+      }
+
       // Lab.
       const lab = page.locator("#lab");
       const log = lab.getByTestId("log-entry");

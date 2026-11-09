@@ -1,9 +1,12 @@
+import Image from "next/image";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
 import { PhasesMap } from "./PhasesMap";
 import { Lab } from "./Lab";
 import { Sorter } from "./Sorter";
 import styles from "./lesson.module.css";
+import factoryImg from "./factory-vending.jpg";
+import hintImg from "./hint-vs-training.jpg";
 
 export default function Lesson() {
   return (
@@ -49,10 +52,16 @@ export default function Lesson() {
             product.
           </p>
         </div>
-        <PhasesMap
-          active={[]}
-          caption="Two jobs share one model. The learned settings sit between them."
-        />
+        <figure className={styles.figure}>
+          <Image
+            src={factoryImg}
+            alt="Diagram of a factory labelled Training, an arrow to a card labelled Learned settings with a v1 tag, and an arrow to a vending machine labelled Inference."
+            sizes="(min-width: 900px) 720px, 100vw"
+          />
+          <figcaption className="micro">
+            Training builds the learned settings. Inference uses them.
+          </figcaption>
+        </figure>
       </section>
       <section id="training">
         <h2 tabIndex={-1}>Training changes the model.</h2>
@@ -138,10 +147,16 @@ export default function Lesson() {
             v2. This is training again, not use.
           </p>
         </div>
-        <PhasesMap
-          active={["training"]}
-          caption="A new version comes from training again."
-        />
+        <figure className={styles.figure}>
+          <Image
+            src={hintImg}
+            alt="Two panels. One request: a Hint note and an envelope go into a vending machine fed by a card labelled Learned settings: v1, and nothing changes the card. Training again: a factory produces a card labelled Learned settings: v2."
+            sizes="(min-width: 900px) 720px, 100vw"
+          />
+          <figcaption className="micro">
+            A hint shapes one request. Only training again makes v2.
+          </figcaption>
+        </figure>
       </section>
       <section id="lab">
         <h2 tabIndex={-1}>Try it: a hint, then retraining.</h2>
