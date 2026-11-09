@@ -21,20 +21,20 @@ Run the whole release without stopping to ask: sync, (optionally) publish lesson
 
 ## Steps
 
-1. **Preflight.** `.vercel/project.json` must exist, `vercel whoami` and `gh auth status` must succeed, and the working tree must be clean (`git status --porcelain`; ignore untracked `.claude/worktrees/`). If the tree is dirty, stop and say what is dirty. Do not stash or discard it.
-2. **Sync.** `git fetch origin`, `git checkout main`, `git pull --ff-only`. Note the SHA. If `--ff-only` fails, stop and report.
-3. **What is new.** Find when production was last deployed (`vercel ls --prod`, newest row, or `vercel inspect <url>` for the exact time) and list PRs merged to `main` since (`gh pr list --state merged --base main --search "merged:>=<ISO time>"`). If the time cannot be determined, say so instead of guessing. This list goes in the final report.
+1. **Preflight.** `.vercel/project.json` must exist, `vercel whoami` and `gh auth status` must succeed, and the working tree must be clean (`git status --porcelain`). `.claude/worktrees/` is git-ignored and listed in `.vercelignore`, so it is neither reported nor uploaded. If the tree is dirty, stop and say what is dirty. Do not stash or discard it.
+2. **Sync.** `git fetch origin`, `git checkout main`, `git pull --ff-only`, then require `test "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)"`. If either fails (including unpushed local commits on `main`), stop and report, because `vercel deploy --prod` uploads the local checkout and would ship commits nobody reviewed. Note the SHA.
+3. **What is new.** Find when production was last deployed (`vercel ls -e production -n 1 --json`, which gives the creation time and, for git-triggered deploys, the commit SHA) and list PRs merged to `main` since (`gh pr list --state merged --base main --search "merged:>=<ISO time>"`). If the time cannot be determined, say so instead of guessing. This list goes in the final report.
 4. **Publish PR (only with `--publish`).**
    1. For each lesson ID, find `src/lessons/*/<lessonId>/meta.json`. If missing or the lesson is already published, say so and drop it. If none remain, skip to step 5.
-   2. `git checkout -b publish/<ids-joined-by-dash>`. Set `"webStatus": "published"` in each `meta.json`.
+   2. Delete any stale local `publish/<ids-joined-by-dash>` branch from an aborted run, then `git checkout -b publish/<ids-joined-by-dash>`. Set `"webStatus": "published"` in each `meta.json`.
    3. Read each lesson's report in `docs/lesson-reports/<module>/<lessonId>.md`. Collect any "Needed before publishing" items; they go in the PR body and the final report. They do not block, because the user named the lessons.
    4. Run `npm run format:check`, `npm run typecheck` and `npm run test:production`. If `format:check` fails on files you changed, run `npx prettier --write` on those files and retry once. Any other failure: stop, leave the branch unpushed, and report the output.
-   5. If a lesson's publication needs a hard-coded link or card fixed (for example a course card with no `href`, which renders "Coming soon"), make that minimal change in the same PR and update the test that asserts the old state. Do not widen scope beyond that.
-   6. Commit, `git push -u origin HEAD`, `gh pr create` with a body listing the lessons, the checks you ran and the open report items.
-   7. `gh pr checks <n> --watch --fail-fast`. If CI fails, report the failing check and stop. Do not merge.
+   5. The publish PR changes only `meta.json` files. If publishing needs an app or test change (for example a course card with no `href`, which renders "Coming soon"), do not make it here: delete the unpushed branch (`git checkout main && git branch -D publish/...`), report what needs fixing, and stop. Such changes go through a normal reviewed PR first.
+   6. Commit, `git push -u origin HEAD`, then `gh pr create --title "Publish <ids>" --body "<lessons, checks run, open report items>"` and note the PR number `<n>` it prints.
+   7. Checks register a few seconds after the PR opens, and `gh pr checks` exits 0 when none are reported yet. Poll until `gh pr checks <n> --json name -q length` is above 0, then `gh pr checks <n> --watch --fail-fast`. If CI fails, run `git checkout main` and report the failing check. Do not merge.
    8. `gh pr merge <n> --merge`, then `git checkout main && git pull --ff-only`.
 5. **Deploy.** From `main` run `vercel deploy --prod --yes`. Capture the production URL and the alias line. A failed build: report the Vercel error and stop.
-6. **Verify live.** Against the production alias (`https://gen-ai-learner-app-web-app.vercel.app`), `curl -s -o /dev/null -w '%{http_code}'` these paths: `/`, `/studio`, `/course`, `/course/chapter-1`, `/course/chapter-p1` (200 only if a python-for-ai lesson is published, else 404), and every lesson in `src/lessons/*/*/meta.json` (200 if `published`, 404 if `draft`). Also confirm `/` does not contain "coming soon". Any mismatch is a failure: report it, do not claim success.
+6. **Verify live.** Against the production alias (`https://gen-ai-learner-app-web-app.vercel.app`), `curl -s -o /dev/null -w '%{http_code}'` these paths: `/`, `/studio`, `/course`, `/course/chapter-1`, `/course/chapter-p1` (200 only if a python-for-ai lesson is published, else 404), and every lesson in `src/lessons/<module>/<lessonId>/meta.json` at `/learn/<module>/<lessonId>` (200 if `published`, 404 if `draft`). Check the `/` body separately (`curl -s <alias>/ | grep -ci "coming soon"` must print 0), because the status check discards the body. Any mismatch is a failure: report it, do not claim success.
 7. **Final report.** In this shape, plain and short:
    - Result: live or failed, and at which step.
    - Production URL and the deployed `main` SHA (short) with the deployment ID.
@@ -45,6 +45,6 @@ Run the whole release without stopping to ask: sync, (optionally) publish lesson
 
 ## Notes
 
-- `vercel ls` has no `--limit`; the newest deployment is the first data row.
+- `vercel ls` takes `-e production`, `-n <limit>` and `--json`; use the JSON for timestamps, since the table only shows relative ages.
 - `vercel deploy --prod` uploads the local checkout, so deploy only from a clean, synced `main`.
 - Production gating means `/studio`, lessons and `/course/chapter-p1` follow `webStatus`; verification is against `meta.json`, not memory.

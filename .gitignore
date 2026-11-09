@@ -11,3 +11,4 @@ app/course/page.tsx
 app/course/chapter-1/page.tsx
 src/data/web-lessons.json
 app/course/chapter-p1/page.tsx
+.claude/worktrees/
