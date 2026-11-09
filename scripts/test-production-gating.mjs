@@ -75,7 +75,7 @@ try {
   if (!ready) throw new Error("Production server failed to start");
   for (const [path, expected] of [
     ["/", 200],
-    ["/studio", 404],
+    ["/studio", 200],
     ["/course", 200],
     ["/course/chapter-1", 200],
     [
@@ -98,12 +98,9 @@ try {
     if (response.status !== expected)
       throw new Error(`${path}: expected ${expected}, got ${response.status}`);
     const html = await response.text();
-    if (path === "/" && !html.includes("coming soon"))
-      throw new Error("Production home is not the placeholder");
-    // /studio is not served in production, so no served page may link to it.
-    if (expected === 200 && path !== "/" && html.includes('href="/studio'))
-      throw new Error(`${path}: links to /studio`);
-    if (path.startsWith("/course")) {
+    if (path === "/" && html.includes("coming soon"))
+      throw new Error("Production home is still the placeholder");
+    if (path === "/" || path === "/studio" || path.startsWith("/course")) {
       const published = new Set(
         lessons()
           .filter((lesson) => lesson.webStatus === "published")
