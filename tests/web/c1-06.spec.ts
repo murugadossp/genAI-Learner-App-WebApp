@@ -57,6 +57,13 @@ for (const width of [390, 768, 1440])
         /.+/,
       );
       await expect(lab.getByRole("status")).toContainText("average coffee");
+      await expect(
+        lab.getByRole("group", {
+          name: "Task 3: stakes if the answer is wrong",
+        }),
+      ).toBeVisible();
+      await task(0).getByLabel("Low", { exact: true }).check();
+      await expect(lab.getByRole("status")).toContainText("Right. A clumsy");
       await task(2).getByLabel("Low", { exact: true }).check();
       await task(2).getByLabel("Easy to check").check();
       await expect(task(2).getByTestId("item-feedback").nth(1)).toContainText(

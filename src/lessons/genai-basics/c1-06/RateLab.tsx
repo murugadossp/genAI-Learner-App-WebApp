@@ -48,7 +48,7 @@ export function RateLab() {
         ? ` Check level: ${levels[`${t.stakes}-${t.checkable}`]}`
         : "";
     setMessage(
-      `Task ${i + 1}. ${ok ? "Right" : "Not quite"}. ${ok ? "" : `Here it is ${t[axis]}, because `}${why}${level}`,
+      `Task ${i + 1}. ${ok ? "Right" : "Not quite"}. ${ok ? "" : `Here it is ${t[axis]}, because `}${ok ? why.charAt(0).toUpperCase() + why.slice(1) : why}${level}`,
     );
   };
 
@@ -116,14 +116,24 @@ export function RateLab() {
                 <p className={styles.taskText}>
                   <strong>Task {i + 1}.</strong> {t.text}
                 </p>
-                {group(i, "stakes", "Stakes if the answer is wrong", [
-                  ["low", "Low"],
-                  ["high", "High"],
-                ])}
-                {group(i, "checkable", "Can Sam check the answer?", [
-                  ["easy", "Easy to check"],
-                  ["hard", "Hard to check"],
-                ])}
+                {group(
+                  i,
+                  "stakes",
+                  `Task ${i + 1}: stakes if the answer is wrong`,
+                  [
+                    ["low", "Low"],
+                    ["high", "High"],
+                  ],
+                )}
+                {group(
+                  i,
+                  "checkable",
+                  `Task ${i + 1}: can Sam check the answer?`,
+                  [
+                    ["easy", "Easy to check"],
+                    ["hard", "Hard to check"],
+                  ],
+                )}
                 {right && (
                   <p className={styles.level} data-testid="level">
                     <strong>Check level:</strong>{" "}
