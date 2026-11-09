@@ -1,0 +1,21 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c1-05",
+  "title": "Training vs inference",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "two-jobs",
+      "title": "Building a model and using it are different jobs."
+    },
+    { "id": "training", "title": "Training changes the model." },
+    { "id": "inference", "title": "Inference uses the model as it is." },
+    { "id": "chat", "title": "A chat message is input, not training." },
+    { "id": "change", "title": "How a model really changes." },
+    { "id": "lab", "title": "Try it: a hint, then retraining." },
+    { "id": "sort", "title": "Training or inference?" },
+    { "id": "limits", "title": "Where this picture is too tidy." },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}

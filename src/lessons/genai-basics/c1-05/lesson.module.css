@@ -1,0 +1,112 @@
+.map {
+  margin: 1rem 0;
+}
+.phases {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.phase,
+.settings {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+}
+.settings {
+  border-style: dashed;
+  color: var(--muted);
+}
+.phase[data-active="true"] {
+  border: 2px solid var(--accent);
+  background: var(--accent-soft);
+}
+.badge {
+  justify-self: start;
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+@media (min-width: 900px) {
+  .phases {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+.example {
+  margin: 1rem 0;
+  padding: 0.8rem 1rem;
+  background: var(--panel);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+}
+.example p {
+  margin: 0.3rem 0 0;
+}
+.lab,
+.log {
+  margin: 1rem 0;
+}
+.emails {
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+}
+.emails p {
+  margin: 0.3rem 0;
+}
+.state {
+  font-weight: 700;
+}
+.steps {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.steps button {
+  width: 100%;
+  text-align: left;
+}
+.log {
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.4rem;
+}
+.sortList {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+.sortItem {
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+}
+.sortItem fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.sortItem legend {
+  padding: 0;
+  margin-bottom: 0.4rem;
+}
+.sortOption {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+  margin-right: 1.25rem;
+  min-height: 2.5rem;
+}
