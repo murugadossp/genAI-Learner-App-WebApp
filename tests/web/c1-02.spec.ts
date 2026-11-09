@@ -29,6 +29,22 @@ for (const width of [390, 768, 1440])
         "Plan",
       ]);
 
+      const figures = page.locator("#five-tasks figure");
+      await expect(figures).toHaveCount(5);
+      for (const figure of await figures.all()) {
+        const img = figure.locator("img");
+        await img.scrollIntoViewIfNeeded();
+        expect((await img.getAttribute("alt"))?.length).toBeGreaterThan(40);
+        await expect
+          .poll(() =>
+            img.evaluate(
+              (node: HTMLImageElement) =>
+                node.complete && node.naturalWidth > 0,
+            ),
+          )
+          .toBe(true);
+      }
+
       // Sorter: wrong, right, change, theme persistence, keyboard, reset.
       const score = page.getByTestId("score");
       const item = (n: number) =>
