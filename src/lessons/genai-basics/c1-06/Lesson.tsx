@@ -1,3 +1,7 @@
+import Image from "next/image";
+import unverified from "./assets/unverified.jpg";
+import reword from "./assets/reword.jpg";
+import checkSource from "./assets/check-source.jpg";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
 import { Grid } from "./Grid";
@@ -45,6 +49,17 @@ export default function Lesson() {
             reliable can do that.
           </p>
         </div>
+        <figure className={styles.figure}>
+          <Image
+            src={unverified}
+            alt="The invented AI reply ‘Opened in 1987’ is marked Unverified with a question mark."
+            sizes="(max-width: 760px) 100vw, 720px"
+          />
+          <figcaption className="micro">
+            Reply A sounds sure, but its invented claim is unverified: we have
+            not checked it against a reliable source.
+          </figcaption>
+        </figure>
         <p>
           This lesson covers, in order: where AI can often help, where it tends
           to slip, then two questions: how much a wrong answer would matter, and
@@ -70,6 +85,23 @@ export default function Lesson() {
           A text you supply, such as a message or an article, also gives you
           something to compare the result with.
         </p>
+        <p>
+          For example, Sam asks an assistant to reword “The meeting starts at
+          three.” Its draft says “The meeting begins at three.” Sam compares
+          both texts: if the draft changed the time, she would need to correct
+          it.
+        </p>
+        <figure className={styles.figure}>
+          <Image
+            src={reword}
+            alt="Original text leads to a Reworded draft; a person holds both pages to Compare them."
+            sizes="(max-width: 760px) 100vw, 720px"
+          />
+          <figcaption className="micro">
+            Sam compares the reworded draft with the original text to see
+            whether the meaning stayed the same.
+          </figcaption>
+        </figure>
         <p className="micro">
           Even in these jobs an assistant can slip, so a quick look is still
           worth it.
@@ -93,6 +125,21 @@ export default function Lesson() {
             training, from your conversation and from any sources it can access.
           </li>
         </ul>
+        <p>
+          If Sam asks when the invented Elm Lane Bakery opened, an exact year in
+          the reply is still a claim. She can compare it with a reliable source
+          if one is available; otherwise it remains unconfirmed.
+        </p>
+        <figure className={styles.figure}>
+          <Image
+            src={checkSource}
+            alt="An Exact date on a page points to Check source, shown as a book and magnifying glass."
+            sizes="(max-width: 760px) 100vw, 720px"
+          />
+          <figcaption className="micro">
+            Check an exact date against a reliable source when one is available.
+          </figcaption>
+        </figure>
         <p className="micro">
           These are tendencies, not rules. Chapter 2 explains why models make
           things up and what a knowledge cutoff is.
