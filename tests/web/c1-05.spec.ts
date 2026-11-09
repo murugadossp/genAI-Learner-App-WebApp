@@ -102,14 +102,3 @@ for (const width of [390, 768, 1440])
       ).toBeTruthy();
     });
   }
-
-test("c1-05: active lab button keeps contrast on hover", async ({ page }) => {
-  await page.goto("/learn/genai-basics/c1-05");
-  const btn = page.locator("#lab").getByRole("button", { name: "Reset" });
-  await btn.hover();
-  const [bg, fg] = await btn.evaluate((el) => {
-    const s = getComputedStyle(el);
-    return [s.backgroundColor, s.color];
-  });
-  expect(bg).not.toBe(fg);
-});

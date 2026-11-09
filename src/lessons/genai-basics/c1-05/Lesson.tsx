@@ -11,7 +11,7 @@ export default function Lesson() {
       number="05"
       chapter={{ label: "AI foundations", href: "/course/chapter-1" }}
       title="Training vs inference"
-      lead="Building a model and using a model are two different jobs. Using one does not change it. Changing it takes training."
+      lead="Building a model and using a model are two different jobs. Using one does not normally change it. Changing it takes training."
     >
       <section id="two-jobs">
         <h2 tabIndex={-1}>Building a model and using it are different jobs.</h2>
@@ -168,7 +168,7 @@ export default function Lesson() {
         <h2 tabIndex={-1}>Training or inference?</h2>
         <p>
           Ask one question: are the learned settings being changed? Each item
-          says what happens to them.
+          says whether the model itself is changed.
         </p>
         <Sorter />
       </section>

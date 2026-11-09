@@ -5,27 +5,27 @@ import styles from "./lesson.module.css";
 type Kind = "Training" | "Inference";
 const items: { text: string; answer: Kind; why: string }[] = [
   {
-    text: "The builder runs 50,000 labelled emails through the model and adjusts its learned settings until it tags them well.",
+    text: "The builder runs 50,000 labelled emails through the model and updates the model itself after each batch until it tags them well.",
     answer: "Training",
     why: "The learned settings are being changed.",
   },
   {
-    text: "A customer’s email arrives and the tagger replies “delivery”. Its learned settings are not updated.",
+    text: "A customer’s email arrives and the tagger replies “delivery”. Nothing about the model is saved or changed afterwards.",
     answer: "Inference",
     why: "The model produces an output and its settings stay as they were.",
   },
   {
-    text: "You send “this one is about money” along with your email, and the tag for that request changes. The learned settings stay fixed.",
+    text: "You send “this one is about money” along with your email, and the tag for that request changes. The model itself is not changed.",
     answer: "Inference",
     why: "The hint is only part of this request’s input. The settings did not change.",
   },
   {
-    text: "The company teaches the model from new labelled emails, so its learned settings change, and releases version 2.",
+    text: "The company uses new labelled emails to teach the model again, then releases the result as version 2.",
     answer: "Training",
     why: "Changing the settings again is training again, often called retraining.",
   },
   {
-    text: "You press “try again” and get a new reply. The learned settings are not updated.",
+    text: "You press “try again” and get a new reply. Nothing about the model is changed.",
     answer: "Inference",
     why: "A new reply uses the model as it is. Nothing about the model changed.",
   },
