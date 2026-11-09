@@ -197,7 +197,7 @@ export default function Lesson() {
         <p>
           Read the rings in one direction. A modern generative model is also
           deep learning, machine learning and AI. The reverse does not hold: the
-          keyword rule is AI, but it is outside machine learning.
+          tic-tac-toe player is AI, but it is outside machine learning.
         </p>
       </section>
       <section id="sorter">

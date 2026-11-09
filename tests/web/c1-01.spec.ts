@@ -123,3 +123,17 @@ test("chapter 1 course page lists c1-01 and links to it", async ({ page }) => {
   await page.goto("/course");
   await expect(page.locator(".eyebrow").first()).toContainText("Chapter 2");
 });
+
+test("AI foundations card in the studio leads to chapter 1", async ({
+  page,
+}) => {
+  await page.goto("/studio");
+  await page
+    .getByRole("link", { name: /AI foundations/ })
+    .first()
+    .click();
+  await expect(page).toHaveURL(/\/course\/chapter-1$/);
+  await expect(
+    page.getByRole("heading", { name: "AI Foundations", level: 1 }),
+  ).toBeVisible();
+});
