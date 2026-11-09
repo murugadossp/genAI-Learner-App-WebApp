@@ -12,8 +12,9 @@ Create a detailed, accurate web learning experience from the requested curriculu
 Every lesson gets its own git worktree, branch and draft PR, so lessons can be built in parallel without touching each other or `main`. Do this before editing anything:
 
 1. Confirm the module and lesson ID (see below), then `git fetch origin main`.
-2. From the main checkout run `git worktree add ../genai-learner-<lessonId> -b lessons/<lessonId> origin/main`. If the branch or worktree already exists, reuse it after checking it is clean; do not overwrite someone else's work.
-3. Work only inside that worktree. Run `npm ci` there, since each worktree needs its own `node_modules`.
+2. Check open lesson PRs (`gh pr list`, or the REST API if GraphQL is blocked) for changes to shared code outside `src/lessons/<module>/<lessonId>/` (for example `LessonFrame`, `Check`, `src/studio/`, scripts, `.gitignore`). If your lesson depends on such a change, choose between waiting for that PR to merge and stacking on its branch, and tell the user which you chose. If you stack, branch from the parent branch and say in the PR that it is stacked. GitHub may close the child PR when the parent branch is deleted after merge (it has happened). Then rebase with `git rebase --onto origin/main <parent-sha>`, push, and open a new PR against `main`.
+3. From the main checkout run `git worktree add ../genai-learner-<lessonId> -b lessons/<lessonId> <base>`, where `<base>` is `origin/main`, or the parent branch when stacking. If the branch or worktree already exists, reuse it after checking it is clean; do not overwrite someone else's work.
+4. Work only inside that worktree. Run `npm ci` there, since each worktree needs its own `node_modules`.
 
 ## Ground the lesson
 
@@ -21,7 +22,7 @@ Every lesson gets its own git worktree, branch and draft PR, so lessons can be b
 2. Locate the canonical lesson ID, outcome, misconception, prerequisites, and adjacent lessons. Use the topic and scope as the contract; do not copy mobile lesson pages or infer web readiness from mobile status. Use authoritative sources when needed to establish technical accuracy; distinguish verified facts from an illustrative assumption.
 3. Plan the learning progression and a concrete, topic-appropriate interaction before coding. Explain the mechanism, not just terminology: introduce a mental model, use a consistent worked example, let the learner inspect or change something, connect the result to its implications and limits, then check understanding and summarize. Adapt the structure and depth to the subject.
 4. Choose the running example for the easiest reader. Prefer one that needs no side skill (no arithmetic unless maths is the topic). Write down every constraint the example depends on and check that the answer is unique and that every wrong answer you show really is wrong. Re-check this whenever the wording changes.
-5. When the lesson teaches categories or nested ideas, pick one criterion for the categories and use it everywhere (intro, each section, practice items, quiz, takeaway). Lead each category with a representative example, not the trivial edge case, because a trivial example misleads about what the category is. Mark borderline examples as borderline. Avoid absolute definitions ("X is always Y"); say what is typical and note the simplification.
+5. When the lesson teaches categories or nested ideas, pick one criterion for the categories and use it everywhere (intro, each section, practice items, quiz, takeaway). Lead each category with a representative example, not the trivial edge case, because a trivial example misleads about what the category is. Mark borderline examples as borderline. Avoid absolute definitions ("X is always Y"); say what is typical and note the simplification. Make the categories mutually exclusive: define each one once, say where real-world usage is looser or overlaps (for example, two terms people use interchangeably), and put that scoping in the lesson and the interaction before the first review. If reviewers keep flip-flopping on a definition across rounds, the lesson is ambiguous: fix the ambiguity instead of chasing each finding.
 6. Plan what the lesson will not be able to prove. If a claim cannot be checked against a primary source (a page may refuse automated fetches), write it as a hedged tendency in the lesson and record it in the report as unverified and needing subject-matter review. Do not log it as a verified fact.
 7. Before writing, run the plan review described in Review gates.
 
@@ -31,6 +32,7 @@ Every lesson gets its own git worktree, branch and draft PR, so lessons can be b
 - Use `next/link` for internal links. Reuse the shared lesson frame, quiz, navigation, tokens, and established design patterns. Pass the lesson's own chapter context to the shared frame (its `chapter` prop) instead of relying on defaults, so no lesson shows another chapter's label. Use lesson-specific CSS Modules and semantic tokens for new layout where suitable.
 - Design visuals around the learning goal. Use an architecture diagram, comparison, simulation, or another form only when it clarifies the topic; choose vertical or horizontal flow for readability. In a multi-stage explanation, carry one coherent example through the steps, explicitly map each transformation, and explain the result. Prefer native web controls and code-based diagrams for interactive or precise content; create image assets only when useful.
 - Prefer one short section per concept, each with the same small diagram (so learners can relate the concepts), then a simple practice activity. A single explorer with several controls that change at once is hard to correlate and hard to use on a phone. Open with a short roadmap that names every term in order, and do not use a term in an interaction before it has been explained.
+- Before the first commit, look at a 390px screenshot of every table and card grid. Page-level overflow tests do not catch a label breaking mid-word. Avoid `overflow-wrap: anywhere` on short label columns.
 - Write for a phone. Keep paragraphs to one or two sentences, use a list for steps or rules, and keep "in the running example" boxes to about three lines. When you shorten text, re-run the accuracy review: shortening twice dropped a qualifier that made the claim wrong.
 - Explain before the learner interacts. Put a short worked example, with a plain analogy first and the technical wording second, ahead of any lab, and give the lab a numbered "try it in this order" list. Use short sentences. Qualify what an analogy implies so it does not overstate reliability or capability.
 - When you generate an explainer image (for example with Codex), save it next to the lesson, confirm the file exists (the tool may write to the worktree root), view it, and keep its text identical to the lesson's wording. Regenerate it and update the alt text and surrounding prose together whenever either changes. Image text is small on phones, so keep it short. Put the exact label text in the prompt and ask for no other text, read every image for spelling, run the tool from the worktree root and move the files, and convert to JPEG about 1200px wide (for example `sips -s format jpeg -s formatOptions 85 -Z 1200` on macOS, or ImageMagick elsewhere) so each file is a few hundred KB at most. Repeat the labels in the alt text. Text inside an image cannot be edited, so keep the lesson prose as the source of truth.
@@ -42,7 +44,7 @@ Every lesson gets its own git worktree, branch and draft PR, so lessons can be b
 
 ## Verify and report
 
-Add or update meaningful Playwright coverage for the lesson. Check 390, 768, and 1440px in light and dark themes; inspect the rendered lesson for readability, contrast, bounded overflow and correct section order. Exercise the actual interaction, quiz selection, wrong feedback, retry and theme persistence. If the lab has an expanded workspace, test state, keyboard focus, Escape and return focus. Verify production matches `webStatus` (a draft returns 404; a published lesson, including a revision of one, returns 200 with its status unchanged); run the checks listed in `AGENTS.md` (`format:check`, `typecheck`, `npm test`). Playwright runs against a production build, so rebuild (`npm test` does) before trusting a failing or passing result after an edit. Report manual screen-reader or browser checks only if performed, and identify any untested cases.
+Add or update meaningful Playwright coverage for the lesson. Check 390, 768, and 1440px in light and dark themes; inspect the rendered lesson for readability, contrast, bounded overflow and correct section order. Exercise the actual interaction, quiz selection, wrong feedback, retry and theme persistence. Write selectors that do not depend on DOM nesting (roles, labels, test ids), because lists and their siblings change shape. If the lab has an expanded workspace, test state, keyboard focus, Escape and return focus. Verify production matches `webStatus` (a draft returns 404; a published lesson, including a revision of one, returns 200 with its status unchanged); run the checks listed in `AGENTS.md` (`format:check`, `typecheck`, `npm test`). Playwright runs against a production build: running a single spec fails with "no production build" unless `npm run build` ran first, so rebuild (`npm test` does) before trusting a failing or passing result after an edit. Report manual screen-reader or browser checks only if performed, and identify any untested cases.
 
 ## Review gates
 
@@ -61,10 +63,19 @@ Rules for every gate:
 - Record every round (gate, reviewer, findings, action or rejection reason) in the report's review log.
 - `/review-web-lesson` posts nothing to GitHub unless the user asks.
 
+Checklist, in this order (tick each in the report's review log):
+
+- [ ] Plan review done and its findings handled
+- [ ] Lesson passes its own checks (`format:check`, `typecheck`, `npm test`)
+- [ ] Content review rounds done, ending with two clean rounds
+- [ ] `/review-web-lesson` run on the exact PR head
+- [ ] Every round recorded in the report
+
 ## Tooling notes
 
 - Open the dev server through `localhost`, not `127.0.0.1` (Next 16 blocks dev scripts from `127.0.0.1`, so pages load but nothing is interactive).
 - `npm run build` and `npm test` overwrite the `.next` folder a running dev server uses, so stop it first, then `rm -rf .next` and restart.
+- Record the PID or background task ID of any server you start, and stop only that one. Never use a broad `pkill` or `killall`, which can kill unrelated dev servers.
 - Free ports 3100 (Playwright) and the dev port if a run was interrupted.
 - Run `npx prettier --write` only on the files you changed, since it can reformat unrelated files, and `format:check` does not cover CSS or the report.
 - Treat a user comment such as "this is confusing" as a design problem and restructure the section, not only reword it.
