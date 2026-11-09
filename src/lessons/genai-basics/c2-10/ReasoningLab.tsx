@@ -24,7 +24,7 @@ const problems: Problem[] = [
   {
     id: "pets",
     label: "Pet puzzle (needs several clues)",
-    text: "Asha, Ben and Chen each own a different pet: a cat, a dog or a fish. Asha is allergic to fur. Chen does not own the cat. Who owns which pet?",
+    text: "Asha, Ben and Chen each own a different pet: a cat, a dog or a fish. Asha is allergic to fur, so she cannot own a pet with fur. Chen does not own the cat. Who owns which pet?",
     truth: "Asha: fish, Ben: cat, Chen: dog",
     quick: "Asha: cat, Ben: dog, Chen: fish",
     discarded: "Asha: cat, Ben: dog, Chen: fish",
@@ -38,7 +38,7 @@ const problems: Problem[] = [
       "The toy writes tidy steps, but they just pair names and pets in listed order and never use the clues. In real models, asking for steps often does help; it just is not a guarantee, and it is not the same as being trained to work first.",
     work: [
       {
-        text: "List the clues: Asha is allergic to fur. Chen does not own the cat. The pets are a cat, a dog and a fish.",
+        text: "List the clues: Asha cannot own a pet with fur. Chen does not own the cat. The pets are a cat, a dog and a fish.",
         cost: 60,
         answer: "Asha: cat, Ben: dog, Chen: fish",
       },
@@ -48,7 +48,7 @@ const problems: Problem[] = [
         answer: "Asha: cat, Ben: dog, Chen: fish",
       },
       {
-        text: "Test the first attempt against the clues. Asha is allergic to fur, so she cannot have the cat. Discard it. Only the fish has no fur, so Asha has the fish. Chen does not have the cat, so Chen has the dog and Ben has the cat.",
+        text: "Test the first attempt against the clues. Asha cannot own a pet with fur, so she cannot have the cat. Discard it. Only the fish has no fur, so Asha has the fish. Chen does not have the cat, so Chen has the dog and Ben has the cat.",
         cost: 90,
         answer: "Asha: fish, Ben: cat, Chen: dog",
       },

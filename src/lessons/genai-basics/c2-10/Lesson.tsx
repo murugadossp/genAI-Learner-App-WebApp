@@ -50,8 +50,8 @@ export default function Lesson() {
           using the clues.{" "}
           <strong>
             Asha, Ben and Chen each own a different pet: a cat, a dog or a fish.
-            Asha is allergic to fur. Chen does not own the cat. Who owns which
-            pet?
+            Asha is allergic to fur, so she cannot own a pet with fur. Chen does
+            not own the cat. Who owns which pet?
           </strong>
         </p>
         <h3>A quick reply</h3>
@@ -59,7 +59,8 @@ export default function Lesson() {
           It answers at once: “Asha has the cat, Ben has the dog, Chen has the
           fish.” That is just the names and pets paired in the order they were
           listed. It sounds fine, and it breaks the first clue, because Asha is
-          allergic to fur. Nothing in the reply checked it.
+          allergic to fur and cannot own a pet with fur. Nothing in the reply
+          checked it.
         </p>
         <h3>A reasoning model</h3>
         <p>
