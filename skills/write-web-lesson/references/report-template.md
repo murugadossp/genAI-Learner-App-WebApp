@@ -56,7 +56,11 @@ List anything uncertain that a subject-matter reviewer should check.
 | ----------------------------- | ----- | -------- | ------- | ------------------------- |
 | [gate]                        | [n]   | [tool]   | [text]  | [fixed / rejected: why]   |
 
-Stopped after: [two clean rounds / round cap / reviewer unavailable, and what was used instead].
+Gate checklist: [ ] plan review handled  [ ] checks pass  [ ] content review done  [ ] draft PR open, CI green  [ ] final review on head SHA `[sha]`  [ ] every round logged
+
+Stopped after: [two clean rounds / round cap with open findings listed / reviewer unavailable, and what was used instead].
+
+Stacking: [not stacked / stacked on `<parent-branch>`, PR base, and plan to rebase onto `main`].
 
 ### Rendered checks (mark each cell: pass, fail, or not tested)
 
