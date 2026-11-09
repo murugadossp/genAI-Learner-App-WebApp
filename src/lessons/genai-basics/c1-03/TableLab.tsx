@@ -57,7 +57,7 @@ export function TableLab() {
             <thead>
               <tr>
                 {columns.map((c, i) => (
-                  <th scope="col" key={c}>
+                  <th scope="col" key={c} data-role={mine[i] ?? undefined}>
                     {c}
                     {mine[i] && (
                       <span className={styles.roleTag} data-role={mine[i]}>
@@ -72,7 +72,9 @@ export function TableLab() {
               {rows.map((r) => (
                 <tr key={r.join()}>
                   {r.map((v, i) => (
-                    <td key={columns[i]}>{v}</td>
+                    <td key={columns[i]} data-role={mine[i] ?? undefined}>
+                      {v}
+                    </td>
                   ))}
                 </tr>
               ))}

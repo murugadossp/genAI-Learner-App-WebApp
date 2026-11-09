@@ -150,3 +150,11 @@
   gap: 1rem;
   flex-wrap: wrap;
 }
+.table th[data-role="Label"],
+.table td[data-role="Label"] {
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.table th[data-role="Feature"],
+.table td[data-role="Feature"] {
+  background: color-mix(in srgb, var(--line) 35%, transparent);
+}

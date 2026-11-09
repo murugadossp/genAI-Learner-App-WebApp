@@ -51,6 +51,12 @@ for (const width of [390, 768, 1440])
       await col("Fruit").getByLabel("Label (answer)").check();
       await col("Colour").getByLabel("Feature (clue)").check();
       await expect(score).toContainText("2 of 4");
+      await expect(
+        labEl.getByRole("columnheader", { name: /Fruit/ }),
+      ).toHaveAttribute("data-role", "Label");
+      await expect(
+        labEl.getByRole("columnheader", { name: /Colour/ }),
+      ).toHaveAttribute("data-role", "Feature");
       await labEl.getByLabel("Goal B: guess the fruit’s size").check();
       await expect(labEl.getByTestId("goal-text")).toContainText("Goal B");
       await expect(score).toContainText("0 of 4");
