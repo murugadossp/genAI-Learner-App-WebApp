@@ -1,0 +1,44 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c1-01",
+  "title": "How AI, ML, deep learning and GenAI fit together",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "big-picture",
+      "title": "AI is the whole field, not one technology."
+    },
+    {
+      "id": "ai",
+      "title": "Artificial intelligence: the outer ring."
+    },
+    {
+      "id": "ml",
+      "title": "Machine learning: learning from examples."
+    },
+    {
+      "id": "dl",
+      "title": "Deep learning: many layers."
+    },
+    {
+      "id": "genai",
+      "title": "Generative AI: making something new."
+    },
+    {
+      "id": "sorter",
+      "title": "Where does each one sit?"
+    },
+    {
+      "id": "limits",
+      "title": "Where the picture is too tidy."
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
+  ]
+}

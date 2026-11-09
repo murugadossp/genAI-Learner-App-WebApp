@@ -1,0 +1,15 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c1-02",
+  "title": "AI in everyday products",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "not-just-chat", "title": "AI is a job, not a chat box." },
+    { "id": "five-tasks", "title": "Five jobs an AI system can do." },
+    { "id": "sorter", "title": "Which job is it?" },
+    { "id": "one-app", "title": "One product, several jobs." },
+    { "id": "limits", "title": "Where this picture is too tidy." },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
