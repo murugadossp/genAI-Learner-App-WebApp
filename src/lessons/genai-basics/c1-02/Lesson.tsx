@@ -124,9 +124,10 @@ export default function Lesson() {
         <h2 tabIndex={-1}>Where this picture is too tidy.</h2>
         <ul>
           <li>
-            <strong>Features can blur.</strong> A feature may do two jobs, such
-            as classifying a message and then generating a reply. Name each part
-            by its purpose and what it gives back.
+            <strong>Features can blur.</strong> The jobs overlap. A recommender
+            may use a guess about what you will like, and a feature may do two
+            jobs, such as classifying a message and then generating a reply.
+            Name each part by its purpose and what it gives back.
           </li>
           <li>
             <strong>The list is not complete.</strong> These five are common
@@ -158,7 +159,7 @@ export default function Lesson() {
           "A chat window is only one interface. The job here, picking items for you, is a common job for AI systems and needs no chat.",
           "Generating means making new content. This feature picks items that already exist in the catalogue, which is recommending.",
           "",
-          "Predicting gives back a value such as an amount or a time. This feature gives back a short list of existing items, not a number.",
+          "Not every output of an AI system is a number. Classifying gives labels and generating gives new content. This feature picks a few existing items to suit you, which is recommending.",
         ]}
         explanation="Use the output as a clue to the job. A short list picked from many existing items is recommending, and it can sit in a product with no chat at all."
       />
