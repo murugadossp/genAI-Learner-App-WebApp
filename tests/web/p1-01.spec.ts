@@ -49,6 +49,7 @@ for (const width of [390, 768, 1440])
       await quoteToggle.check();
       await expect(lab).toContainText('max_tokens = "500"');
       await expect(lab).toContainText("<class 'str'>");
+      await expect(lab).toContainText("'500'");
       await expect(lab.locator('[role="status"]')).toContainText(
         "Validation error",
       );
@@ -68,6 +69,10 @@ for (const width of [390, 768, 1440])
       await lab.getByRole("button", { name: "stream" }).click();
       await expect(lab).toContainText("stream = True");
       await expect(lab).toContainText("<class 'bool'>");
+      await lab.getByRole("button", { name: 'bool("False") gotcha' }).click();
+      await expect(lab.locator('[role="status"]')).toContainText(
+        "Result: True!",
+      );
 
       // Theme toggle preserves lab state
       await page

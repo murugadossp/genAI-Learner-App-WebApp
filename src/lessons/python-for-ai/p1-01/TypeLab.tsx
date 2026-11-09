@@ -60,6 +60,8 @@ export function TypeLab() {
   const currentType = isStringWrapped ? "str" : preset.baseType;
   const displayValue =
     currentType === "str" ? `"${preset.rawValue}"` : preset.rawValue;
+  const pythonRepr =
+    currentType === "str" ? `'${preset.rawValue}'` : preset.rawValue;
 
   const typeRepresentation = `<class '${currentType}'>`;
 
@@ -220,19 +222,11 @@ export function TypeLab() {
         };
       }
     } else if (selectedOp === "op2") {
-      if (!isStringWrapped) {
-        opResult = {
-          isError: false,
-          code: "bool(stream)  # Result: True",
-          desc: "Direct boolean truth evaluation.",
-        };
-      } else {
-        opResult = {
-          isError: true,
-          code: 'bool("False")  # Result: True! (Python gotcha)',
-          desc: 'Common AI bug! Passing the text "False" to bool() produces True, because any string with characters is truthy in Python.',
-        };
-      }
+      opResult = {
+        isError: true,
+        code: 'bool("False")  # Result: True! (Python gotcha)',
+        desc: 'Common AI bug! Passing the text "False" to bool() produces True, because any non-empty string is truthy in Python. To disable a flag, use the literal False without quotes.',
+      };
     } else {
       if (!isStringWrapped) {
         opResult = {
@@ -351,7 +345,7 @@ export function TypeLab() {
           </div>
           <div>
             <div className={styles.tagLabel}>repr({preset.name})</div>
-            <div className={styles.cardValue}>{displayValue}</div>
+            <div className={styles.cardValue}>{pythonRepr}</div>
           </div>
         </div>
 
