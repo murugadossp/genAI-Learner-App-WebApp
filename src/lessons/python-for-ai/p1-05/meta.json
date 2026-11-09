@@ -1,0 +1,40 @@
+{
+  "module": "python-for-ai",
+  "lessonId": "p1-05",
+  "title": "Tuples and Sets",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "roadmap",
+      "title": "Tuples and sets: Locked records and unique collections."
+    },
+    {
+      "id": "tuples",
+      "title": "Tuples: Locking ordered records with parentheses and commas."
+    },
+    {
+      "id": "sets",
+      "title": "Sets: Keeping unique items and checking membership."
+    },
+    {
+      "id": "choosing",
+      "title": "Choosing between lists, tuples and sets."
+    },
+    {
+      "id": "practice",
+      "title": "Choose the right collection for the pipeline step."
+    },
+    {
+      "id": "lab",
+      "title": "Explore tuples and sets in the retrieval pipeline sandbox."
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
+  ]
+}
