@@ -36,15 +36,16 @@ export default function Lesson() {
         </p>
         <div className="callout">
           <strong>Key idea:</strong> do not ask whether a product has a chatbot.
-          Ask what the system gives back: a number, a label, a short list, new
-          content or a set of steps.
+          Ask what the feature is for and what it gives back: a number, a label,
+          a short list, new content or a set of steps.
         </div>
       </section>
       <section id="five-tasks">
         <h2 tabIndex={-1}>Five jobs an AI system can do.</h2>
         <p>
-          Here are five common jobs. Each is defined by the kind of answer it
-          gives back, so you can tell them apart by looking at the output.
+          Here are five common jobs. The quickest clue to each is the kind of
+          answer it gives back. It is a clue, not a strict rule: what a feature
+          is for matters too.
         </p>
         <ul className={styles.cards}>
           {tasks.map((t, i) => (
@@ -125,7 +126,7 @@ export default function Lesson() {
           <li>
             <strong>Features can blur.</strong> A feature may do two jobs, such
             as classifying a message and then generating a reply. Name each part
-            by its output.
+            by its purpose and what it gives back.
           </li>
           <li>
             <strong>The list is not complete.</strong> These five are common
@@ -159,7 +160,7 @@ export default function Lesson() {
           "",
           "Predicting gives back a value such as an amount or a time. This feature gives back a short list of existing items, not a number.",
         ]}
-        explanation="Identify the job by the output. A short list picked from many existing items is recommending, and it can sit in a product with no chat at all."
+        explanation="Use the output as a clue to the job. A short list picked from many existing items is recommending, and it can sit in a product with no chat at all."
       />
       <section id="takeaway">
         <div className="takeaway-card">
@@ -169,7 +170,8 @@ export default function Lesson() {
             AI is not just a chatbot. A chat box is one interface. Behind
             everyday products are jobs such as predicting, classifying,
             recommending, generating and planning, and one product often mixes
-            several. Look at what a feature gives back, and name the job.
+            several. Ask what a feature is for and what it gives back, and name
+            the job.
           </p>
         </div>
       </section>

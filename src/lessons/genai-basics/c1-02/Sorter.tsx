@@ -61,7 +61,9 @@ export function Sorter() {
       <div className="lab-body">
         <p>Try it in this order:</p>
         <ol>
-          <li>Read what the feature gives back to the user.</li>
+          <li>
+            Read what the feature is for and what it gives back to the user.
+          </li>
           <li>
             Ask whether that output is a value, a label, a pick, new content or
             a set of steps.
