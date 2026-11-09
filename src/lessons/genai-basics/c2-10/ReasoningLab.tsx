@@ -24,44 +24,44 @@ const problems: Problem[] = [
   {
     id: "pets",
     label: "Pet puzzle (needs several clues)",
-    text: "Asha, Ben and Chen each own a different pet: a cat, a dog or a fish. Asha is allergic to fur, so she cannot own a pet with fur. Chen does not own the cat. Who owns which pet?",
+    text: "Asha, Ben and Chen each have a different pet: a cat, a dog or a fish. Clue 1: Asha is allergic to fur, so she cannot have a pet with fur. Clue 2: Chen does not have the cat. Who has which pet?",
     truth: "Asha: fish, Ben: cat, Chen: dog",
     quick: "Asha: cat, Ben: dog, Chen: fish",
     discarded: "Asha: cat, Ben: dog, Chen: fish",
     promptedSteps: [
-      "The pets are a cat, a dog and a fish.",
-      "The owners are Asha, Ben and Chen, in that order.",
-      "So Asha has the cat, Ben has the dog and Chen has the fish.",
+      "Pets: cat, dog, fish.",
+      "People: Asha, Ben, Chen.",
+      "Match them in order: Asha cat, Ben dog, Chen fish.",
     ],
     promptedAnswer: "Asha: cat, Ben: dog, Chen: fish",
     promptedNote:
-      "The toy writes tidy steps, but they just pair names and pets in listed order and never use the clues. In real models, asking for steps often does help; it just is not a guarantee, and it is not the same as being trained to work first.",
+      "The toy writes tidy steps, but it just matches names and pets in order and never uses the clues. In real models, asking for steps often does help; it just is not a guarantee, and it is not the same as being trained to work first.",
     work: [
       {
-        text: "List the clues: Asha cannot own a pet with fur. Chen does not own the cat. The pets are a cat, a dog and a fish.",
+        text: "Clues: Asha cannot have a pet with fur. Chen does not have the cat.",
         cost: 60,
         answer: "Asha: cat, Ben: dog, Chen: fish",
       },
       {
-        text: "First attempt: pair them in order. Asha has the cat, Ben the dog, Chen the fish.",
+        text: "Guess: Asha cat, Ben dog, Chen fish.",
         cost: 50,
         answer: "Asha: cat, Ben: dog, Chen: fish",
       },
       {
-        text: "Test the first attempt against the clues. Asha cannot own a pet with fur, so she cannot have the cat. Discard it. Only the fish has no fur, so Asha has the fish. Chen does not have the cat, so Chen has the dog and Ben has the cat.",
+        text: "Check the guess. A cat has fur, so Asha cannot have it. The guess is wrong. Only the fish has no fur, so Asha gets the fish. Chen cannot have the cat, so Chen gets the dog. Ben gets the cat.",
         cost: 90,
         answer: "Asha: fish, Ben: cat, Chen: dog",
       },
       {
-        text: "Check both clues against the new answer: Asha has the fish, so no fur. Chen has the dog, not the cat. Both hold.",
+        text: "Check again: Asha’s fish has no fur. Chen’s dog is not the cat. Both clues hold.",
         cost: 60,
         answer: "Asha: fish, Ben: cat, Chen: dog",
       },
     ],
     summary: [
-      { at: 1, text: "Listed the clues." },
-      { at: 3, text: "Used the clues to rule options out." },
-      { at: 4, text: "Checked the answer against the clues." },
+      { at: 1, text: "Read the clues." },
+      { at: 3, text: "Used the clues to fix the guess." },
+      { at: 4, text: "Checked the answer." },
     ],
   },
   {

@@ -27,7 +27,9 @@ for (const width of [390, 768, 1440])
       await expect(slider).toBeDisabled();
 
       await page.getByLabel(/prompt says/).check();
-      await expect(page.getByTestId("shown")).toContainText("in that order");
+      await expect(page.getByTestId("shown")).toContainText(
+        "Match them in order",
+      );
       await expect(answer).toContainText(
         "Answer: Asha: cat, Ben: dog, Chen: fish",
       );
@@ -46,13 +48,17 @@ for (const width of [390, 768, 1440])
         "Answer: Asha: fish, Ben: cat, Chen: dog",
       );
       await expect(answer).toContainText("Matches the worked answer");
-      await expect(page.getByTestId("work")).toContainText("Discard it");
+      await expect(page.getByTestId("work")).toContainText(
+        "The guess is wrong",
+      );
       const cost3 = await page.getByTestId("cost").innerText();
       await slider.fill("4");
       expect(await page.getByTestId("cost").innerText()).not.toEqual(cost3);
 
       // Summary omits the discarded attempt; full work shows it.
-      await expect(page.getByTestId("shown")).not.toContainText("Discard it");
+      await expect(page.getByTestId("shown")).not.toContainText(
+        "The guess is wrong",
+      );
       await page.getByLabel("Show the full work").check();
       await expect(page.getByTestId("shown")).toContainText("Everything above");
       await page.getByLabel(/Show nothing/).check();

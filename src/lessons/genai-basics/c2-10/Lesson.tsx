@@ -15,21 +15,23 @@ export default function Lesson() {
       <section id="idea">
         <h2 tabIndex={-1}>Some models work first, then answer.</h2>
         <p>
-          A model can answer a multi-step problem directly, with no written
-          working before the answer. A <strong>reasoning model</strong> is
-          trained to produce intermediate work, such as breaking the problem
-          down, trying an approach, noticing a mistake and retrying, before it
-          writes its final reply. It is still predicting one token at a time, as
+          Think of a student sitting a test. One student writes the answer
+          straight away. Another jots rough working first, spots a mistake, and
+          fixes it. A <strong>reasoning model</strong> is the second student: it
+          writes working text before it gives its final answer.
+        </p>
+        <p>
+          It is still a language model writing one piece of text at a time, as
           in{" "}
           <Link className="text-link" href="/learn/genai-basics/c2-02">
             how a model predicts the next token
           </Link>
-          . The difference is that many of those tokens are working, not answer.
+          . The difference is that it was trained to write useful working first.
         </p>
         <figure className={styles.figure}>
           <Image
             src={diagram}
-            alt="Two lanes. Quick reply: a pet puzzle goes straight to the answer Asha cat, Ben dog, Chen fish, marked wrong, a first guess with no checking. Reasoning model: the same puzzle goes through working text (list the clues, try a first answer and spot the slip, fix it and check) to the answer Asha fish, Ben cat, Chen dog, marked right."
+            alt="Two lanes. Quick reply: a pet puzzle goes straight to the answer Asha cat, Ben dog, Chen fish, marked wrong, a first guess with no checking. Reasoning model: the same puzzle goes through working text (read the clues, make a guess, check and fix it, check again) to the answer Asha fish, Ben cat, Chen dog, marked right."
             sizes="(min-width: 760px) 720px, 100vw"
           />
           <figcaption className="micro">
@@ -46,52 +48,51 @@ export default function Lesson() {
       <section id="example">
         <h2 tabIndex={-1}>Watch one question get worked through.</h2>
         <p>
-          Here is one puzzle with no calculation in it, so all that matters is
-          using the clues.{" "}
-          <strong>
-            Asha, Ben and Chen each own a different pet: a cat, a dog or a fish.
-            Asha is allergic to fur, so she cannot own a pet with fur. Chen does
-            not own the cat. Who owns which pet?
-          </strong>
+          Here is a small puzzle. There is no maths in it, you only use the
+          clues.
         </p>
+        <blockquote className={styles.puzzle}>
+          Asha, Ben and Chen each own a different pet: a cat, a dog or a fish.
+          <br />
+          Clue 1: Asha is allergic to fur, so she cannot have a pet with fur.
+          <br />
+          Clue 2: Chen does not have the cat.
+          <br />
+          Who has which pet?
+        </blockquote>
         <h3>A quick reply</h3>
         <p>
           It answers at once: “Asha has the cat, Ben has the dog, Chen has the
-          fish.” That is just the names and pets paired in the order they were
-          listed. It sounds fine, and it breaks the first clue, because Asha is
-          allergic to fur and cannot own a pet with fur. Nothing in the reply
-          checked it.
+          fish.” It just matched names to pets in the order they were listed.
+          That breaks Clue 1, because a cat has fur. Nothing checked it.
         </p>
         <h3>A reasoning model</h3>
-        <p>
-          It writes working before it answers. In this lesson’s toy it goes:
-        </p>
+        <p>It writes its working first. In this lesson’s toy, it goes:</p>
         <ol>
           <li>
-            <strong>List the clues.</strong> Say what is known before guessing.
+            <strong>Read the clues.</strong> Write down what we know.
           </li>
           <li>
-            <strong>Try a first answer.</strong> The same pairing in order.
+            <strong>Make a guess.</strong> The same order as before.
           </li>
           <li>
-            <strong>Test it and repair it.</strong> Asha cannot have the cat, so
-            discard the attempt. Only the fish has no fur, so Asha has the fish.
-            Chen does not have the cat, so Chen has the dog and Ben has the cat.
+            <strong>Check the guess.</strong> A cat has fur, so Asha cannot have
+            it. The guess is wrong. Only the fish has no fur, so Asha gets the
+            fish. Chen cannot have the cat, so Chen gets the dog. Ben gets the
+            cat.
           </li>
           <li>
-            <strong>Check.</strong> Both clues hold for the new answer.
+            <strong>Check again.</strong> Both clues now hold.
           </li>
         </ol>
         <p>
-          The steps above are the whole difference you can see: a first guess, a
-          test against the clues, a repair and a check. The next section lets
-          you mix and match: pick how the model answers, and change how much
-          working it gets.
+          That is the whole idea: guess, check, fix, check again. In the next
+          section you can mix and match. Pick how the model answers, and change
+          how much working it gets.
         </p>
         <div className="callout">
-          <strong>Note:</strong> the words in these steps are scripted for the
-          lesson, not produced by a real model. A real reasoning model writes
-          its own working and it varies from run to run.
+          <strong>Note:</strong> these steps are scripted for the lesson. A real
+          reasoning model writes its own working, and it differs each time.
         </div>
       </section>
       <section id="compare">
