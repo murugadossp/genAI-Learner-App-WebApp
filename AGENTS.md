@@ -39,7 +39,7 @@ Run `format:check` and `typecheck` before opening a PR. New code must be Prettie
 
 ## Boundaries
 
-- Do not merge, mark a PR ready, publish or deploy without the user's instruction. Pushing is allowed only where a workflow says so: the lesson commands push their own `lessons/<lessonId>` branch and open a draft PR. Otherwise do not push without being asked.
+- Do not merge, mark a PR ready, publish or deploy without the user's instruction. Pushing is allowed only where a workflow says so: the lesson commands push their own `lessons/<lessonId>` branch and open a draft PR, and `/vercel-deploy` pushes its own `publish/*` branch, merges it after green CI and deploys to production. Otherwise do not push without being asked.
 - Do not copy content between lessons or from mobile lesson files.
 - Do not commit generated route files, `node_modules` or secrets.
 
@@ -48,11 +48,13 @@ Run `format:check` and `typecheck` before opening a PR. New code must be Prettie
 Reusable skills live in `skills/<name>/SKILL.md`. Read the relevant one before the task it covers. Claude Code finds them through the `.claude/skills` link and Codex through `.agents/skills`; other tools can read the files directly. A separately installed global copy of a skill can be older than this one, so prefer the repo copy.
 
 - `skills/write-web-lesson`: plan, build, verify and report on an interactive web lesson from a curriculum module and lesson ID. The report template is `skills/write-web-lesson/references/report-template.md`; save each report to `docs/lesson-reports/<module>/<lessonId>.md`.
+- `skills/vercel-deploy`: sync the latest `main`, optionally publish named lessons through a PR, merge, deploy to Vercel production and verify it live.
 
 Authoring and review are done by these skills and their slash commands. There are no separate shell scripts for them.
 
 Slash commands (`.claude/commands/`):
 
+- `/vercel-deploy [--publish <lessonId,...>]`: autonomous release of the latest `main` to production, with a final report.
 - `/write-web-lesson <module> <lessonId>`: author a lesson as a draft with its report, in its own worktree (`../genai-learner-<lessonId>`, branch `lessons/<lessonId>`), and open a draft PR.
 - `/review-web-lesson <module> <lessonId>` or `<PR number>`: read-only review in the lesson's worktree (or a detached review worktree); returns findings in chat and posts to the PR only with `--post` or an explicit request.
 
