@@ -41,7 +41,7 @@ for (const width of [390, 768, 1440])
           .getByRole("img", { name: /Highlighted: Deep learning/ }),
       ).toBeVisible();
       await expect(page.locator("#genai")).toContainText(
-        "simpler older methods can generate too",
+        "Older methods can generate too",
       );
       await expect(page.locator("#ml [data-current='true']")).toHaveAttribute(
         "data-level",
