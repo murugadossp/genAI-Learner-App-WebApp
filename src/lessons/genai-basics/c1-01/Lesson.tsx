@@ -83,41 +83,39 @@ export default function Lesson() {
           caption="Designed AI: a computer opponent that follows rules people wrote."
         />
         <p>
-          <strong>Artificial intelligence</strong> is the whole box in the
-          picture below. Everything inside it, machine learning included, is a
-          kind of AI. So the outer ring is not a separate, simpler thing. It is
-          the field, and it has two broad families: systems whose behaviour was{" "}
-          <em>designed by people</em>, and systems that <em>learn</em> it. The
-          next three sections are the learning family. This one is the designed
-          family.
+          <strong>Artificial intelligence</strong> is the whole box below.
+          Machine learning, deep learning and generative AI are all kinds of AI,
+          drawn inside it.
         </p>
         <p>
-          A simple example is a computer opponent in tic-tac-toe. Its rules say:
-          win if you can; otherwise block the other player; otherwise take the
-          centre. To a player it seems to be thinking, yet a person wrote every
-          rule and it has not learned anything from past games. That is still
-          AI: a machine doing a task that normally takes human thought.
+          AI has two families. In <strong>designed AI</strong>, people write the
+          method. In <strong>learned AI</strong>, the system learns from
+          examples. The next three sections are about learned AI. This one is
+          about designed AI.
+        </p>
+        <p>Picture a tic-tac-toe opponent that follows three rules:</p>
+        <ol>
+          <li>Win if you can.</li>
+          <li>Otherwise, block the other player.</li>
+          <li>Otherwise, take the centre.</li>
+        </ol>
+        <p>
+          It seems to think, but a person wrote every rule and it learned
+          nothing from past games. It is still AI: a machine doing a task that
+          normally takes human thought.
         </p>
         <p>
-          The same family scales up. A chess program of the classic kind
-          searches millions of positions and scores them with rules chess
-          experts wrote. A route planner searches a road map using costs people
-          set. An expert system stores knowledge about a field and reasons from
-          it to an answer. (Real versions often add learning on top, which is
-          why the families overlap in real products.)
+          Bigger designed systems work the same way. Classic chess programs
+          search many moves ahead. Route planners search a map. Many real
+          systems add learning on top.
         </p>
         <div className={styles.example}>
           <strong>In Postbox</strong>
           <p>
-            Postbox could start with one hand-written rule such as “if the
-            subject says WINNER and the message has three or more links, mark it
-            spam.” On its own, a single rule like that is borderline: most
-            people would call it ordinary software. What makes designed systems
-            AI is the kind of job and method, such as searching ahead or
-            reasoning from stored knowledge to make a judgement a person would
-            normally make, as the tic-tac-toe player does. How many rules there
-            are does not decide it, and the line between AI and ordinary
-            software depends on context.
+            One rule, such as “WINNER plus three links means spam”, is closer to
+            ordinary software. It becomes AI when a system searches or reasons
+            to make a judgement, like the tic-tac-toe player. The line is
+            blurry.
           </p>
         </div>
         <RingDiagram current={0} wholeField />
