@@ -1,0 +1,26 @@
+{
+  "module": "python-for-ai",
+  "lessonId": "p1-02",
+  "title": "Operators",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "arithmetic-and-chunks",
+      "title": "Arithmetic: Chunks, remainders, and powers."
+    },
+    {
+      "id": "comparisons",
+      "title": "Comparisons: Evaluating truth and thresholds."
+    },
+    {
+      "id": "logic-and-precedence",
+      "title": "Boolean logic: Combining guards with and, or, not."
+    },
+    {
+      "id": "lab",
+      "title": "Inspect operators in the AI pipeline sandbox."
+    },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
