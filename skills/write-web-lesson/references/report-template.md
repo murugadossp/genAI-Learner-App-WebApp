@@ -52,7 +52,7 @@ List anything uncertain that a subject-matter reviewer should check.
 
 ### Review log
 
-| Gate (plan / content / final) | Round | Reviewer | Finding | Action or reason rejected |
+| Gate (plan / content) | Round | Reviewer | Finding | Action or reason rejected |
 | ----------------------------- | ----- | -------- | ------- | ------------------------- |
 | [gate]                        | [n]   | [tool]   | [text]  | [fixed / rejected: why]   |
 
