@@ -19,6 +19,7 @@ export const courses = [
   },
   {
     title: "Python for AI",
+    href: "/course/chapter-p1",
     group: "Python",
     icon: "{ }",
     level: "Practical",

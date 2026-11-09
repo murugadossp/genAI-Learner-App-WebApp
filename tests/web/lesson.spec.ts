@@ -35,12 +35,12 @@ for (const width of [390, 768, 1440])
         page.getByRole("heading", { name: "Python for AI" }),
       ).toBeVisible();
       await expect(
+        page.getByRole("link", { name: /Python for AI/ }),
+      ).toHaveAttribute("href", "/course/chapter-p1");
+      await expect(
         page
           .locator("article.coming-soon")
           .filter({ hasText: "Python for AI" }),
-      ).toContainText("Coming soon");
-      await expect(
-        page.getByRole("link", { name: /Python for AI/ }),
       ).toHaveCount(0);
       await page.getByLabel("Find a topic").fill("language models");
       await page
