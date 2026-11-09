@@ -36,6 +36,17 @@ const routes = [
         meta.module === "python-for-ai" && meta.webStatus === "published",
     ),
   ],
+  [
+    "app/course/chapter-9/page.tsx",
+    "../../../src/studio/CourseChapter9",
+    // Published once a Chapter 9 lesson in genai-basics is published.
+    lessons().some(
+      (meta) =>
+        meta.module === "genai-basics" &&
+        meta.lessonId.startsWith("c9-") &&
+        meta.webStatus === "published",
+    ),
+  ],
   ...lessons().map((meta) => [
     `app/learn/${meta.module}/${meta.lessonId}/page.tsx`,
     `../../../../src/lessons/${meta.module}/${meta.lessonId}/Lesson`,
