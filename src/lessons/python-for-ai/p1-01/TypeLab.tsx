@@ -77,7 +77,7 @@ export function TypeLab() {
     opButtons = [
       { id: "op1", label: "+ 100 (numeric)" },
       { id: "op2", label: '+ "100" (text)' },
-      { id: "op3", label: "Client type check" },
+      { id: "op3", label: "Check with isinstance" },
     ];
 
     if (selectedOp === "op1") {
@@ -112,14 +112,14 @@ export function TypeLab() {
       if (!isStringWrapped) {
         opResult = {
           isError: false,
-          code: "isinstance(max_tokens, int)  # Client type check: True",
-          desc: "Valid type: The parameter satisfies the client-side integer schema before sending to the model API.",
+          code: "isinstance(max_tokens, int)  # Illustrative check: True",
+          desc: "Illustrative check: Application code can verify that max_tokens is an integer before preparing a request.",
         };
       } else {
         opResult = {
           isError: true,
-          code: "isinstance(max_tokens, int)  # Client type check: False (is str)",
-          desc: 'Type check failed: The client parameter check expects an integer, but received "500" as text. The request is rejected before reaching the server.',
+          code: "isinstance(max_tokens, int)  # Illustrative check: False (is str)",
+          desc: 'Illustrative check failed: Application code looking for an integer catches "500" as text, allowing you to convert it before proceeding.',
         };
       }
     }
@@ -127,7 +127,7 @@ export function TypeLab() {
     opButtons = [
       { id: "op1", label: "* 2 (scale)" },
       { id: "op2", label: "+ 0.1 (shift)" },
-      { id: "op3", label: "Client type check" },
+      { id: "op3", label: "Check with isinstance" },
     ];
 
     if (selectedOp === "op1") {
@@ -162,14 +162,14 @@ export function TypeLab() {
       if (!isStringWrapped) {
         opResult = {
           isError: false,
-          code: "isinstance(temperature, float)  # Client type check: True",
-          desc: "Valid type: Satisfies the float parameter requirement for model sampling.",
+          code: "isinstance(temperature, float)  # Illustrative check: True",
+          desc: "Illustrative check: The value is verified as a float, suitable for sampling parameters.",
         };
       } else {
         opResult = {
           isError: true,
-          code: "isinstance(temperature, float)  # Client type check: False (is str)",
-          desc: 'Type check failed: Expected float, got "0.7" (str). Client validation rejects the request.',
+          code: "isinstance(temperature, float)  # Illustrative check: False (is str)",
+          desc: 'Illustrative check failed: Expected float, got "0.7" (str). Early checks catch accidental string values.',
         };
       }
     }
@@ -177,7 +177,7 @@ export function TypeLab() {
     opButtons = [
       { id: "op1", label: '+ "-preview"' },
       { id: "op2", label: ".upper()" },
-      { id: "op3", label: "Client type check" },
+      { id: "op3", label: "Check with isinstance" },
     ];
 
     if (selectedOp === "op1") {
@@ -204,7 +204,7 @@ export function TypeLab() {
     opButtons = [
       { id: "op1", label: "not stream" },
       { id: "op2", label: 'bool("False") gotcha' },
-      { id: "op3", label: "Client type check" },
+      { id: "op3", label: "Check with isinstance" },
     ];
 
     if (selectedOp === "op1") {
@@ -231,14 +231,14 @@ export function TypeLab() {
       if (!isStringWrapped) {
         opResult = {
           isError: false,
-          code: "isinstance(stream, bool)  # Client type check: True",
-          desc: "Valid type: Boolean flag matches the streaming parameter type.",
+          code: "isinstance(stream, bool)  # Illustrative check: True",
+          desc: "Illustrative check: Verified as a boolean flag before configuring streaming.",
         };
       } else {
         opResult = {
           isError: true,
-          code: "isinstance(stream, bool)  # Client type check: False (is str)",
-          desc: 'Type check failed: Expected bool, received "True" (str). Client validation fails.',
+          code: "isinstance(stream, bool)  # Illustrative check: False (is str)",
+          desc: 'Illustrative check failed: Expected bool, received "True" (str). Application validation catches this before it causes logic bugs.',
         };
       }
     }

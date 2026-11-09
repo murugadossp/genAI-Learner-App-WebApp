@@ -40,9 +40,11 @@ for (const width of [390, 768, 1440])
       await lab.getByRole("button", { name: '+ "100" (text)' }).click();
       await expect(lab.locator('[role="status"]')).toContainText("TypeError");
 
-      // Operation test: click Client type check -> valid
-      await lab.getByRole("button", { name: "Client type check" }).click();
-      await expect(lab.locator('[role="status"]')).toContainText("Valid type");
+      // Operation test: click Check with isinstance -> valid
+      await lab.getByRole("button", { name: "Check with isinstance" }).click();
+      await expect(lab.locator('[role="status"]')).toContainText(
+        "Illustrative check: True",
+      );
 
       // Toggle quote wrapping: turns 500 into "500" (str)
       const quoteToggle = lab.getByLabel(/Wrap in quotes/);
@@ -51,7 +53,7 @@ for (const width of [390, 768, 1440])
       await expect(lab).toContainText("<class 'str'>");
       await expect(lab).toContainText("'500'");
       await expect(lab.locator('[role="status"]')).toContainText(
-        "Type check failed",
+        "Illustrative check failed",
       );
 
       // With string wrapping, concatenation works

@@ -234,6 +234,7 @@ export default function Lesson() {
           them:
         </p>
         <div className={styles.codePanel}>
+          <p className={styles.codeLine}>import os</p>
           <div className={styles.codeComment}>
             # Provide a fallback default string if unset
           </div>
