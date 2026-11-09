@@ -25,6 +25,8 @@ for (const width of [390, 768, 1440])
 
       // The "where it sits" section: network zone, sampling zone, worked table.
       const flow = page.getByTestId("flow");
+      await expect(flow).not.toContainText("whole sequence runs again");
+      await expect(flow).toContainText("reuse earlier computation");
       await expect(flow.locator('[data-zone="network"]')).toContainText(
         "logit",
       );

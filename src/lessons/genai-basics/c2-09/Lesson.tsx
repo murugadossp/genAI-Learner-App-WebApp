@@ -108,9 +108,10 @@ export default function Lesson() {
             </ol>
           </div>
           <p className={`${styles.loop} micro`}>
-            The chosen token is added to the text and the whole sequence runs
-            again, so the network produces a fresh set of logits for every token
-            generated.
+            The chosen token is added to the text, and the network produces a
+            fresh set of logits for the next position, conditioned on everything
+            so far. Implementations typically reuse earlier computation rather
+            than reprocess all the text. This repeats for every token generated.
           </p>
         </div>
         <p>
