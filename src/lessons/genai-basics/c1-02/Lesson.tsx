@@ -1,3 +1,9 @@
+import Image from "next/image";
+import predictImage from "./assets/predict.jpg";
+import classifyImage from "./assets/classify.jpg";
+import recommendImage from "./assets/recommend.jpg";
+import generateImage from "./assets/generate.jpg";
+import planImage from "./assets/plan.jpg";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
 import { Sorter } from "./Sorter";
@@ -5,11 +11,36 @@ import { tasks } from "./tasks";
 import styles from "./lesson.module.css";
 
 const examples = [
-  "Estimate tomorrow’s rainfall in millimetres.",
-  "Mark a payment as normal or suspicious.",
-  "Pick five videos you might want next.",
-  "Write a new caption for your photo.",
-  "Order eight delivery stops to finish soonest.",
+  {
+    text: "A weather app estimates tomorrow’s rainfall as 5 millimetres. The amount is a made-up forecast, not a measurement.",
+    image: predictImage,
+    alt: "Predict: Weather input leads to a Rain estimate of 5 mm in this invented example.",
+    caption: "An imagined forecast gives an estimate, not a measurement.",
+  },
+  {
+    text: "A photo app chooses the Receipt label for a picture from a fixed list of labels.",
+    image: classifyImage,
+    alt: "Classify: a Photo is assigned the Receipt label from a fixed list.",
+    caption: "The app assigns a label to an existing photo.",
+  },
+  {
+    text: "A music app picks songs from its existing catalogue for a listener.",
+    image: recommendImage,
+    alt: "Recommend: a Catalogue of existing songs leads to a smaller selection of Suggested songs.",
+    caption: "The suggested songs already exist in the catalogue.",
+  },
+  {
+    text: "A photo app writes a new caption for a picture when someone asks for one.",
+    image: generateImage,
+    alt: "Generate: a person makes a Request and receives a New caption for a picture.",
+    caption: "The app creates caption text for the request.",
+  },
+  {
+    text: "A delivery app arranges three stops into a route to visit them.",
+    image: planImage,
+    alt: "Plan: three Stops on a map lead to a Delivery route visiting the numbered stops 1, 2, then 3.",
+    caption: "The route shows an order for visiting the stops.",
+  },
 ];
 
 export default function Lesson() {
@@ -45,7 +76,9 @@ export default function Lesson() {
         <p>
           Here are five common jobs. The quickest clue to each is the kind of
           answer it gives back. It is a clue, not a strict rule: what a feature
-          is for matters too.
+          is for matters too. For this lesson, predict means estimating a number
+          and classify means choosing a label. In wider use, a label can also be
+          called a prediction. The examples below are invented.
         </p>
         <ul className={styles.cards}>
           {tasks.map((t, i) => (
@@ -58,8 +91,16 @@ export default function Lesson() {
                 <strong>Gives back:</strong> {t.gives}
               </p>
               <p>
-                <strong>Example:</strong> {examples[i]}
+                <strong>Example:</strong> {examples[i].text}
               </p>
+              <figure className={styles.figure}>
+                <Image
+                  src={examples[i].image}
+                  alt={examples[i].alt}
+                  sizes="(max-width: 760px) 100vw, 720px"
+                />
+                <figcaption className="micro">{examples[i].caption}</figcaption>
+              </figure>
             </li>
           ))}
         </ul>
