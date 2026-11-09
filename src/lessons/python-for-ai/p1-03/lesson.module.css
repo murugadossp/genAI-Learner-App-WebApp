@@ -457,3 +457,9 @@ button.presetBtnActive:not(:disabled):hover {
   white-space: pre-line;
   line-height: 1.5;
 }
+
+:global(.knowledge-check .quiz-option span) {
+  white-space: pre-wrap;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.86rem;
+}

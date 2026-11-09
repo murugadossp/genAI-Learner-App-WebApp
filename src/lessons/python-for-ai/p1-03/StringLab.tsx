@@ -77,8 +77,14 @@ export function StringLab() {
   if (applyLower) {
     cleanText = cleanText.toLowerCase();
   }
-  if (applyReplace && replaceOld.length > 0) {
-    cleanText = cleanText.split(replaceOld).join(replaceNew);
+  if (applyReplace) {
+    if (replaceOld.length === 0) {
+      if (replaceNew.length > 0) {
+        cleanText = ["", ...Array.from(cleanText), ""].join(replaceNew);
+      }
+    } else {
+      cleanText = cleanText.split(replaceOld).join(replaceNew);
+    }
   }
 
   const words =
@@ -89,7 +95,8 @@ export function StringLab() {
     ? `User: ${userName}\nQuery: ${cleanText}`
     : `User: {user_id}\nQuery: {clean_query}`;
 
-  const promptLength = promptOutput.length;
+  // Count Unicode code points to match Python's len() semantics
+  const promptLength = Array.from(promptOutput).length;
 
   return (
     <div

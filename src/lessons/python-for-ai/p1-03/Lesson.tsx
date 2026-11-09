@@ -275,9 +275,13 @@ export default function Lesson() {
         </div>
 
         <p>
-          Monitoring <code>len(prompt)</code> is an essential safeguard in AI
-          systems to prevent queries from exceeding token limits and model
-          context windows.
+          While <code>len(prompt)</code> provides a quick character count
+          heuristic (roughly 4 characters per token in typical English text),
+          production AI applications use dedicated model tokenizers to measure
+          true token usage. Character counting provides a fast initial sanity
+          check, while the model&apos;s tokenizer and total request budget
+          (including system instructions and reserved completion tokens) enforce
+          strict context limits.
         </p>
       </section>
 
