@@ -1,0 +1,18 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c2-10",
+  "title": "Reasoning models",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "idea", "title": "Some models work first, then answer." },
+    { "id": "example", "title": "Watch one question get worked through." },
+    { "id": "compare", "title": "Compare a quick reply with reasoned work." },
+    {
+      "id": "training",
+      "title": "The difference is training, not a magic phrase."
+    },
+    { "id": "visible", "title": "Shown steps are not a verified record." },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
