@@ -1,0 +1,21 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c1-06",
+  "title": "What AI is good and bad at",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "fluent", "title": "Fluent is not the same as correct." },
+    { "id": "strengths", "title": "Where AI can often help." },
+    { "id": "weak-spots", "title": "Where AI tends to slip." },
+    {
+      "id": "stakes",
+      "title": "Question 1: how much would a wrong answer matter?"
+    },
+    { "id": "checkable", "title": "Question 2: can you check it?" },
+    { "id": "levels", "title": "Put the two answers together." },
+    { "id": "rate", "title": "Rate six of Sam’s tasks." },
+    { "id": "limits", "title": "Where this picture is too tidy." },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
