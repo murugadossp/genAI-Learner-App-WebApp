@@ -77,8 +77,13 @@ for (const width of [390, 768, 1440])
       ).toContainText("outside service");
       await item(3).getByLabel("Tool").check();
       await expect(item(3).getByTestId("item-feedback")).toContainText("Right");
+      await item(4).getByLabel("Tool").check();
+      await expect(item(4).getByTestId("item-feedback")).toContainText(
+        "Here, it is Leaf Buddy’s plant model",
+      );
+      await item(4).getByLabel("Model").check();
       await item(1).getByLabel("Model").check();
-      await expect(score).toContainText("2 of 6");
+      await expect(score).toContainText("3 of 6");
       await item(0).getByLabel("Model").focus();
       await page.keyboard.press("ArrowRight");
       await expect(item(0).getByLabel("Interface")).toBeChecked();

@@ -27,7 +27,7 @@ const items: { text: string; part: PartId; why: string }[] = [
   {
     text: "In Leaf Buddy, the part that learned to recognise plants from many labelled example photos.",
     part: "model",
-    why: "Leaf Buddy’s plant model is the part described as learning to recognise plants from labelled photos.",
+    why: "It is Leaf Buddy’s plant model, the part described as learning to recognise plants from labelled photos.",
   },
   {
     text: "Gardeners reword the tomato tip in the stored list. Which part was edited?",
