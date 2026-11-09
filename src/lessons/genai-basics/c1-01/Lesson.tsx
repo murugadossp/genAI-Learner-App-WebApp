@@ -88,10 +88,11 @@ export default function Lesson() {
           drawn inside it.
         </p>
         <p>
-          AI has two families. In <strong>designed AI</strong>, people write the
-          method. In <strong>learned AI</strong>, the system learns from
-          examples. The next three sections are about learned AI. This one is
-          about designed AI.
+          AI has two families, based on where its behaviour comes from. In{" "}
+          <strong>designed AI</strong>, people write the rules or steps it
+          follows. In <strong>learned AI</strong>, the behaviour is fitted from
+          examples. People design the system either way. The next three sections
+          are about learned AI. This one is about designed AI.
         </p>
         <p>Picture a tic-tac-toe opponent that follows three rules:</p>
         <ol>
@@ -130,7 +131,7 @@ export default function Lesson() {
         <p>
           In <strong>machine learning</strong>, the system learns the pattern
           from examples, so a person does not have to write a rule for every
-          case. People still design the method. The system adjusts its own
+          case. People still design how it learns. The system adjusts its own
           internal values until it does well on the examples.
         </p>
         <div className={styles.example}>
