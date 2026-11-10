@@ -142,6 +142,12 @@ export default function Lesson() {
           not make the system an agent. The model writes or classifies, but the
           code still decides which step runs next.
         </div>
+        <div className="callout">
+          <strong>Outside the ticket:</strong> a school office checks each
+          permission form. If the parent&apos;s signature is missing, the form
+          goes to the head teacher; otherwise it is filed. The rule is written
+          down in advance, so the clerk does not choose the path.
+        </div>
         <p>Quick questions:</p>
         <ul>
           <li>
@@ -195,6 +201,12 @@ export default function Lesson() {
           handles cases that are hard to specify as rules in advance, and it is
           the hardest part to test. This is one common pattern, not a rule.
         </p>
+        <div className="callout">
+          <strong>Outside the ticket:</strong> a restaurant kitchen works the
+          same way. Taking the order and serving the dish are fixed steps. In
+          between, the chef decides how to adjust the dish, and tastes again
+          until it is right.
+        </div>
       </section>
 
       <section id="try-it">
