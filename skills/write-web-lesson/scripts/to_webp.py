@@ -40,6 +40,13 @@ def main() -> int:
         return 2
 
     with Image.open(args.input) as image:
+        if image.mode in ("I", "I;16", "I;16B", "I;16L", "F"):
+            print(
+                f"unsupported mode {image.mode}: 16-bit and float images would be clipped to 8 bit. "
+                "Convert to an 8-bit image first.",
+                file=sys.stderr,
+            )
+            return 2
         # Keep transparency when the input has it (alpha channel, or a tRNS transparent
         # colour in any mode, including RGB and L); otherwise store plain RGB.
         has_alpha = image.mode in ("RGBA", "LA") or "transparency" in image.info

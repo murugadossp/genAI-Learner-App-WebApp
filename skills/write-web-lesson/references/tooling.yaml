@@ -12,7 +12,7 @@ review:
   providers:
     codex:
       preferred: true
-      note: Default reviewer. Use the Codex plugin (see codex:setup if the check fails).
+      note: Default reviewer. Use the Codex plugin (see codex:setup if the check fails). Read-only means the review task is run without --write; the plugin route does not enforce it, so check the reviewer's report for any file changes.
     agy-gemini:
       model: gemini-4-argon-medium
       # Run from a folder holding the material (for example plan.md). --mode plan keeps it read-only.
