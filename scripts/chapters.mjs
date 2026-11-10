@@ -18,6 +18,13 @@ export function chapterRoutes() {
       module: meta.module,
       published: false,
     };
+    // One course page per chapter needs one module. Fail loudly rather than
+    // silently showing only one module's lessons.
+    if (entry.module !== meta.module)
+      throw new Error(
+        `Chapter ${chapter.id} has lessons in more than one module ` +
+          `(${entry.module}, ${meta.module}). Split it before adding a course page.`,
+      );
     entry.published ||= meta.webStatus === "published";
     found.set(chapter.id, entry);
   }

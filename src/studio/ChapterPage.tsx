@@ -33,6 +33,16 @@ export default function ChapterPage({
       (item) => item.module === module && item.lessonId === lesson.slug,
     ),
   );
+  // The start link must go to a published lesson, even when drafts are listed
+  // in non-production builds.
+  const firstPublished = available.find((lesson) =>
+    webLessons.some(
+      (item) =>
+        item.module === module &&
+        item.lessonId === lesson.slug &&
+        item.webStatus === "published",
+    ),
+  );
   const override = chapterCopy[String(chapterId)] ?? {};
   const copy: ChapterCopy = {
     chapterId,
@@ -47,7 +57,7 @@ export default function ChapterPage({
       available
         .slice(0, 4)
         .map((lesson) => lesson.learner_summary ?? lesson.title),
-    startHref: available[0] ? `/learn/${module}/${available[0].slug}` : "/",
+    startHref: firstPublished ? `/learn/${module}/${firstPublished.slug}` : "/",
   };
   return <ChapterCourse copy={copy} />;
 }

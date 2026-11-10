@@ -3,6 +3,7 @@ import {
   mkdirSync,
   existsSync,
   readdirSync,
+  readFileSync,
   unlinkSync,
 } from "node:fs";
 import { lessons, production } from "./lesson-registry.mjs";
@@ -17,10 +18,7 @@ if (existsSync(root))
       withFileTypes: true,
     }).filter((x) => x.isDirectory())) {
       const path = `${root}/${module.name}/${lesson.name}/page.tsx`;
-      if (
-        existsSync(path) &&
-        (await import("node:fs")).readFileSync(path, "utf8").startsWith(marker)
-      )
+      if (existsSync(path) && readFileSync(path, "utf8").startsWith(marker))
         unlinkSync(path);
     }
 const courseRoot = "app/course";
@@ -29,10 +27,7 @@ if (existsSync(courseRoot))
     (x) => x.isDirectory() && x.name.startsWith("chapter-"),
   )) {
     const path = `${courseRoot}/${dir.name}/page.tsx`;
-    if (
-      existsSync(path) &&
-      (await import("node:fs")).readFileSync(path, "utf8").startsWith(marker)
-    )
+    if (existsSync(path) && readFileSync(path, "utf8").startsWith(marker))
       unlinkSync(path);
   }
 const routes = [
