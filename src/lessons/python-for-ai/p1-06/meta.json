@@ -20,5 +20,10 @@
     { "id": "lab", "title": "Try the ticket drawer sandbox." },
     { "id": "check", "title": "Check your understanding." },
     { "id": "takeaway", "title": "Take this with you." }
-  ]
+  ],
+  "approval": {
+    "approvedBy": "owner",
+    "date": "2026-11-10",
+    "items": ["subject-matter review"]
+  }
 }
