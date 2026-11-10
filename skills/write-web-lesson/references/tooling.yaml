@@ -37,15 +37,15 @@ image_generation:
     agy-gemini:
       # No --model flag: the prompt asks agy to call its generate_image tool explicitly.
       # Run from a new scratch folder for each image, so the files it writes stay there.
-      # --dangerously-skip-permissions turns off permission prompts; it is not a sandbox,
-      # so use it only with prompts you wrote and check the scratch folder afterwards.
+      # --sandbox runs agy with terminal restrictions. Tested 2026-11-10: it produced a 1264x848 image with all
+      # the listed text. Do not use --dangerously-skip-permissions for image generation.
       # Takes minutes per image. Run it in the background and wait for the file.
       # Step 1: fill the CLI-agnostic template into prompt.txt, from the repo root:
       #   python3 skills/write-web-lesson/scripts/fill_image_prompt.py <scratch>/values.json --out <scratch>/prompt.txt
       # Step 2: the command reads prompt.txt, so the shell never expands anything in it. $(cat ...) passes the
       # file's text unchanged, except that trailing newlines are removed.
       # The same prompt.txt works for every CLI; the template is references/educational-image-prompt.md.
-      command: 'agy --dangerously-skip-permissions --add-dir "$PWD" -p="$(cat prompt.txt)"'
+      command: 'agy --sandbox --add-dir "$PWD" -p="$(cat prompt.txt)"'
       rules:
         - Fill the template with scripts/fill_image_prompt.py from a values.json. Do not hand-edit the filled prompt.txt.
         - Set OUTPUT_PATH to an absolute scratch path ending in .png. The template tells the CLI to call generate_image and copy the result there.
