@@ -2,7 +2,7 @@
   margin: 1.25rem 0;
 }
 
-.figure svg {
+.figure img {
   display: block;
   width: 100%;
   max-width: 560px;
@@ -11,8 +11,6 @@
   border: 1px solid var(--line);
   border-radius: 12px;
   background: var(--panel);
-  padding: 0.75rem;
-  box-sizing: border-box;
 }
 
 .figure figcaption {
@@ -84,7 +82,11 @@
 }
 
 .itemFeedback[data-ok="true"] {
-  color: var(--green);
+  color: var(--ink);
+  font-weight: 600;
+  background: var(--accent-soft);
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
 }
 
 .score {

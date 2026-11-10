@@ -3,7 +3,10 @@ import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
 import styles from "./lesson.module.css";
 import { WorkflowLab } from "./WorkflowLab";
-import { AgentLoopDiagram, CombinedDiagram, WorkflowDiagram } from "./Diagrams";
+import Image from "next/image";
+import workflowImg from "./images/workflow.jpg";
+import agentLoopImg from "./images/agent-loop.jpg";
+import combinedImg from "./images/combined.jpg";
 
 export default function Lesson() {
   return (
@@ -71,7 +74,11 @@ export default function Lesson() {
           <li>Route the ticket to the billing team.</li>
         </ol>
         <figure className={styles.figure}>
-          <WorkflowDiagram />
+          <Image
+            src={workflowImg}
+            alt="Three boxes stacked from top to bottom, labelled Classify ticket, Check urgency and Route ticket, with arrows pointing down from one box to the next."
+            sizes="(max-width: 760px) 100vw, 560px"
+          />
           <figcaption className="micro">
             Each step runs in order. The code decides what comes next.
           </figcaption>
@@ -103,7 +110,11 @@ export default function Lesson() {
           </li>
         </ol>
         <figure className={styles.figure}>
-          <AgentLoopDiagram />
+          <Image
+            src={agentLoopImg}
+            alt="Three boxes in a loop: Model picks next step at the top, Run a tool at the bottom right and Model reads result at the bottom left. Arrows go clockwise around the loop, and an arrow from Model reads result leads down to a dashed box labelled Stop."
+            sizes="(max-width: 760px) 100vw, 560px"
+          />
           <figcaption className="micro">
             The model chooses the next step after each result.
           </figcaption>
@@ -191,7 +202,11 @@ export default function Lesson() {
           </li>
         </ol>
         <figure className={styles.figure}>
-          <CombinedDiagram />
+          <Image
+            src={combinedImg}
+            alt="Three boxes stacked from top to bottom, labelled Intake, Investigate and File ticket, with arrows pointing down. The Investigate box has a dashed outline to mark it as the open-ended step."
+            sizes="(max-width: 760px) 100vw, 560px"
+          />
           <figcaption className="micro">
             Keep the open-ended step small, and cap how many steps it can take.
           </figcaption>
