@@ -38,7 +38,7 @@ Statements about a source come from the headings in section 5. Anything not in t
 | `c9-03` The agent loop | Goals, observations, decisions and actions | Fundamentals (partial). The source is a graph, not a loop | Deferred |
 | `c9-04` Agent state, memory and planning | State, memory, plans and weights differ | Contract review: state schema and checkpointing. Plans and weights are not in the source headings | **Build.** Plans and weights are additions |
 | `c9-05` Permissions and approval gates | Action scope and approval match risk | Contract review: pause for a human. Permission boundaries are not in the source headings | **Build.** Permission boundaries are an addition |
-| `c9-06` Failure recovery and safe stopping | Retry only when safe; stop, ask or compensate | Resilient workflows: retry-style failure modes and fallbacks. Compensation and limits are not in the source headings | **Build.** Compensation and limits are additions |
+| `c9-06` Failure recovery and safe stopping | Retry only when safe; stop, ask or compensate | Resilient workflows: retry-style failure modes and fallbacks. Loop caps are in the contract-review headings. Compensation, idempotence and retry limits are not | **Build.** Compensation, idempotence and retry limits are additions |
 | `c9-07` Evaluating agents across runs | Representative runs and failure cases | none (the multi-agent case study is only loosely related) | Gap |
 
 ## 4. Not covered: multi-agent content
@@ -93,7 +93,8 @@ Each lesson: one short section per concept, a worked example, one everyday examp
   - **Memory:** has two lifetimes. A checkpoint lets the same run resume after a pause or failure. Stored memory can also carry information to later runs. Source: "checkpointing = durable memory"; the second lifetime is an addition.
   - **Plan:** what the run intends to do next. Addition.
   - **Weights:** the model's parameters; one run does not change them. Addition.
-- Lab: each step of a run states what changes (state, checkpoint, memory, plan, or nothing). Every step names the change, so each answer is unique.
+- Prerequisites: `c9-02` (drafted). `c9-03` (deferred) is not required: this lesson defines "step" and "loop" in its own text.
+- Lab: the learner classifies each piece of information by role (what the run knows now, what it intends next, what it keeps for later, or the model's parameters) and by lifetime (this run only, resumable after a pause, or carried to later runs). A piece can fit more than one role; the learner gives both labels with the reason. Each item states the facts the label depends on.
 
 ### c9-05 Permissions and approval gates
 
@@ -102,18 +103,20 @@ Each lesson: one short section per concept, a worked example, one everyday examp
   - **Permission boundary:** which actions a given actor may perform at all. Addition.
   - **Reversible actions** (draft, label) and **consequential actions** (send, delete). Addition.
   - **Approval gate:** the run pauses for a person before a consequential action. Source: pause for a human.
-- Lab: each action states its reversibility, who may perform it, and whether it needs approval. Each answer follows from those three facts.
+- Prerequisites: `c9-01` (tool calls) for the word "action"; the lesson defines it in one sentence.
+- Lab: each action gives its consequence and which actors may perform it. A written approval policy is shown with the item. The learner decides whether and where a gate belongs, and names the fact that decided it.
 
 ### c9-06 Failure recovery and safe stopping
 
 - Running example: a document-processing step that calls an API and writes to a store.
-- Each lab scenario states: the action's side effects, whether it may already have completed, the retry limit, and whether a fallback exists.
+- Prerequisites: `c9-03` (deferred) is not required; the lesson defines "step" and "loop" in its own text.
 - Sections:
-  - **Retry** only when the action is safe to repeat (no unwanted side effects, not already completed). Source: retry-style failure modes.
+  - **Retry** only when a repeat has no unwanted effect, for example because the action is idempotent. An action that may already have completed needs a status check first. Source: retry-style failure modes; the idempotence rule is an addition.
   - **Fallback** as a planned downgrade when one is defined. Source: planned downgrade.
-  - **Compensate:** undo or offset an earlier action that must not stand. Addition.
-  - **Stop or ask** when a limit is exceeded or no safe option exists. Limits: addition. Source: cap the loop.
-- Lab: three scenarios (API error on a repeatable read; timeout after a write; bad input). Each answer follows from the stated facts, and the learner picks retry, fallback, compensate, stop or ask.
+  - **Compensate:** undo or offset an earlier write that must not stand. Addition.
+  - **Stop or ask** when a loop cap is reached or no safe option exists. Loop caps: source (contract review: cap the loop). Numerical retry limits: addition.
+- Recovery policy shown with the lab: retry only when a repeat is safe; check status after a timed-out write before any retry; use a fallback when a planned downgrade exists; compensate when an earlier write must be undone; stop or ask when a cap is reached.
+- Lab: three scenarios, each stating its facts (side effects, whether completion can be checked, whether a fallback exists, whether an earlier write must be undone, and whether a cap was reached). Only one policy step applies to each scenario, and the learner applies it.
 
 ## 8. Verification plan (per lesson)
 
@@ -130,9 +133,9 @@ Playwright at 390, 768 and 1440 px, light and dark. Checks: lab interaction, Che
 | Item | Status |
 | --- | --- |
 | Shared Chapter 9 page | Superseded by #49 (not yet merged) |
-| `c9-02` draft | PR #48, stacked on #49. CI passing. Content review round 1 done and fixed; round 2 found one more item (fixed in this revision of the lesson, see report) |
-| Plan review round 1 (Codex) | Done: six findings, all addressed in this document |
-| Plan review round 2 (Codex) | Pending |
+| `c9-02` draft | PR #48, stacked on #49. Content review: round 1 found four items, round 2 found one, both fixed. Round 3 clean (one clean round; a second is needed) |
+| Plan review round 1 (Codex) | Done: six findings, all addressed |
+| Plan review round 2 (Codex) | Done: six findings (c9-04, c9-05, c9-06 lab design, prerequisites, loop-cap attribution). Addressed in this revision; round 3 not yet run |
 | `c9-04`, `c9-05`, `c9-06` | Not started |
 | Publication | Nothing published |
 
