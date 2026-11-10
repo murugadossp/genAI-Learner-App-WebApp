@@ -11,7 +11,7 @@ One master prompt for every lesson illustration. It works with any CLI that can 
 Recommended values for lesson images:
 
 - **ASPECT_RATIO:** `3:2`. On a 390px phone a 3:2 image is about 260px tall, which leaves room for the diagram. 16:9 gives less height for the same width, and 1:1 takes more vertical space than most lessons can spare.
-- **TEXT_POLICY:** `Minimal labels: at most three short labels (one to three words each), using exactly the label text listed in KEY_ELEMENTS. No other text, no watermark, no captions.` Lesson images carry a few key words, because the lesson prose is the source of truth; longer text is unreliable and too small on a phone. View the result and check each label's spelling.
+- **TEXT_POLICY:** list the exact words the concept needs in KEY_ELEMENTS, and say that they are the only text allowed. There is no fixed label count: the labels should match what the lesson explains. Keep each label short, because long text is unreliable and too small on a phone. View the result and check each label's spelling.
 - **REFERENCE_IMAGE:** `None`, unless you want visual consistency with an existing lesson image.
 - **OUTPUT_PATH:** an absolute path in the scratch folder, for example `<scratch>/<name>.png`. The image is converted to WebP afterwards.
 

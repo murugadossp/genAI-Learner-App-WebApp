@@ -8,6 +8,6 @@
   "AUDIENCE": "Beginners studying Generative AI",
   "ASPECT_RATIO": "3:2",
   "OUTPUT_PATH": "SCRATCH/next-token.png",
-  "TEXT_POLICY": "Short text only: the exact words listed in KEY_ELEMENTS (token words, candidate words and up to four labels). No other text, no numbers, no watermark, no captions.",
+  "TEXT_POLICY": "Only the exact words listed in KEY_ELEMENTS (token words, candidate words and the labels the concept needs). No other text, no numbers, no watermark, no captions.",
   "REFERENCE_IMAGE": "None"
 }

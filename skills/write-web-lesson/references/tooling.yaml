@@ -49,7 +49,7 @@ image_generation:
       rules:
         - Fill the template with scripts/fill_image_prompt.py from a values.json. Do not hand-edit the filled prompt.txt.
         - Set OUTPUT_PATH to an absolute scratch path ending in .png. The template tells the CLI to call generate_image and copy the result there.
-        - Use ASPECT_RATIO 3:2 and minimal labels for lesson images (the template header explains why).
+        - Use ASPECT_RATIO 3:2 for lesson images, and list in TEXT_POLICY only the words the concept needs (the template header explains why).
         - View every file; check each label and arrow; regenerate rather than patch (a reply can claim a save that never happened).
         - Do not wrap in `timeout` (macOS has none).
         - Convert to WebP with the script in convert_script, then move the .webp into the lesson's images folder. macOS sips cannot write WebP.
