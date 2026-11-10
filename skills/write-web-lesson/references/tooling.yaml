@@ -45,10 +45,12 @@ image_generation:
         - Put the exact label text in the prompt and ask for no other text; unspecified labels come out blank.
         - View every file; check each label and arrow; regenerate rather than patch (a reply can claim a save that never happened).
         - Do not wrap in `timeout` (macOS has none).
-        - Convert to WebP about 1200px wide with convert_command below, then move the .webp into the lesson's images folder. macOS sips cannot write WebP, and the system Python blocks pip under PEP 668, so the venv lives inside the scratch folder.
+        - Convert to WebP with the script in convert_script, then move the .webp into the lesson's images folder. macOS sips cannot write WebP.
+        - Replace <name> with the same name in the agy prompt and both convert commands. Convert in the scratch folder, then move only the .webp into the lesson.
         - Delete the original image after conversion and keep only the .webp in the lesson.
-      convert_command: |
-        python3 -m venv imgvenv && imgvenv/bin/pip install -q pillow
-        imgvenv/bin/python -c "from PIL import Image; im=Image.open('in.jpg').convert('RGB'); im.thumbnail((1200, 100000)); im.save('out.webp', 'WEBP', quality=82, method=6)"
+      # Run from the repo root. The script needs Pillow: the system Python blocks pip under PEP 668,
+      # so create the venv inside the scratch folder once, then run the script with its Python.
+      convert_setup: 'python3 -m venv <scratch>/imgvenv && <scratch>/imgvenv/bin/pip install -q pillow'
+      convert_script: '<scratch>/imgvenv/bin/python skills/write-web-lesson/scripts/to_webp.py <name>.jpg <name>.webp --width 1200 --quality 82'
     codex:
       note: Fallback only. Use the command in the user's global instructions, run from a scratch folder too.
