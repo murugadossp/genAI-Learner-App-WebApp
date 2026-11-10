@@ -1,9 +1,9 @@
 {
   "TOPIC": "How Large Language Models Work",
   "LEARNING_OBJECTIVE": "Explain next-token prediction to beginners.",
-  "VISUAL_DESCRIPTION": "A row of input tokens for the sentence \"The cat sat on the\" flows into an AI model. The model scores three candidate next tokens, and the highest-scoring candidate becomes the output token.",
-  "KEY_ELEMENTS": "Five input token boxes reading, left to right, \"The\", \"cat\", \"sat\", \"on\", \"the\". An AI model box labelled \"Neural network\", listing three candidate next tokens, each with a probability bar: \"mat\" (longest bar), \"sofa\", \"rug\". One output token box containing \"mat\". Labels shown exactly: \"Input tokens\", \"Model predicts values\", \"Output token\", \"Neural network\".",
-  "VISUAL_RELATIONSHIPS": "Left-to-right: input tokens feed the model, the model ranks candidate next tokens, and the top-ranked token becomes the output token.",
+  "VISUAL_DESCRIPTION": "Same layout as the approved next-token image: a row of input token blocks reading \"The cat sat on the\" flows into a blue chip with a neural network icon, which feeds a bar-chart panel of ranked candidate next tokens. The top-ranked token becomes the output token.",
+  "KEY_ELEMENTS": "Five input token blocks reading, left to right, \"The\", \"cat\", \"sat\", \"on\", \"the\". A blue chip labelled \"Neural network\" with a small network icon. A bar-chart panel beside it with three bars labelled \"mat\" (longest bar), \"sofa\", \"rug\". One output token box containing \"mat\". Labels shown exactly: \"Input tokens\", \"Model predicts values\", \"Output token\", \"Neural network\".",
+  "VISUAL_RELATIONSHIPS": "Left-to-right: input tokens feed the neural network chip, the chip produces ranked candidates in the bar panel, and the top candidate, \"mat\", becomes the output token.",
   "TECHNICAL_CONSTRAINTS": "Represent probabilistic generation accurately: the model scores possible next tokens and one is chosen. Do not show a database lookup.",
   "AUDIENCE": "Beginners studying Generative AI",
   "ASPECT_RATIO": "3:2",
