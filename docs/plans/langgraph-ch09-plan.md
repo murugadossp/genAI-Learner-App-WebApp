@@ -1,42 +1,45 @@
 # LangGraph content into Chapter 9 (Tools and Agents)
 
-Status: plan, first shared change in progress (branch `ch09/foundation`). No lesson is started yet.
-Source: `~/projects/llm-concepts` (LangGraph standalone library, `apps/web/public/library/langgraph/`, and `src/content/chapters/` MDX).
+Status: plan, revised after Codex plan review round 1 (six findings, all addressed below). Lesson `c9-02` is a draft in PR #48. `c9-04`, `c9-05` and `c9-06` are not started.
+Source: `~/projects/llm-concepts` (LangGraph standalone library, `apps/web/public/library/langgraph/`, and `src/content/chapters/` MDX). The plan records which statements come from the source headings and which are additions. Reviewers without access to that project should judge against the headings listed in section 5.
 Target: `src/lessons/genai-basics/c9-NN/` in this repo, curriculum Chapter 9 "Tools and Agents Fundamentals".
 
 ## 1. Decisions
 
 | Area | Decision | Why |
 | --- | --- | --- |
-| Start | Shared Chapter 9 course page and route first, then lessons in the order below | Recommendation accepted; `write-web-lesson` says not to build a lesson in a chapter that has no course page |
-| Lesson scope | Four lessons: `c9-02`, `c9-04`, `c9-05`, `c9-06` | Each maps to a curriculum outcome and to a LangGraph source. This changes the earlier suggestion of `c9-03`: the agent loop has no direct LangGraph source (fundamentals is a graph of nodes, not a loop). State (`c9-04`) is better covered by contract review |
-| Framework | Lessons teach the curriculum outcome first. LangGraph is the worked example, not the subject. Each lesson names LangGraph once, where the example needs it | The curriculum is framework-neutral; a lesson titled "LangGraph" would not match a curriculum entry |
-| Images | Generated with `agy` using `gemini-3.8-flash-medium`, not Codex. Codex stays the default for other image requests. Saved next to the lesson, viewed, and converted to JPEG about 1200 px | User instruction for this work |
-| Reuse | Reuse the source's concepts, quiz questions, worked examples and SVG diagrams as reference. Rewrite each lab in React on the shared `LessonFrame`, `Check` and tokens. Do not copy the source CSS (`multi-agent-series.css`) or the Google Fonts it loads | Lessons must use `app/tokens.css`; the source uses its own palette and fonts |
-| Reviews | Plan and content reviews use Codex, as the lesson skill requires. Only image generation changed | The instruction named image generation only |
-| Publication | Every new lesson starts as `draft`. Nothing is pushed or published without an instruction | AGENTS boundaries |
-| Provenance | The source is the author's own llm-concepts project. Content is re-authored for the web, and each report's fidelity log names the source file it was adapted from | Keeps the verified/invented split visible |
+| Start | Chapter 9 course page comes from the generic chapter pages in PR #49. No hand-written Chapter 9 page | `write-web-lesson` says not to build a lesson in a chapter with no course page; #49 provides one from curriculum data |
+| Lesson scope | Four lessons: `c9-02`, `c9-04`, `c9-05`, `c9-06` | Each maps to a curriculum outcome and to a source. The agent loop (`c9-03`) has no direct source: the fundamentals material is a graph of nodes, not a loop |
+| Framework | Lessons teach the curriculum outcome first. LangGraph is the worked example, not the subject | The curriculum is framework-neutral |
+| Images | Generated images are an option, but the c9-02 diagrams are code-drawn SVG because generated labels were too small on a phone. Generation uses `agy` with an explicit `generate_image` call from a scratch folder | Legibility at 390 px; user instruction for generation |
+| Reuse | Reuse the source's concepts, quiz wording and worked examples as reference. Rewrite each lab in React on the shared `LessonFrame`, `Check` and tokens. Do not copy the source CSS or Google Fonts | Lessons must use `app/tokens.css` |
+| Reviews | Plan and content reviews use Codex. Rounds run when the usage limit allows | Codex is the reviewer named in the lesson skill |
+| Publication | Every new lesson starts as `draft`. Nothing is published without an instruction | AGENTS boundaries |
+| Provenance | Content is re-authored for the web. Each report's fidelity log names the source file it was adapted from | Keeps verified and invented claims separate |
 
 ## 2. Shared prerequisite (superseded by PR #49)
 
-- The first version of this branch added a hand-written Chapter 9 page, route and `.gitignore` line. That has been removed from this branch.
-- PR #49 (`course-pages-general`) replaces the per-chapter pages with one generic chapter page. It generates a page for any chapter with web lessons, with copy from the curriculum. Chapter 9 gets its page from that, once a `c9-` lesson is published.
-- `LessonFrame` needs no change. Lessons pass their own `chapter={{ label, href }}`, which is already supported (see `c1-01`).
+- The first version of this branch added a hand-written Chapter 9 page, route and `.gitignore` line. That was removed from this branch (commit `437554f`).
+- PR #49 (`course-pages-general`) replaces per-chapter pages with one generic chapter page. It generates a page for any chapter with web lessons, with copy from the curriculum.
+- Lessons in this plan depend on #49. PR #48 is stacked on #49, not on this branch.
+- `LessonFrame` needs no change. Lessons pass their own `chapter={{ label, href }}` (see `c1-01`).
 - Not changed: `src/studio/Course.tsx` (still chapter 2 at `/course`).
 
-Open: the first draft's hand-written copy is gone. Chapter 9 copy will come from the curriculum data via #49.
+Before `c9-04` to `c9-06` rely on the generic page, #49 must merge, or its chapter page must otherwise exist.
 
 ## 3. Mapping
+
+Statements about a source come from the headings in section 5. Anything not in those headings is marked as an addition.
 
 | Curriculum lesson | Outcome (from `curriculum.json`) | LangGraph source | Action |
 | --- | --- | --- | --- |
 | `c9-01` Tool calling and structured actions | Model proposes, software validates and executes | none direct | Not in this plan. Gap |
-| `c9-02` Workflows versus agents | Fixed steps versus model-selected next actions | `langgraph-ticket-routing.html` | **Build** (strong fit) |
-| `c9-03` The agent loop | Goals, observations, decisions and actions | `langgraph-fundamentals-quiz.html` (partial) | Deferred. Source is a graph, not a loop |
-| `c9-04` Agent state, memory and planning | State, memory, plans and weights are different things | `langgraph-contract-review.html` (state schema, checkpointing) | **Build** |
-| `c9-05` Permissions and approval gates | Action scope and approval match risk | `langgraph-contract-review.html` (human pause) | **Build** |
-| `c9-06` Failure recovery and safe stopping | Retry only when safe; stop, ask or compensate | `langgraph-resilient-workflows.html` | **Build** (strong fit) |
-| `c9-07` Evaluating agents across runs | Representative runs and failure cases | none (`case-study-multi-agent-research.html` is only loosely related) | Gap |
+| `c9-02` Workflows versus agents | Fixed steps versus model-selected next actions | Ticket routing (workflow half: shared path, one conditional branch) | **Built as draft.** The agent-loop and combined examples are additions, not from the source |
+| `c9-03` The agent loop | Goals, observations, decisions and actions | Fundamentals (partial). The source is a graph, not a loop | Deferred |
+| `c9-04` Agent state, memory and planning | State, memory, plans and weights differ | Contract review: state schema and checkpointing. Plans and weights are not in the source headings | **Build.** Plans and weights are additions |
+| `c9-05` Permissions and approval gates | Action scope and approval match risk | Contract review: pause for a human. Permission boundaries are not in the source headings | **Build.** Permission boundaries are an addition |
+| `c9-06` Failure recovery and safe stopping | Retry only when safe; stop, ask or compensate | Resilient workflows: retry-style failure modes and fallbacks. Compensation and limits are not in the source headings | **Build.** Compensation and limits are additions |
+| `c9-07` Evaluating agents across runs | Representative runs and failure cases | none (the multi-agent case study is only loosely related) | Gap |
 
 ## 4. Not covered: multi-agent content
 
@@ -50,75 +53,91 @@ These source chapters have no curriculum entry, so they cannot be lessons yet. T
 - `langgraph-pattern-selection.html`
 - `case-study-multi-agent-research.html`, `case-studies.html`
 
-## 5. Reuse inventory
+## 5. Source headings (copied from the LangGraph pages)
 
-Source counts come from the HTML files (`svg` = inline SVG elements; `quiz` = elements with a quiz class).
+These are the only source statements the lessons may cite as "from the source". Other content is an addition and must be labelled as one.
+
+- **Contract review:** What LangGraph actually is (nodes, edges, state); Nodes, edges, and conditional logic; Run the workflow, step by step; State schema, reducers, and checkpointing (checkpointing = durable memory; status as a state machine); Make every decision auditable; Guardrails: loops, limits, and humans (cap the loop; pause for a human, don't abandon).
+- **Fundamentals and quiz:** state schema; nodes and edges; conditional edges and routing; visibility and debugging; node-based design and scalability.
+- **Ticket routing:** classify, assess urgency, route; shared state; four focused nodes; one shared path with one branch; a coded conditional edge.
+- **Resilient workflows:** external API failure; data quality issue; processing timeout; a fallback is a planned downgrade; if you can't see the failure, you can't fix it.
+
+## 6. Reuse inventory
 
 | Source | Used for | Reuse |
 | --- | --- | --- |
-| `langgraph-ticket-routing.html` (4 SVG, 24 buttons) | `c9-02` | Ticket examples, the four-node walkthrough, the four sample tickets as lab inputs |
-| `langgraph-contract-review.html` (26 SVG, 16 buttons, 1 select) | `c9-04`, `c9-05` | Step-by-step run, state schema, checkpoint idea, pause-for-human idea |
-| `langgraph-resilient-workflows.html` (7 SVG, 28 buttons) | `c9-06` | Three failure modes and their plans, the "planned downgrade" idea, the four contracts |
-| `langgraph-fundamentals-quiz.html` (8 SVG, 34 quiz items) | Quick checks for `c9-02`, `c9-04` | Question wording, adapted and re-checked |
+| `langgraph-ticket-routing.html` | `c9-02` | Ticket example, the workflow's shared path and coded branch |
+| `langgraph-contract-review.html` | `c9-04`, `c9-05` | Run walkthrough, state schema, checkpointing, human pause |
+| `langgraph-resilient-workflows.html` | `c9-06` | Failure modes, planned downgrade, visibility of failures |
+| `langgraph-fundamentals-quiz.html` | Quick checks | Question wording, adapted and re-checked |
 | `llm-concepts/src/content/chapters/*.mdx` | Background only | Not needed for these four lessons |
-| `apps/web/public/library/langgraph/multi-agent-series.js` | Reference only | Interaction logic for pause, retry and sample runs. Rewrite, do not copy |
-| `genai-basics/c2-09/images/*.png` | Image style reference | Existing lesson images show the house style |
+| `multi-agent-series.js` | Reference only | Rewrite, do not copy |
+| `genai-basics/c2-09/images/*.png` | Style reference | Existing lesson images show house style |
 
-## 6. Lesson outlines
+## 7. Lesson outlines
 
-Each lesson: one short section per concept, each with one image, a worked example, one everyday example from outside the running example, a "try it in this order" lab, a Check, and a takeaway. Running examples are chosen so the answer is unique.
+Each lesson: one short section per concept, a worked example, one everyday example from outside the running example, a "try it in this order" lab, a Check, and a takeaway. Each lab item states every fact needed to answer it, so the answer is unique.
 
-### c9-02 Workflows versus agents
+### c9-02 Workflows versus agents (draft, PR #48)
 
-- Running example: a support ticket arriving in a queue.
-- Sections: fixed workflow (same steps every time); agent loop (the model picks the next step); when to combine them.
-- Lab: four tickets. The learner sorts each as a fixed workflow, a loop, or a combination. Each ticket states the facts needed to answer.
-- Images: one per concept (fixed path, model-picked path, combined path).
+- Running example: a support ticket.
+- Sections: who picks the next step; a workflow (predefined steps that can branch on coded rules); an agent loop (the model picks each step); a coded branch is still a workflow; many systems mix the two.
+- Lab: five systems, each labelled workflow, agent loop or combination.
+- Built with code-drawn SVG diagrams. Verification and review status are in the report on PR #48.
 
 ### c9-04 Agent state, memory and planning
 
 - Running example: one contract review run, from upload to decision.
-- Sections: state (what this run knows now); memory (what is stored for later runs); plan (what the run intends to do next); weights (the model's parameters, which do not change because of a single run).
-- Lab: step through a run; the learner marks which of the four things changes at each step.
-- Images: one per concept.
+- Sections:
+  - **State:** what the run currently holds. Source: state schema.
+  - **Memory:** has two lifetimes. A checkpoint lets the same run resume after a pause or failure. Stored memory can also carry information to later runs. Source: "checkpointing = durable memory"; the second lifetime is an addition.
+  - **Plan:** what the run intends to do next. Addition.
+  - **Weights:** the model's parameters; one run does not change them. Addition.
+- Lab: each step of a run states what changes (state, checkpoint, memory, plan, or nothing). Every step names the change, so each answer is unique.
 
 ### c9-05 Permissions and approval gates
 
 - Running example: a contract reply that is drafted, then sent.
-- Sections: reversible actions (draft, label); consequential actions (send, delete); a gate in front of the second kind.
-- Lab: a list of actions; the learner sets a gate level for each one based on its stated risk.
-- Images: one per gate level.
+- Sections:
+  - **Permission boundary:** which actions a given actor may perform at all. Addition.
+  - **Reversible actions** (draft, label) and **consequential actions** (send, delete). Addition.
+  - **Approval gate:** the run pauses for a person before a consequential action. Source: pause for a human.
+- Lab: each action states its reversibility, who may perform it, and whether it needs approval. Each answer follows from those three facts.
 
 ### c9-06 Failure recovery and safe stopping
 
-- Running example: a document-processing step that calls an API.
-- Sections: retry when the action is safe to repeat; fallback when a planned downgrade is possible; stop or ask a person when neither is safe.
-- Lab: three failure modes (API error, bad input, timeout). The learner picks a response for each.
-- Images: one per failure mode.
+- Running example: a document-processing step that calls an API and writes to a store.
+- Each lab scenario states: the action's side effects, whether it may already have completed, the retry limit, and whether a fallback exists.
+- Sections:
+  - **Retry** only when the action is safe to repeat (no unwanted side effects, not already completed). Source: retry-style failure modes.
+  - **Fallback** as a planned downgrade when one is defined. Source: planned downgrade.
+  - **Compensate:** undo or offset an earlier action that must not stand. Addition.
+  - **Stop or ask** when a limit is exceeded or no safe option exists. Limits: addition. Source: cap the loop.
+- Lab: three scenarios (API error on a repeatable read; timeout after a write; bad input). Each answer follows from the stated facts, and the learner picks retry, fallback, compensate, stop or ask.
 
-## 7. Verification plan (per lesson)
+## 8. Verification plan (per lesson)
 
-Playwright at 390, 768 and 1440 px, light and dark. Checks: lab interaction, Check wrong-answer feedback and retry, theme switch keeps lab state, image rendering and alt text, no horizontal page overflow. Production gating test: draft returns 404, published returns 200.
+Playwright at 390, 768 and 1440 px, light and dark. Checks: lab interaction, Check wrong-answer feedback and retry, theme switch keeps lab state, diagram titles and text, no horizontal page overflow. Production gating test: draft returns 404, published returns 200.
 
-## 8. Effort (estimate)
+## 9. Effort (estimate)
 
-- Shared prerequisite: small (done in this branch, still to verify).
-- Each lesson: medium. Includes plan review, four to six images (agy), build, Playwright, content review rounds, report and draft PR.
-- The four lessons together are the bulk of the work. Multi-agent content is blocked on curriculum entries.
+- Shared prerequisite: superseded by #49.
+- Each lesson: medium. Includes plan review, diagrams, build, Playwright, content review rounds, report and draft PR.
+- Multi-agent content is blocked on curriculum entries.
 
-## 9. Gates and status
+## 10. Gates and status
 
 | Item | Status |
 | --- | --- |
-| Shared Chapter 9 course page and route | Done on `ch09/foundation`: format, typecheck, build and production gating pass |
-| Image generation test (agy, gemini-3.8-flash-medium) | Done: three diagrams generated, checked by eye. One needed a retry after a timeout |
-| `c9-02` Workflows versus agents | Draft on `lessons/c9-02` (stacked on `ch09/foundation`): 133-test suite passes. Report written. Plan and content reviews not run |
+| Shared Chapter 9 page | Superseded by #49 (not yet merged) |
+| `c9-02` draft | PR #48, stacked on #49. CI passing. Content review round 1 done and fixed; round 2 found one more item (fixed in this revision of the lesson, see report) |
+| Plan review round 1 (Codex) | Done: six findings, all addressed in this document |
+| Plan review round 2 (Codex) | Pending |
 | `c9-04`, `c9-05`, `c9-06` | Not started |
-| Plan review (Codex) | Not started |
-| Content reviews, draft PRs, pushes | Not started. Nothing pushed |
+| Publication | Nothing published |
 
-## 10. Open questions
+## 11. Open questions
 
-1. Should the lesson IDs `c9-02`, `c9-04`, `c9-05`, `c9-06` be published after review, or stay draft until all four are ready?
+1. Should `c9-02`, `c9-04`, `c9-05` and `c9-06` be published after review, or stay draft until all four are ready?
 2. Should the multi-agent entries be requested from the content repo now, or after these four lessons?
-3. The Chapter 9 course page copy is written by hand. Keep that for now, or add a data-driven chapter page first?
+3. Chapter 9 copy comes from curriculum data via #49. Is that acceptable, or should a hand-written intro be added to the generic page?
