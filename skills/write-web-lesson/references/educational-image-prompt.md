@@ -15,6 +15,13 @@ Recommended values for lesson images:
 - **REFERENCE_IMAGE:** `None`, unless you want visual consistency with an existing lesson image.
 - **OUTPUT_PATH:** an absolute path in the scratch folder, for example `<scratch>/<name>.png`. The image is converted to WebP afterwards.
 
+Learned from the next-token tests (these shaped the template):
+- List every word that must appear in KEY_ELEMENTS: token words, candidate words, the output word, and each box or chip name. A box name left out of the list did not appear in the first images.
+- Name the layout in VISUAL_RELATIONSHIPS, for example "left to right", so the composition matches the lesson.
+- Say that the listed words are the only text allowed. Without that, a generator added extra text such as "AI model".
+- Check the result against the list. If a word is missing or misspelled, regenerate once and view it again.
+- Codex and agy both followed the list when it was complete. Where they differed, Codex rendered text more legibly and agy kept the layout more compact.
+
 <!-- PROMPT START -->
 
 # Educational Illustration Generator
@@ -124,9 +131,9 @@ Prioritize visual legibility over the number of details.
 Follow: {{TEXT_POLICY}}
 
 Default behavior:
-- Prefer no embedded text.
-- Communicate concepts through objects, connections, and visual metaphors.
-- When necessary, use only a few large, short labels.
+- Embed text only when a word is listed in KEY_ELEMENTS. Every listed word must appear exactly as written, once. No other words may appear.
+- Communicate concepts through objects, connections, and visual metaphors; use text for the listed words only.
+- Label each listed element (boxes, chips, bars, outputs) with its listed word.
 - Never include lengthy explanations, paragraphs, or tiny annotations.
 - Avoid unreliable image-generated code or mathematical expressions.
 - Do not generate watermarks, logos, or decorative captions.
@@ -150,7 +157,7 @@ The illustration must:
 2. Select the most suitable educational visual structure.
 3. Compose a clear, mobile-first illustration.
 4. Invoke the available image-generation tool.
-5. Inspect the generated result if inspection is supported.
+5. Inspect the generated result if inspection is supported: check that every word listed in KEY_ELEMENTS appears exactly as written and that no other text appears.
 6. Regenerate or refine if major issues are identified and the tool supports it.
 7. Save or copy the generated image to:
 
