@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c9-02",
   "title": "Workflows versus agents",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     { "id": "two-ways", "title": "Who picks the next step?" },
     { "id": "workflow", "title": "A workflow: the code sets the order." },
