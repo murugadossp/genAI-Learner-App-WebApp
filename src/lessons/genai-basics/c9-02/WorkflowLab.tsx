@@ -32,7 +32,7 @@ const items = [
   {
     text: "Intake and filing always run. In between, the model decides how many records to look up, and keeps looking until it judges it has enough.",
     kind: 2,
-    why: "Intake and filing are fixed. Only the middle step is open-ended, and the model chooses it.",
+    why: "Intake and filing are fixed. In between, the model chooses whether to look up more records or stop.",
   },
   {
     text: "Every ticket runs three fixed steps. One of them calls a model to write a one-sentence summary. The code always moves to the next step.",
