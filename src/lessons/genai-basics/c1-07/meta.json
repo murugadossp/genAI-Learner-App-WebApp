@@ -11,5 +11,10 @@
     { "id": "responsibility", "title": "Keep a person responsible." },
     { "id": "check", "title": "Check your understanding." },
     { "id": "takeaway", "title": "Take this with you." }
-  ]
+  ],
+  "approval": {
+    "approvedBy": "owner",
+    "date": "2026-11-10",
+    "items": ["owner review", "manual accessibility and visual checks"]
+  }
 }
