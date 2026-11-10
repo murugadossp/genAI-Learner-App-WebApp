@@ -1,0 +1,13 @@
+{
+  "TOPIC": "How Large Language Models Work",
+  "LEARNING_OBJECTIVE": "Explain next-token prediction to beginners.",
+  "VISUAL_DESCRIPTION": "Same layout as the approved next-token image: a row of input token blocks reading \"The cat sat on the\" flows into a blue chip with a neural network icon, which feeds a bar-chart panel of ranked candidate next tokens. The top-ranked token becomes the output token.",
+  "KEY_ELEMENTS": "Five input token blocks reading, left to right, \"The\", \"cat\", \"sat\", \"on\", \"the\". A blue chip labelled \"Neural network\" with a small network icon. A bar-chart panel beside it with three bars labelled \"mat\" (longest bar), \"sofa\", \"rug\". One output token box containing \"mat\". Labels shown exactly: \"Input tokens\", \"Model predicts values\", \"Output token\", \"Neural network\".",
+  "VISUAL_RELATIONSHIPS": "Left-to-right: input tokens feed the neural network chip, the chip produces ranked candidates in the bar panel, and the top candidate, \"mat\", becomes the output token.",
+  "TECHNICAL_CONSTRAINTS": "Represent probabilistic generation accurately: the model scores possible next tokens and one is chosen. Do not show a database lookup.",
+  "AUDIENCE": "Beginners studying Generative AI",
+  "ASPECT_RATIO": "3:2",
+  "OUTPUT_PATH": "REPLACE_WITH_ABSOLUTE_SCRATCH_PATH/next-token.png",
+  "TEXT_POLICY": "Only the exact words listed in KEY_ELEMENTS (token words, candidate words and the labels the concept needs). No other text, no numbers, no watermark, no captions.",
+  "REFERENCE_IMAGE": "None"
+}

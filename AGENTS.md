@@ -33,6 +33,7 @@ Run `format:check` and `typecheck` before opening a PR. New code must be Prettie
 
 - `meta.json` fields: `module`, `lessonId`, `title`, `webStatus` (`draft` or `published`), `sections[]` (`id`, `title`, unique ids matching rendered section ids). `module` and `lessonId` must match the folder names and the registry slug pattern, and the lesson must exist in the curriculum snapshot.
 - New lessons start as `draft`. Only change `webStatus` to `published` when the user asks; publishing goes through a PR and `test:production`.
+- Lesson images are WebP. New lessons use WebP. When a lesson's images are modified, convert that lesson's JPEG or PNG images to WebP and update their references and tests. Shipped images in lessons that are not modified stay as they are. The conversion script is in `skills/write-web-lesson/scripts/to_webp.py`.
 - `Check` props: `question`, `options`, `correct` (index), `explanation`, `wrongFeedback` (array indexed by option), optional `id`, `title`. Vary the correct answer's position.
 - Use `next/link` for internal links, semantic theme tokens (`app/tokens.css`) and visible focus. Keep live regions restrained and support light and dark themes.
 - Known hardcoding: `LessonFrame` shows a fixed "How GenAI works / Lesson N" label and `/course` links, and `src/studio/Course.tsx` is fixed to chapter 2 and `genai-basics`. Generalise these (with defaults, so existing lessons render unchanged) before adding a lesson in another chapter or module.

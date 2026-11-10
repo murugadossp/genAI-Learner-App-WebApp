@@ -53,11 +53,13 @@ List anything uncertain that a subject-matter reviewer should check.
 
 ### Review log
 
-| Gate (plan / content) | Round | Reviewer | Finding | Action or reason rejected |
-| --------------------- | ----- | -------- | ------- | ------------------------- |
-| [gate]                | [n]   | [tool]   | [text]  | [fixed / rejected: why]   |
+| Gate (plan / content) | Round | Provider and model | Finding | Action or reason rejected |
+| --------------------- | ----- | ------------------ | ------- | ------------------------- |
+| [gate]                | [n]   | [provider: model]  | [text]  | [fixed / rejected: why]   |
 
-Gate checklist: [ ] plan review handled [ ] checks pass [ ] content review done [ ] every plan and content round logged (the final review is recorded in the PR description, not in this report)
+Tooling (from `references/tooling.yaml`): reviewers tried in order and why any earlier provider was skipped: [e.g. codex: out of usage; used agy-gemini: gemini-4-argon-medium]. Image provider and model: [provider: model, or no images].
+
+Gate checklist: [ ] reviewer and image providers follow the `tooling.yaml` order (skips explained above) [ ] plan review handled [ ] checks pass [ ] content review done [ ] every plan and content round logged (the final review is recorded in the PR description, not in this report)
 
 Stopped after: [two clean rounds / round cap with open findings listed / reviewer unavailable, and what was used instead].
 

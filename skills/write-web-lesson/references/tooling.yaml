@@ -1,0 +1,72 @@
+# Tools and models used by the write-web-lesson skill for independent reviews and image generation.
+# The skill reads this file. Change a model or command here, not in SKILL.md.
+# Try providers in `order`; use the first one that is available (not out of usage, setup passes).
+# Say in the report's review log which provider and model ran each round.
+# Last tested: 2026-11-09 (agy and claude CLI review calls returned output). 2026-11-10: the agy image command below produced a 1376x768 image from a scratch folder; the Pillow WebP conversion was tested (1200x670, 135 KB).
+
+review:
+  # Plan and content rounds: any provider in `order`.
+  # Final review: codex, agy-gemini or separate-agent only. It must run checks and read the exact PR head and CI status, which claude-haiku cannot do.
+  # Always read-only. Run in the background and write output to a file.
+  order: [codex, agy-gemini, claude-haiku, separate-agent]
+  providers:
+    codex:
+      preferred: true
+      note: Default reviewer. Use the Codex plugin (see codex:setup if the check fails). Read-only means the review task is run without --write; the plugin route does not enforce it, so check the reviewer's report for any file changes.
+    agy-gemini:
+      model: gemini-4-argon-medium
+      # Run from a folder holding the material (for example plan.md). --mode plan keeps it read-only.
+      # Write the review prompt to review-prompt.txt with a quoted heredoc first (cat > review-prompt.txt <<'EOF' ... EOF),
+      # so the shell never expands quotes, $ or backticks in it. $(cat ...) passes the text unchanged except that trailing newlines are removed.
+      command: 'agy --model gemini-4-argon-medium --mode plan -p="$(cat review-prompt.txt)" > <outfile> 2>&1'
+      note: List models with `agy models`.
+    claude-haiku:
+      optional: true
+      model: claude-haiku-5-5
+      effort: medium
+      # Claude CLI, not agy. Read-only: plan permission mode and read-only tools only.
+      command: 'claude --model claude-haiku-5-5 --effort medium --permission-mode plan --tools "Read,Glob,Grep" -p "$(cat review-prompt.txt)" > <outfile> 2>&1'
+      note: Optional, for plan and content rounds only. It is read-only file review, so it cannot run the final-review checks; never use it for the final gate. Same author family as the lesson writer, so it is less independent; say so in the report.
+    separate-agent:
+      note: A separate session or agent, as the last fallback.
+
+image_generation:
+  # Lesson images use agy first. Codex is the fallback only when agy is unavailable.
+  order: [agy-gemini, codex]
+  providers:
+    agy-gemini:
+      # No --model flag: the prompt asks agy to call its generate_image tool explicitly.
+      # Run from a new scratch folder for each image, so the files it writes stay there.
+      # --sandbox runs agy with terminal restrictions. Tested 2026-11-10: it produced a 1264x848 image with all
+      # the listed text. Do not use --dangerously-skip-permissions for image generation.
+      # Takes minutes per image. Run it in the background and wait for the file.
+      # Step 1: fill the CLI-agnostic template into prompt.txt, from the repo root:
+      #   python3 skills/write-web-lesson/scripts/fill_image_prompt.py "<scratch>/values.json" --out "<scratch>/prompt.txt"
+      #   (quote both paths, so a scratch folder with spaces works)
+      # Step 2: the command reads prompt.txt, so the shell never expands anything in it. $(cat ...) passes the
+      # file's text unchanged, except that trailing newlines are removed.
+      # The same prompt.txt works for every CLI; the template is references/educational-image-prompt.md.
+      command: 'agy --sandbox --add-dir "$PWD" -p="$(cat prompt.txt)"'
+      rules:
+        - Fill the template with scripts/fill_image_prompt.py from a values.json. Do not hand-edit the filled prompt.txt.
+        - Set OUTPUT_PATH to an absolute scratch path ending in .png. The template tells the CLI to call generate_image and copy the result there.
+        - Use ASPECT_RATIO 3:2 for lesson images, and list in TEXT_POLICY only the words the concept needs (the template header explains why).
+        - View every file; check each label and arrow; regenerate rather than patch (a reply can claim a save that never happened).
+        - Do not wrap in `timeout` (macOS has none).
+        - Convert to WebP with the script in convert_script, then move the .webp into the lesson's images folder. macOS sips cannot write WebP.
+        - Replace <name> with the same name in the agy prompt and both convert commands. Convert in the scratch folder, then move only the .webp into the lesson.
+        - Delete the original image after conversion and keep only the .webp in the lesson.
+      # Run from the repo root. The script needs Pillow: the system Python blocks pip under PEP 668,
+      # so create the venv inside the scratch folder once, then run the script with its Python.
+      # Image model: the skill does not set one, so the report says "agy generate_image (default model)".
+      # <repo> is the absolute path of the repo root or worktree. <scratch> is the absolute scratch folder.
+      # Every substituted path is double-quoted, so paths with spaces work. Both paths are absolute.
+      convert_setup: 'python3 -m venv "<scratch>/imgvenv" && "<scratch>/imgvenv/bin/pip" install -q pillow'
+      convert_script: '"<scratch>/imgvenv/bin/python" "<repo>/skills/write-web-lesson/scripts/to_webp.py" "<scratch>/<name>.png" "<scratch>/<name>.webp" --width 1200 --quality 82'
+    codex:
+      # Fallback only, when agy is unavailable. Uses the standalone Codex CLI (`codex exec`), so no Claude plugin is needed.
+      # Tested 2026-11-10: the same filled prompt produced a 1536x1024 image with all the listed text.
+      # Run from a new scratch folder, one per image. Codex saves its own copy under ~/.codex/generated_images/;
+      # copy that file to "<scratch>/<name>.png" before converting, because convert_script reads that path.
+      # The sandbox is workspace-write, not the unrestricted mode.
+      command: 'command -v codex >/dev/null || { echo "Codex CLI not found. Install Codex or use another image provider." >&2; exit 3; }; codex exec --sandbox workspace-write --skip-git-repo-check "$(cat prompt.txt)"'
