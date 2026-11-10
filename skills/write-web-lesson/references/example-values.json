@@ -1,13 +1,13 @@
 {
   "TOPIC": "How Large Language Models Work",
   "LEARNING_OBJECTIVE": "Explain next-token prediction to beginners.",
-  "VISUAL_DESCRIPTION": "Input tokens flow into a stylized language model, which predicts and generates the next token.",
-  "KEY_ELEMENTS": "Input token blocks, AI model, output token. Labels to show exactly: \"Input tokens\", \"Model predicts values\", \"Output token\".",
-  "VISUAL_RELATIONSHIPS": "Left-to-right sequential prediction: input tokens, then the model predicting values, then one output token.",
+  "VISUAL_DESCRIPTION": "A row of input tokens for the sentence \"The cat sat on the\" flows into an AI model. The model scores three candidate next tokens, and the highest-scoring candidate becomes the output token.",
+  "KEY_ELEMENTS": "Five input token boxes reading, left to right, \"The\", \"cat\", \"sat\", \"on\", \"the\". An AI model box listing three candidate next tokens, each with a probability bar: \"mat\" (longest bar), \"sofa\", \"rug\". One output token box containing \"mat\". Labels shown exactly: \"Input tokens\", \"Model predicts values\", \"Output token\".",
+  "VISUAL_RELATIONSHIPS": "Left-to-right: input tokens feed the model, the model ranks candidate next tokens, and the top-ranked token becomes the output token.",
   "TECHNICAL_CONSTRAINTS": "Represent probabilistic generation accurately: the model scores possible next tokens and one is chosen. Do not show a database lookup.",
   "AUDIENCE": "Beginners studying Generative AI",
   "ASPECT_RATIO": "3:2",
   "OUTPUT_PATH": "SCRATCH/next-token.png",
-  "TEXT_POLICY": "Minimal labels: at most three short labels (one to three words each), using exactly the label text listed in KEY_ELEMENTS. No other text, no watermark, no captions.",
+  "TEXT_POLICY": "Short text only: the exact words listed in KEY_ELEMENTS (token words, candidate words and up to three labels). No other text, no numbers, no watermark, no captions.",
   "REFERENCE_IMAGE": "None"
 }
