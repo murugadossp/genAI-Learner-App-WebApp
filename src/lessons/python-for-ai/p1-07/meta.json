@@ -1,0 +1,48 @@
+{
+  "module": "python-for-ai",
+  "lessonId": "p1-07",
+  "title": "If-else statements",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "roadmap",
+      "title": "If-else statements: Choosing one path."
+    },
+    {
+      "id": "first",
+      "title": "One chain, one branch."
+    },
+    {
+      "id": "order",
+      "title": "The first true test wins."
+    },
+    {
+      "id": "boundary",
+      "title": "Including the boundary: >= and >."
+    },
+    {
+      "id": "practice",
+      "title": "Practice: Reading the boundary."
+    },
+    {
+      "id": "blocks",
+      "title": "Colons, indentation and else."
+    },
+    {
+      "id": "complete",
+      "title": "Practice: Complete the chain."
+    },
+    {
+      "id": "lab",
+      "title": "Try the token budget router."
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
+  ]
+}
