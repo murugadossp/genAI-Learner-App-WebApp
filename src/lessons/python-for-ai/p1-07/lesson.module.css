@@ -326,3 +326,11 @@ button.presetBtn.presetBtnActive:not(:disabled):hover {
 .sliderRow input[type="range"] {
   width: 100%;
 }
+
+/* Phones: smaller code so the longest lab line fits the panel. */
+@media (max-width: 540px) {
+  .codeLines.codeLines {
+    font-size: 0.74rem;
+    padding: 0.85rem 0.7rem;
+  }
+}
