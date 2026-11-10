@@ -44,15 +44,13 @@ const routes = [
 ];
 for (const [path, target, published] of routes) {
   mkdirSync(path.slice(0, path.lastIndexOf("/")), { recursive: true });
-  const safe =
-    path === "app/page.tsx"
-      ? "export default function Home(){return <main><h1>GenAI Learner</h1><p>Our web learning experience is coming soon.</p></main>}\n"
-      : 'import { notFound } from "next/navigation";\nexport default function Page(){notFound()}\n';
+  const notFoundPage =
+    'import { notFound } from "next/navigation";\nexport default function Page(){notFound()}\n';
   writeFileSync(
     path,
     marker +
       (production && !published
-        ? safe
+        ? notFoundPage
         : `export { default } from "${target}";\n`),
   );
 }
