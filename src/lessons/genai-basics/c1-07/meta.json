@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c1-07",
   "title": "Using AI responsibly",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     { "id": "roadmap", "title": "Three habits for using AI with care." },
     { "id": "verify", "title": "Verify claims before relying on them." },

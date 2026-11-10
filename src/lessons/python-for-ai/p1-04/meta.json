@@ -2,7 +2,7 @@
   "module": "python-for-ai",
   "lessonId": "p1-04",
   "title": "Lists",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     {
       "id": "ordered-sequences-and-syntax",

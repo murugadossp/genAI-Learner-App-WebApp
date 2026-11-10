@@ -2,7 +2,7 @@
   "module": "python-for-ai",
   "lessonId": "p1-06",
   "title": "Dictionaries",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     { "id": "roadmap", "title": "Dictionaries: Looking things up by name." },
     { "id": "pairs", "title": "Keys and values: Reading a pair." },

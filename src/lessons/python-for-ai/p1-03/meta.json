@@ -2,7 +2,7 @@
   "module": "python-for-ai",
   "lessonId": "p1-03",
   "title": "Strings",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     {
       "id": "quotes-and-multiline",
