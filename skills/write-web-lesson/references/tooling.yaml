@@ -70,4 +70,7 @@ image_generation:
       # Write the prompt to prompt.txt with a quoted heredoc first, as for agy. Codex saves its original to
       # ~/.codex/generated_images/; copy that file to <scratch>/<name>.jpg before converting, because convert_script reads that path.
       # The script reads content, so a PNG under a .jpg name converts correctly. If the Codex check fails, run codex:setup first.
-      command: 'CODEX_COMPANION=$(ls -d "$HOME"/.claude/plugins/cache/openai-codex/codex/*/scripts/codex-companion.mjs | sort -V | tail -1); node "$CODEX_COMPANION" task --write "$(cat prompt.txt)"'
+      # Needs the Claude Code Codex plugin. Without it the command stops with a message instead of failing silently.
+      # A standalone `codex` CLI is installed on some machines, but `codex exec` image output is untested here: try it only
+      # after the plugin route is shown to be unavailable, and report it as untested in the review log.
+      command: 'CODEX_COMPANION=$(ls -d "$HOME"/.claude/plugins/cache/openai-codex/codex/*/scripts/codex-companion.mjs 2>/dev/null | sort -V | tail -1); if [ -n "$CODEX_COMPANION" ]; then node "$CODEX_COMPANION" task --write "$(cat prompt.txt)"; else echo "Codex plugin not found under ~/.claude/plugins/cache/openai-codex. Install it (codex:setup) or use another image provider." >&2; exit 3; fi'
