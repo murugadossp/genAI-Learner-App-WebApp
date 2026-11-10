@@ -64,7 +64,8 @@ export default function Lesson() {
           </li>
           <li>
             <strong>Infinite loop:</strong> a loop whose condition never becomes{" "}
-            <code>False</code>, so it never stops on its own.
+            <code>False</code> and whose body never runs <code>break</code>, so
+            it never stops on its own.
           </li>
         </ol>
         <div className={styles.exampleBox}>
