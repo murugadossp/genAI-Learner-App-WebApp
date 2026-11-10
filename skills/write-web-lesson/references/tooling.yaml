@@ -2,7 +2,7 @@
 # The skill reads this file. Change a model or command here, not in SKILL.md.
 # Try providers in `order`; use the first one that is available (not out of usage, setup passes).
 # Say in the report's review log which provider and model ran each round.
-# Last tested: 2026-11-09 (agy and claude CLI review calls returned output). 2026-11-10: the agy image command below produced a 1376x768 JPEG from a scratch folder.
+# Last tested: 2026-11-09 (agy and claude CLI review calls returned output). 2026-11-10: the agy image command below produced a 1376x768 image from a scratch folder; the Pillow WebP conversion was tested (1200x670, 135 KB).
 
 review:
   # Same job at all gates: plan review, content review rounds, and the final review.
@@ -41,10 +41,14 @@ image_generation:
       rules:
         - Name the tool (generate_image) and the exact output path in the prompt.
         - Labels are plain text with commas between them and no quote marks, so the shell command stays valid.
-        - The .jpg name does not change the file's bytes: check the result with `file`, and convert it to JPEG before use if it is PNG.
+        - The .jpg name does not change the file's bytes: check the result with `file`; the file may be PNG.
         - Put the exact label text in the prompt and ask for no other text; unspecified labels come out blank.
         - View every file; check each label and arrow; regenerate rather than patch (a reply can claim a save that never happened).
         - Do not wrap in `timeout` (macOS has none).
-        - Convert to JPEG about 1200px wide before adding it to the lesson (for example `sips -s format jpeg -s formatOptions 85 -Z 1200`), then move it into the lesson's images folder.
+        - Convert to WebP about 1200px wide with convert_command below, then move the .webp into the lesson's images folder. macOS sips cannot write WebP, and the system Python blocks pip under PEP 668, so the venv lives inside the scratch folder.
+        - Delete the original image after conversion and keep only the .webp in the lesson.
+      convert_command: |
+        python3 -m venv imgvenv && imgvenv/bin/pip install -q pillow
+        imgvenv/bin/python -c "from PIL import Image; im=Image.open('in.jpg').convert('RGB'); im.thumbnail((1200, 100000)); im.save('out.webp', 'WEBP', quality=82, method=6)"
     codex:
       note: Fallback only. Use the command in the user's global instructions, run from a scratch folder too.
