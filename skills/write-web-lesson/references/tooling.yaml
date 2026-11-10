@@ -41,7 +41,8 @@ image_generation:
       # the listed text. Do not use --dangerously-skip-permissions for image generation.
       # Takes minutes per image. Run it in the background and wait for the file.
       # Step 1: fill the CLI-agnostic template into prompt.txt, from the repo root:
-      #   python3 skills/write-web-lesson/scripts/fill_image_prompt.py <scratch>/values.json --out <scratch>/prompt.txt
+      #   python3 skills/write-web-lesson/scripts/fill_image_prompt.py "<scratch>/values.json" --out "<scratch>/prompt.txt"
+      #   (quote both paths, so a scratch folder with spaces works)
       # Step 2: the command reads prompt.txt, so the shell never expands anything in it. $(cat ...) passes the
       # file's text unchanged, except that trailing newlines are removed.
       # The same prompt.txt works for every CLI; the template is references/educational-image-prompt.md.
@@ -63,12 +64,9 @@ image_generation:
       convert_setup: 'python3 -m venv "<scratch>/imgvenv" && "<scratch>/imgvenv/bin/pip" install -q pillow'
       convert_script: '"<scratch>/imgvenv/bin/python" "<repo>/skills/write-web-lesson/scripts/to_webp.py" "<scratch>/<name>.png" "<scratch>/<name>.webp" --width 1200 --quality 82'
     codex:
-      # Fallback only, when agy is unavailable. Run from a scratch folder, one per image, then view and convert as above.
-      # The companion script is found under the current user's plugin cache, so the version and account do not matter.
-      # Fill the template into prompt.txt first (Step 1 above), as for agy. Codex saves its original to
-      # ~/.codex/generated_images/; copy that file to <scratch>/<name>.png before converting, because convert_script reads that path.
-      # If the Codex check fails, run codex:setup first.
-      # Needs the Claude Code Codex plugin. Without it the command stops with a message instead of failing silently.
-      # A standalone `codex` CLI is installed on some machines, but `codex exec` image output is untested here: try it only
-      # after the plugin route is shown to be unavailable, and report it as untested in the review log.
-      command: 'CODEX_COMPANION=$(ls -d "$HOME"/.claude/plugins/cache/openai-codex/codex/*/scripts/codex-companion.mjs 2>/dev/null | sort -V | tail -1); if [ -n "$CODEX_COMPANION" ]; then node "$CODEX_COMPANION" task --write "$(cat prompt.txt)"; else echo "Codex plugin not found under ~/.claude/plugins/cache/openai-codex. Install it (codex:setup) or use another image provider." >&2; exit 3; fi'
+      # Fallback only, when agy is unavailable. Uses the standalone Codex CLI (`codex exec`), so no Claude plugin is needed.
+      # Tested 2026-11-10: the same filled prompt produced a 1536x1024 image with all the listed text.
+      # Run from a new scratch folder, one per image. Codex saves its own copy under ~/.codex/generated_images/;
+      # copy that file to "<scratch>/<name>.png" before converting, because convert_script reads that path.
+      # The sandbox is workspace-write, not the unrestricted mode.
+      command: 'command -v codex >/dev/null || { echo "Codex CLI not found. Install Codex or use another image provider." >&2; exit 3; }; codex exec --sandbox workspace-write --skip-git-repo-check "$(cat prompt.txt)"'
