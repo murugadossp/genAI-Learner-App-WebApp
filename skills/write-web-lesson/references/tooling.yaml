@@ -15,14 +15,16 @@ review:
     agy-gemini:
       model: gemini-4-argon-medium
       # Run from a folder holding the material (for example plan.md). --mode plan keeps it read-only.
-      command: 'agy --model gemini-4-argon-medium --mode plan -p "<review prompt>" > <outfile> 2>&1'
+      # Write the review prompt to review-prompt.txt with a quoted heredoc first (cat > review-prompt.txt <<'EOF' ... EOF),
+      # so the shell never expands quotes, $ or backticks in it. $(cat ...) passes the text unchanged.
+      command: 'agy --model gemini-4-argon-medium --mode plan -p="$(cat review-prompt.txt)" > <outfile> 2>&1'
       note: List models with `agy models`.
     claude-haiku:
       optional: true
       model: claude-haiku-5-5
       effort: medium
       # Claude CLI, not agy. Read-only: plan permission mode and read-only tools only.
-      command: 'claude --model claude-haiku-5-5 --effort medium --permission-mode plan --tools "Read,Glob,Grep" -p "<review prompt>" > <outfile> 2>&1'
+      command: 'claude --model claude-haiku-5-5 --effort medium --permission-mode plan --tools "Read,Glob,Grep" -p "$(cat review-prompt.txt)" > <outfile> 2>&1'
       note: Optional extra or fallback when Codex is unavailable. Same author family as the lesson writer, so it is less independent; say so in the report.
     separate-agent:
       note: A separate session or agent, as the last fallback.
