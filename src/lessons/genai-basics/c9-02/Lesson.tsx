@@ -85,10 +85,10 @@ export default function Lesson() {
           </li>
           <li>Route the ticket to the billing team.</li>
         </ol>
-        <figure className={styles.figure}>
+        <figure className={`${styles.figure} ${styles.wide}`}>
           <Image
             src={workflowImg}
-            alt="Three boxes stacked from top to bottom, labelled Classify ticket, Check urgency and Route ticket, with arrows pointing down from one box to the next."
+            alt="A workflow diagram titled: the code sets the order. Three steps run one after another: Classify ticket, Check urgency and Route ticket, with arrows pointing down from one step to the next. Below, an example outside the ticket shows the same fixed order at a library desk."
             sizes="(max-width: 760px) 100vw, 560px"
           />
           <figcaption className="micro">
@@ -121,10 +121,10 @@ export default function Lesson() {
             The model reads the result, then either picks another step or stops.
           </li>
         </ol>
-        <figure className={styles.figure}>
+        <figure className={`${styles.figure} ${styles.wide}`}>
           <Image
             src={agentLoopImg}
-            alt="Three boxes in a loop: Model picks next step at the top, Run a tool at the bottom right and Model reads result at the bottom left. Arrows go clockwise around the loop, and an arrow from Model reads result leads down to a dashed box labelled Stop."
+            alt="Two panels side by side. On the left, a workflow: Classify ticket, Check urgency and Route ticket in a fixed order. On the right, an agent loop: Model picks next step at the top, Run a tool at the right and Model reads result at the left. Arrows go clockwise around the loop, and a dashed Stop box sits below Model reads result."
             sizes="(max-width: 760px) 100vw, 560px"
           />
           <figcaption className="micro">
