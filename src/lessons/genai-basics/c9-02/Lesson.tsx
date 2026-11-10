@@ -4,9 +4,9 @@ import { Check } from "../../Check";
 import styles from "./lesson.module.css";
 import { WorkflowLab } from "./WorkflowLab";
 import Image from "next/image";
-import workflowImg from "./images/workflow.jpg";
-import agentLoopImg from "./images/agent-loop.jpg";
-import combinedImg from "./images/combined.jpg";
+import workflowImg from "./images/workflow.webp";
+import agentLoopImg from "./images/agent-loop.webp";
+import combinedImg from "./images/combined.webp";
 
 export default function Lesson() {
   return (
