@@ -5,7 +5,7 @@ One master prompt for every lesson illustration. It works with any CLI that can 
 ## How to use
 
 1. Copy `example-values.json` (or write a new JSON file with the keys below). Every key is required.
-2. Fill the template: `python3 <repo>/skills/write-web-lesson/scripts/fill_image_prompt.py values.json --out prompt.txt`. The script fails if a placeholder is left unfilled or a key is not used.
+2. Fill the template: `python3 "<repo>/skills/write-web-lesson/scripts/fill_image_prompt.py" "values.json" --out "prompt.txt"` (quote the paths, so folders with spaces work). The script fails if a placeholder is left unfilled or a key is not used.
 3. Send `prompt.txt` to the CLI (see `tooling.yaml`). The same file works for agy and Codex.
 
 Recommended values for lesson images:
