@@ -5,7 +5,8 @@
 # Last tested: 2026-11-09 (agy and claude CLI review calls returned output). 2026-11-10: the agy image command below produced a 1376x768 image from a scratch folder; the Pillow WebP conversion was tested (1200x670, 135 KB).
 
 review:
-  # Same job at all gates: plan review, content review rounds, and the final review.
+  # Plan and content rounds: any provider in `order`.
+  # Final review: codex, agy-gemini or separate-agent only. It must run checks and read the exact PR head and CI status, which claude-haiku cannot do.
   # Always read-only. Run in the background and write output to a file.
   order: [codex, agy-gemini, claude-haiku, separate-agent]
   providers:
@@ -25,7 +26,7 @@ review:
       effort: medium
       # Claude CLI, not agy. Read-only: plan permission mode and read-only tools only.
       command: 'claude --model claude-haiku-5-5 --effort medium --permission-mode plan --tools "Read,Glob,Grep" -p "$(cat review-prompt.txt)" > <outfile> 2>&1'
-      note: Optional extra or fallback when Codex is unavailable. Same author family as the lesson writer, so it is less independent; say so in the report.
+      note: Optional, for plan and content rounds only. It is read-only file review, so it cannot run the final-review checks; never use it for the final gate. Same author family as the lesson writer, so it is less independent; say so in the report.
     separate-agent:
       note: A separate session or agent, as the last fallback.
 
@@ -64,7 +65,9 @@ image_generation:
       convert_setup: 'python3 -m venv "<scratch>/imgvenv" && "<scratch>/imgvenv/bin/pip" install -q pillow'
       convert_script: '"<scratch>/imgvenv/bin/python" "<repo>/skills/write-web-lesson/scripts/to_webp.py" "<scratch>/<name>.jpg" "<scratch>/<name>.webp" --width 1200 --quality 82'
     codex:
-      # Fallback only, when agy is unavailable. Run from a scratch folder, one per image, then view and convert the file as above.
-      # Codex saves its original to ~/.codex/generated_images/; copy it into the scratch folder before converting.
-      # If the Codex check fails, run codex:setup first.
-      command: 'node "/Users/murugadoss/.claude/plugins/cache/openai-codex/codex/1.0.6/scripts/codex-companion.mjs" task --write "<prompt>. Save the image as <name>.png in the current directory. Reply with the full absolute file path of the saved image."'
+      # Fallback only, when agy is unavailable. Run from a scratch folder, one per image, then view and convert as above.
+      # The companion script is found under the current user's plugin cache, so the version and account do not matter.
+      # Write the prompt to prompt.txt with a quoted heredoc first, as for agy. Codex saves its original to
+      # ~/.codex/generated_images/; copy that file to <scratch>/<name>.jpg before converting, because convert_script reads that path.
+      # The script reads content, so a PNG under a .jpg name converts correctly. If the Codex check fails, run codex:setup first.
+      command: 'CODEX_COMPANION=$(ls -d "$HOME"/.claude/plugins/cache/openai-codex/codex/*/scripts/codex-companion.mjs | sort -V | tail -1); node "$CODEX_COMPANION" task --write "$(cat prompt.txt)"'
