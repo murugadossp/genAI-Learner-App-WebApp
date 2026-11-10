@@ -1,0 +1,13 @@
+{
+  "TOPIC": "How Large Language Models Work",
+  "LEARNING_OBJECTIVE": "Explain next-token prediction to beginners.",
+  "VISUAL_DESCRIPTION": "Input tokens flow into a stylized language model, which predicts and generates the next token.",
+  "KEY_ELEMENTS": "Token blocks, AI model, generated token. Labels allowed: \"Input tokens\", \"Model\", \"Next token\".",
+  "VISUAL_RELATIONSHIPS": "Left-to-right sequential prediction: input tokens, then the model, then one new token.",
+  "TECHNICAL_CONSTRAINTS": "Represent probabilistic generation accurately: the model scores possible next tokens and one is chosen. Do not show a database lookup.",
+  "AUDIENCE": "Beginners studying Generative AI",
+  "ASPECT_RATIO": "3:2",
+  "OUTPUT_PATH": "SCRATCH/next-token.png",
+  "TEXT_POLICY": "Minimal labels: at most three short labels (one to three words each), using exactly the label text listed in KEY_ELEMENTS. No other text, no watermark, no captions.",
+  "REFERENCE_IMAGE": "None"
+}

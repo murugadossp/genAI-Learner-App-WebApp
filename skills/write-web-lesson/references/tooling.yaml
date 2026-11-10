@@ -40,18 +40,16 @@ image_generation:
       # --dangerously-skip-permissions turns off permission prompts; it is not a sandbox,
       # so use it only with prompts you wrote and check the scratch folder afterwards.
       # Takes minutes per image. Run it in the background and wait for the file.
-      # The prompt is written to prompt.txt first, so the shell never expands anything in it.
-      # $(cat ...) inside double quotes passes the file's text unchanged, except that trailing newlines are removed.
+      # Step 1: fill the CLI-agnostic template into prompt.txt, from the repo root:
+      #   python3 skills/write-web-lesson/scripts/fill_image_prompt.py <scratch>/values.json --out <scratch>/prompt.txt
+      # Step 2: the command reads prompt.txt, so the shell never expands anything in it. $(cat ...) passes the
+      # file's text unchanged, except that trailing newlines are removed.
+      # The same prompt.txt works for every CLI; the template is references/educational-image-prompt.md.
       command: 'agy --dangerously-skip-permissions --add-dir "$PWD" -p="$(cat prompt.txt)"'
-      prompt_file: |
-        cat > prompt.txt <<'EOF'
-        Call generate_image to create <description>. <style, plain background, no text except these exact labels, comma-separated: <labels>. Copy the generated image to <scratch>/<name>.jpg
-        EOF
       rules:
-        - Name the tool (generate_image) and the exact output path, as an absolute path, in prompt.txt.
-        - Write prompt.txt with the quoted heredoc above (<<'EOF'), so labels and descriptions can contain $, backticks and quotes safely.
-        - The .jpg name does not change the file's bytes, so check the result with `file`; the file may be PNG.
-        - Put the exact label text in the prompt and ask for no other text; unspecified labels come out blank.
+        - Fill the template with scripts/fill_image_prompt.py from a values.json. Do not hand-edit the filled prompt.txt.
+        - Set OUTPUT_PATH to an absolute scratch path ending in .png. The template tells the CLI to call generate_image and copy the result there.
+        - Use ASPECT_RATIO 3:2 and minimal labels for lesson images (the template header explains why).
         - View every file; check each label and arrow; regenerate rather than patch (a reply can claim a save that never happened).
         - Do not wrap in `timeout` (macOS has none).
         - Convert to WebP with the script in convert_script, then move the .webp into the lesson's images folder. macOS sips cannot write WebP.
@@ -63,13 +61,13 @@ image_generation:
       # <repo> is the absolute path of the repo root or worktree. <scratch> is the absolute scratch folder.
       # Every substituted path is double-quoted, so paths with spaces work. Both paths are absolute.
       convert_setup: 'python3 -m venv "<scratch>/imgvenv" && "<scratch>/imgvenv/bin/pip" install -q pillow'
-      convert_script: '"<scratch>/imgvenv/bin/python" "<repo>/skills/write-web-lesson/scripts/to_webp.py" "<scratch>/<name>.jpg" "<scratch>/<name>.webp" --width 1200 --quality 82'
+      convert_script: '"<scratch>/imgvenv/bin/python" "<repo>/skills/write-web-lesson/scripts/to_webp.py" "<scratch>/<name>.png" "<scratch>/<name>.webp" --width 1200 --quality 82'
     codex:
       # Fallback only, when agy is unavailable. Run from a scratch folder, one per image, then view and convert as above.
       # The companion script is found under the current user's plugin cache, so the version and account do not matter.
-      # Write the prompt to prompt.txt with a quoted heredoc first, as for agy. Codex saves its original to
-      # ~/.codex/generated_images/; copy that file to <scratch>/<name>.jpg before converting, because convert_script reads that path.
-      # The script reads content, so a PNG under a .jpg name converts correctly. If the Codex check fails, run codex:setup first.
+      # Fill the template into prompt.txt first (Step 1 above), as for agy. Codex saves its original to
+      # ~/.codex/generated_images/; copy that file to <scratch>/<name>.png before converting, because convert_script reads that path.
+      # If the Codex check fails, run codex:setup first.
       # Needs the Claude Code Codex plugin. Without it the command stops with a message instead of failing silently.
       # A standalone `codex` CLI is installed on some machines, but `codex exec` image output is untested here: try it only
       # after the plugin route is shown to be unavailable, and report it as untested in the review log.
