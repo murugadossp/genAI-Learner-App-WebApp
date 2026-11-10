@@ -40,7 +40,11 @@ def main() -> int:
         return 2
 
     with Image.open(args.input) as image:
-        image = image.convert("RGB")
+        # Keep transparency when the input has it; otherwise store plain RGB.
+        has_alpha = image.mode in ("RGBA", "LA") or (
+            image.mode == "P" and "transparency" in image.info
+        )
+        image = image.convert("RGBA" if has_alpha else "RGB")
         # Only shrink: thumbnail never enlarges, and the height bound is effectively unlimited.
         image.thumbnail((args.width, 100_000))
         args.output.parent.mkdir(parents=True, exist_ok=True)
