@@ -213,10 +213,10 @@ export default function Lesson() {
             the ticket.
           </li>
         </ol>
-        <figure className={styles.figure}>
+        <figure className={`${styles.figure} ${styles.wide}`}>
           <Image
             src={combinedImg}
-            alt="Three boxes stacked from top to bottom, labelled Intake, Investigate and File ticket, with arrows pointing down. The Investigate box has a dashed outline to mark it as the open-ended step."
+            alt="A hybrid flow with three steps. Intake is fixed. Investigate is a dashed agent loop, where the model looks up login records, asks for more detail if needed and decides when it has enough, with a maximum number of steps. File ticket is fixed. A side panel compares it to a restaurant kitchen: take the order and serve the dish are fixed, and adjust and taste is the agent loop."
             sizes="(max-width: 760px) 100vw, 560px"
           />
           <figcaption className="micro">

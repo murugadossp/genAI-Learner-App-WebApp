@@ -48,7 +48,7 @@ for (const width of [390, 768, 1440])
       await expect(figures.nth(1)).toHaveAttribute("alt", /Classify ticket/);
       await expect(figures.nth(2)).toHaveAttribute("alt", /Run a tool/);
       await expect(figures.nth(2)).toHaveAttribute("alt", /Stop/);
-      await expect(figures.nth(3)).toHaveAttribute("alt", /dashed outline/);
+      await expect(figures.nth(3)).toHaveAttribute("alt", /dashed agent loop/);
 
       // Lab: a wrong answer gets specific feedback; the score updates.
       const lab = page.locator("fieldset", {
