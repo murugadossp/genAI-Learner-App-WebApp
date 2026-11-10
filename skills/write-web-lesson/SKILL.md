@@ -90,7 +90,7 @@ Checklist, in this order. The report's gate checklist line holds the plan, check
 - Record the PID or background task ID of any server you start, and stop only that one. Never use a broad `pkill` or `killall`, which can kill unrelated dev servers.
 - Free port 3100 and the dev port if a run was interrupted. When multiple lesson worktrees or test suites run concurrently, pass `TEST_PORT=<port>` (for example `TEST_PORT=3105 npx playwright test ...`) to avoid `EADDRINUSE` port collisions.
 - `npm run dev` starts a `next-server` child that outlives its parent. To stop a dev server, stop the background task, then check `lsof -ti :3000 -sTCP:LISTEN` and stop only the process whose working directory is your worktree (never a browser holding a connection). Stop it before `npm run build` or `npm test`, then restart it after.
-- A Codex image generation takes minutes per image and writes to the worktree root. Run it in the background, view each file, then move it, convert it and delete the original.
+- An image generation takes minutes per image. Run it in the background from a scratch folder (not the worktree root), view each file, then move it into the lesson, convert it and delete the original.
 - For images, follow the `image_generation` order and rules in `references/tooling.yaml`: exact label text in the prompt, view every file, regenerate rather than patch, one scratch folder per image, then convert to JPEG as above.
 - Run `npx prettier --write` only on the files you changed, since it can reformat unrelated files, and `format:check` does not cover CSS or the report.
 - Treat a user comment such as "this is confusing" as a design problem and restructure the section, not only reword it.
