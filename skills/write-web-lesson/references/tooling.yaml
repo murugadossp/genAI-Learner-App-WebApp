@@ -33,12 +33,15 @@ image_generation:
   providers:
     agy-gemini:
       # No --model flag: the prompt asks agy to call its generate_image tool explicitly.
-      # Run from a new scratch folder for each image, never from the repo, so that
-      # --dangerously-skip-permissions only reaches that folder.
+      # Run from a new scratch folder for each image, so the files it writes stay there.
+      # --dangerously-skip-permissions turns off permission prompts; it is not a sandbox,
+      # so use it only with prompts you wrote and check the scratch folder afterwards.
       # Takes minutes per image. Run it in the background and wait for the file.
-      command: 'agy --dangerously-skip-permissions --add-dir "$PWD" -p="Call generate_image to create <description>. <style, plain background, no text except these exact labels: "<labels>">. Copy the generated image to $PWD/<name>.jpg"'
+      command: 'agy --dangerously-skip-permissions --add-dir "$PWD" -p="Call generate_image to create <description>. <style, plain background, no text except these exact labels (comma-separated): <labels>. Copy the generated image to $PWD/<name>.jpg"'
       rules:
         - Name the tool (generate_image) and the exact output path in the prompt.
+        - Labels are plain text with commas between them and no quote marks, so the shell command stays valid.
+        - The .jpg name does not change the file's bytes: check the result with `file`, and convert it to JPEG before use if it is PNG.
         - Put the exact label text in the prompt and ask for no other text; unspecified labels come out blank.
         - View every file; check each label and arrow; regenerate rather than patch (a reply can claim a save that never happened).
         - Do not wrap in `timeout` (macOS has none).
