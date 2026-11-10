@@ -7,7 +7,7 @@
   "TECHNICAL_CONSTRAINTS": "Represent probabilistic generation accurately: the model scores possible next tokens and one is chosen. Do not show a database lookup.",
   "AUDIENCE": "Beginners studying Generative AI",
   "ASPECT_RATIO": "3:2",
-  "OUTPUT_PATH": "SCRATCH/next-token.png",
+  "OUTPUT_PATH": "REPLACE_WITH_ABSOLUTE_SCRATCH_PATH/next-token.png",
   "TEXT_POLICY": "Only the exact words listed in KEY_ELEMENTS (token words, candidate words and the labels the concept needs). No other text, no numbers, no watermark, no captions.",
   "REFERENCE_IMAGE": "None"
 }

@@ -131,7 +131,7 @@ Prioritize visual legibility over the number of details.
 Follow: {{TEXT_POLICY}}
 
 Default behavior:
-- Embed text only when a word is listed in KEY_ELEMENTS. Every listed word must appear exactly as written, once. No other words may appear.
+- Embed text only when a word is listed in KEY_ELEMENTS. Every listed word must appear exactly as written. A word may appear more than once where the concept needs it (for example a candidate that is also the output). No other words may appear.
 - Communicate concepts through objects, connections, and visual metaphors; use text for the listed words only.
 - Label each listed element (boxes, chips, bars, outputs) with its listed word.
 - Never include lengthy explanations, paragraphs, or tiny annotations.
