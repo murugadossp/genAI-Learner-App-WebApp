@@ -55,7 +55,9 @@ export function IfLab() {
     <div className={`lab card ${styles.labContainer}`}>
       <p className="micro">
         Toy sandbox: invented values and the same chain as the lesson, not a
-        live Python interpreter. The highlighted lines are the ones that ran.
+        live Python interpreter. Highlighted lines are the assignment, the
+        print, the tests Python checked, and the branch that ran. Dimmed lines
+        were skipped.
       </p>
       <div className={styles.inspectorCard}>
         <div className={styles.sliderRow}>

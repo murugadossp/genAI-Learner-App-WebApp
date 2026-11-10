@@ -291,15 +291,23 @@ button.presetBtn.presetBtnActive:not(:disabled):hover {
 .lineOn {
   display: block;
   background: var(--accent-soft);
+  color: var(--ink);
   font-weight: 700;
 }
 
 .lineOff {
   display: block;
+  background: transparent;
   color: var(--muted);
 }
 
-.codeLines {
+/* Two classes so this beats the global `.article pre` (dark background). */
+.codeLines.codeLines {
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
   margin: 0;
   font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
   font-size: 0.85rem;

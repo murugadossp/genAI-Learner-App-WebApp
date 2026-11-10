@@ -62,6 +62,42 @@ for (const width of [390, 768, 1440]) {
       // Lab: slider and presets change the branch that runs
       const lab = page.locator("#lab .lab");
       await expect(lab).toBeVisible();
+
+      // Code lines in the lab stay readable: highlighted (line 0) and dimmed (line 2 at 500)
+      const codePanel = lab.getByRole("region", {
+        name: /The if, elif, else chain/,
+      });
+      for (const index of [0, 2]) {
+        const ratio = await codePanel
+          .locator("span")
+          .nth(index)
+          .evaluate((el) => {
+            const parse = (v: string) => (v.match(/[\d.]+/g) ?? []).map(Number);
+            const lum = (c: number[]) => {
+              const [r, g, b] = c.slice(0, 3).map((v) => {
+                const x = v / 255;
+                return x <= 0.03928
+                  ? x / 12.92
+                  : Math.pow((x + 0.055) / 1.055, 2.4);
+              });
+              return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+            };
+            let node: Element | null = el;
+            let bgStr = getComputedStyle(el).backgroundColor;
+            while (
+              node &&
+              /rgba\(\s*0,\s*0,\s*0,\s*0\s*\)|transparent/.test(bgStr) &&
+              node.parentElement
+            ) {
+              node = node.parentElement;
+              bgStr = getComputedStyle(node).backgroundColor;
+            }
+            const fg = lum(parse(getComputedStyle(el).color));
+            const bg = lum(parse(bgStr));
+            return (Math.max(fg, bg) + 0.05) / (Math.min(fg, bg) + 0.05);
+          });
+        expect(ratio).toBeGreaterThan(4.5);
+      }
       const action = lab.getByTestId("action-result");
       await expect(action).toHaveText("send_summary");
       await lab.getByRole("button", { name: "1000", exact: true }).click();
