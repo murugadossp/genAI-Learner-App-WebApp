@@ -50,9 +50,10 @@ image_generation:
         - Delete the original image after conversion and keep only the .webp in the lesson.
       # Run from the repo root. The script needs Pillow: the system Python blocks pip under PEP 668,
       # so create the venv inside the scratch folder once, then run the script with its Python.
-      convert_setup: 'python3 -m venv <scratch>/imgvenv && <scratch>/imgvenv/bin/pip install -q pillow'
+      # Image model: the skill does not set one, so the report says "agy generate_image (default model)".
       # <repo> is the absolute path of the repo root or worktree. <scratch> is the absolute scratch folder.
-      # Both paths are absolute, so the command works from any working directory.
-      convert_script: '<scratch>/imgvenv/bin/python <repo>/skills/write-web-lesson/scripts/to_webp.py <scratch>/<name>.jpg <scratch>/<name>.webp --width 1200 --quality 82'
+      # Every substituted path is double-quoted, so paths with spaces work. Both paths are absolute.
+      convert_setup: 'python3 -m venv "<scratch>/imgvenv" && "<scratch>/imgvenv/bin/pip" install -q pillow'
+      convert_script: '"<scratch>/imgvenv/bin/python" "<repo>/skills/write-web-lesson/scripts/to_webp.py" "<scratch>/<name>.jpg" "<scratch>/<name>.webp" --width 1200 --quality 82'
     codex:
       note: Fallback only. Use the command in the user's global instructions, run from a scratch folder too.
