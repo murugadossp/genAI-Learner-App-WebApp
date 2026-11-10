@@ -7,6 +7,7 @@ import Image from "next/image";
 import workflowImg from "./images/workflow.webp";
 import agentLoopImg from "./images/agent-loop.webp";
 import combinedImg from "./images/combined.webp";
+import heroImg from "./images/hero.webp";
 
 export default function Lesson() {
   return (
@@ -16,6 +17,17 @@ export default function Lesson() {
       title="Workflows versus agents"
       lead="Some AI systems follow steps that code has already fixed. Others let a model choose the next step while the system runs. Knowing which one you are building changes how you test, limit and trust it."
     >
+      <figure className={styles.hero}>
+        <Image
+          src={heroImg}
+          alt="Two paths side by side. On the left, tickets ride a conveyor past identical stations on fixed rails. On the right, a small robot stands at a fork in a road and chooses its own way."
+          sizes="(max-width: 760px) 100vw, 720px"
+          priority
+        />
+        <figcaption className="micro">
+          Fixed stations on the left. A chosen path on the right.
+        </figcaption>
+      </figure>
       <section id="two-ways">
         <h2 tabIndex={-1}>Who picks the next step?</h2>
         <p>
