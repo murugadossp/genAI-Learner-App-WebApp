@@ -1,0 +1,28 @@
+{
+  "module": "python-for-ai",
+  "lessonId": "p1-10",
+  "title": "Modules and packages",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "roadmap",
+      "title": "Modules and packages: Using code that is already written."
+    },
+    {
+      "id": "module",
+      "title": "A module is code you can import, typically one file."
+    },
+    { "id": "import", "title": "import creates one name in your file." },
+    { "id": "styles", "title": "Three import styles, three different names." },
+    { "id": "practice", "title": "Practice: Which name exists?" },
+    {
+      "id": "package",
+      "title": "A package is a module that holds other modules."
+    },
+    { "id": "stdlib", "title": "The standard library comes with Python." },
+    { "id": "loads", "title": "json.loads turns a JSON object into a dict." },
+    { "id": "lab", "title": "Try the import bench." },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
