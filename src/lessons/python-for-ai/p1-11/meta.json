@@ -1,0 +1,15 @@
+{
+  "module": "python-for-ai",
+  "lessonId": "p1-11",
+  "title": "Errors and safe parsing",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "roadmap", "title": "From text to a usable number" },
+    { "id": "parse", "title": "Parse the text first" },
+    { "id": "handle", "title": "Handle a conversion error" },
+    { "id": "validate", "title": "Validate the converted value" },
+    { "id": "lab", "title": "Trace the two steps" },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you" }
+  ]
+}
