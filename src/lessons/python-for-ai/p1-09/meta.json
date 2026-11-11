@@ -1,0 +1,52 @@
+{
+  "module": "python-for-ai",
+  "lessonId": "p1-09",
+  "title": "Functions",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "roadmap",
+      "title": "Functions: Name a job and reuse it."
+    },
+    {
+      "id": "define",
+      "title": "def stores the function. A call runs it."
+    },
+    {
+      "id": "inputs",
+      "title": "Parameters and arguments."
+    },
+    {
+      "id": "default",
+      "title": "A default fills the gap."
+    },
+    {
+      "id": "practice",
+      "title": "Practice: Read the default."
+    },
+    {
+      "id": "return",
+      "title": "return hands a value back."
+    },
+    {
+      "id": "printcheck",
+      "title": "Practice: print or return?"
+    },
+    {
+      "id": "docstring",
+      "title": "A docstring says what it does."
+    },
+    {
+      "id": "lab",
+      "title": "Try the title builder."
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
+  ]
+}
