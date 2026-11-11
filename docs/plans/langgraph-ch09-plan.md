@@ -1,6 +1,6 @@
 # LangGraph content into Chapter 9 (Tools and Agents)
 
-Status: plan, revised after seven Codex plan review rounds (findings addressed below; the last fix is not yet re-reviewed, see section 10). Lesson `c9-02` is built and published (PRs #48 and #54). `c9-04`, `c9-05` and `c9-06` are not started.
+Status: plan, revised after nine Codex plan review rounds (findings addressed below; round 9 was clean, see section 10). Lesson `c9-02` is built and published (PRs #48 and #54). `c9-04`, `c9-05` and `c9-06` are not started.
 Source: `~/projects/llm-concepts` (LangGraph standalone library, `apps/web/public/library/langgraph/`, and `src/content/chapters/` MDX). The plan records which statements come from the source headings and which are additions. Reviewers without access to that project should judge against the headings listed in section 5.
 Target: `src/lessons/genai-basics/c9-NN/` in this repo, curriculum Chapter 9 "Tools and Agents Fundamentals".
 
@@ -177,7 +177,7 @@ Playwright at 390, 768 and 1440 px, light and dark. Checks: lab interaction, Che
 | `c9-02` | Merged (PR #48) and published (PR #54). Content review: round 1 found four items, round 2 found one, both fixed. Rounds 3 and 4 clean, so the gate was met |
 | Plan review round 1 (Codex) | Done: six findings, all addressed |
 | Plan review round 2 (Codex) | Done: six findings (c9-04, c9-05, c9-06 lab design, prerequisites, loop-cap attribution). Addressed in commit `438514c` |
-| Plan review rounds 3 to 7 (Codex, five rounds on PR #47) | Findings of P2 or higher per round: 4, 2, 2, 1, 1, all on the lab designs in section 7, each fixed in this document. No clean round was reached in the five rounds allowed. The fix for the last finding (fallback must be permitted and need no approval) has not been re-reviewed |
+| Plan review rounds 3 to 9 (Codex, seven rounds on PR #47) | Findings of P2 or higher per round: 4, 2, 2, 1, 1, 1, 0, all on the lab designs in section 7, each fixed in this document. Round 9 was clean: it reviewed the last fix (every recovery action must be permitted and pass the approval policy) and raised only a P3 about this log, fixed here |
 | `c9-04`, `c9-05`, `c9-06` | Not started |
 | Publication | `c9-02` published (PR #54). No other Chapter 9 lesson is published |
 
