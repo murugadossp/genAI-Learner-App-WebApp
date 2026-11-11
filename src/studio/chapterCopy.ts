@@ -9,6 +9,17 @@ export type ChapterOverride = {
   outcomes?: string[];
 };
 export const chapterCopy: Record<string, ChapterOverride> = {
+  "2": {
+    subtitle: "From a sequence of tokens to a system you can reason about.",
+    callout:
+      "Learn the mechanism, then explore its limits. This chapter connects visual intuition to the decisions you make as an engineer.",
+    asideTitle: "A peek inside the model",
+    outcomes: [
+      "Explain how text becomes tokens and token IDs.",
+      "Describe next-token prediction and its limits.",
+      "Explain context windows and what information a model can see.",
+    ],
+  },
   "1": {
     subtitle: "The big picture, before the mechanism.",
     callout:
