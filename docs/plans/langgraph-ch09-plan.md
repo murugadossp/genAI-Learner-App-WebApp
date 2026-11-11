@@ -1,6 +1,6 @@
 # LangGraph content into Chapter 9 (Tools and Agents)
 
-Status: plan, revised after Codex plan review rounds 1 and 2 (six findings each, all addressed below). Lesson `c9-02` is built and published (PRs #48 and #54). `c9-04`, `c9-05` and `c9-06` are not started.
+Status: plan, revised after seven Codex plan review rounds (findings addressed below; the last fix is not yet re-reviewed, see section 10). Lesson `c9-02` is built and published (PRs #48 and #54). `c9-04`, `c9-05` and `c9-06` are not started.
 Source: `~/projects/llm-concepts` (LangGraph standalone library, `apps/web/public/library/langgraph/`, and `src/content/chapters/` MDX). The plan records which statements come from the source headings and which are additions. Reviewers without access to that project should judge against the headings listed in section 5.
 Target: `src/lessons/genai-basics/c9-NN/` in this repo, curriculum Chapter 9 "Tools and Agents Fundamentals".
 
@@ -145,7 +145,7 @@ Each lesson: one short section per concept, a worked example, one everyday examp
   2. A write timed out and may have completed: **check its status**. If the status cannot be checked, **ask** a person.
   3. An earlier write must not stand: **compensate**, but only when a planned undo exists that the run is permitted to use and that removes the write's effects. If not, **ask** a person, or **stop** if no person is available.
   4. Repeating the failed step is safe and the retry limit is not reached: **retry**.
-  5. A planned fallback exists: use the **fallback**.
+  5. A planned fallback exists, the run is permitted to perform it, and it needs no approval gate under the `c9-05` policy (or the approval has been given): use the **fallback**.
   6. Otherwise **ask** a person, or **stop** if no person is available.
 - Lab: six scenarios. Each states every fact the policy uses, and says the step cap is not reached unless it states otherwise. The learner picks the action.
 
@@ -154,7 +154,7 @@ Each lesson: one short section per concept, a worked example, one everyday examp
   | A read from the pricing API returns a temporary error on attempt 1 of 3. A read changes nothing. No earlier write needs undoing | Retry | 4 |
   | Saving the summary to the store timed out. The store can be looked up by document ID | Check status | 2 |
   | A payment request timed out. The payment service offers no lookup. A person is on call | Ask | 2 |
-  | The text-extraction service failed on attempt 3 of 3. Extraction is a read. The planned fallback is to mark the document "needs manual entry" and continue. No earlier write needs undoing | Fallback | 5 |
+  | The text-extraction service failed on attempt 3 of 3. Extraction is a read. The planned fallback is to mark the document "needs manual entry" and continue. The run is permitted to set that mark; it can be removed and its consequence is low, so it needs no approval. No earlier write needs undoing | Fallback | 5 |
   | Step 2 stored a record "contract approved". Step 3 then finds the wrong contract version was reviewed, so the record must not stand. The workflow defines an undo for this step: delete the record. The run is permitted to use it, and nothing has read the record yet, so deleting it removes its effects | Compensate | 3 |
   | The run has taken 20 steps, its cap is 20, and the review is not finished. No earlier write needs undoing | Stop and report | 1 |
 
@@ -176,6 +176,7 @@ Playwright at 390, 768 and 1440 px, light and dark. Checks: lab interaction, Che
 | `c9-02` | Merged (PR #48) and published (PR #54). Content review: round 1 found four items, round 2 found one, both fixed. Rounds 3 and 4 clean, so the gate was met |
 | Plan review round 1 (Codex) | Done: six findings, all addressed |
 | Plan review round 2 (Codex) | Done: six findings (c9-04, c9-05, c9-06 lab design, prerequisites, loop-cap attribution). Addressed in commit `438514c` |
+| Plan review rounds 3 to 7 (Codex, five rounds on PR #47) | Findings of P2 or higher per round: 4, 2, 2, 1, 1, all on the lab designs in section 7, each fixed in this document. No clean round was reached in the five rounds allowed. The fix for the last finding (fallback must be permitted and need no approval) has not been re-reviewed |
 | `c9-04`, `c9-05`, `c9-06` | Not started |
 | Publication | `c9-02` published (PR #54). No other Chapter 9 lesson is published |
 
