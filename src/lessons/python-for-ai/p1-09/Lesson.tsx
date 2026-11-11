@@ -96,7 +96,7 @@ export default function Lesson() {
         <figure className={styles.figure}>
           <Image
             src={defineImage}
-            alt="Three boxes from left to right: a grey closed box labelled Body not run yet, an arrow labelled Call make_title, and an open highlighted box labelled Body runs."
+            alt="Two panels. The left panel shows def make_title with a grey closed box labelled Body not run yet. An arrow labelled Call make_title(Pasta) points to the right panel, where the body runs and the result is returned."
             sizes="(max-width: 760px) 100vw, 720px"
           />
           <figcaption className="micro">
@@ -149,7 +149,7 @@ make_title("Pasta", "Recipe")    # prefix is "Recipe"`}</Code>
         <figure className={styles.figure}>
           <Image
             src={defaultImage}
-            alt="Three boxes from left to right: a box labelled Call without prefix, an arrow to a filled slot labelled Default prefix: Chat, and an arrow to a box labelled Output: Chat: Pasta."
+            alt="Two rows. Call without prefix, make_title(Pasta), uses the default prefix Chat and outputs Chat: Pasta. Call with prefix, make_title(Pasta, Recipe), uses the passed prefix Recipe and outputs Recipe: Pasta."
             sizes="(max-width: 760px) 100vw, 720px"
           />
           <figcaption className="micro">
@@ -205,7 +205,7 @@ print(x)   # Chat: Soup`}</Code>
         <figure className={styles.figure}>
           <Image
             src={returnImage}
-            alt="Three boxes from left to right: a rounded box labelled make_title, an arrow labelled return, and a small box labelled x, showing a value leaving the function and being stored."
+            alt="Two examples. make_title() with a return arrow stores Chat: Soup in x. make_note() has no return, so a dashed arrow stores None in x. Code for both functions is shown beside them."
             sizes="(max-width: 760px) 100vw, 720px"
           />
           <figcaption className="micro">
@@ -262,11 +262,46 @@ What is printed, in order?`}
           body, under the def line. Python keeps it with the function, and{" "}
           <code>help()</code> shows it.
         </p>
-        <Code label="A function with a docstring and a help call">{`def make_title(topic, prefix="Chat"):
-    """Return a title: the prefix, a colon, then the topic."""
+        <p>
+          A common layout has three parts: a one-line summary, an{" "}
+          <code>Args:</code> list, and a <code>Returns:</code> line. This is one
+          common style, not the only one.
+        </p>
+        <Code label="A function with a full docstring and a help call">{`def make_title(topic, prefix="Chat"):
+    """Build a title from a prefix and a topic.
+
+    Args:
+        topic: The subject, such as "Pasta".
+        prefix: The word before the colon.
+            Defaults to "Chat".
+
+    Returns:
+        The title as one string,
+        such as "Chat: Pasta".
+    """
     return prefix + ": " + topic
 
 help(make_title)`}</Code>
+        <p>Reading the docstring, part by part:</p>
+        <ul>
+          <li>
+            <strong>Summary:</strong> the first line says what the function
+            does. Keep it to one line.
+          </li>
+          <li>
+            <strong>Args:</strong> one entry for each parameter, with its
+            meaning. A default value goes here too.
+          </li>
+          <li>
+            <strong>Returns:</strong> the value the caller receives. It does not
+            describe text shown on screen.
+          </li>
+        </ul>
+        <p>
+          Calling <code>help(make_title)</code> prints the signature,{" "}
+          <code>make_title(topic, prefix=&apos;Chat&apos;)</code>, and then the
+          docstring with its indentation removed.
+        </p>
         <h3>Quick questions</h3>
         <dl className={styles.qa}>
           <dt>Does a docstring change what the function returns?</dt>
@@ -274,10 +309,16 @@ help(make_title)`}</Code>
             No. It is a string that describes the function. The return line
             decides the result.
           </dd>
+          <dt>Does a Returns entry describe what gets printed?</dt>
+          <dd>
+            No. It describes the value handed back to the caller. Text on screen
+            comes from <code>print</code>.
+          </dd>
           <dt>Is a docstring required?</dt>
           <dd>
             No. Python runs the function without one. It helps readers, and it
-            is worth writing for functions other people will use.
+            is worth writing for functions other people will use. Keep it in
+            step with the code, because <code>help()</code> shows it as is.
           </dd>
         </dl>
       </section>
@@ -358,8 +399,8 @@ This is a script file, run from top to bottom. What does the program print?`}
               value back to the caller. <code>print</code> only shows text.
             </li>
             <li>
-              <strong>Docstring:</strong> a string at the start of the body that
-              says what the function does. <code>help()</code> shows it.
+              <strong>Docstring:</strong> a string at the start of the body with
+              a summary, Args and Returns. <code>help()</code> shows it.
             </li>
           </ul>
         </div>

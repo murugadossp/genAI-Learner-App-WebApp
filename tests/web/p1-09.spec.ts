@@ -90,6 +90,11 @@ for (const width of [390, 768, 1440]) {
       await printcheck.getByRole("button", { name: "Check answer" }).click();
       await expect(printcheck.getByRole("status")).toContainText("Correct");
 
+      // Docstring: the example shows the Args and Returns layout
+      const docstring = page.locator("#docstring");
+      await expect(docstring).toContainText("Args:");
+      await expect(docstring).toContainText("Returns:");
+
       // Lab: presets change the shown result and the handed-back value
       const lab = page.locator("#lab .lab");
       await expect(lab).toBeVisible();
