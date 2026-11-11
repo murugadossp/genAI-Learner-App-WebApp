@@ -103,8 +103,8 @@ Each lesson: one short section per concept, a worked example, one everyday examp
   | Item (facts stated) | Role | Lifetime |
   | --- | --- | --- |
   | The clause list extracted from the uploaded contract, held in the run's working data and not saved anywhere | State | Ends with this run |
-  | The run's list "check the liability clause, then draft the summary", held in working data. After a missing signature page is found, the run replaces it with "ask for the missing page" | Plan (and it was revised) | Ends with this run |
-  | A snapshot of the working data saved after each step, so the run can continue after waiting for the reviewer. It is deleted when the run finishes | Memory (checkpoint) | Survives a pause or crash of this run |
+  | The run's list "check the liability clause, then draft the summary", held in working data. After a missing signature page is found, the run replaces it with "ask for the missing page". The list is not saved outside the working data | Plan (and it was revised) | Ends with this run |
+  | A snapshot of the working data saved to disk after each step, so the run can continue after waiting for the reviewer or after a crash. It is deleted when the run finishes | Memory (checkpoint) | Survives a pause or crash of this run |
   | A note "this client prefers 30-day payment terms", written to a store that every future review reads | Memory (store) | Available to later runs |
   | The model's learned numbers. They are the same before and after the review and change only when the model is trained again | Weights | Fixed in the model until a separate training process |
 
@@ -141,7 +141,7 @@ Each lesson: one short section per concept, a worked example, one everyday examp
   - **Stop** when a loop cap is reached or no safe option exists. Loop caps: source (contract review: cap the loop). Numerical retry limits: addition.
   - The curriculum interaction names retry, ask, compensate and stop. Fallback is added from the source.
 - Recovery policy shown with the lab. The rules are checked in order and the first one that matches is applied:
-  1. The run has reached its step cap: **stop** and report.
+  1. The run has reached its step cap: **stop** and report. Stopping ends further automated work. The report lists any earlier write that must not stand and hands it to a person to fix; the run does not compensate by itself after the cap.
   2. A write timed out and may have completed: **check its status**. If the status cannot be checked, **ask** a person.
   3. An earlier write must not stand: **compensate**.
   4. Repeating the failed step is safe and the retry limit is not reached: **retry**.
@@ -156,7 +156,7 @@ Each lesson: one short section per concept, a worked example, one everyday examp
   | A payment request timed out. The payment service offers no lookup. A person is on call | Ask | 2 |
   | The text-extraction service failed on attempt 3 of 3. Extraction is a read. The planned fallback is to mark the document "needs manual entry" and continue. No earlier write needs undoing | Fallback | 5 |
   | Step 2 stored a record "contract approved". Step 3 then finds the wrong contract version was reviewed, so the record must not stand. A delete-record operation exists | Compensate | 3 |
-  | The run has taken 20 steps, its cap is 20, and the review is not finished | Stop and report | 1 |
+  | The run has taken 20 steps, its cap is 20, and the review is not finished. No earlier write needs undoing | Stop and report | 1 |
 
 ## 8. Verification plan (per lesson)
 
