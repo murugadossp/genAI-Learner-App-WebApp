@@ -141,13 +141,14 @@ Each lesson: one short section per concept, a worked example, one everyday examp
   - **Stop** when a loop cap is reached or no safe option exists. Loop caps: source (contract review: cap the loop). Numerical retry limits: addition.
   - The curriculum interaction names retry, ask, compensate and stop. Fallback is added from the source.
 - Recovery policy shown with the lab. The rules are checked in order and the first one that matches is applied:
+  - Every recovery action (a status check, retry, fallback or compensation) is itself an action. The run may take it only if it is permitted and, under the `c9-05` approval policy, it needs no gate or the approval has been given. If not, the run asks a person, or stops if no person is available.
   1. The run has reached its step cap: **stop** and report. Stopping ends further automated work. The report lists any earlier write that must not stand and hands it to a person to fix; the run does not compensate by itself after the cap.
   2. A write timed out and may have completed: **check its status**. If the status cannot be checked, **ask** a person.
-  3. An earlier write must not stand: **compensate**, but only when a planned undo exists that the run is permitted to use and that removes the write's effects. If not, **ask** a person, or **stop** if no person is available.
+  3. An earlier write must not stand: **compensate**, but only when a planned undo exists that removes the write's effects. If not, **ask** a person, or **stop** if no person is available.
   4. Repeating the failed step is safe and the retry limit is not reached: **retry**.
-  5. A planned fallback exists, the run is permitted to perform it, and it needs no approval gate under the `c9-05` policy (or the approval has been given): use the **fallback**.
+  5. A planned fallback exists: use the **fallback**.
   6. Otherwise **ask** a person, or **stop** if no person is available.
-- Lab: six scenarios. Each states every fact the policy uses, and says the step cap is not reached unless it states otherwise. The learner picks the action.
+- Lab: six scenarios. Each states every fact the policy uses, and says the step cap is not reached unless it states otherwise. The lab also states that, unless a scenario says otherwise, the run is permitted to take each recovery action named in it and that action needs no approval. The learner picks the action.
 
   | Scenario (facts stated) | Answer | Rule |
   | --- | --- | --- |
@@ -155,7 +156,7 @@ Each lesson: one short section per concept, a worked example, one everyday examp
   | Saving the summary to the store timed out. The store can be looked up by document ID | Check status | 2 |
   | A payment request timed out. The payment service offers no lookup. A person is on call | Ask | 2 |
   | The text-extraction service failed on attempt 3 of 3. Extraction is a read. The planned fallback is to mark the document "needs manual entry" and continue. The run is permitted to set that mark; it can be removed and its consequence is low, so it needs no approval. No earlier write needs undoing | Fallback | 5 |
-  | Step 2 stored a record "contract approved". Step 3 then finds the wrong contract version was reviewed, so the record must not stand. The workflow defines an undo for this step: delete the record. The run is permitted to use it, and nothing has read the record yet, so deleting it removes its effects | Compensate | 3 |
+  | Step 2 stored a record "contract approved". Step 3 then finds the wrong contract version was reviewed, so the record must not stand. The workflow defines an undo for this step: delete the record. The run is permitted to use it. Nothing has read the record yet, so deleting it removes its effects. The record can be written again and the consequence of deleting it is low, so the undo needs no approval | Compensate | 3 |
   | The run has taken 20 steps, its cap is 20, and the review is not finished. No earlier write needs undoing | Stop and report | 1 |
 
 ## 8. Verification plan (per lesson)
