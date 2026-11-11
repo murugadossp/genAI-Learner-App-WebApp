@@ -95,8 +95,9 @@ Each lesson: one short section per concept, a worked example, one everyday examp
   - **Weights:** the model's parameters. An ordinary run does not change them; they change only through a separate training process. Addition.
 - Prerequisites: `c9-02` (published). The curriculum lists `c9-03` as the prerequisite; it is deferred, so as a deliberate deviation this lesson defines "step" and "loop" in its own text.
 - Lab: five items. Each item is one piece of information in one place, and the learner answers two single-choice questions about it.
-  - Role (one each): **state** (held in the run's working data now), **plan** (what the run intends next), **memory** (saved outside the working data, as a checkpoint or in a store) or **weights** (the model's parameters).
+  - Role (one each): **state** (facts and results so far, held in the run's working data), **plan** (what the run intends next), **memory** (saved outside the working data, as a checkpoint or in a store) or **weights** (the model's parameters).
   - Lifetime (one each): **ends with this run**; **survives a pause or crash of this run**; **available to later runs**; **fixed in the model until a separate training process**. The learner picks the one the item states.
+  - A plan is usually kept in the run's working data, so it is part of state in the broad sense. The lab says so and asks for the most specific role: an item that lists intended next steps is a plan, not state.
   - The same fact can be in two places (for example in state and in a checkpoint). The lab shows that as two items, so no item needs two roles.
 
   | Item (facts stated) | Role | Lifetime |
@@ -123,10 +124,10 @@ Each lesson: one short section per concept, a worked example, one everyday examp
 
   | Item (facts stated) | Answer | Deciding fact |
   | --- | --- | --- |
-  | The agent saves a reply in the drafts folder. It is permitted. A draft can be deleted and nobody outside sees it | No gate | Permitted, reversible, low consequence |
-  | The agent sends the reply to the other party. It is permitted. A sent message cannot be recalled | Gate before sending | Irreversible |
-  | The agent sets the contract's status to "approved". It is permitted. The status can be set back, but the payments team starts work as soon as it changes | Gate before the status change | High consequence, although reversible |
-  | The agent deletes the signed contract from the archive. Its role has no delete permission | Blocked | Not permitted; approval cannot change that |
+  | The agent saves a reply in the drafts folder. It is permitted. A draft can be deleted and nobody outside sees it, so the consequence of a mistake is low | No gate | Permitted, reversible, low consequence |
+  | The agent sends the reply to the other party. It is permitted. A sent message cannot be recalled, and a wrong reply reaches the other party, so the consequence is high | Gate before sending | Irreversible (and high consequence) |
+  | The agent sets the contract's status to "approved". It is permitted. The status can be set back, but the payments team starts work as soon as it changes, so the consequence of a mistake is high | Gate before the status change | High consequence, although reversible |
+  | The agent deletes the signed contract from the archive. Its role has no delete permission. Deletion cannot be undone and the consequence is high | Blocked | Not permitted; approval cannot change that |
 
 ### c9-06 Failure recovery and safe stopping
 
