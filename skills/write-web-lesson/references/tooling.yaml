@@ -64,9 +64,14 @@ image_generation:
       convert_setup: 'python3 -m venv "<scratch>/imgvenv" && "<scratch>/imgvenv/bin/pip" install -q pillow'
       convert_script: '"<scratch>/imgvenv/bin/python" "<repo>/skills/write-web-lesson/scripts/to_webp.py" "<scratch>/<name>.png" "<scratch>/<name>.webp" --width 1200 --quality 82'
     codex:
-      # Fallback only, when agy is unavailable. Uses the standalone Codex CLI (`codex exec`), so no Claude plugin is needed.
+      # Fallback when agy is unavailable, for example when its image model returns 429 RESOURCE_EXHAUSTED for hours.
+      # Uses the standalone Codex CLI (`codex exec`), so no Claude plugin is needed.
       # Tested 2026-11-10: the same filled prompt produced a 1536x1024 image with all the listed text.
-      # Run from a new scratch folder, one per image. Codex saves its own copy under ~/.codex/generated_images/;
-      # copy that file to "<scratch>/<name>.png" before converting, because convert_script reads that path.
+      # 2026-11-10: used for the p1-08 lesson images after agy hit quota repeatedly (five failed runs); the owner approved the switch for that lesson.
+      # Passing --model gemini-3.8-flash-medium to agy did not change its image model: the 429 still named gemini-3.1-flash-image.
+      # Run from a new scratch folder, one per image. Codex saves its own copy under ~/.codex/generated_images/.
+      # In p1-08, Codex also wrote <name>.png into the scratch folder named in the prompt. If that file is missing,
+      # copy the newest matching file from ~/.codex/generated_images/ to "<scratch>/<name>.png" before converting,
+      # because convert_script reads that path. Check the file type and size before converting.
       # The sandbox is workspace-write, not the unrestricted mode.
       command: 'command -v codex >/dev/null || { echo "Codex CLI not found. Install Codex or use another image provider." >&2; exit 3; }; codex exec --sandbox workspace-write --skip-git-repo-check "$(cat prompt.txt)"'

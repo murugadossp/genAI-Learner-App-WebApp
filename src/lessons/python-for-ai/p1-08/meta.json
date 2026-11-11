@@ -1,0 +1,26 @@
+{
+  "module": "python-for-ai",
+  "lessonId": "p1-08",
+  "title": "Loops",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "roadmap",
+      "title": "Loops: Repeating the same steps for each item."
+    },
+    { "id": "visit", "title": "A for loop visits each item in order." },
+    {
+      "id": "count",
+      "title": "Accumulators: Building a count while you loop."
+    },
+    { "id": "stop", "title": "break stops the loop; continue skips one pass." },
+    {
+      "id": "while",
+      "title": "A while loop repeats while a condition is True."
+    },
+    { "id": "practice", "title": "Practice: Predict a loop with continue." },
+    { "id": "lab", "title": "Try the parcel belt simulator." },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
