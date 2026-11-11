@@ -76,7 +76,7 @@ These are the only source statements the lessons may cite as "from the source". 
 
 ## 7. Lesson outlines
 
-Each lesson: one short section per concept, a worked example, one everyday example from outside the running example, a "try it in this order" lab, a Check, and a takeaway. Each lab item states every fact needed to answer it, so the answer is unique.
+Each lesson: one short section per concept, a worked example, one everyday example from outside the running example, a "try it in this order" lab, a Check, and a takeaway. Each lab item states every fact needed to answer it, so the answer is unique. The lab items below for `c9-04` to `c9-06` are drafts with answer keys; each lesson's own plan review re-checks them before the lesson is written.
 
 ### c9-02 Workflows versus agents (published, PRs #48 and #54)
 
@@ -91,20 +91,42 @@ Each lesson: one short section per concept, a worked example, one everyday examp
 - Sections:
   - **State:** what the run currently holds. Source: state schema.
   - **Memory:** has two lifetimes. A checkpoint lets the same run resume after a pause or failure. Stored memory can also carry information to later runs. Source: "checkpointing = durable memory"; the second lifetime is an addition.
-  - **Plan:** what the run intends to do next. Addition.
-  - **Weights:** the model's parameters; one run does not change them. Addition.
+  - **Plan:** what the run intends to do next. A plan can be revised when new information arrives. Addition.
+  - **Weights:** the model's parameters. An ordinary run does not change them; they change only through a separate training process. Addition.
 - Prerequisites: `c9-02` (published). The curriculum lists `c9-03` as the prerequisite; it is deferred, so as a deliberate deviation this lesson defines "step" and "loop" in its own text.
-- Lab: the learner classifies each piece of information by role (what the run knows now, what it intends next, what it keeps for later, or the model's parameters) and by lifetime (this run only, resumable after a pause, or carried to later runs). A piece can fit more than one role; the item then says so and the learner selects every role that applies. Reasons are not typed: the feedback for each choice gives the reason. Each item states the facts the label depends on.
+- Lab: five items. Each item is one piece of information in one place, and the learner answers two single-choice questions about it.
+  - Role (one each): **state** (held in the run's working data now), **plan** (what the run intends next), **memory** (saved outside the working data, as a checkpoint or in a store) or **weights** (the model's parameters).
+  - Lifetime (one each): **ends with this run**; **survives a pause or crash of this run**; **available to later runs**; **fixed in the model until a separate training process**. The learner picks the one the item states.
+  - The same fact can be in two places (for example in state and in a checkpoint). The lab shows that as two items, so no item needs two roles.
+
+  | Item (facts stated) | Role | Lifetime |
+  | --- | --- | --- |
+  | The clause list extracted from the uploaded contract, held in the run's working data and not saved anywhere | State | Ends with this run |
+  | The run's list "check the liability clause, then draft the summary", held in working data. After a missing signature page is found, the run replaces it with "ask for the missing page" | Plan (and it was revised) | Ends with this run |
+  | A snapshot of the working data saved after each step, so the run can continue after waiting for the reviewer. It is deleted when the run finishes | Memory (checkpoint) | Survives a pause or crash of this run |
+  | A note "this client prefers 30-day payment terms", written to a store that every future review reads | Memory (store) | Available to later runs |
+  | The model's learned numbers. They are the same before and after the review and change only when the model is trained again | Weights | Fixed in the model until a separate training process |
 
 ### c9-05 Permissions and approval gates
 
 - Running example: a contract reply that is drafted, then sent.
 - Sections:
   - **Permission boundary:** which actions a given actor may perform at all. Addition.
-  - **Reversible actions** (draft, label) and **consequential actions** (send, delete). Addition.
-  - **Approval gate:** the run pauses for a person before a consequential action. Source: pause for a human.
+  - **Two separate properties of an action:** whether it can be undone in this system (reversible or not), and how much it matters if it is wrong (low or high consequence). An action can be reversible and still high consequence. Each lab item states both. Addition.
+  - **Approval gate:** the run pauses for a person immediately before a permitted action that is irreversible or high consequence. An approval does not give an actor a permission it lacks. Source: pause for a human; the rule about permissions is an addition.
 - Prerequisites: the curriculum lists `c9-01` and `c9-02`. `c9-02` is published. `c9-01` is not built (a gap in this plan), so the lesson defines "action" in one sentence.
-- Lab: each action gives its consequence and which actors may perform it. A written approval policy is shown with the item. The learner decides whether and where a gate belongs, and names the fact that decided it.
+- Approval policy shown with the lab, applied in this order:
+  1. If the actor is not permitted to do the action, it is blocked. No gate: an approval cannot grant the permission.
+  2. If the action is permitted and is irreversible or high consequence, put a gate immediately before it.
+  3. If the action is permitted, reversible and low consequence, no gate.
+- Lab: four items. Each states the actor's permission, whether the action can be undone, and its consequence. The learner picks blocked, gate before the action, or no gate.
+
+  | Item (facts stated) | Answer | Deciding fact |
+  | --- | --- | --- |
+  | The agent saves a reply in the drafts folder. It is permitted. A draft can be deleted and nobody outside sees it | No gate | Permitted, reversible, low consequence |
+  | The agent sends the reply to the other party. It is permitted. A sent message cannot be recalled | Gate before sending | Irreversible |
+  | The agent sets the contract's status to "approved". It is permitted. The status can be set back, but the payments team starts work as soon as it changes | Gate before the status change | High consequence, although reversible |
+  | The agent deletes the signed contract from the archive. Its role has no delete permission | Blocked | Not permitted; approval cannot change that |
 
 ### c9-06 Failure recovery and safe stopping
 
@@ -117,8 +139,23 @@ Each lesson: one short section per concept, a worked example, one everyday examp
   - **Ask** a person when the run cannot choose safely but a person can supply the decision. Source: pause for a human.
   - **Stop** when a loop cap is reached or no safe option exists. Loop caps: source (contract review: cap the loop). Numerical retry limits: addition.
   - The curriculum interaction names retry, ask, compensate and stop. Fallback is added from the source.
-- Recovery policy shown with the lab: retry only when a repeat is safe; check status after a timed-out write before any retry; use a fallback when a planned downgrade exists; compensate when an earlier write must be undone; ask when a person can supply a decision the run cannot make safely; stop when a cap is reached or no safe option exists.
-- Lab: six scenarios, one for each policy step, each stating its facts (side effects, whether completion can be checked, whether a fallback exists, whether an earlier write must be undone, whether a person is available to decide, and whether a cap was reached). Only one policy step applies to each scenario, and the learner applies it.
+- Recovery policy shown with the lab. The rules are checked in order and the first one that matches is applied:
+  1. The run has reached its step cap: **stop** and report.
+  2. A write timed out and may have completed: **check its status**. If the status cannot be checked, **ask** a person.
+  3. An earlier write must not stand: **compensate**.
+  4. Repeating the failed step is safe and the retry limit is not reached: **retry**.
+  5. A planned fallback exists: use the **fallback**.
+  6. Otherwise **ask** a person, or **stop** if no person is available.
+- Lab: six scenarios. Each states every fact the policy uses, and says the step cap is not reached unless it states otherwise. The learner picks the action.
+
+  | Scenario (facts stated) | Answer | Rule |
+  | --- | --- | --- |
+  | A read from the pricing API returns a temporary error on attempt 1 of 3. A read changes nothing. No earlier write needs undoing | Retry | 4 |
+  | Saving the summary to the store timed out. The store can be looked up by document ID | Check status | 2 |
+  | A payment request timed out. The payment service offers no lookup. A person is on call | Ask | 2 |
+  | The text-extraction service failed on attempt 3 of 3. Extraction is a read. The planned fallback is to mark the document "needs manual entry" and continue. No earlier write needs undoing | Fallback | 5 |
+  | Step 2 stored a record "contract approved". Step 3 then finds the wrong contract version was reviewed, so the record must not stand. A delete-record operation exists | Compensate | 3 |
+  | The run has taken 20 steps, its cap is 20, and the review is not finished | Stop and report | 1 |
 
 ## 8. Verification plan (per lesson)
 
@@ -137,7 +174,7 @@ Playwright at 390, 768 and 1440 px, light and dark. Checks: lab interaction, Che
 | Shared Chapter 9 page | Done by #49 (merged) |
 | `c9-02` | Merged (PR #48) and published (PR #54). Content review: round 1 found four items, round 2 found one, both fixed. Rounds 3 and 4 clean, so the gate was met |
 | Plan review round 1 (Codex) | Done: six findings, all addressed |
-| Plan review round 2 (Codex) | Done: six findings (c9-04, c9-05, c9-06 lab design, prerequisites, loop-cap attribution). Addressed in this revision; round 3 not yet run |
+| Plan review round 2 (Codex) | Done: six findings (c9-04, c9-05, c9-06 lab design, prerequisites, loop-cap attribution). Addressed in commit `438514c` |
 | `c9-04`, `c9-05`, `c9-06` | Not started |
 | Publication | `c9-02` published (PR #54). No other Chapter 9 lesson is published |
 
