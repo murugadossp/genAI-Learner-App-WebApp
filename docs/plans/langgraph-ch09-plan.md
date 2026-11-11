@@ -136,14 +136,14 @@ Each lesson: one short section per concept, a worked example, one everyday examp
 - Sections:
   - **Retry** only when a repeat has no unwanted effect, for example because the action is idempotent. An action that may already have completed needs a status check first. Source: retry-style failure modes; the idempotence rule is an addition.
   - **Fallback** as a planned downgrade when one is defined. Source: planned downgrade.
-  - **Compensate:** undo or offset an earlier write that must not stand. Addition.
+  - **Compensate:** undo or offset an earlier write that must not stand, using a planned undo the run is permitted to use. Without one, a person decides. Addition.
   - **Ask** a person when the run cannot choose safely but a person can supply the decision. Source: pause for a human.
   - **Stop** when a loop cap is reached or no safe option exists. Loop caps: source (contract review: cap the loop). Numerical retry limits: addition.
   - The curriculum interaction names retry, ask, compensate and stop. Fallback is added from the source.
 - Recovery policy shown with the lab. The rules are checked in order and the first one that matches is applied:
   1. The run has reached its step cap: **stop** and report. Stopping ends further automated work. The report lists any earlier write that must not stand and hands it to a person to fix; the run does not compensate by itself after the cap.
   2. A write timed out and may have completed: **check its status**. If the status cannot be checked, **ask** a person.
-  3. An earlier write must not stand: **compensate**.
+  3. An earlier write must not stand: **compensate**, but only when a planned undo exists that the run is permitted to use and that removes the write's effects. If not, **ask** a person, or **stop** if no person is available.
   4. Repeating the failed step is safe and the retry limit is not reached: **retry**.
   5. A planned fallback exists: use the **fallback**.
   6. Otherwise **ask** a person, or **stop** if no person is available.
@@ -155,7 +155,7 @@ Each lesson: one short section per concept, a worked example, one everyday examp
   | Saving the summary to the store timed out. The store can be looked up by document ID | Check status | 2 |
   | A payment request timed out. The payment service offers no lookup. A person is on call | Ask | 2 |
   | The text-extraction service failed on attempt 3 of 3. Extraction is a read. The planned fallback is to mark the document "needs manual entry" and continue. No earlier write needs undoing | Fallback | 5 |
-  | Step 2 stored a record "contract approved". Step 3 then finds the wrong contract version was reviewed, so the record must not stand. A delete-record operation exists | Compensate | 3 |
+  | Step 2 stored a record "contract approved". Step 3 then finds the wrong contract version was reviewed, so the record must not stand. The workflow defines an undo for this step: delete the record. The run is permitted to use it, and nothing has read the record yet, so deleting it removes its effects | Compensate | 3 |
   | The run has taken 20 steps, its cap is 20, and the review is not finished. No earlier write needs undoing | Stop and report | 1 |
 
 ## 8. Verification plan (per lesson)
