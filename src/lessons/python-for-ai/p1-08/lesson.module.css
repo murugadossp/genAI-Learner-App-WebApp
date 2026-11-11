@@ -1,0 +1,201 @@
+.exampleBox {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.1rem;
+  margin: 1rem 0;
+}
+
+.exampleBox p {
+  margin: 0.35rem 0 0;
+}
+
+.figure {
+  margin: 1.25rem 0;
+}
+
+.figure img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  display: block;
+}
+
+.figure figcaption {
+  margin-top: 0.45rem;
+}
+
+.codePanel {
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  margin: 0.85rem 0;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  overflow-x: auto;
+  white-space: pre;
+  min-width: 0;
+}
+
+.qa dt {
+  font-weight: 700;
+  margin-top: 0.6rem;
+}
+
+.qa dd {
+  margin: 0.15rem 0 0;
+}
+
+.labContainer {
+  padding: 1.1rem;
+  margin: 1.25rem 0;
+}
+
+.presetRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0 0.25rem;
+}
+
+.presetBtn {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+button.presetBtn[aria-pressed="true"],
+button.presetBtn.presetBtnActive,
+button.presetBtn.presetBtnActive:not(:disabled):hover {
+  background: var(--accent) !important;
+  color: var(--on-accent) !important;
+  border-color: var(--accent) !important;
+}
+
+.controlStack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.resultLabel {
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.labGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  margin-top: 0.85rem;
+}
+
+@media (min-width: 860px) {
+  .labGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.belt {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+  gap: 0.4rem;
+}
+
+.chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.5rem 0.25rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--ink);
+  min-width: 0;
+  text-align: center;
+}
+
+.chipText {
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.chipStatus {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.chipDone {
+  border-color: var(--ink);
+}
+
+.chipCurrent {
+  border: 2px solid var(--accent);
+}
+
+.chipStop {
+  border-color: var(--orange);
+  border-width: 2px;
+}
+
+.chipSkip {
+  opacity: 0.7;
+  border-style: dashed;
+}
+
+.resultBox {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  min-width: 0;
+}
+
+.resultRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.resultRow code {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.statusLine {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.controlRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
