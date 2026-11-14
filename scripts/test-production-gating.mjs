@@ -77,7 +77,8 @@ try {
   for (const [path, expected] of [
     ["/", 200],
     ["/studio", 200],
-    ["/course", 200],
+    // /course redirects permanently to the chapter 2 course page.
+    ["/course", 308],
     // Every chapter course page: public exactly when it has a published lesson.
     ...chapterRoutes().map((chapter) => [
       chapter.url,
