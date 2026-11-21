@@ -11,8 +11,8 @@ One master prompt for every lesson illustration. It works with any CLI that can 
 Recommended values for lesson images:
 
 - **ASPECT_RATIO:** `3:2`. On a 390px phone a 3:2 image is about 260px tall, which leaves room for the diagram. 16:9 gives less height for the same width, and 1:1 takes more vertical space than most lessons can spare.
-- **TEXT_POLICY:** list the exact words the concept needs in KEY_ELEMENTS, and say that they are the only text allowed. There is no fixed label count: the labels should match what the lesson explains. Keep each label short, because long text is unreliable and too small on a phone. View the result and check each label's spelling.
-- **REFERENCE_IMAGE:** `None`, unless you want visual consistency with an existing lesson image.
+- **TEXT_POLICY:** list every exact string that should appear in `KEY_ELEMENTS` (including banner title, subtitle, card labels, table values, and bottom strip), and say that they are the only text allowed. Keep each label short and avoid embedding multi-line code blocks inside images (render code in the lesson's `<Code>` component instead). View the result and check each label's spelling.
+- **REFERENCE_IMAGE:** Copy `skills/write-web-lesson/references/infographic-style-ref.webp` into your image scratch folder (for example `<scratch>/style-ref.webp`) and pass that absolute scratch path here so sandboxed CLIs (`--sandbox --add-dir "$PWD"`) can read it. Use `None` only if you intentionally want a different visual style.
 - **OUTPUT_PATH:** an absolute path in the scratch folder, for example `<scratch>/<name>.png`. The image is converted to WebP afterwards.
 
 Learned from the next-token tests (these shaped the template):
@@ -79,6 +79,11 @@ Technical correctness requirements:
 Favor conceptual accuracy and clarity over decoration.
 
 ## DESIGN SYSTEM
+
+Infographic layout structure (3-band pastel card):
+- Top band: a soft-lavender rounded header banner containing a short bold title and a one-line subtitle.
+- Middle band: the main concept flow arranged cleanly inside pastel semantic cards (soft blue for inputs, soft purple with minimal icons such as gears for operations, soft green for valid outputs, soft red for errors) connected by crisp directional arrows. Do not embed multi-line code blocks; keep labels short and scannable.
+- Bottom band: a full-width soft-amber or cream reinforcement strip holding one concise takeaway — an everyday analogy, a valid-vs-error comparison pair (green check vs red X), or a one-line key takeaway.
 
 Visual style:
 - Premium 2D vector-style educational illustration.
