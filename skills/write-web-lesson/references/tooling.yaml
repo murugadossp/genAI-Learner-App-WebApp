@@ -14,11 +14,11 @@ review:
       preferred: true
       note: Default reviewer. Use the Codex plugin (see codex:setup if the check fails). Read-only means the review task is run without --write; the plugin route does not enforce it, so check the reviewer's report for any file changes.
     agy-gemini:
-      model: gemini-4-argon-medium
+      model: gemini-4-neon-medium
       # Run from a folder holding the material (for example plan.md). --mode plan keeps it read-only.
       # Write the review prompt to review-prompt.txt with a quoted heredoc first (cat > review-prompt.txt <<'EOF' ... EOF),
       # so the shell never expands quotes, $ or backticks in it. $(cat ...) passes the text unchanged except that trailing newlines are removed.
-      command: 'agy --model gemini-4-argon-medium --mode plan -p="$(cat review-prompt.txt)" > <outfile> 2>&1'
+      command: 'agy --model gemini-4-neon-medium --mode plan -p="$(cat review-prompt.txt)" > <outfile> 2>&1'
       note: List models with `agy models`.
     claude-haiku:
       optional: true
