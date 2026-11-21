@@ -49,6 +49,7 @@ image_generation:
       command: 'agy --sandbox --add-dir "$PWD" -p="$(cat prompt.txt)"'
       rules:
         - Fill the template with scripts/fill_image_prompt.py from a values.json. Do not hand-edit the filled prompt.txt.
+        - Copy references/infographic-style-ref.webp into the scratch folder (for example <scratch>/style-ref.webp) and pass that absolute scratch path in REFERENCE_IMAGE (or "None" only if intentionally deviating from the standard style), so sandboxed CLIs run from <scratch> can read it.
         - Set OUTPUT_PATH to an absolute scratch path ending in .png. The template tells the CLI to call generate_image and copy the result there.
         - Use ASPECT_RATIO 3:2 for lesson images, and list in TEXT_POLICY only the words the concept needs (the template header explains why).
         - View every file; check each label and arrow; regenerate rather than patch (a reply can claim a save that never happened).

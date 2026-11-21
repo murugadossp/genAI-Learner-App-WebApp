@@ -12,7 +12,7 @@ Recommended values for lesson images:
 
 - **ASPECT_RATIO:** `3:2`. On a 390px phone a 3:2 image is about 260px tall, which leaves room for the diagram. 16:9 gives less height for the same width, and 1:1 takes more vertical space than most lessons can spare.
 - **TEXT_POLICY:** list every exact string that should appear in `KEY_ELEMENTS` (including banner title, subtitle, card labels, table values, and bottom strip), and say that they are the only text allowed. Keep each label short and avoid embedding multi-line code blocks inside images (render code in the lesson's `<Code>` component instead). View the result and check each label's spelling.
-- **REFERENCE_IMAGE:** Copy `skills/write-web-lesson/references/infographic-style-ref.webp` into your image scratch folder (for example `<scratch>/style-ref.webp`) and pass that absolute scratch path here so sandboxed CLIs (`--sandbox --add-dir "$PWD"`) can read it. Use `None` only if you intentionally want a different visual style.
+- **REFERENCE_IMAGE:** Copy `skills/write-web-lesson/references/infographic-style-ref.webp` into your image scratch folder (for example `<scratch>/style-ref.webp`) and pass that absolute scratch path here so sandboxed CLIs (`agy --sandbox --add-dir "$PWD"` and `codex exec --sandbox workspace-write` run from `<scratch>`) can read it. Use it for visual style only (layout, palette, card shapes, typography), never its Python/DataFrame subject matter. Use `None` only if you intentionally want a different visual style.
 - **OUTPUT_PATH:** an absolute path in the scratch folder, for example `<scratch>/<name>.png`. The image is converted to WebP afterwards.
 
 Learned from the next-token tests (these shaped the template):
@@ -81,9 +81,9 @@ Favor conceptual accuracy and clarity over decoration.
 ## DESIGN SYSTEM
 
 Infographic layout structure (3-band pastel card):
-- Top band: a soft-lavender rounded header banner containing a short bold title and a one-line subtitle.
-- Middle band: the main concept flow arranged cleanly inside pastel semantic cards (soft blue for inputs, soft purple with minimal icons such as gears for operations, soft green for valid outputs, soft red for errors) connected by crisp directional arrows. Do not embed multi-line code blocks; keep labels short and scannable.
-- Bottom band: a full-width soft-amber or cream reinforcement strip holding one concise takeaway — an everyday analogy, a valid-vs-error comparison pair (green check vs red X), or a one-line key takeaway.
+- Top band: a soft-lavender rounded header banner containing a short bold title and a one-line subtitle, using only exact strings listed in `KEY_ELEMENTS`.
+- Middle band: the main concept flow arranged cleanly inside pastel semantic cards connected by crisp directional arrows. Do not embed multi-line code blocks; keep labels short and scannable.
+- Bottom band: a full-width soft-amber or cream reinforcement strip holding one concise takeaway that reinforces the same single concept — an everyday analogy, a one-line key takeaway, or a single short valid-vs-error contrast (green check vs red X) when the middle band does not already show a separate comparison. Use only exact strings listed in `KEY_ELEMENTS`; if `KEY_ELEMENTS` provides no text for a band, omit that band's text rather than inventing copy.
 
 Visual style:
 - Premium 2D vector-style educational illustration.
@@ -95,17 +95,18 @@ Visual style:
 - High contrast and generous negative space.
 - Consistent shapes, line weights, colors, and visual hierarchy.
 
-Semantic color palette:
-- Indigo #4F46E5: AI models, intelligence, inference.
-- Cyan #06B6D4: data, information, context.
-- Amber #F59E0B: user inputs, prompts, instructions.
-- Emerald #10B981: generated outputs and completed actions.
-- Slate #0F172A: text and outlines.
-- Off-white #F8FAFC: background.
+Semantic color palette (use soft pastel tints for card fills and the hex accents for icons, borders, arrows, and highlights):
+- Soft blue / cyan tint (accent `#06B6D4` / `#3B82F6`): inputs, source data, prompts, context.
+- Soft lavender / indigo tint (accent `#4F46E5`): header banner, AI models, operations, transformations (with minimal icons such as gears).
+- Soft green / emerald tint (accent `#10B981`): valid outputs, results, completed actions.
+- Soft red / rose tint (accent `#EF4444`): errors, invalid cases, warnings.
+- Soft amber / cream tint (accent `#F59E0B`): bottom takeaway, analogy, or reinforcement strip.
+- Slate `#0F172A`: text and outlines.
+- Off-white `#F8FAFC`: canvas background.
 
 Use color consistently across all educational illustrations.
 
-If {{REFERENCE_IMAGE}} is provided, use it to maintain visual consistency while preserving the accuracy of the current concept.
+If {{REFERENCE_IMAGE}} is a file path (not `None`), treat it strictly as a visual style reference: match its 3-band layout, pastel palette, rounded card shapes, arrow styling, typography, and spacing, while keeping 100% of the text, data, icons, and subject matter specific to {{TOPIC}} and {{KEY_ELEMENTS}} (never copy words, tables, or domain content from the reference image).
 
 ## MOBILE-FIRST COMPOSITION
 
@@ -117,15 +118,15 @@ Primary target:
 360–430 CSS pixels wide.
 
 Composition rules:
-- Design for readability at 390px width.
-- Keep important objects within the central 80% of the canvas.
-- Prefer one dominant illustration.
-- Use at most three major visual groups where possible.
+- Design for readability at 390px width (about 260px tall at 3:2).
+- Keep generous outer margins around all three bands so no text or card sits flush against the image boundaries.
+- Prefer one dominant visual flow in the middle band with at most three major visual groups where possible.
+- Keep top-banner subtitles and bottom-strip takeaways to one short, scannable line.
+- If a card includes a mini-table, keep it compact (at most 3–4 short columns and 3–5 short rows with brief values); if the data is denser, simplify to label chips rather than shrinking text.
 - Use large recognizable objects.
 - Make arrows, connections, and relationships immediately understandable.
 - Avoid dense information, tiny objects, and crowded layouts.
 - Ensure all educational content remains visible when scaled down.
-- Avoid placing essential information near the image boundaries.
 - Do not rely on cropping for responsive display.
 - Maintain generous spacing between all elements.
 
