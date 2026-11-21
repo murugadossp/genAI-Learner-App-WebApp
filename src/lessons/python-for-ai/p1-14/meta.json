@@ -1,0 +1,40 @@
+{
+  "module": "python-for-ai",
+  "lessonId": "p1-14",
+  "title": "Filtering rows",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "roadmap",
+      "title": "Filtering rows: Keeping only the records that match your rule."
+    },
+    {
+      "id": "mask",
+      "title": "A comparison on a column builds a boolean mask."
+    },
+    {
+      "id": "filter",
+      "title": "Pass the mask into df[...] to keep only True rows."
+    },
+    {
+      "id": "combine",
+      "title": "Combine two conditions with & and parentheses."
+    },
+    {
+      "id": "practice",
+      "title": "Practice: Predict the filtered rows."
+    },
+    {
+      "id": "lab",
+      "title": "Try the Row Filter Lab."
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
+  ]
+}
