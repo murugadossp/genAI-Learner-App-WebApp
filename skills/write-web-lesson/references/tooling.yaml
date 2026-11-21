@@ -14,11 +14,11 @@ review:
       preferred: true
       note: Default reviewer. Use the Codex plugin (see codex:setup if the check fails). Read-only means the review task is run without --write; the plugin route does not enforce it, so check the reviewer's report for any file changes.
     agy-gemini:
-      model: gemini-4-argon-medium
+      model: gemini-4-neon-medium
       # Run from a folder holding the material (for example plan.md). --mode plan keeps it read-only.
       # Write the review prompt to review-prompt.txt with a quoted heredoc first (cat > review-prompt.txt <<'EOF' ... EOF),
       # so the shell never expands quotes, $ or backticks in it. $(cat ...) passes the text unchanged except that trailing newlines are removed.
-      command: 'agy --model gemini-4-argon-medium --mode plan -p="$(cat review-prompt.txt)" > <outfile> 2>&1'
+      command: 'agy --model gemini-4-neon-medium --mode plan -p="$(cat review-prompt.txt)" > <outfile> 2>&1'
       note: List models with `agy models`.
     claude-haiku:
       optional: true
@@ -49,6 +49,7 @@ image_generation:
       command: 'agy --sandbox --add-dir "$PWD" -p="$(cat prompt.txt)"'
       rules:
         - Fill the template with scripts/fill_image_prompt.py from a values.json. Do not hand-edit the filled prompt.txt.
+        - Copy references/infographic-style-ref.webp into the scratch folder (for example <scratch>/style-ref.webp) and pass that absolute scratch path in REFERENCE_IMAGE (or "None" only if intentionally deviating from the standard style), so sandboxed CLIs run from <scratch> can read it.
         - Set OUTPUT_PATH to an absolute scratch path ending in .png. The template tells the CLI to call generate_image and copy the result there.
         - Use ASPECT_RATIO 3:2 for lesson images, and list in TEXT_POLICY only the words the concept needs (the template header explains why).
         - View every file; check each label and arrow; regenerate rather than patch (a reply can claim a save that never happened).
