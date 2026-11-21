@@ -1,13 +1,13 @@
 {
   "TOPIC": "How Large Language Models Work",
   "LEARNING_OBJECTIVE": "Explain next-token prediction to beginners.",
-  "VISUAL_DESCRIPTION": "Same layout as the approved next-token image: a row of input token blocks reading \"The cat sat on the\" flows into a blue chip with a neural network icon, which feeds a bar-chart panel of ranked candidate next tokens. The top-ranked token becomes the output token.",
-  "KEY_ELEMENTS": "Five input token blocks reading, left to right, \"The\", \"cat\", \"sat\", \"on\", \"the\". A blue chip labelled \"Neural network\" with a small network icon. A bar-chart panel beside it with three bars labelled \"mat\" (longest bar), \"sofa\", \"rug\". One output token box containing \"mat\". Labels shown exactly: \"Input tokens\", \"Model predicts values\", \"Output token\", \"Neural network\".",
-  "VISUAL_RELATIONSHIPS": "Left-to-right: input tokens feed the neural network chip, the chip produces ranked candidates in the bar panel, and the top candidate, \"mat\", becomes the output token.",
-  "TECHNICAL_CONSTRAINTS": "Represent probabilistic generation accurately: the model scores possible next tokens and one is chosen. Do not show a database lookup.",
+  "VISUAL_DESCRIPTION": "3-band pastel infographic: top soft-lavender banner with title and one-line subtitle; middle band flowing left-to-right from a soft-blue input token card into a soft-lavender neural network operation card and a soft-green candidate-scores card with a highlighted selected output chip; bottom soft-amber reinforcement strip with a one-line key takeaway.",
+  "KEY_ELEMENTS": "Top banner: \"Next-token prediction\" and subtitle \"The model scores candidates and picks one next token.\". Left soft-blue card labelled \"Input tokens\" with five chips: \"The\", \"cat\", \"sat\", \"on\", \"the\". Middle soft-lavender card labelled \"Neural network\" with a small network icon. Right soft-green card labelled \"Candidate scores\" showing three ranked bars labelled \"mat\" (longest bar), \"sofa\", \"rug\", pointing to a separate highlighted chip labelled \"Output token\" containing \"mat\". Bottom soft-amber strip: \"Key takeaway: Context predicts the next token.\".",
+  "VISUAL_RELATIONSHIPS": "Top-to-bottom 3-band layout; in the middle band, arrows flow left-to-right from \"Input tokens\" to \"Neural network\" to \"Candidate scores\", where one scored token (\"mat\" in this example) is picked as the \"Output token\".",
+  "TECHNICAL_CONSTRAINTS": "Represent probabilistic generation accurately: the model scores possible next tokens and one is selected (\"mat\" is chosen in this example; do not imply the top bar is always picked deterministically). Do not show a database lookup.",
   "AUDIENCE": "Beginners studying Generative AI",
   "ASPECT_RATIO": "3:2",
   "OUTPUT_PATH": "REPLACE_WITH_ABSOLUTE_SCRATCH_PATH/next-token.png",
-  "TEXT_POLICY": "Only the exact words listed in KEY_ELEMENTS (token words, candidate words and the labels the concept needs). No other text, no numbers, no watermark, no captions.",
-  "REFERENCE_IMAGE": "None"
+  "TEXT_POLICY": "Only the exact strings listed in KEY_ELEMENTS (banner title, subtitle, card labels, token words, candidate words, and bottom strip takeaway). No other text, no numbers, no watermark, no decorative captions.",
+  "REFERENCE_IMAGE": "REPLACE_WITH_ABSOLUTE_SCRATCH_PATH/style-ref.webp"
 }
