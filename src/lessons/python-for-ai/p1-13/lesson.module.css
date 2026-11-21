@@ -1,0 +1,314 @@
+.codePanel {
+  background: var(--dark);
+  color: var(--code-ink);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 1rem 0;
+}
+
+.figure {
+  margin: 1.5rem 0;
+}
+
+.figure img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  display: block;
+}
+
+.quickQuestions {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  background: var(--panel);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--accent);
+}
+
+.quickQuestions h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.quickQuestions dl {
+  margin: 0;
+}
+
+.quickQuestions dt {
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.quickQuestions dd {
+  margin-left: 0;
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+}
+
+/* Lab Styles */
+.labBox {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.85rem;
+  margin: 1.5rem 0;
+}
+
+@media (min-width: 600px) {
+  .labBox {
+    padding: 1.5rem;
+  }
+}
+
+.labHeader {
+  margin-bottom: 1rem;
+}
+
+.labTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.labDescription {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.instructions {
+  background: var(--panel);
+  padding: 0.85rem 1.1rem;
+  border-radius: calc(var(--radius) / 2);
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.instructions h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.instructions ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.instructions li {
+  margin-bottom: 0.25rem;
+}
+
+.stagePanel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.1rem;
+}
+
+.controlGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.controlLabel {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  .controlLabel {
+    width: auto;
+  }
+}
+
+.chipGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.btnGroup {
+  display: inline-flex;
+  flex-wrap: wrap;
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* No CSS transitions on active/toggle buttons so hover contrast is immediate */
+.toggleBtn {
+  appearance: none;
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  padding: 0.42rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btnGroup .toggleBtn {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+.toggleBtn:not(:disabled):hover {
+  background: var(--panel);
+}
+
+button.toggleBtn[aria-pressed="true"],
+button.toggleBtn[aria-pressed="true"]:not(:disabled):hover,
+button.toggleBtn.toggleBtnActive,
+button.toggleBtn.toggleBtnActive:not(:disabled):hover {
+  background: var(--accent) !important;
+  color: var(--on-accent) !important;
+  border-color: var(--accent) !important;
+}
+
+.actionBtn {
+  appearance: none;
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  padding: 0.45rem 0.95rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.actionBtn:not(:disabled):hover {
+  background: var(--accent-soft);
+}
+
+.actionBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.actionBtnPrimary {
+  background: var(--accent);
+  color: var(--on-accent);
+  border: 1px solid var(--accent);
+}
+
+.actionBtnPrimary:not(:disabled):hover {
+  background: var(--accent) !important;
+  color: var(--on-accent) !important;
+}
+
+.helperNote {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+/* Table styles */
+.tableWrapper {
+  overflow-x: auto;
+  margin: 1rem 0;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) / 2);
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+  text-align: left;
+}
+
+.dataTable th,
+.dataTable td {
+  padding: 0.42rem 0.3rem;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+@media (min-width: 600px) {
+  .dataTable {
+    font-size: 0.9rem;
+  }
+
+  .dataTable th,
+  .dataTable td {
+    padding: 0.65rem 1rem;
+  }
+}
+
+.dataTable th {
+  background: var(--panel);
+  font-weight: 600;
+}
+
+.dataTable tbody tr:last-child td,
+.dataTable tbody tr:last-child th {
+  border-bottom: none;
+}
+
+.derivedCol {
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+
+.statusCard {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) / 2);
+  padding: 0.95rem 1rem;
+  margin-top: 1rem;
+}
+
+.statusTrace {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.88rem;
+  margin-bottom: 0.65rem;
+  color: var(--ink);
+  overflow-x: auto;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.metaBadge {
+  display: inline-block;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.22rem 0.55rem;
+  border-radius: 6px;
+}
+
+.metaBadgeAccent {
+  background: var(--accent);
+  color: var(--on-accent);
+  border-color: var(--accent);
+}
+
+.statusMessage {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
