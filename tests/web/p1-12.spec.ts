@@ -72,6 +72,20 @@ for (const width of [390, 768, 1440]) {
       await q1.getByRole("button", { name: "Check answer" }).click();
       await expect(q1.getByRole("status")).toContainText("Correct");
 
+      // Quick check q2 in column section: wrong feedback + retry
+      const q2 = page.locator("#column .knowledge-check");
+      await expect(q2.locator("fieldset")).toHaveAttribute(
+        "aria-describedby",
+        /.+/,
+      );
+      await q2.getByLabel("df[tokens]", { exact: true }).check();
+      await q2.getByRole("button", { name: "Check answer" }).click();
+      await expect(q2.getByRole("status")).toContainText("NameError");
+      await q2.getByRole("button", { name: "Try again" }).click();
+      await q2.getByLabel('df["tokens"]', { exact: true }).check();
+      await q2.getByRole("button", { name: "Check answer" }).click();
+      await expect(q2.getByRole("status")).toContainText("Correct");
+
       // Practice check in practice section: wrong feedback, retry, keyboard
       const practice = page.locator("#practice");
       await expect(practice.locator("fieldset")).toHaveAttribute(
@@ -132,16 +146,36 @@ for (const width of [390, 768, 1440]) {
         .click();
       await expect(lab).toContainText("total = 0");
 
-      // Step through loop and verify Reset
+      // Step through full 6-step .mean() loop walkthrough
       await lab.getByRole("button", { name: "Start loop →" }).click();
       await expect(lab).toContainText("total = 10");
       await lab
         .getByRole("button", { name: "Next step (row 2 of 5) →" })
         .click();
       await expect(lab).toContainText("total = 30");
+      await lab
+        .getByRole("button", { name: "Next step (row 3 of 5) →" })
+        .click();
+      await lab
+        .getByRole("button", { name: "Next step (row 4 of 5) →" })
+        .click();
+      await lab
+        .getByRole("button", { name: "Next step (row 5 of 5) →" })
+        .click();
+      await expect(lab).toContainText("total = 100");
+      await lab
+        .getByRole("button", { name: "Divide total by count →" })
+        .click();
+      await expect(lab).toContainText("average = 20.0");
 
-      // Final check
+      // Final check: wrong feedback + retry + correct
       const check = page.locator("#check");
+      await check
+        .getByLabel("A for loop cannot add numbers in Python.", { exact: true })
+        .check();
+      await check.getByRole("button", { name: "Check answer" }).click();
+      await expect(check.getByRole("status")).toContainText("can add numbers");
+      await check.getByRole("button", { name: "Try again" }).click();
       await check
         .getByLabel(
           "It expresses the whole-column total in one concise call without writing loop and accumulator boilerplate.",
@@ -158,7 +192,7 @@ for (const width of [390, 768, 1440]) {
         name: "Switch color theme",
       });
       await themeToggle.click();
-      await expect(lab).toContainText("total = 30");
+      await expect(lab).toContainText("average = 20.0");
       await expect(check.getByRole("status")).toContainText("Correct");
 
       // Reset lab returns to step 0

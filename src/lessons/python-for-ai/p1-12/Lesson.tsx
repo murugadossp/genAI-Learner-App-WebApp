@@ -128,7 +128,7 @@ print(df)`}
         <figure className={styles.figure}>
           <Image
             src={dataframeImage}
-            alt="Educational illustration showing the anatomy of a pandas DataFrame. An outer container is labeled DataFrame with Columns at the top and Rows on the left. The columns are prompt_id, model, and tokens. Row index labels 0 through 4 align with five records: p1 gemini 10, p2 gemini 20, p3 claude 30, p4 gpt 15, and p5 claude 25."
+            alt="Infographic titled From dictionary to DataFrame: Equal-length lists become a 2D table in Python memory. A Dictionary card with prompt_id, model, and tokens flows right through pd.DataFrame(data) into a DataFrame table with Index 0 through 4 and rows p1 gemini 10, p2 gemini 20, p3 claude 30, p4 gpt 15, and p5 claude 25. Bottom strip reads Everyday analogy: Like a spreadsheet table in Python memory."
             sizes="(max-width: 768px) 100vw, 700px"
           />
           <figcaption className="micro">
@@ -205,7 +205,7 @@ Name: tokens, dtype: int64`}
         <figure className={styles.figure}>
           <Image
             src={seriesImage}
-            alt="Educational illustration showing column extraction from a pandas DataFrame to a Series. On the left is the DataFrame with columns prompt_id, model, and tokens highlighted. A rightward arrow labeled df['tokens'] points to a 1D Series panel showing Index 0 to 4 paired with Values 10, 20, 30, 15, and 25."
+            alt="Infographic titled Select one column to get a Series: Use quotes around the column name to keep index and values paired. A DataFrame with prompt_id, model, and highlighted tokens column flows right via df['tokens'] into a 1D Series with Index 0 to 4 and Values 10, 20, 30, 15, and 25. Bottom cards compare df['tokens'] (Selects the column) against df[tokens] (NameError, missing quotes)."
             sizes="(max-width: 768px) 100vw, 700px"
           />
           <figcaption className="micro">
@@ -274,7 +274,7 @@ print(df["tokens"].mean())  # 20.0`}
         <figure className={styles.figure}>
           <Image
             src={loopVsPandasImage}
-            alt="Educational diagram comparing a manual loop with pandas. The top panel labeled Manual loop flows left to right from the tokens column through total = 0 and Add each value to 100. The bottom panel labeled pandas flows left to right from the tokens column through df['tokens'].sum() to Result: 100."
+            alt="Infographic titled Column method vs manual loop: Same result (100), without writing an accumulator loop. Top Manual loop card flows left to right from a 5-row column stack through total = 0 and Add each value to 100. Bottom pandas card flows left to right from the column stack through df['tokens'].sum() to Result: 100. Bottom Key takeaway strip reads Returns 100 and leaves df unchanged."
             sizes="(max-width: 768px) 100vw, 700px"
           />
           <figcaption className="micro">
