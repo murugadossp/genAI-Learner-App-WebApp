@@ -1,0 +1,40 @@
+{
+  "module": "python-for-ai",
+  "lessonId": "p1-12",
+  "title": "Introduction to pandas",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "roadmap",
+      "title": "pandas: Turning structured data into tables for instant analysis."
+    },
+    {
+      "id": "table",
+      "title": "A DataFrame organizes records into rows and columns."
+    },
+    {
+      "id": "column",
+      "title": "Selecting a column gives you a pandas Series."
+    },
+    {
+      "id": "summary",
+      "title": "Column methods replace manual for loops."
+    },
+    {
+      "id": "practice",
+      "title": "Practice: Predict the column calculation."
+    },
+    {
+      "id": "lab",
+      "title": "Try the Prompt Log Analyzer."
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
+  ]
+}
