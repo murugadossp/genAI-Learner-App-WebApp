@@ -1,0 +1,40 @@
+{
+  "module": "python-for-ai",
+  "lessonId": "p1-13",
+  "title": "Columns and tables",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "roadmap",
+      "title": "Working with columns and table structure in pandas."
+    },
+    {
+      "id": "inspect",
+      "title": "Inspect a table's shape, columns, and first rows."
+    },
+    {
+      "id": "select",
+      "title": "Select one column for a Series, or a list for a DataFrame."
+    },
+    {
+      "id": "derive",
+      "title": "Create a derived column from existing columns."
+    },
+    {
+      "id": "practice",
+      "title": "Practice: Predict the shape and result."
+    },
+    {
+      "id": "lab",
+      "title": "Try the Column & Table Workbench."
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
+  ]
+}
