@@ -53,6 +53,25 @@ def main() -> int:
         if not value.strip():
             parser.error(f"value for {key} is empty")
 
+    output_path = values.get("OUTPUT_PATH", "")
+    if "REPLACE_WITH_" in output_path or not Path(output_path).is_absolute():
+        print(
+            f"warning: OUTPUT_PATH should be an absolute scratch path (got: {output_path})",
+            file=sys.stderr,
+        )
+    ref_image = values.get("REFERENCE_IMAGE", "")
+    if ref_image.strip().lower() != "none":
+        if "REPLACE_WITH_" in ref_image or not Path(ref_image).is_absolute():
+            print(
+                f"warning: REFERENCE_IMAGE should be 'None' or an absolute scratch path (got: {ref_image})",
+                file=sys.stderr,
+            )
+        elif not Path(ref_image).exists():
+            print(
+                f"warning: REFERENCE_IMAGE does not exist yet: {ref_image}",
+                file=sys.stderr,
+            )
+
     filled = PLACEHOLDER.sub(lambda match: values[match.group(1)], body)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(filled, encoding="utf-8")

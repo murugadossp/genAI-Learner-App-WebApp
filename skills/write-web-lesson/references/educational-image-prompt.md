@@ -4,7 +4,7 @@ One master prompt for every lesson illustration. It works with any CLI that can 
 
 ## How to use
 
-1. Copy `example-values.json` (or write a new JSON file with the keys below). Every key is required.
+1. Copy `example-values.json` (or write a new JSON file with the keys below) and replace `REPLACE_WITH_ABSOLUTE_SCRATCH_PATH` in `OUTPUT_PATH` and `REFERENCE_IMAGE` with your real absolute scratch folder path. Every key is required.
 2. Fill the template: `python3 "<repo>/skills/write-web-lesson/scripts/fill_image_prompt.py" "values.json" --out "prompt.txt"` (quote the paths, so folders with spaces work). The script fails if a placeholder is left unfilled or a key is not used.
 3. Send `prompt.txt` to the CLI (see `tooling.yaml`). The same file works for agy and Codex.
 
@@ -137,9 +137,9 @@ Prioritize visual legibility over the number of details.
 Follow: {{TEXT_POLICY}}
 
 Default behavior:
-- Embed text only when a word is listed in KEY_ELEMENTS. Every listed word must appear exactly as written. A word may appear more than once where the concept needs it (for example a candidate that is also the output). No other words may appear.
-- Communicate concepts through objects, connections, and visual metaphors; use text for the listed words only.
-- Label each listed element (boxes, chips, bars, outputs) with its listed word.
+- Embed text only for the exact quoted strings listed in KEY_ELEMENTS (surrounding unquoted prose in KEY_ELEMENTS is visual/layout guidance and must not be rendered as text). Every listed quoted string must appear exactly as written. A string may appear more than once where the concept needs it (for example a candidate that is also the output). No other words may appear.
+- Communicate concepts through objects, connections, and visual metaphors; use text for the listed quoted strings only.
+- Label each listed element (boxes, chips, bars, outputs) with its listed quoted string.
 - Never include lengthy explanations, paragraphs, or tiny annotations.
 - Avoid unreliable image-generated code or mathematical expressions.
 - Do not generate watermarks, logos, or decorative captions.
