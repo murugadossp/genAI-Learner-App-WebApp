@@ -53,12 +53,27 @@ def main() -> int:
         if not value.strip():
             parser.error(f"value for {key} is empty")
 
+    scratch_dir = args.out.resolve().parent
+
+    def _is_within(path: Path, parent: Path) -> bool:
+        try:
+            path.resolve().relative_to(parent)
+            return True
+        except ValueError:
+            return False
+
     output_path = values.get("OUTPUT_PATH", "")
     if "REPLACE_WITH_" in output_path or not Path(output_path).is_absolute():
         print(
             f"warning: OUTPUT_PATH should be an absolute scratch path (got: {output_path})",
             file=sys.stderr,
         )
+    elif not _is_within(Path(output_path), scratch_dir):
+        print(
+            f"warning: OUTPUT_PATH is outside {scratch_dir} and may be unwritable inside a sandboxed CLI: {output_path}",
+            file=sys.stderr,
+        )
+
     ref_image = values.get("REFERENCE_IMAGE", "")
     if ref_image.strip().lower() != "none":
         if "REPLACE_WITH_" in ref_image or not Path(ref_image).is_absolute():
@@ -66,11 +81,18 @@ def main() -> int:
                 f"warning: REFERENCE_IMAGE should be 'None' or an absolute scratch path (got: {ref_image})",
                 file=sys.stderr,
             )
-        elif not Path(ref_image).exists():
-            print(
-                f"warning: REFERENCE_IMAGE does not exist yet: {ref_image}",
-                file=sys.stderr,
-            )
+        else:
+            ref_path = Path(ref_image)
+            if not ref_path.exists():
+                print(
+                    f"warning: REFERENCE_IMAGE does not exist yet: {ref_image}",
+                    file=sys.stderr,
+                )
+            if not _is_within(ref_path, scratch_dir):
+                print(
+                    f"warning: REFERENCE_IMAGE is outside {scratch_dir} and may be unreadable inside a sandboxed CLI: {ref_image}",
+                    file=sys.stderr,
+                )
 
     filled = PLACEHOLDER.sub(lambda match: values[match.group(1)], body)
     args.out.parent.mkdir(parents=True, exist_ok=True)
