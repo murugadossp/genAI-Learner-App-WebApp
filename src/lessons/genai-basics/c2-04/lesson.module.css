@@ -444,3 +444,20 @@ button.secondaryBtn[aria-pressed="true"]:not(:disabled):hover {
   word-break: break-all;
   overflow-wrap: anywhere;
 }
+
+.figure {
+  margin: 1.25rem 0;
+}
+
+.figure img {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.figure figcaption {
+  margin-top: 0.4rem;
+}
