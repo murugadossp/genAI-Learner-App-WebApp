@@ -1,0 +1,36 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c4-07",
+  "title": "Search and planning",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "what-is-search",
+      "title": "How search builds a plan"
+    },
+    {
+      "id": "search-strategies",
+      "title": "How search chooses the next square"
+    },
+    {
+      "id": "planning-vs-learning",
+      "title": "Why planning is not learning"
+    },
+    {
+      "id": "lab",
+      "title": "Maze route explorer"
+    },
+    {
+      "id": "limits",
+      "title": "Where search hits a wall"
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding"
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you"
+    }
+  ]
+}
