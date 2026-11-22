@@ -1,0 +1,18 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c3-06",
+  "title": "Breaking complex tasks into steps",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "roadmap", "title": "Why one big prompt hides mistakes." },
+    { "id": "split", "title": "Split one big goal into checkable subtasks." },
+    { "id": "gate", "title": "Check each stage before moving on." },
+    {
+      "id": "length",
+      "title": "Why a long explanation does not prove correctness."
+    },
+    { "id": "lab", "title": "Plan Priya's Book Swap in stages." },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}

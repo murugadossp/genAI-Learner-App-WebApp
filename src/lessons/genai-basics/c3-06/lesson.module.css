@@ -1,0 +1,274 @@
+.example {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin: 18px 0;
+}
+
+.example > strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.example p:last-child,
+.example ul:last-child {
+  margin-bottom: 0;
+}
+
+.exampleList {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+
+.exampleList li {
+  margin-bottom: 6px;
+}
+
+.exampleList li:last-child {
+  margin-bottom: 0;
+}
+
+.figure {
+  margin: 22px 0;
+}
+
+.figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.figure figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.quickQuestions {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin: 20px 0;
+}
+
+.quickQuestions h3 {
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+
+.quickQuestions dl {
+  margin: 0;
+}
+
+.quickQuestions dt {
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.quickQuestions dt:first-child {
+  margin-top: 0;
+}
+
+.quickQuestions dd {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.tryList {
+  margin: 12px 0 18px;
+  padding-left: 22px;
+}
+
+.tryList li {
+  margin-bottom: 6px;
+}
+
+.lab {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin: 18px 0;
+}
+
+.labHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.modeGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.modeBtn,
+.stageTab,
+.actionBtn {
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+button.modeBtn[aria-pressed="true"],
+button.modeBtn.modeBtnActive:not(:disabled):hover,
+button.stageTab[aria-pressed="true"],
+button.stageTab.stageTabActive:not(:disabled):hover {
+  background: var(--accent) !important;
+  color: var(--on-accent) !important;
+  border-color: var(--accent) !important;
+}
+
+.resetBtn {
+  font-size: 13px;
+  padding: 6px 12px;
+}
+
+.disclosure {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+
+.panelCard {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.panelLabel {
+  font:
+    600 11px/1.4 ui-monospace,
+    monospace;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.promptQuote {
+  margin: 0;
+  font-style: italic;
+}
+
+.replyText {
+  margin: 0 0 12px;
+  line-height: 1.65;
+}
+
+.slipHighlight {
+  background: var(--orange);
+  color: var(--highlight-ink);
+  padding: 1px 4px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.slipList {
+  margin: 12px 0 0;
+  padding-left: 20px;
+}
+
+.slipList li {
+  margin-bottom: 6px;
+}
+
+.stageBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.stageList {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+
+.stageList li {
+  margin-bottom: 6px;
+}
+
+.gateBox {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-top: 12px;
+}
+
+.gateActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.badgeGood {
+  display: inline-block;
+  background: var(--green);
+  color: var(--highlight-ink);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.badgeWarn {
+  display: inline-block;
+  background: var(--orange);
+  color: var(--highlight-ink);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.liveStatus {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 10px 0 0;
+  min-height: 20px;
+}
+
+.takeaway {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin: 28px 0 12px;
+}
+
+.takeaway h2 {
+  margin-top: 0;
+}
+
+.takeaway ul {
+  margin: 10px 0 0;
+  padding-left: 20px;
+}
+
+.takeaway li {
+  margin-bottom: 8px;
+}
+
+.takeaway li:last-child {
+  margin-bottom: 0;
+}
