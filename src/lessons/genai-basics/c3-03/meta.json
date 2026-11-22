@@ -1,0 +1,36 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c3-03",
+  "title": "System instructions and roles",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "why-instructions",
+      "title": "Standing rules before the question."
+    },
+    {
+      "id": "system-instructions",
+      "title": "System instructions set the standing rules."
+    },
+    {
+      "id": "roles",
+      "title": "Roles guide perspective, not expertise."
+    },
+    {
+      "id": "try-it",
+      "title": "Same question, different instructions."
+    },
+    {
+      "id": "limits",
+      "title": "Why instructions steer rather than guarantee."
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
+  ]
+}

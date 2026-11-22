@@ -1,0 +1,287 @@
+.example {
+  margin: 20px 0;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  background: var(--paper);
+}
+
+.example strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.example p:last-child {
+  margin-bottom: 0;
+}
+
+.figure {
+  margin: 22px 0 0;
+}
+
+.figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.figure figcaption {
+  margin-top: 8px;
+}
+
+.compareGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  list-style: none;
+  padding: 0;
+  margin: 18px 0;
+}
+
+.compareCard {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.compareCard h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.compareCard p:last-child {
+  margin-bottom: 0;
+}
+
+.roleQuote {
+  margin: 10px 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--panel);
+  font-size: 14px;
+}
+
+.tryList {
+  margin: 14px 0 20px;
+  padding-left: 20px;
+}
+
+.tryList li {
+  margin-bottom: 6px;
+}
+
+.labBox {
+  margin: 18px 0;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.labHeader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.labHeader strong {
+  font-size: 16px;
+}
+
+.controlGroup {
+  margin-bottom: 16px;
+}
+
+.controlLabel {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.buttonRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+button.choiceBtn {
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 9px 13px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+}
+
+button.choiceBtn[aria-pressed="true"],
+button.choiceBtn[aria-pressed="true"]:not(:disabled):hover {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: var(--on-accent) !important;
+}
+
+.promptStack {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.promptCard {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+}
+
+.promptTag {
+  display: inline-block;
+  font:
+    600 11px/1.4 ui-monospace,
+    monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.promptCard p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.replyCard {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  margin-bottom: 14px;
+}
+
+.replyCard p {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.replyCard p:last-child {
+  margin-bottom: 0;
+}
+
+.replyList {
+  list-style: none;
+  margin: 6px 0 0;
+  padding-left: 0;
+  font-size: 15px;
+}
+
+.replyList li {
+  margin-bottom: 6px;
+}
+
+.replyList li:last-child {
+  margin-bottom: 0;
+}
+
+.slipBadge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--orange);
+  color: var(--highlight-ink);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.heldBadge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--green);
+  color: var(--highlight-ink);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.readoutGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.readoutCard {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+}
+
+.readoutCard h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+.readoutCard p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.labFooter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.qaList {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+  display: grid;
+  gap: 12px;
+}
+
+.qaItem {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+}
+
+.qaItem strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.qaItem p {
+  margin: 0;
+}
+
+@media (max-width: 680px) {
+  .compareGrid,
+  .promptStack,
+  .readoutGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .labBox {
+    padding: 16px;
+  }
+}
