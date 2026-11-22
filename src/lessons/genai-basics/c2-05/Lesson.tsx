@@ -1,7 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
 import { FitLab } from "./FitLab";
+import parameterVisual from "./images/parameters-and-model-size.webp";
 import styles from "./lesson.module.css";
 export default function Lesson() {
   return (
@@ -32,6 +34,16 @@ export default function Lesson() {
           fit patterns. Whether it fits the <em>right</em> patterns depends on
           the data and the training.
         </div>
+        <figure className={styles.figure}>
+          <Image
+            src={parameterVisual}
+            alt="Three model fits show too few parameters underfitting, enough parameters tracking the pattern, and many parameters fitting noise. A chart shows training error falling while held-out error first falls then rises as model size grows, alongside higher memory and computation costs."
+            sizes="(min-width: 760px) 720px, 100vw"
+          />
+          <figcaption className="micro">
+            Held-out error reveals when extra capacity stops helping.
+          </figcaption>
+        </figure>
       </section>
       <section id="dial">
         <h2 tabIndex={-1}>Turn the size dial.</h2>
