@@ -1,0 +1,265 @@
+.figure {
+  margin: 22px 0;
+}
+
+.figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.figure figcaption {
+  margin-top: 8px;
+}
+
+.example {
+  margin: 18px 0;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.example > strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.example p:last-child {
+  margin-bottom: 0;
+}
+
+.profileGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin: 18px 0;
+}
+
+@media (min-width: 640px) {
+  .profileGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.profileCard {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  padding: 16px;
+}
+
+.profileHead {
+  margin-bottom: 10px;
+}
+
+.profileHead h3 {
+  margin: 0 0 2px;
+  font-size: 17px;
+}
+
+.profileSpecs {
+  margin: 0;
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.profileSpecs div {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  gap: 8px;
+  align-items: baseline;
+}
+
+.profileSpecs dt {
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.profileSpecs dd {
+  margin: 0;
+  color: var(--ink);
+}
+
+.quickList {
+  margin: 16px 0;
+  display: grid;
+  gap: 12px;
+}
+
+.quickItem {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  padding: 14px 16px;
+}
+
+.quickItem dt {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.quickItem dd {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.labWrap {
+  margin-top: 16px;
+}
+
+.stepsList {
+  margin: 10px 0 18px;
+  padding-left: 20px;
+}
+
+.stepsList li {
+  margin-bottom: 6px;
+}
+
+.refDetails {
+  margin: 0 0 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  padding: 12px 16px;
+}
+
+.refDetails summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.labBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  margin-bottom: 16px;
+}
+
+.score {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.scenarioList {
+  display: grid;
+  gap: 16px;
+}
+
+.scenarioCard {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  padding: 18px;
+}
+
+.scenarioCard fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.scenarioCard legend {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.4;
+  margin-bottom: 6px;
+  padding: 0;
+}
+
+.scenarioDesc {
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.optionList {
+  display: grid;
+  gap: 8px;
+}
+
+.optionLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px 13px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg);
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.optionLabel:hover {
+  border-color: var(--accent);
+}
+
+.optionLabelSelected {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.optionLabel input {
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.optionText {
+  display: grid;
+  gap: 2px;
+}
+
+.optionName {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.optionHint {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.feedbackBox {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.55;
+  border: 1px solid var(--line);
+}
+
+.feedbackOk {
+  background: var(--green);
+  color: var(--highlight-ink);
+  border-color: var(--line);
+}
+
+.feedbackRetry {
+  background: var(--orange);
+  color: var(--highlight-ink);
+  border-color: var(--line);
+}
+
+.disclosure {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}

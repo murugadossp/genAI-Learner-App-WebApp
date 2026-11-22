@@ -1,0 +1,16 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c3-09",
+  "title": "Choosing the right model for a task",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "leaderboard", "title": "Beyond the leaderboard" },
+    { "id": "capability-speed-cost", "title": "Capability, speed, and cost" },
+    { "id": "context-and-privacy", "title": "Context and privacy" },
+    { "id": "how-to-pick", "title": "A two-step way to choose" },
+    { "id": "matcher", "title": "Scenario matcher" },
+    { "id": "limits", "title": "Where this guide is too tidy" },
+    { "id": "check", "title": "Check your understanding" },
+    { "id": "takeaway", "title": "The takeaway" }
+  ]
+}
