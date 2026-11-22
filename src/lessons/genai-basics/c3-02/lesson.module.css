@@ -1,0 +1,301 @@
+.exampleBox {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  margin: 18px 0;
+}
+
+.exampleBox > strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.exampleBox p:last-child {
+  margin-bottom: 0;
+}
+
+.figure {
+  margin: 22px 0;
+}
+
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.figure figcaption {
+  margin-top: 8px;
+}
+
+.lensGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.lensCard {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.lensTag {
+  display: inline-block;
+  font:
+    600 11px/1.4 ui-monospace,
+    monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.lensSafety {
+  background: var(--orange);
+  color: var(--highlight-ink);
+}
+
+.lensInclude {
+  background: var(--green);
+  color: var(--highlight-ink);
+}
+
+.lensNoise {
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.lensCard h3 {
+  font-size: 16px;
+  margin: 0 0 6px;
+}
+
+.lensCard p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.quickQuestions {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin: 22px 0;
+}
+
+.quickQuestions h3 {
+  margin-bottom: 10px;
+}
+
+.quickQuestions ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.quickQuestions li + li {
+  margin-top: 10px;
+}
+
+.stepsList {
+  margin: 12px 0 18px;
+  padding-left: 22px;
+}
+
+.stepsList li + li {
+  margin-top: 6px;
+}
+
+.disclosure {
+  font-size: 13px;
+  color: var(--muted);
+  background: var(--panel);
+  border-left: 3px solid var(--accent);
+  padding: 10px 14px;
+  border-radius: 0 10px 10px 0;
+  margin: 14px 0 18px;
+}
+
+.lab {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin: 18px 0;
+}
+
+.labHeader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.labTask {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.labTaskLabel {
+  display: block;
+  font:
+    600 11px/1.4 ui-monospace,
+    monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.blockGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.blockBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 6px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  width: 100%;
+  transition: border-color 0.15s ease;
+}
+
+.blockBtn:hover {
+  border-color: var(--accent);
+}
+
+/* Override global app/studio.css button:not(.button):not(:disabled):hover */
+button.blockBtn[aria-pressed="true"],
+button.blockBtn.blockBtnActive:not(:disabled):hover {
+  background: var(--accent) !important;
+  color: var(--on-accent) !important;
+  border-color: var(--accent) !important;
+}
+
+.blockTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+}
+
+.blockTitle {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.blockState {
+  font:
+    600 11px/1.3 ui-monospace,
+    monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  flex-shrink: 0;
+}
+
+.blockText {
+  font-size: 13px;
+  line-height: 1.45;
+  opacity: 0.92;
+}
+
+.outputGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.outputCard {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.outputCard h3 {
+  font-size: 14px;
+  font-family: ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--muted);
+  margin: 0 0 10px;
+}
+
+.promptList {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+}
+
+.promptList li + li {
+  margin-top: 6px;
+}
+
+.replyBody {
+  font-size: 14px;
+  line-height: 1.55;
+  white-space: pre-line;
+}
+
+.statusBar {
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 14px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+}
+
+.statusGood {
+  background: var(--green);
+  color: var(--highlight-ink);
+  border-color: var(--line);
+}
+
+.statusWarn {
+  background: var(--orange);
+  color: var(--highlight-ink);
+  border-color: var(--line);
+}
+
+.takeawayLink {
+  margin-top: 14px;
+}
+
+@media (max-width: 720px) {
+  .lensGrid,
+  .blockGrid,
+  .outputGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .lab {
+    padding: 16px;
+  }
+}

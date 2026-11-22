@@ -1,0 +1,15 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c3-02",
+  "title": "Providing context and constraints",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "roadmap", "title": "Four checks before you paste." },
+    { "id": "context", "title": "Supply only the relevant background." },
+    { "id": "constraints", "title": "Set clear limits to shape the reply." },
+    { "id": "leave-out", "title": "Leave out distracting and sensitive text." },
+    { "id": "lab", "title": "Build Sam's prompt from blocks." },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
