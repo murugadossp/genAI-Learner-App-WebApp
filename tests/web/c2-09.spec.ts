@@ -44,10 +44,10 @@ for (const width of [390, 768, 1440])
         "<0.1%",
       );
 
-      // Four explanatory illustrations load and have descriptive alt text.
+      // Five explanatory illustrations load and have descriptive alt text.
       const figures = page.locator("article figure img");
-      await expect(figures).toHaveCount(4);
-      for (let i = 0; i < 4; i++) {
+      await expect(figures).toHaveCount(5);
+      for (let i = 0; i < 5; i++) {
         const img = figures.nth(i);
         await img.scrollIntoViewIfNeeded();
         await expect
