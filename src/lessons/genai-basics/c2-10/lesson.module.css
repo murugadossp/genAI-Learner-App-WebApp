@@ -96,17 +96,21 @@
   font-size: 0.85rem;
   color: var(--muted);
 }
-.figure {
-  margin: 1.25rem 0;
+.wideFigure {
+  width: min(calc(100vw - 2rem), 1200px);
+  margin: 1.25rem 0 1.25rem 50%;
+  transform: translateX(-50%);
 }
-.figure img {
+.wideFigure img {
+  display: block;
   width: 100%;
+  max-width: 1200px;
   height: auto;
   border: 1px solid var(--line);
   border-radius: 12px;
   background: #fffaf5;
 }
-.figure figcaption {
+.wideFigure figcaption {
   margin-top: 0.4rem;
 }
 .puzzle {

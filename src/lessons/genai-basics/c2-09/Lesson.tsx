@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./lesson.module.css";
-import temperatureImg from "./images/temperature.png";
-import topKImg from "./images/top-k.png";
-import topPImg from "./images/top-p.png";
-import pipelineImg from "./images/pipeline.png";
+import temperatureImg from "./images/temperature.webp";
+import topKImg from "./images/top-k.webp";
+import topPImg from "./images/top-p.webp";
+import pipelineImg from "./images/pipeline.webp";
+import samplingOverview from "./images/temperature-and-sampling-v4.webp";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
 import { SamplingLab } from "./SamplingLab";
@@ -53,6 +54,16 @@ export default function Lesson() {
           probability on the top choices, and a higher value flattens it. The
           model’s underlying scores are the same either way.
         </div>
+        <figure className={styles.overviewFigure}>
+          <Image
+            src={samplingOverview}
+            alt="A prompt flows through a fixed network to token scores, then temperature reshapes probabilities, top-k or top-p filters candidates, and a sampler picks a token. Lower panels compare temperature, top-k, and top-p, with a ranked-menu analogy and key takeaways."
+            sizes="(min-width: 1200px) 1100px, calc(100vw - 32px)"
+          />
+          <figcaption className="micro">
+            Overview of how sampling settings shape a next-token choice.
+          </figcaption>
+        </figure>
       </section>
       <section id="where">
         <h2 tabIndex={-1}>

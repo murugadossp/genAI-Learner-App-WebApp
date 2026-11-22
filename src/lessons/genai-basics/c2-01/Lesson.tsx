@@ -1,8 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import { TokenPipeline } from "./TokenPipeline";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
 import { TokenLab } from "./TokenLab";
+import tokenVisual from "./images/text-becomes-tokens.webp";
+import styles from "./lesson.module.css";
 export default function Lesson() {
   return (
     <LessonFrame
@@ -28,6 +31,17 @@ export default function Lesson() {
           depend on the tokenizer. Different models can use different
           vocabularies and produce different counts for the same text.
         </p>
+        <figure className={styles.figure}>
+          <Image
+            src={tokenVisual}
+            alt="The sentence ‘A model reads pieces of text.’ is split into token pieces, including word fragments and punctuation."
+            sizes="(min-width: 760px) 720px, 100vw"
+          />
+          <figcaption className="micro">
+            Illustrative split only; exact token boundaries depend on the
+            tokenizer.
+          </figcaption>
+        </figure>
       </section>
       <section id="split">
         <h2 tabIndex={-1}>Try splitting text.</h2>

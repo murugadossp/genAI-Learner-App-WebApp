@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
 import { BlankLab } from "./BlankLab";
 import { SpotLab } from "./SpotLab";
+import hallucinationVisual from "./images/why-models-make-things-up.webp";
 import styles from "./lesson.module.css";
 export default function Lesson() {
   return (
@@ -31,6 +33,17 @@ export default function Lesson() {
           <strong>Key idea:</strong> how confident an answer sounds and how well
           supported it is are two different things.
         </div>
+        <figure className={styles.figure}>
+          <Image
+            src={hallucinationVisual}
+            alt="A fictional library example contrasts a fluent unsupported answer with a source-grounded answer that still changes Saturday to Sunday, alongside an autocomplete analogy and verification takeaways."
+            sizes="(min-width: 760px) 720px, 100vw"
+          />
+          <figcaption className="micro">
+            Fluency does not verify a claim; check important details against a
+            trusted source.
+          </figcaption>
+        </figure>
       </section>
       <section id="blank">
         <h2 tabIndex={-1}>Fill the blank, with or without evidence.</h2>

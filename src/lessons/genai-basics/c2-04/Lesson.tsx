@@ -1,7 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
 import { AssistantLab } from "./AssistantLab";
+import assistantVisual from "./images/base-model-to-assistant.webp";
 import styles from "./lesson.module.css";
 
 export default function Lesson() {
@@ -41,6 +43,16 @@ export default function Lesson() {
           assistant asks:{" "}
           <em>“What is the most helpful answer to this user’s request?”</em>
         </div>
+        <figure className={styles.figure}>
+          <Image
+            src={assistantVisual}
+            alt="A diagram shows a base model trained to continue web text, instruction tuning updating weights with request-and-answer examples, and the resulting assistant answering a honey question."
+            sizes="(min-width: 760px) 720px, 100vw"
+          />
+          <figcaption className="micro">
+            Instruction tuning teaches the model to follow requests.
+          </figcaption>
+        </figure>
       </section>
 
       <section id="lab">

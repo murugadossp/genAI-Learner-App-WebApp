@@ -3,7 +3,7 @@ import Link from "next/link";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
 import { ReasoningLab } from "./ReasoningLab";
-import diagram from "./reasoning-diagram.png";
+import reasoningVisual from "./images/reasoning-models.webp";
 import styles from "./lesson.module.css";
 export default function Lesson() {
   return (
@@ -29,15 +29,14 @@ export default function Lesson() {
           </Link>
           . The difference is that it was trained to write useful working first.
         </p>
-        <figure className={styles.figure}>
+        <figure className={styles.wideFigure}>
           <Image
-            src={diagram}
-            alt="Two lanes. Quick reply: a puzzle where three people each have a different pet goes straight to the answer Asha cat, Ben dog, Chen fish, marked wrong, a first guess with no checking. Reasoning model: the same puzzle goes through working text (read the clues, make a guess, check and fix it, check again) to the answer Asha fish, Ben cat, Chen dog, marked right."
-            sizes="(min-width: 760px) 720px, 100vw"
+            src={reasoningVisual}
+            alt="A multi-step number puzzle shows the model reading constraints, trying an answer, checking it, fixing an error, and giving a valid answer. Panels compare a quick reply with a reasoning model, explain training versus prompting and work cost, and caution that shown steps are not a verified record."
+            sizes="(min-width: 1232px) 1200px, calc(100vw - 32px)"
           />
           <figcaption className="micro">
-            The same question, answered two ways. The example and its numbers
-            are invented for this lesson.
+            Reasoning can help catch mistakes; check the result itself.
           </figcaption>
         </figure>
         <div className="callout">

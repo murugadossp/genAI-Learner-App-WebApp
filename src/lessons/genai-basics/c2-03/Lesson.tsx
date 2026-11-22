@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
 import { DietLab } from "./DietLab";
 import styles from "./lesson.module.css";
+import trainingVisual from "./images/where-models-learn.webp";
 export default function Lesson() {
   return (
     <LessonFrame
@@ -32,6 +34,16 @@ export default function Lesson() {
           training; at answer time the model uses the weights, not a search of
           the training set.
         </div>
+        <figure className={styles.figure}>
+          <Image
+            src={trainingVisual}
+            alt="During pretraining, text data trains the model through next-token prediction, scoring, and weight updates. When answering, a prompt is processed by fixed weights without searching training documents."
+            sizes="(min-width: 760px) 720px, 100vw"
+          />
+          <figcaption className="micro">
+            Training shapes the weights; answering uses those fixed weights.
+          </figcaption>
+        </figure>
       </section>
       <section id="diets">
         <h2 tabIndex={-1}>Same prompt, different data diets.</h2>
