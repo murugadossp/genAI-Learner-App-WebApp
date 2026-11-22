@@ -1,0 +1,21 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c3-01",
+  "title": "Giving clear goals and instructions",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "vague", "title": "Why vague requests miss the mark." },
+    {
+      "id": "three-parts",
+      "title": "Three parts that turn a wish into a task."
+    },
+    { "id": "more-words", "title": "Why more words do not always help." },
+    { "id": "lab", "title": "Rewrite Maya’s prompt and compare replies." },
+    {
+      "id": "limits",
+      "title": "What clear instructions still cannot guarantee."
+    },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
