@@ -96,7 +96,7 @@ export default function Lesson() {
         <figure className={styles.figure}>
           <Image
             src={defineImage}
-            alt="Two panels. The left panel shows def make_title with a grey closed box labelled Body not run yet. An arrow labelled Call make_title(Pasta) points to the right panel, where the body runs and the result is returned."
+            alt='Diagram showing that def make_title stores the function without running its body, while calling make_title("Pasta") runs it and returns "Chat: Pasta". It also notes that the result is not printed automatically.'
             sizes="(max-width: 760px) 100vw, 720px"
           />
           <figcaption className="micro">
@@ -149,7 +149,7 @@ make_title("Pasta", "Recipe")    # prefix is "Recipe"`}</Code>
         <figure className={styles.figure}>
           <Image
             src={defaultImage}
-            alt="Two rows. Call without prefix, make_title(Pasta), uses the default prefix Chat and outputs Chat: Pasta. Call with prefix, make_title(Pasta, Recipe), uses the passed prefix Recipe and outputs Recipe: Pasta."
+            alt='Diagram comparing make_title("Pasta"), which uses the default prefix Chat and returns Chat: Pasta, with make_title("Pasta", "Recipe"), which returns Recipe: Pasta. The supplied value only affects that call.'
             sizes="(max-width: 760px) 100vw, 720px"
           />
           <figcaption className="micro">
@@ -205,7 +205,7 @@ print(x)   # Chat: Soup`}</Code>
         <figure className={styles.figure}>
           <Image
             src={returnImage}
-            alt="Two examples. make_title() with a return arrow stores Chat: Soup in x. make_note() has no return, so a dashed arrow stores None in x. Code for both functions is shown beside them."
+            alt='Diagram showing make_title("Soup") returning "Chat: Soup" into x, while make_note("Milk") has no return statement and therefore gives x the value None.'
             sizes="(max-width: 760px) 100vw, 720px"
           />
           <figcaption className="micro">
