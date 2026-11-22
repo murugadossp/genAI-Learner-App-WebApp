@@ -1,0 +1,36 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c4-08",
+  "title": "Knowledge, rules and reasoning",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "facts-and-rules",
+      "title": "Facts, rules, and explicit reasoning."
+    },
+    {
+      "id": "knowledge-graphs",
+      "title": "Connecting facts in a knowledge graph."
+    },
+    {
+      "id": "lab",
+      "title": "Chain facts with rules in Mina’s bakery."
+    },
+    {
+      "id": "hybrids",
+      "title": "Why rules are not obsolete: hybrid AI systems."
+    },
+    {
+      "id": "limits",
+      "title": "Limits and quick questions."
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
+  ]
+}
