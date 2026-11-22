@@ -1,0 +1,36 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c4-03",
+  "title": "Classification: choosing categories",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "scores-not-labels",
+      "title": "Why many classifiers start with a score"
+    },
+    {
+      "id": "threshold-decision",
+      "title": "How a cutoff turns a score into a category"
+    },
+    {
+      "id": "tradeoff",
+      "title": "Moving the cutoff trades one mistake for another"
+    },
+    {
+      "id": "lab",
+      "title": "Try it: move the spam cutoff"
+    },
+    {
+      "id": "limits",
+      "title": "What a score does—and does not—mean"
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding"
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you"
+    }
+  ]
+}
