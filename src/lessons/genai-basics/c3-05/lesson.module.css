@@ -1,0 +1,301 @@
+.figure {
+  margin: 22px 0;
+}
+
+.figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.figure figcaption {
+  margin-top: 8px;
+}
+
+.noteBox {
+  margin: 16px 0;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  background: var(--paper);
+}
+
+.noteLabel {
+  display: block;
+  margin-bottom: 6px;
+  font:
+    600 11px/1.4 ui-monospace,
+    monospace;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--muted);
+}
+
+.codePanel {
+  margin: 14px 0;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--dark);
+  color: var(--code-ink);
+  font:
+    13px/1.55 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.tableWrap {
+  margin: 16px 0;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.dataTable th,
+.dataTable td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.dataTable th {
+  background: var(--panel);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.dataTable tr:last-child td {
+  border-bottom: none;
+}
+
+.compareGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+
+.compareCard {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+}
+
+.compareCard h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.qaList {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.qaItem {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+}
+
+.qaQuestion {
+  margin: 0 0 4px;
+  font-weight: 600;
+}
+
+.qaAnswer {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Interactive Validation Lab */
+.lab {
+  margin: 18px 0;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.labHeader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.labTitle {
+  margin: 0;
+  font-size: 18px;
+}
+
+.schemaStrip {
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--panel);
+  font-size: 13px;
+}
+
+.presetRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+
+.presetBtn {
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+button.presetBtn[aria-pressed="true"],
+button.presetBtn[aria-pressed="true"]:not(:disabled):hover {
+  background: var(--accent) !important;
+  color: var(--on-accent) !important;
+  border-color: var(--accent) !important;
+}
+
+.editorLabel {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.editor {
+  width: 100%;
+  min-height: 158px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--dark);
+  color: var(--code-ink);
+  font:
+    13px/1.55 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+  resize: vertical;
+}
+
+.checksList {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.checkRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg);
+}
+
+.checkTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.checkName {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.badgePass,
+.badgeFail,
+.badgeSkip {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font:
+    600 12px/1.4 ui-monospace,
+    monospace;
+}
+
+.badgePass {
+  background: var(--green);
+  color: var(--highlight-ink);
+}
+
+.badgeFail {
+  background: var(--orange);
+  color: var(--highlight-ink);
+}
+
+.badgeSkip {
+  background: var(--panel);
+  color: var(--muted);
+}
+
+.checkDetail {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.truthBanner {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.statusBar {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--panel);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (max-width: 520px) {
+  .lab {
+    padding: 14px;
+  }
+
+  .dataTable th,
+  .dataTable td {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+}
