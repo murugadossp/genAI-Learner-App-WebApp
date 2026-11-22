@@ -1,0 +1,278 @@
+.example {
+  margin: 18px 0;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.example > strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.example p:last-child {
+  margin-bottom: 0;
+}
+
+.figure {
+  margin: 22px 0;
+}
+
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.figure figcaption {
+  margin-top: 8px;
+}
+
+.compareGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.compareCard {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.compareCard h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.compareCard p {
+  margin: 0 0 8px;
+}
+
+.compareCard p:last-child {
+  margin-bottom: 0;
+}
+
+.steps {
+  margin: 14px 0 18px;
+  padding-left: 20px;
+}
+
+.steps li {
+  margin-bottom: 6px;
+}
+
+.labBox {
+  margin: 18px 0;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.labHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.controlGroup {
+  margin-bottom: 16px;
+}
+
+.controlLabel {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.buttonRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.presetBtn,
+.modeBtn,
+.wordBtn,
+.guessBtn {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  transition:
+    background-color 0.12s ease,
+    border-color 0.12s ease;
+}
+
+button.presetBtn[aria-pressed="true"],
+button.presetBtn[aria-pressed="true"]:not(:disabled):hover,
+button.modeBtn[aria-pressed="true"],
+button.modeBtn[aria-pressed="true"]:not(:disabled):hover,
+button.wordBtn[aria-pressed="true"],
+button.wordBtn[aria-pressed="true"]:not(:disabled):hover,
+button.guessBtn[aria-pressed="true"],
+button.guessBtn[aria-pressed="true"]:not(:disabled):hover {
+  background: var(--accent) !important;
+  color: var(--on-accent) !important;
+  border-color: var(--accent) !important;
+}
+
+.sentenceStrip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+}
+
+.plainWord {
+  font-size: 15px;
+  padding: 4px 2px;
+  color: var(--ink);
+}
+
+.wordBtn {
+  font-size: 14px;
+  padding: 5px 10px;
+  border-style: dashed;
+}
+
+.inputPreview {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+  margin-bottom: 16px;
+}
+
+.inputLine {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 8px 0 6px;
+}
+
+.blankToken {
+  display: inline-block;
+  padding: 1px 8px;
+  margin: 0 2px;
+  border-radius: 6px;
+  font-weight: 700;
+  background: var(--accent-soft);
+  color: var(--ink);
+  border: 1px dashed var(--accent);
+}
+
+.unseenNote {
+  font-size: 13px;
+  color: var(--muted);
+  margin-left: 6px;
+}
+
+.statsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.badgeGood {
+  background: var(--green);
+  color: var(--highlight-ink);
+  border-color: transparent;
+}
+
+.badgeWarn {
+  background: var(--orange);
+  color: var(--highlight-ink);
+  border-color: transparent;
+}
+
+.resultCard {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+  margin-top: 14px;
+}
+
+.resultCard h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.resultCard p {
+  margin: 0 0 8px;
+}
+
+.resultCard p:last-child {
+  margin-bottom: 0;
+}
+
+.disclosure {
+  margin-top: 14px;
+  margin-bottom: 0;
+}
+
+.qaList {
+  margin: 18px 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.qaItem {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.qaItem strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.qaItem p {
+  margin: 0;
+}
+
+.takeawayBox {
+  padding: 20px 22px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+}
+
+.takeawayBox p:last-child {
+  margin-bottom: 0;
+}
