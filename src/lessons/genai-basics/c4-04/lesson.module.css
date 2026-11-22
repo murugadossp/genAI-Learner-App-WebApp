@@ -1,0 +1,360 @@
+.example {
+  margin: 18px 0;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.example > strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.example p:last-child {
+  margin-bottom: 0;
+}
+
+.figure {
+  margin: 22px 0;
+}
+
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.figure figcaption {
+  margin-top: 8px;
+}
+
+.termList {
+  margin: 16px 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.termItem {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+}
+
+.termItem p {
+  margin: 0;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.infoCard {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.infoCard h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.infoCard p {
+  margin: 0 0 8px;
+}
+
+.infoCard p:last-child {
+  margin-bottom: 0;
+}
+
+.steps {
+  margin: 14px 0 18px;
+  padding-left: 20px;
+}
+
+.steps li {
+  margin-bottom: 6px;
+}
+
+.labBox {
+  margin: 18px 0;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.labHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.controlGroup {
+  margin-bottom: 14px;
+}
+
+.controlLabel {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.buttonRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.modeBtn,
+.toggleBtn {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  transition:
+    background-color 0.12s ease,
+    border-color 0.12s ease;
+}
+
+button.modeBtn[aria-pressed="true"],
+button.modeBtn[aria-pressed="true"]:not(:disabled):hover,
+button.toggleBtn[aria-pressed="true"],
+button.toggleBtn[aria-pressed="true"]:not(:disabled):hover {
+  background: var(--accent) !important;
+  color: var(--on-accent) !important;
+  border-color: var(--accent) !important;
+}
+
+.labBody {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 14px;
+}
+
+@media (min-width: 720px) {
+  .labBody {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    align-items: start;
+  }
+}
+
+.plotWrap {
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+}
+
+.plotSvg {
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.axisLine {
+  stroke: var(--muted);
+  stroke-width: 1.25;
+}
+
+.gridLine {
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.axisText {
+  fill: var(--muted);
+  font-size: 11px;
+  font-family: inherit;
+}
+
+.axisTitle {
+  fill: var(--ink);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+}
+
+.pointGroup {
+  cursor: pointer;
+}
+
+.pointGroup:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.pointRing {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.centroidMark {
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.plotNote {
+  margin: 10px 0 0;
+  text-align: center;
+}
+
+.sideCol {
+  display: grid;
+  gap: 12px;
+}
+
+.inspectorCard,
+.statusCard {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+}
+
+.inspectorCard h3,
+.statusCard h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.inspectorList {
+  margin: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.inspectorRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.inspectorRow dt {
+  color: var(--muted);
+}
+
+.inspectorRow dd {
+  margin: 0;
+  font-weight: 600;
+  text-align: right;
+}
+
+.clusterGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.clusterCard {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+}
+
+.clusterTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.swatch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.clusterMeta {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.shelfChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.shelfChip {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.qaList {
+  margin: 18px 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.qaItem {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.qaItem strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.qaItem p {
+  margin: 0;
+}
+
+.takeawayBox {
+  padding: 20px 22px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+}
+
+.takeawayBox p:last-child {
+  margin-bottom: 0;
+}
