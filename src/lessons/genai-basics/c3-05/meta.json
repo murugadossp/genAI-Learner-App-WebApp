@@ -1,0 +1,24 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c3-05",
+  "title": "Requesting structured outputs",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "roadmap", "title": "Ask for a shape, then check it." },
+    {
+      "id": "formats",
+      "title": "Pick a format that fits who will use the reply."
+    },
+    {
+      "id": "schema",
+      "title": "Spell out the fields, values, and missing-data rule."
+    },
+    {
+      "id": "why-check",
+      "title": "Asking for a format does not guarantee it."
+    },
+    { "id": "lab", "title": "Try it: Validate a JSON reply." },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
