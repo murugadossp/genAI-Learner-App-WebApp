@@ -2,7 +2,7 @@
   "module": "python-for-ai",
   "lessonId": "p1-12",
   "title": "Introduction to pandas",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     {
       "id": "roadmap",
