@@ -1,10 +1,13 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { ThemeToggle } from "../../../components/ThemeToggle";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
 import meta from "./meta.json";
+import generationVisual from "./images/one-token-at-a-time.webp";
+import styles from "./lesson.module.css";
 const sections = meta.sections.map(({ id, title }) => [id, title]);
 const stages = [
   {
@@ -165,6 +168,16 @@ export function LessonInteractive() {
             text that fits the context. It is not necessarily a true statement
             about the world.
           </div>
+          <figure className={styles.figure}>
+            <Image
+              src={generationVisual}
+              alt="The context ‘The sky is’ flows through candidate next tokens, selects ‘blue’, appends it, and loops back to predict again."
+              sizes="(min-width: 760px) 720px, 100vw"
+            />
+            <figcaption className="micro">
+              The selected token becomes part of the next context.
+            </figcaption>
+          </figure>
         </section>
         <section id="experiment">
           <h2 tabIndex={-1}>Watch the context grow.</h2>
