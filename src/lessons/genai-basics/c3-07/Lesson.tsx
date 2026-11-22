@@ -126,20 +126,17 @@ export default function Lesson() {
         <h2 tabIndex={-1}>Give targeted feedback.</h2>
         <p>
           <strong>Targeted feedback</strong> names the specific change you want
-          instead of asking vaguely for “better.” Adding{" "}
-          <strong>what to keep</strong> also protects requirements that already
-          work.
+          and what to keep from the current draft. Focusing on one or two
+          concrete fixes per round makes your request clear and easy to check.
         </p>
         <div className={styles.example}>
-          <strong>In Sam’s flyer: naming the gap</strong>
+          <strong>
+            In Sam’s flyer: naming what to change and what to keep
+          </strong>
           <p>
-            Instead of “make it better,” Sam writes: “Add two missing facts: the
-            time is 2 p.m., and the rule is bring one book to take one book.”
-          </p>
-          <p>
-            That note names the exact changes, though it does not remind the
-            assistant to keep three short, plain sentences. As you will see
-            next, adding a “keep” instruction helps prevent drift.
+            Instead of “make it better,” Sam writes: “Keep it short and in plain
+            words. Add two missing facts: the time is 2 p.m., and the rule is
+            bring one book to take one book.”
           </p>
         </div>
         <figure className={styles.figure}>
@@ -170,9 +167,9 @@ export default function Lesson() {
         <div className={styles.example}>
           <strong>In Sam’s flyer: catching drift between rounds</strong>
           <p>
-            After Sam asked to add 2 p.m. and the swap rule,{" "}
-            <strong>Draft 2</strong> included both facts — but grew to four
-            wordy sentences, breaking the three-sentence limit.
+            Even with Sam’s targeted Round 1 note, <strong>Draft 2</strong>{" "}
+            added both facts but grew to four wordy sentences, breaking the
+            exact three-sentence limit.
           </p>
           <p>
             In Round 2, Sam gave targeted feedback naming both change and keep:

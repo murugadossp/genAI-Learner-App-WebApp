@@ -86,7 +86,7 @@ const ROUND_1_OPTIONS: ChoiceOption<Round1Key>[] = [
     key: "targeted-facts",
     tag: "Targeted — add missing facts",
     prompt:
-      "Add two missing facts: the time is 2 p.m., and the rule is bring one book to take one book.",
+      "Keep it short and in plain words. Add two missing facts: the time is 2 p.m., and the rule is bring one book to take one book.",
     result: {
       versionLabel: "Draft 2B (after Round 1)",
       sentenceSummary: "4 sentences (too long)",
@@ -103,7 +103,7 @@ const ROUND_1_OPTIONS: ChoiceOption<Round1Key>[] = [
         },
       ],
       insight:
-        "Naming the missing facts fixed both gaps, but because the note did not say to keep three short sentences, Draft 2B drifted to 4 sentences. Now choose a Round 2 revision.",
+        "Targeted feedback fixed both missing facts, yet comparing Draft 2B with the original list still catches drift: it grew to 4 sentences. Now choose a Round 2 revision.",
     },
   },
   {
