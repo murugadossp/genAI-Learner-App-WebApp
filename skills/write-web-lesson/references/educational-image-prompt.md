@@ -11,7 +11,7 @@ One master prompt for every lesson illustration. It works with any CLI that can 
 Recommended values for lesson images:
 
 - **ASPECT_RATIO:** `3:2`. On a 390px phone a 3:2 image is about 260px tall, which leaves room for the diagram. 16:9 gives less height for the same width, and 1:1 takes more vertical space than most lessons can spare.
-- **TEXT_POLICY:** list every exact string that should appear in `KEY_ELEMENTS`, `ANALOGY`, and `KEY_TAKEAWAYS` (including banner title, subtitle, card labels, table values, bottom-left analogy text, and bottom-right takeaway bullets), and say that they are the only text allowed. Keep each label short and avoid embedding multi-line code blocks inside images (render code in the lesson's `<Code>` component instead). View the result and check each label's spelling.
+- **TEXT_POLICY:** refer to `KEY_ELEMENTS`, `ANALOGY`, and `KEY_TAKEAWAYS` as the single source of truth for exact quoted strings (banner title, subtitle, card labels, table values, bottom-left analogy text, and bottom-right takeaway bullets) and say that those exact quoted strings are the only text allowed. Keep each label short and avoid embedding multi-line code blocks inside images (render code in the lesson's `<Code>` component instead). View the result and check each label's spelling.
 - **ANALOGY:** describe the simple visual metaphor and the exact quoted text (heading `"Analogy"` plus 1–2 short plain-language lines) for the bottom-left card.
 - **KEY_TAKEAWAYS:** provide the heading `"Key takeaways"` plus 2–3 short checkmarked bullets (about 5–10 words each, exact quoted strings) for the bottom-right card.
 - **REFERENCE_IMAGE:** Copy `skills/write-web-lesson/references/infographic-style-ref.webp` into your image scratch folder (for example `<scratch>/style-ref.webp`) and pass that absolute scratch path here so sandboxed CLIs (`agy --sandbox --add-dir "$PWD"` and `codex exec --sandbox workspace-write` run from `<scratch>`) can read it. Use it for visual style only (palette, card shapes, arrow styling, typography, spacing), never its Python/DataFrame subject matter, and always use the two-card bottom band (`Analogy` left + `Key takeaways` right) even if the reference image shows a single bottom strip. Use `None` only if you intentionally want a different visual style.
@@ -179,7 +179,7 @@ The illustration must:
 2. Select the most suitable educational visual structure.
 3. Compose a clear, mobile-first illustration.
 4. Invoke the available image-generation tool.
-5. Inspect the generated result if inspection is supported: check that every exact quoted string listed in KEY_ELEMENTS, ANALOGY, and KEY_TAKEAWAYS appears exactly as written and that no other text appears.
+5. Inspect the generated result if inspection is supported: check that every exact quoted string listed in KEY_ELEMENTS, ANALOGY, and KEY_TAKEAWAYS appears exactly as written with no other text, that the bottom band renders as two distinct side-by-side cards (`Analogy` on the left, `Key takeaways` on the right), and that all text remains crisp and readable at 390px phone width.
 6. Regenerate or refine if major issues are identified and the tool supports it.
 7. Save or copy the generated image to:
 
