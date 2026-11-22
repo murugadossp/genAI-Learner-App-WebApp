@@ -1,7 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
 import { CutoffLab } from "./CutoffLab";
+import cutoffVisual from "./images/knowledge-cutoff-and-fresh-information.webp";
+import styles from "./lesson.module.css";
 export default function Lesson() {
   return (
     <LessonFrame
@@ -33,6 +36,17 @@ export default function Lesson() {
           text. It does not move when someone chats with the model, and it says
           nothing about what has happened since.
         </div>
+        <figure className={styles.figure}>
+          <Image
+            src={cutoffVisual}
+            alt="A timeline shows most training text ending at the knowledge cutoff and chat happening later with older patterns. A current dated source is added to the request; the model weights remain unchanged. A printed guide and dated note illustrate the idea."
+            sizes="(min-width: 760px) 720px, 100vw"
+          />
+          <figcaption className="micro">
+            A current source can be supplied to the model, but important details
+            still need checking.
+          </figcaption>
+        </figure>
       </section>
       <section id="timeline">
         <h2 tabIndex={-1}>Move the cutoff on a toy timeline.</h2>
