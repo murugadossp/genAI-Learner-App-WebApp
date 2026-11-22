@@ -1,7 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "../../Check";
 import { WindowLab } from "./WindowLab";
+import contextVisual from "./images/context-window.webp";
+import styles from "./lesson.module.css";
 export default function Lesson() {
   return (
     <LessonFrame
@@ -27,6 +30,17 @@ export default function Lesson() {
           <strong>Key idea:</strong> a long chat in the interface is not proof
           that every earlier message is present in the model’s current context.
         </div>
+        <figure className={styles.figure}>
+          <Image
+            src={contextVisual}
+            alt="An application selects recent messages, a summary, and a retrieved note for a bounded context window, reserving space for the answer. Model weights and external memory are shown separately, with a limited desk as an analogy."
+            sizes="(min-width: 760px) 720px, 100vw"
+          />
+          <figcaption className="micro">
+            The application assembles the request from information the model can
+            use now.
+          </figcaption>
+        </figure>
       </section>
       <section id="window">
         <h2 tabIndex={-1}>Make room in a toy window.</h2>
