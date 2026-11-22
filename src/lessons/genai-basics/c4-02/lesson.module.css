@@ -1,0 +1,413 @@
+.example {
+  margin: 18px 0;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.example strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.example p {
+  margin: 0;
+}
+
+.figure {
+  margin: 20px 0;
+}
+
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.figure figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.steps {
+  margin: 14px 0 18px;
+  padding-left: 20px;
+  display: grid;
+  gap: 8px;
+}
+
+.tableWrap {
+  margin: 16px 0;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.dataTable th,
+.dataTable td {
+  padding: 8px 8px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.dataTable thead th {
+  background: var(--panel);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.dataTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.limitGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 16px 0 20px;
+}
+
+.limitCard {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.limitCard h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.limitCard p {
+  margin: 0;
+}
+
+.qaList {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+  display: grid;
+  gap: 12px;
+}
+
+.qaItem {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.qaItem strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.qaItem p {
+  margin: 0;
+}
+
+.takeawayBox {
+  padding: 18px 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+.takeawayBox p {
+  margin: 0 0 10px;
+}
+
+.takeawayBox p:last-child {
+  margin-bottom: 0;
+}
+
+/* Interactive Regression Lab */
+.lab {
+  margin: 18px 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  display: grid;
+  gap: 14px;
+}
+
+.labNote {
+  margin: 0;
+  color: var(--muted);
+}
+
+.presetRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+button.presetBtn {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+button.presetBtn[aria-pressed="true"],
+button.presetBtn[aria-pressed="true"]:not(:disabled):hover {
+  background: var(--accent) !important;
+  color: var(--on-accent) !important;
+  border-color: var(--accent) !important;
+}
+
+button.resetBtn {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.metricCard {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+}
+
+.metricLabel {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+.metricValue {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.chartWrap {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+  padding: 10px;
+}
+
+.chartSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: none;
+  user-select: none;
+}
+
+.axisLine {
+  stroke: var(--muted);
+  stroke-width: 1.5;
+}
+
+.gridLine {
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+
+.axisText {
+  fill: var(--muted);
+  font-size: 12px;
+}
+
+.axisTitle {
+  fill: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.fittedLine {
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.guideLine {
+  stroke: var(--muted);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 4;
+}
+
+.errorLine {
+  stroke: #d9534f;
+  stroke-width: 2;
+  stroke-dasharray: 3 3;
+}
+
+.estimateMarker {
+  fill: var(--green);
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.pointGroup {
+  cursor: ns-resize;
+}
+
+.pointHandle {
+  fill: var(--accent);
+  stroke: var(--paper);
+  stroke-width: 2.5;
+}
+
+.pointHandleSelected {
+  fill: var(--orange);
+  stroke: var(--ink);
+  stroke-width: 2.5;
+}
+
+.pointLabel {
+  fill: var(--ink);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.legendRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 8px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.swatchDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: inline-block;
+}
+
+.swatchLine {
+  width: 16px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--accent);
+  display: inline-block;
+}
+
+.swatchDiamond {
+  width: 10px;
+  height: 10px;
+  background: var(--green);
+  border: 1.5px solid var(--ink);
+  transform: rotate(45deg);
+  display: inline-block;
+}
+
+.swatchError {
+  width: 14px;
+  height: 0;
+  border-top: 2px dashed #d9534f;
+  display: inline-block;
+}
+
+.adjusterBox {
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  display: grid;
+  gap: 10px;
+}
+
+.adjusterHeader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.pointPickerRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+button.pointChip {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+button.pointChip[aria-pressed="true"],
+button.pointChip[aria-pressed="true"]:not(:disabled):hover {
+  background: var(--accent) !important;
+  color: var(--on-accent) !important;
+  border-color: var(--accent) !important;
+}
+
+.stepControls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+button.stepBtn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.statusBar {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 0.9rem;
+}
