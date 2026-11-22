@@ -11,8 +11,10 @@ One master prompt for every lesson illustration. It works with any CLI that can 
 Recommended values for lesson images:
 
 - **ASPECT_RATIO:** `3:2`. On a 390px phone a 3:2 image is about 260px tall, which leaves room for the diagram. 16:9 gives less height for the same width, and 1:1 takes more vertical space than most lessons can spare.
-- **TEXT_POLICY:** list every exact string that should appear in `KEY_ELEMENTS` (including banner title, subtitle, card labels, table values, and bottom strip), and say that they are the only text allowed. Keep each label short and avoid embedding multi-line code blocks inside images (render code in the lesson's `<Code>` component instead). View the result and check each label's spelling.
-- **REFERENCE_IMAGE:** Copy `skills/write-web-lesson/references/infographic-style-ref.webp` into your image scratch folder (for example `<scratch>/style-ref.webp`) and pass that absolute scratch path here so sandboxed CLIs (`agy --sandbox --add-dir "$PWD"` and `codex exec --sandbox workspace-write` run from `<scratch>`) can read it. Use it for visual style only (layout, palette, card shapes, typography), never its Python/DataFrame subject matter. Use `None` only if you intentionally want a different visual style.
+- **TEXT_POLICY:** list every exact string that should appear in `KEY_ELEMENTS`, `ANALOGY`, and `KEY_TAKEAWAYS` (including banner title, subtitle, card labels, table values, bottom-left analogy text, and bottom-right takeaway bullets), and say that they are the only text allowed. Keep each label short and avoid embedding multi-line code blocks inside images (render code in the lesson's `<Code>` component instead). View the result and check each label's spelling.
+- **ANALOGY:** describe the simple visual metaphor and the exact quoted text (heading `"Analogy"` plus 1–2 short plain-language lines) for the bottom-left card.
+- **KEY_TAKEAWAYS:** provide the heading `"Key takeaways"` plus 2–3 short checkmarked bullets (about 5–10 words each, exact quoted strings) for the bottom-right card.
+- **REFERENCE_IMAGE:** Copy `skills/write-web-lesson/references/infographic-style-ref.webp` into your image scratch folder (for example `<scratch>/style-ref.webp`) and pass that absolute scratch path here so sandboxed CLIs (`agy --sandbox --add-dir "$PWD"` and `codex exec --sandbox workspace-write` run from `<scratch>`) can read it. Use it for visual style only (palette, card shapes, arrow styling, typography, spacing), never its Python/DataFrame subject matter, and always use the two-card bottom band (`Analogy` left + `Key takeaways` right) even if the reference image shows a single bottom strip. Use `None` only if you intentionally want a different visual style.
 - **OUTPUT_PATH:** an absolute path in the scratch folder, for example `<scratch>/<name>.png`. The image is converted to WebP afterwards.
 
 Learned from the next-token tests (these shaped the template):
@@ -35,6 +37,8 @@ You are an expert educational illustrator, instructional designer, and visual co
 - **VISUAL_DESCRIPTION:** {{VISUAL_DESCRIPTION}}
 - **KEY_ELEMENTS:** {{KEY_ELEMENTS}}
 - **VISUAL_RELATIONSHIPS:** {{VISUAL_RELATIONSHIPS}}
+- **ANALOGY:** {{ANALOGY}}
+- **KEY_TAKEAWAYS:** {{KEY_TAKEAWAYS}}
 - **TECHNICAL_CONSTRAINTS:** {{TECHNICAL_CONSTRAINTS}}
 - **AUDIENCE:** {{AUDIENCE}}
 - **ASPECT_RATIO:** {{ASPECT_RATIO}}
@@ -72,6 +76,14 @@ Relationships, information flow, hierarchy, or sequence:
 
 {{VISUAL_RELATIONSHIPS}}
 
+Bottom-left analogy card (everyday metaphor and exact quoted text):
+
+{{ANALOGY}}
+
+Bottom-right key takeaways card (2–3 short checkmarked bullets, exact quoted text):
+
+{{KEY_TAKEAWAYS}}
+
 Technical correctness requirements:
 
 {{TECHNICAL_CONSTRAINTS}}
@@ -83,7 +95,10 @@ Favor conceptual accuracy and clarity over decoration.
 Infographic layout structure (3-band pastel card):
 - Top band: a soft-lavender rounded header banner containing a short bold title and a one-line subtitle, using only exact strings listed in `KEY_ELEMENTS`.
 - Middle band: the main concept flow arranged cleanly inside pastel semantic cards connected by crisp directional arrows. Do not embed multi-line code blocks; keep labels short and scannable.
-- Bottom band: a full-width soft-amber or cream reinforcement strip holding one concise takeaway that reinforces the same single concept — an everyday analogy, a one-line key takeaway, or a single short valid-vs-error contrast (green check vs red X) when the middle band does not already show a separate comparison. Use only exact strings listed in `KEY_ELEMENTS`; if `KEY_ELEMENTS` provides no text for a band, omit that band's text rather than inventing copy.
+- Bottom band: a two-card side-by-side reinforcement row reinforcing the same single concept:
+  - Left card (`Analogy`): a soft-amber or cream rounded card with a small, clean visual metaphor illustration and 1–2 short lines of text using only the exact quoted strings from `ANALOGY`.
+  - Right card (`Key takeaways`): a soft-lavender or soft-coral rounded card titled `"Key takeaways"` with 2–3 short checkmarked bullet lines (about 5–10 words each) using only the exact quoted strings from `KEY_TAKEAWAYS`.
+  - Do not invent extra headings, footnotes, or bullets beyond the exact quoted strings in `KEY_ELEMENTS`, `ANALOGY`, and `KEY_TAKEAWAYS`.
 
 Visual style:
 - Premium 2D vector-style educational illustration.
@@ -100,13 +115,14 @@ Semantic color palette (use soft pastel tints for card fills and the hex accents
 - Soft lavender / indigo tint (accent `#4F46E5`): header banner, AI models, operations, transformations (with minimal icons such as gears).
 - Soft green / emerald tint (accent `#10B981`): valid outputs, results, completed actions.
 - Soft red / rose tint (accent `#EF4444`): errors, invalid cases, warnings.
-- Soft amber / cream tint (accent `#F59E0B`): bottom takeaway, analogy, or reinforcement strip.
+- Soft amber / cream tint (accent `#F59E0B`): bottom-left `Analogy` card.
+- Soft lavender or soft coral tint (accent `#4F46E5` / `#F97316`): bottom-right `Key takeaways` card with checkmarked bullets.
 - Slate `#0F172A`: text and outlines.
 - Off-white `#F8FAFC`: canvas background.
 
 Use color consistently across all educational illustrations.
 
-If {{REFERENCE_IMAGE}} is a file path (not `None`), treat it strictly as a visual style reference: match its 3-band layout, pastel palette, rounded card shapes, arrow styling, typography, and spacing, while keeping 100% of the text, data, icons, and subject matter specific to {{TOPIC}} and {{KEY_ELEMENTS}} (never copy words, tables, or domain content from the reference image).
+If {{REFERENCE_IMAGE}} is a file path (not `None`), treat it strictly as a visual style reference: match its pastel palette, rounded card shapes, arrow styling, typography, and spacing, while keeping 100% of the text, data, icons, and subject matter specific to {{TOPIC}}, {{KEY_ELEMENTS}}, {{ANALOGY}}, and {{KEY_TAKEAWAYS}} (never copy words, tables, or domain content from the reference image), and always use the two-card bottom band (`Analogy` left, `Key takeaways` right) even if the reference image has a single bottom strip.
 
 ## MOBILE-FIRST COMPOSITION
 
@@ -121,7 +137,7 @@ Composition rules:
 - Design for readability at 390px width (about 260px tall at 3:2).
 - Keep generous outer margins around all three bands so no text or card sits flush against the image boundaries.
 - Prefer one dominant visual flow in the middle band with at most three major visual groups where possible.
-- Keep top-banner subtitles and bottom-strip takeaways to one short, scannable line.
+- Keep the top-banner subtitle to one short line, the bottom-left `Analogy` card to 1–2 short lines, and the bottom-right `Key takeaways` card to 2–3 brief checkmarked bullets (about 5–10 words each) so all text remains crisp at 390px width.
 - If a card includes a mini-table, keep it compact (at most 3–4 short columns and 3–5 short rows with brief values); if the data is denser, simplify to label chips rather than shrinking text.
 - Use large recognizable objects.
 - Make arrows, connections, and relationships immediately understandable.
@@ -137,7 +153,7 @@ Prioritize visual legibility over the number of details.
 Follow: {{TEXT_POLICY}}
 
 Default behavior:
-- Embed text only for the exact quoted strings listed in KEY_ELEMENTS (surrounding unquoted prose in KEY_ELEMENTS is visual/layout guidance and must not be rendered as text). Every listed quoted string must appear exactly as written. A string may appear more than once where the concept needs it (for example a candidate that is also the output). No other words may appear.
+- Embed text only for the exact quoted strings listed in KEY_ELEMENTS, ANALOGY, and KEY_TAKEAWAYS (surrounding unquoted prose in those fields is visual/layout guidance and must not be rendered as text). Every listed quoted string must appear exactly as written. A string may appear more than once where the concept needs it (for example a candidate that is also the output). No other words may appear.
 - Communicate concepts through objects, connections, and visual metaphors; use text for the listed quoted strings only.
 - Label each listed element (boxes, chips, bars, outputs) with its listed quoted string.
 - Never include lengthy explanations, paragraphs, or tiny annotations.
@@ -163,7 +179,7 @@ The illustration must:
 2. Select the most suitable educational visual structure.
 3. Compose a clear, mobile-first illustration.
 4. Invoke the available image-generation tool.
-5. Inspect the generated result if inspection is supported: check that every word listed in KEY_ELEMENTS appears exactly as written and that no other text appears.
+5. Inspect the generated result if inspection is supported: check that every exact quoted string listed in KEY_ELEMENTS, ANALOGY, and KEY_TAKEAWAYS appears exactly as written and that no other text appears.
 6. Regenerate or refine if major issues are identified and the tool supports it.
 7. Save or copy the generated image to:
 
