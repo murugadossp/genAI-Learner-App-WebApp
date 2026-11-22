@@ -1,0 +1,18 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c3-10",
+  "title": "Deciding what to hand to AI",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "roadmap", "title": "Not every task belongs to AI." },
+    {
+      "id": "three-questions",
+      "title": "Three questions to ask before you delegate."
+    },
+    { "id": "three-modes", "title": "Three ways to split the work." },
+    { "id": "sort-lab", "title": "Sort six of Priya’s tasks." },
+    { "id": "limits", "title": "Where this guide is too tidy." },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
