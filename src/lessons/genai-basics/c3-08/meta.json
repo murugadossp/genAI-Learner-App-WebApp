@@ -1,0 +1,36 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c3-08",
+  "title": "Checking facts, sources and generated code",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "principle",
+      "title": "One habit covers facts, sources, and code"
+    },
+    {
+      "id": "facts",
+      "title": "Checking facts: go to the primary record"
+    },
+    {
+      "id": "sources",
+      "title": "Checking sources: a citation is a lead, not proof"
+    },
+    {
+      "id": "code",
+      "title": "Checking generated code (optional)"
+    },
+    {
+      "id": "lab",
+      "title": "Lab: verify Maya’s AI draft step by step"
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding"
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you"
+    }
+  ]
+}
