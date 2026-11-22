@@ -1,0 +1,44 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c3-04",
+  "title": "Teaching through examples",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "roadmap",
+      "title": "What you will learn in this lesson."
+    },
+    {
+      "id": "why-examples",
+      "title": "Showing a pattern can be clearer than describing it."
+    },
+    {
+      "id": "shot-counts",
+      "title": "Zero-shot, one-shot, and few-shot."
+    },
+    {
+      "id": "limits",
+      "title": "Examples guide a reply; they do not guarantee it."
+    },
+    {
+      "id": "no-retraining",
+      "title": "Examples stay in the current context; they do not retrain the model."
+    },
+    {
+      "id": "lab",
+      "title": "Try it: add examples and watch the style shift."
+    },
+    {
+      "id": "questions",
+      "title": "Quick questions."
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
+  ]
+}
