@@ -1,0 +1,19 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c3-07",
+  "title": "Improving an answer through iteration",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "roadmap", "title": "Three habits for revising an AI draft." },
+    { "id": "polish", "title": "Polish is not improvement." },
+    { "id": "feedback", "title": "Give targeted feedback." },
+    {
+      "id": "compare",
+      "title": "Compare every version with your requirements."
+    },
+    { "id": "lab", "title": "Try it: two-round revision exercise." },
+    { "id": "questions", "title": "Quick questions and limits." },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Take this with you." }
+  ]
+}
