@@ -1,0 +1,36 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c4-06",
+  "title": "Reinforcement learning",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "loop",
+      "title": "The reinforcement learning loop"
+    },
+    {
+      "id": "delayed-rewards",
+      "title": "Why rewards can arrive late"
+    },
+    {
+      "id": "reward-not-correct",
+      "title": "Why a high reward does not mean \"correct\""
+    },
+    {
+      "id": "lab",
+      "title": "Guide Pip across the greenhouse"
+    },
+    {
+      "id": "limits",
+      "title": "Where reinforcement learning fits—and its limits"
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding"
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you"
+    }
+  ]
+}
