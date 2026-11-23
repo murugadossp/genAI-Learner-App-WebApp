@@ -49,15 +49,29 @@ for (const width of [390, 768, 1440])
       });
       await expect(auditTab).toHaveAttribute("aria-pressed", "true");
 
-      // Active button hover contrast check
+      // Active button hover WCAG contrast check (>= 4.5:1)
       await auditTab.hover();
-      const hoverColors = await auditTab.evaluate((el) => {
+      const contrastRatio = await auditTab.evaluate((el) => {
+        const parseRgb = (css: string) => {
+          const m = css.match(/\d+(\.\d+)?/g);
+          if (!m || m.length < 3) return [0, 0, 0];
+          return m.slice(0, 3).map(Number);
+        };
+        const luminance = ([r, g, b]: number[]) => {
+          const [rs, gs, bs] = [r, g, b].map((v) => {
+            const s = v / 255;
+            return s <= 0.03928
+              ? s / 12.92
+              : Math.pow((s + 0.055) / 1.055, 2.4);
+          });
+          return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+        };
         const cs = getComputedStyle(el);
-        return { bg: cs.backgroundColor, fg: cs.color };
+        const l1 = luminance(parseRgb(cs.backgroundColor));
+        const l2 = luminance(parseRgb(cs.color));
+        return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
       });
-      expect(hoverColors.bg).not.toBe(hoverColors.fg);
-      expect(hoverColors.bg).not.toBe("rgb(237, 240, 231)");
-      expect(hoverColors.bg).not.toBe("rgb(44, 54, 46)");
+      expect(contrastRatio).toBeGreaterThanOrEqual(4.5);
 
       // Mode 1: wrong choice then correct missing setting in bus helper
       await lab.getByRole("button", { name: /Quiet indoor hall/ }).click();
