@@ -1409,3 +1409,82 @@ button:disabled {
 .pipeline-track{display:flex;flex-direction:column;overflow:visible;padding:.5rem 0}.pipeline-unit{display:flex;flex-direction:column;align-items:stretch}.pipeline-stage{width:100%;min-height:0;gap:.3rem}.pipeline-example{font-size:.9rem;overflow-wrap:anywhere}.pipeline-arrow{text-align:center;padding:.15rem;color:var(--muted)}.pipeline-detail{min-height:0;margin-top:.4rem}.pipeline-detail p{margin:0}
 .card.coming-soon{cursor:default}.card.coming-soon:hover{transform:none;box-shadow:none}
 .coming-soon .pill{background:var(--panel);color:var(--muted);border:1px solid var(--line)}
+
+/* Lesson footer previous / next navigation */
+.lesson-footer-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+}
+.lesson-nav-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.lesson-nav-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  color: var(--ink);
+  text-decoration: none;
+  min-width: 0;
+  transition:
+    border-color 0.15s,
+    background-color 0.15s,
+    transform 0.15s;
+}
+.lesson-nav-card:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+}
+.lesson-nav-card:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+.lesson-nav-prev {
+  grid-column: 1;
+}
+.lesson-nav-next {
+  grid-column: 2;
+  text-align: right;
+  align-items: flex-end;
+}
+.lesson-nav-dir {
+  font:
+    600 11px/1.4 ui-monospace,
+    monospace;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--accent);
+}
+.lesson-nav-title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+.lesson-nav-overview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+@media (max-width: 640px) {
+  .lesson-nav-links {
+    grid-template-columns: 1fr;
+  }
+  .lesson-nav-prev,
+  .lesson-nav-next {
+    grid-column: auto;
+    text-align: left;
+    align-items: flex-start;
+  }
+}
