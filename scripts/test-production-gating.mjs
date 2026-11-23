@@ -97,7 +97,12 @@ try {
     const html = await response.text();
     if (path === "/" && html.includes("coming soon"))
       throw new Error("Production home is still the placeholder");
-    if (path === "/" || path === "/studio" || path.startsWith("/course")) {
+    if (
+      path === "/" ||
+      path === "/studio" ||
+      path.startsWith("/course") ||
+      (path.startsWith("/learn/") && expected === 200)
+    ) {
       const published = new Set(
         lessons()
           .filter((lesson) => lesson.webStatus === "published")

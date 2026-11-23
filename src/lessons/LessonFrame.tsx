@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Shell from "../studio/Shell";
+import { LessonNav } from "./LessonNav";
 export function LessonFrame({
   number,
   title,
@@ -29,6 +30,10 @@ export function LessonFrame({
     label: chapterLabel ?? chapter.label,
     href: courseHref ?? chapter.href,
   };
+  const backLabel =
+    courseLabel && courseLabel !== "Learning path"
+      ? courseLabel
+      : activeChapter.label || "the learning path";
   const body = (
     <div className="lesson-shell">
       <div className="lesson-toolbar">
@@ -54,14 +59,10 @@ export function LessonFrame({
         </div>
         {children}
         {footer && (
-          <div className="end-lesson">
-            <Link className="text-link" href={activeChapter.href}>
-              ← Back to{" "}
-              {courseLabel && courseLabel !== "Learning path"
-                ? courseLabel
-                : "the learning path"}
-            </Link>
-          </div>
+          <LessonNav
+            chapterHref={activeChapter.href}
+            chapterLabel={backLabel}
+          />
         )}
       </article>
     </div>

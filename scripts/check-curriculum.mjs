@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { lessons, production } from "./lesson-registry.mjs";
+import { buildLessonNav } from "./lesson-nav.mjs";
 const curriculum = JSON.parse(
   readFileSync("src/data/curriculum/curriculum.json"),
 );
@@ -27,4 +28,9 @@ writeFileSync(
     null,
     2,
   ) + "\n",
+);
+writeFileSync(
+  "src/data/lesson-nav.json",
+  JSON.stringify(buildLessonNav(curriculum, all, { production }), null, 2) +
+    "\n",
 );
