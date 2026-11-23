@@ -1,0 +1,32 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c4-05",
+  "title": "Self-supervised learning",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "no-hand-labels",
+      "title": "Why people do not label every sentence"
+    },
+    {
+      "id": "two-hiding-tasks",
+      "title": "Two ways to hide text and make targets"
+    },
+    {
+      "id": "lab",
+      "title": "Hide a word and see how data makes its own target"
+    },
+    {
+      "id": "limits",
+      "title": "What self-supervised learning can and cannot do"
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding"
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you"
+    }
+  ]
+}
