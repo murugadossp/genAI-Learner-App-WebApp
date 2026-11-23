@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c4-06",
   "title": "Reinforcement learning",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     {
       "id": "loop",
@@ -22,7 +22,7 @@
     },
     {
       "id": "limits",
-      "title": "Where reinforcement learning fits—and its limits"
+      "title": "Where reinforcement learning fits\u2014and its limits"
     },
     {
       "id": "check",

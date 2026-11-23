@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c4-05",
   "title": "Self-supervised learning",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     {
       "id": "no-hand-labels",

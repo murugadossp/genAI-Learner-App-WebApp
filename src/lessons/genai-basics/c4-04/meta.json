@@ -2,20 +2,35 @@
   "module": "genai-basics",
   "lessonId": "c4-04",
   "title": "Unsupervised learning and clustering",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
-    { "id": "no-labels", "title": "Learning without answer labels." },
+    {
+      "id": "no-labels",
+      "title": "Learning without answer labels."
+    },
     {
       "id": "similarity",
       "title": "How clustering groups data by similarity."
     },
-    { "id": "lab", "title": "Group Priya’s books by similarity." },
+    {
+      "id": "lab",
+      "title": "Group Priya\u2019s books by similarity."
+    },
     {
       "id": "clusters-vs-categories",
       "title": "Why a cluster may not match a human category."
     },
-    { "id": "limits", "title": "Where clustering helps—and its limits." },
-    { "id": "check", "title": "Check your understanding." },
-    { "id": "takeaway", "title": "Take this with you." }
+    {
+      "id": "limits",
+      "title": "Where clustering helps\u2014and its limits."
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
   ]
 }
