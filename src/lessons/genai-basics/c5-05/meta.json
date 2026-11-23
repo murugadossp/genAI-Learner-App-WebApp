@@ -1,0 +1,36 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c5-05",
+  "title": "Training, validation and test sets",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "why-split",
+      "title": "Why one dataset is not enough"
+    },
+    {
+      "id": "three-roles",
+      "title": "What each split is for"
+    },
+    {
+      "id": "reusing-test",
+      "title": "Why reusing the test set breaks the check"
+    },
+    {
+      "id": "lab",
+      "title": "Try it: build splits and test the workflow"
+    },
+    {
+      "id": "limits",
+      "title": "Practical limits and quick questions"
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding"
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you"
+    }
+  ]
+}
