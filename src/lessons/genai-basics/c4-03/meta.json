@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c4-03",
   "title": "Classification: choosing categories",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     {
       "id": "scores-not-labels",
