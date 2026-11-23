@@ -61,9 +61,9 @@ Tooling (from `references/tooling.yaml`): reviewers tried in order and why any e
 
 Gate checklist: [ ] reviewer and image providers follow the `tooling.yaml` order (skips explained above) [ ] plan review handled [ ] checks pass [ ] content review done [ ] every plan and content round logged (the final review is recorded in the PR description, not in this report)
 
-Stopped after: [two clean rounds / round cap with open findings listed / reviewer unavailable, and what was used instead].
+Stopped after: [clean round / round cap with open findings listed / reviewer unavailable, and what was used instead].
 
-Round count: [number of content rounds and whether two clean rounds in a row were reached]. If the user requested a substantial expansion after review, list those rounds as a new count and say so.
+Round count: [number of content rounds and whether a clean round was reached]. If the user requested a substantial expansion after review, list those rounds as a new count and say so.
 
 Stacking: [not stacked / stacked on `<parent-branch>`, PR base, and plan to rebase onto `main`].
 
