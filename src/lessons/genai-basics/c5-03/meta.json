@@ -1,0 +1,32 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c5-03",
+  "title": "Probability and uncertainty",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "estimates-not-guarantees",
+      "title": "90% is an estimate, not a promise"
+    },
+    {
+      "id": "what-calibration-means",
+      "title": "What makes a probability well calibrated"
+    },
+    {
+      "id": "lab",
+      "title": "Try it: inspect the reliability bar"
+    },
+    {
+      "id": "limits",
+      "title": "What calibration does—and does not—tell you"
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding"
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you"
+    }
+  ]
+}
