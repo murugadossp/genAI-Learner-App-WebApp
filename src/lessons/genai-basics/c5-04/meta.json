@@ -1,0 +1,32 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c5-04",
+  "title": "Updating beliefs with evidence",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "starting-belief",
+      "title": "Start with what you knew before the test"
+    },
+    {
+      "id": "rare-events",
+      "title": "Why rare events create so many false positives"
+    },
+    {
+      "id": "lab",
+      "title": "Test-result calculator: watch the updated belief shift"
+    },
+    {
+      "id": "limits",
+      "title": "When belief updates go wrong in practice"
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding"
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you"
+    }
+  ]
+}
