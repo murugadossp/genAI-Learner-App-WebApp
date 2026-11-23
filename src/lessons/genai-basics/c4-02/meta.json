@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c4-02",
   "title": "Regression: predicting numbers",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     {
       "id": "what-is-regression",

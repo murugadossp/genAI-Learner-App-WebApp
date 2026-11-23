@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c4-01",
   "title": "Supervised learning",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     {
       "id": "what-it-is",
