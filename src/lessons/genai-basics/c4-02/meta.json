@@ -1,0 +1,36 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c4-02",
+  "title": "Regression: predicting numbers",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "what-is-regression",
+      "title": "Predicting a number, not a label."
+    },
+    {
+      "id": "reading-the-line",
+      "title": "How to read a fitted line."
+    },
+    {
+      "id": "estimates-not-guarantees",
+      "title": "Why every prediction is an estimate."
+    },
+    {
+      "id": "lab",
+      "title": "Drag the data points and watch the line move."
+    },
+    {
+      "id": "limits",
+      "title": "What a fitted line can and cannot tell you."
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
+  ]
+}
