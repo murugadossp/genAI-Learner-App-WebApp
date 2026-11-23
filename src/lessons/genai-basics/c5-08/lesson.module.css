@@ -1,0 +1,344 @@
+.example {
+  margin: 18px 0;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.example > strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.example p:last-child {
+  margin-bottom: 0;
+}
+
+.figure {
+  margin: 22px 0;
+}
+
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.figure figcaption {
+  margin-top: 8px;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.infoCard {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.infoCard h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.infoCard p {
+  margin: 0 0 8px;
+}
+
+.infoCard p:last-child {
+  margin-bottom: 0;
+}
+
+.steps {
+  margin: 14px 0 18px;
+  padding-left: 20px;
+}
+
+.steps li {
+  margin-bottom: 6px;
+}
+
+.labBox {
+  margin: 18px 0;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.labHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.controlGroup {
+  margin-bottom: 16px;
+}
+
+.controlLabel {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.sliderRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.slider {
+  flex: 1 1 200px;
+  accent-color: var(--accent);
+}
+
+.thresholdBadge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  background: var(--accent-soft);
+  color: var(--ink);
+  border: 1px solid var(--accent);
+}
+
+.buttonRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.presetBtn {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  transition:
+    background-color 0.12s ease,
+    border-color 0.12s ease;
+}
+
+button.presetBtn[aria-pressed="true"],
+button.presetBtn.presetBtn[aria-pressed="true"]:not(:disabled):hover {
+  background: var(--accent) !important;
+  color: var(--on-accent) !important;
+  border-color: var(--accent) !important;
+  transition: none;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.metricCard {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+}
+
+.metricLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.metricValue {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 2px 0;
+}
+
+.metricDetail {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.matrixWrap {
+  overflow-x: auto;
+  margin: 14px 0;
+}
+
+.matrixTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+}
+
+.matrixTable th,
+.matrixTable td {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  text-align: left;
+}
+
+.matrixTable th {
+  background: var(--panel);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.cellGood {
+  background: var(--green);
+  color: var(--highlight-ink);
+}
+
+.cellWarn {
+  background: var(--orange);
+  color: var(--highlight-ink);
+}
+
+.cellCount {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.cellName {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.summaryBanner {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  font-size: 14px;
+  margin: 14px 0;
+}
+
+.txList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.txItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  font-size: 13px;
+}
+
+.txMain {
+  min-width: 0;
+}
+
+.txName {
+  display: block;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.txMeta {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.badge {
+  flex-shrink: 0;
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+
+.badgeGood {
+  background: var(--green);
+  color: var(--highlight-ink);
+}
+
+.badgeWarn {
+  background: var(--orange);
+  color: var(--highlight-ink);
+}
+
+.badgeNeutral {
+  background: var(--panel);
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.disclaimer {
+  margin: 14px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.qaList {
+  margin: 18px 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.qaItem {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.qaItem strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.qaItem p {
+  margin: 0;
+}
+
+.takeawayBox {
+  padding: 20px 22px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+}
+
+.takeawayBox p:last-child {
+  margin-bottom: 0;
+}
