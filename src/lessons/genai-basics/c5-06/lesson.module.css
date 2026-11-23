@@ -1,0 +1,336 @@
+.example {
+  margin: 18px 0;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.example > strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.example p:last-child {
+  margin-bottom: 0;
+}
+
+.figure {
+  margin: 22px 0;
+}
+
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.figure figcaption {
+  margin-top: 8px;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.infoCard {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.infoCard h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.infoCard p {
+  margin: 0 0 8px;
+}
+
+.infoCard p:last-child {
+  margin-bottom: 0;
+}
+
+.steps {
+  margin: 14px 0 18px;
+  padding-left: 20px;
+}
+
+.steps li {
+  margin-bottom: 6px;
+}
+
+.labBox {
+  margin: 18px 0;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.labHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.controlGroup {
+  margin-bottom: 16px;
+}
+
+.controlLabel {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.buttonRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.presetBtn,
+.toggleBtn {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  transition:
+    background-color 0.12s ease,
+    border-color 0.12s ease;
+}
+
+button.presetBtn[aria-pressed="true"],
+button.presetBtn[aria-pressed="true"]:not(:disabled):hover,
+button.toggleBtn[aria-pressed="true"],
+button.toggleBtn[aria-pressed="true"]:not(:disabled):hover {
+  background: var(--accent) !important;
+  color: var(--on-accent) !important;
+  border-color: var(--accent) !important;
+  transition: none;
+}
+
+.sliderRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.slider {
+  flex: 1 1 200px;
+  min-width: 180px;
+  accent-color: var(--accent);
+}
+
+.sliderValue {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.chartWrap {
+  margin: 16px 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+}
+
+.chartSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.axisLine {
+  stroke: var(--line);
+  stroke-width: 1.5;
+}
+
+.gridLine {
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+  opacity: 0.7;
+}
+
+.axisText {
+  fill: var(--muted);
+  font-size: 11px;
+  font-family: inherit;
+}
+
+.predLine {
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.residualLine {
+  stroke: var(--orange);
+  stroke-width: 2.5;
+  stroke-dasharray: 4 3;
+}
+
+.dataPoint {
+  fill: var(--ink);
+  stroke: var(--paper);
+  stroke-width: 2;
+}
+
+.outlierPoint {
+  fill: var(--accent);
+  stroke: var(--paper);
+  stroke-width: 2.5;
+}
+
+.scoreGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.scoreCard {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+}
+
+.scoreCardActive {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.scoreLabel {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.scoreCardActive .scoreLabel {
+  color: var(--ink);
+}
+
+.scoreNumber {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.scoreNote {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.scoreCardActive .scoreNote {
+  color: var(--ink);
+}
+
+.insightBox {
+  margin: 12px 0 16px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.tableWrap {
+  overflow-x: auto;
+  margin: 14px 0;
+}
+
+.tripTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.tripTable th,
+.tripTable td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.tripTable th {
+  background: var(--panel);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.disclaimer {
+  margin: 12px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.qaList {
+  margin: 18px 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.qaItem {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.qaItem strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.qaItem p {
+  margin: 0 0 8px;
+}
+
+.qaItem p:last-child {
+  margin-bottom: 0;
+}
+
+.takeawayBox {
+  padding: 20px 22px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+}
+
+.takeawayBox p:last-child {
+  margin-bottom: 0;
+}
