@@ -1,0 +1,36 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c5-02",
+  "title": "Cleaning data and missing values",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "what-cleaning-is",
+      "title": "What data cleaning checks"
+    },
+    {
+      "id": "formats-and-errors",
+      "title": "Formats and errors"
+    },
+    {
+      "id": "missing-values",
+      "title": "Missing values and choices"
+    },
+    {
+      "id": "lab",
+      "title": "Fix Nadia's messy table"
+    },
+    {
+      "id": "limits",
+      "title": "Habits and limits"
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding"
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you"
+    }
+  ]
+}
