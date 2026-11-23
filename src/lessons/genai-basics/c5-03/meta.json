@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c5-03",
   "title": "Probability and uncertainty",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     {
       "id": "estimates-not-guarantees",
