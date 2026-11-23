@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c5-02",
   "title": "Cleaning data and missing values",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     {
       "id": "what-cleaning-is",

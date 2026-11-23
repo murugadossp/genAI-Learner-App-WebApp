@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c5-05",
   "title": "Training, validation and test sets",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     {
       "id": "why-split",
