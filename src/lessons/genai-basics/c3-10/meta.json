@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c3-10",
   "title": "Deciding what to hand to AI",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     { "id": "roadmap", "title": "Not every task belongs to AI." },
     {

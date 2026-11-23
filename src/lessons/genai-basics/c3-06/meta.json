@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c3-06",
   "title": "Breaking complex tasks into steps",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     { "id": "roadmap", "title": "Why one big prompt hides mistakes." },
     { "id": "split", "title": "Split one big goal into checkable subtasks." },

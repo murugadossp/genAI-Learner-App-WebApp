@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c3-07",
   "title": "Improving an answer through iteration",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     { "id": "roadmap", "title": "Three habits for revising an AI draft." },
     { "id": "polish", "title": "Polish is not improvement." },

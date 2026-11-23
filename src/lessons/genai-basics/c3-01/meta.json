@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c3-01",
   "title": "Giving clear goals and instructions",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     { "id": "vague", "title": "Why vague requests miss the mark." },
     {
