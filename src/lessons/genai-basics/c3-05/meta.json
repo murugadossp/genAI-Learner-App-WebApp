@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c3-05",
   "title": "Requesting structured outputs",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     { "id": "roadmap", "title": "Ask for a shape, then check it." },
     {

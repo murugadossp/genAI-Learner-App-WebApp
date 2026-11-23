@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c3-02",
   "title": "Providing context and constraints",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     { "id": "roadmap", "title": "Four checks before you paste." },
     { "id": "context", "title": "Supply only the relevant background." },

@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c3-03",
   "title": "System instructions and roles",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     {
       "id": "why-instructions",

@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c3-09",
   "title": "Choosing the right model for a task",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     { "id": "leaderboard", "title": "Beyond the leaderboard" },
     { "id": "capability-speed-cost", "title": "Capability, speed, and cost" },
