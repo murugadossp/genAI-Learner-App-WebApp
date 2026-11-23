@@ -1,0 +1,36 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c4-01",
+  "title": "Supervised learning",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "what-it-is",
+      "title": "Learning from examples with known answers"
+    },
+    {
+      "id": "inputs-and-targets",
+      "title": "Telling inputs apart from targets"
+    },
+    {
+      "id": "lab",
+      "title": "Walk through Sam's spam filter"
+    },
+    {
+      "id": "not-all-ml",
+      "title": "Does all machine learning need labels?"
+    },
+    {
+      "id": "limits",
+      "title": "What supervised learning depends on"
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding"
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you"
+    }
+  ]
+}
