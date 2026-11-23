@@ -1,0 +1,32 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c5-01",
+  "title": "Collecting representative data",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "who-it-serves",
+      "title": "Start with who and what the model serves"
+    },
+    {
+      "id": "more-data-myth",
+      "title": "Why more data is not always better data"
+    },
+    {
+      "id": "lab",
+      "title": "Spot the missing group in a sample"
+    },
+    {
+      "id": "how-to-check",
+      "title": "How to spot gaps before you train"
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding"
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you"
+    }
+  ]
+}
