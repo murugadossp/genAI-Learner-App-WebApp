@@ -1,6 +1,27 @@
 import { test, expect } from "@playwright/test";
 import meta from "../../src/lessons/genai-basics/c5-05/meta.json";
 
+function parseRgb(color: string): [number, number, number] {
+  const match = color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+  if (!match) throw new Error(`Unexpected RGB color: ${color}`);
+  return [Number(match[1]), Number(match[2]), Number(match[3])];
+}
+
+function relativeLuminance([r, g, b]: [number, number, number]): number {
+  const toLinear = (c: number) => {
+    const s = c / 255;
+    return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+  };
+  return 0.2126 * toLinear(r) + 0.7152 * toLinear(g) + 0.0722 * toLinear(b);
+}
+
+function contrastRatio(fg: string, bg: string): number {
+  const l1 = relativeLuminance(parseRgb(fg));
+  const l2 = relativeLuminance(parseRgb(bg));
+  const [light, dark] = l1 >= l2 ? [l1, l2] : [l2, l1];
+  return (light + 0.05) / (dark + 0.05);
+}
+
 for (const width of [390, 768, 1440])
   for (const theme of ["light", "dark"] as const) {
     test(`${width}px ${theme}: c5-05 training, validation and test sets`, async ({
@@ -8,11 +29,12 @@ for (const width of [390, 768, 1440])
     }) => {
       await page.setViewportSize({ width, height: 900 });
       await page.emulateMedia({ colorScheme: theme });
-      await page.addInitScript(
-        (t) => localStorage.setItem("genai-theme", t),
-        theme,
-      );
       await page.goto("/learn/genai-basics/c5-05");
+      await page.evaluate((t) => {
+        localStorage.setItem("genai-theme", t);
+        document.documentElement.dataset.theme = t;
+      }, theme);
+      await page.reload();
 
       await expect(page.locator(".eyebrow").first()).toContainText(
         "Data and Evaluation / Lesson 05",
@@ -49,13 +71,15 @@ for (const width of [390, 768, 1440])
       });
       await expect(assignTab).toHaveAttribute("aria-pressed", "true");
 
-      // Active button hover contrast check
+      // Active button hover contrast check (WCAG AA >= 4.5:1)
       await assignTab.hover();
       const hoverColors = await assignTab.evaluate((el) => {
         const cs = getComputedStyle(el);
         return { bg: cs.backgroundColor, fg: cs.color };
       });
-      expect(hoverColors.bg).not.toBe(hoverColors.fg);
+      expect(
+        contrastRatio(hoverColors.fg, hoverColors.bg),
+      ).toBeGreaterThanOrEqual(4.5);
       expect(hoverColors.bg).not.toBe("rgb(237, 240, 231)");
       expect(hoverColors.bg).not.toBe("rgb(44, 54, 46)");
 
@@ -111,23 +135,7 @@ for (const width of [390, 768, 1440])
       await expect(lab.getByTestId("workflow-scores")).toContainText("95%");
       await expect(lab.getByTestId("workflow-scores")).toContainText("70%");
 
-      // Theme toggle preserves lab state
-      await page
-        .getByRole("button", { name: "Switch color theme" })
-        .first()
-        .click();
-      await expect(lab.getByTestId("workflow-feedback")).toContainText(
-        "dropped to 70%",
-      );
-
-      // Reset returns to Mode 1 balanced default
-      await lab.getByRole("button", { name: "Reset lab" }).click();
-      await expect(assignTab).toHaveAttribute("aria-pressed", "true");
-      await expect(lab.getByTestId("split-feedback")).toContainText(
-        "All three roles are covered",
-      );
-
-      // Knowledge check
+      // Knowledge check: wrong feedback, retry, correct answer
       const quizStatus = page.locator(".knowledge-check").getByRole("status");
       await page.getByLabel(/300-day log is far too small/).check();
       await page.getByRole("button", { name: "Check answer" }).click();
@@ -143,11 +151,40 @@ for (const width of [390, 768, 1440])
       await page.getByRole("button", { name: "Check answer" }).click();
       await expect(quizStatus).toContainText("Correct");
 
+      // Theme toggle preserves BOTH lab state and quiz state
+      const expectedNextTheme = theme === "light" ? "dark" : "light";
+      await page
+        .getByRole("button", { name: "Switch color theme" })
+        .first()
+        .click();
+      await expect(page.locator("html")).toHaveAttribute(
+        "data-theme",
+        expectedNextTheme,
+      );
+      await expect(lab.getByTestId("workflow-feedback")).toContainText(
+        "dropped to 70%",
+      );
+      await expect(quizStatus).toContainText("Correct");
+
+      // Reset returns to Mode 1 balanced default
+      await lab.getByRole("button", { name: "Reset lab" }).click();
+      await expect(assignTab).toHaveAttribute("aria-pressed", "true");
+      await expect(lab.getByTestId("split-feedback")).toContainText(
+        "All three roles are covered",
+      );
+
       // Bounded horizontal overflow
       expect(
         await page.evaluate(
           () => document.documentElement.scrollWidth <= innerWidth,
         ),
       ).toBeTruthy();
+
+      // Reload verifies theme preference persisted in localStorage
+      await page.reload();
+      await expect(page.locator("html")).toHaveAttribute(
+        "data-theme",
+        expectedNextTheme,
+      );
     });
   }
