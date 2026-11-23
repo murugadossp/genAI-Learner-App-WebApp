@@ -1,6 +1,27 @@
 import { test, expect } from "@playwright/test";
 import meta from "../../src/lessons/genai-basics/c4-03/meta.json";
 
+function parseRgb(color: string): [number, number, number] {
+  const m = color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+  if (!m) throw new Error(`Unexpected rgb color: ${color}`);
+  return [Number(m[1]), Number(m[2]), Number(m[3])];
+}
+
+function relativeLuminance([r, g, b]: [number, number, number]): number {
+  const [rs, gs, bs] = [r, g, b].map((c) => {
+    const s = c / 255;
+    return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+}
+
+function contrastRatio(fg: string, bg: string): number {
+  const l1 = relativeLuminance(parseRgb(fg));
+  const l2 = relativeLuminance(parseRgb(bg));
+  const [lighter, darker] = l1 >= l2 ? [l1, l2] : [l2, l1];
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
 for (const width of [390, 768, 1440])
   for (const theme of ["light", "dark"] as const) {
     test(`${width}px ${theme}: c4-03 classification choosing categories`, async ({
@@ -8,10 +29,12 @@ for (const width of [390, 768, 1440])
     }) => {
       await page.setViewportSize({ width, height: 900 });
       await page.emulateMedia({ colorScheme: theme });
-      await page.addInitScript(
-        (t) => localStorage.setItem("genai-theme", t),
-        theme,
-      );
+      await page.addInitScript((t) => {
+        if (!sessionStorage.getItem("c4-03-seeded-theme")) {
+          localStorage.setItem("genai-theme", t);
+          sessionStorage.setItem("c4-03-seeded-theme", "1");
+        }
+      }, theme);
       await page.goto("/learn/genai-basics/c4-03");
 
       await expect(page.locator(".eyebrow").first()).toContainText(
@@ -51,7 +74,7 @@ for (const width of [390, 768, 1440])
       await expect(lab.getByTestId("missed-spam-count")).toHaveText("0");
       await expect(lab.getByTestId("email-promo")).toContainText("False alarm");
 
-      // Active preset hover contrast check
+      // Active preset hover WCAG contrast ratio check (>= 4.5:1)
       const defaultPreset = lab.getByRole("button", { name: "Default (0.50)" });
       await expect(defaultPreset).toHaveAttribute("aria-pressed", "true");
       await defaultPreset.hover();
@@ -59,9 +82,9 @@ for (const width of [390, 768, 1440])
         const cs = getComputedStyle(el);
         return { bg: cs.backgroundColor, fg: cs.color };
       });
-      expect(hoverColors.bg).not.toBe(hoverColors.fg);
-      expect(hoverColors.bg).not.toBe("rgb(237, 240, 231)");
-      expect(hoverColors.bg).not.toBe("rgb(44, 54, 46)");
+      expect(contrastRatio(hoverColors.fg, hoverColors.bg)).toBeGreaterThan(
+        4.5,
+      );
 
       // Flag less (0.75) preset: 0 false alarms, 1 missed spam
       await lab.getByRole("button", { name: "Flag less (0.75)" }).click();
@@ -84,10 +107,15 @@ for (const width of [390, 768, 1440])
       await expect(lab.getByTestId("missed-spam-count")).toHaveText("0");
 
       // Theme toggle preserves lab state
+      const toggledTheme = theme === "light" ? "dark" : "light";
       await page
         .getByRole("button", { name: "Switch color theme" })
         .first()
         .click();
+      await expect(page.locator("html")).toHaveAttribute(
+        "data-theme",
+        toggledTheme,
+      );
       await expect(lab.getByTestId("threshold-value")).toHaveText("0.20");
       await expect(lab.getByTestId("false-alarm-count")).toHaveText("2");
 
@@ -141,5 +169,12 @@ for (const width of [390, 768, 1440])
           () => document.documentElement.scrollWidth <= innerWidth,
         ),
       ).toBeTruthy();
+
+      // Theme choice persists across reload
+      await page.reload();
+      await expect(page.locator("html")).toHaveAttribute(
+        "data-theme",
+        toggledTheme,
+      );
     });
   }
