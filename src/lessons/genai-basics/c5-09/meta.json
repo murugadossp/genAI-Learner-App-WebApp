@@ -1,0 +1,40 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c5-09",
+  "title": "Data leakage and misleading results",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "what-is-leakage",
+      "title": "What a high test score can miss."
+    },
+    {
+      "id": "target-leakage",
+      "title": "Target leakage: a clue from after the decision."
+    },
+    {
+      "id": "duplicates-and-prep",
+      "title": "Duplicate overlap: the test has seen a copy."
+    },
+    {
+      "id": "preprocessing",
+      "title": "Preprocessing leakage: test data shapes preparation."
+    },
+    {
+      "id": "lab",
+      "title": "Audit Northside’s delivery pipeline."
+    },
+    {
+      "id": "preventing-leakage",
+      "title": "A short audit before trusting a score."
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
+  ]
+}

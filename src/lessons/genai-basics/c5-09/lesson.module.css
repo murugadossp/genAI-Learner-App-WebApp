@@ -1,0 +1,387 @@
+.example {
+  margin: 18px 0;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.example > strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.example p:last-child {
+  margin-bottom: 0;
+}
+
+.figure {
+  margin: 22px 0;
+}
+
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.figure figcaption {
+  margin-top: 8px;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.infoCard {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.infoCard h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.infoCard p {
+  margin: 0 0 8px;
+}
+
+.infoCard p:last-child {
+  margin-bottom: 0;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+.compareTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.compareTable th,
+.compareTable td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.compareTable th {
+  background: var(--panel);
+  color: var(--ink);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.steps {
+  margin: 14px 0 18px;
+  padding-left: 20px;
+}
+
+.steps li {
+  margin-bottom: 6px;
+}
+
+.checklist {
+  margin: 16px 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.checklistItem {
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+}
+
+.checklistItem strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.labBox {
+  margin: 18px 0;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.labHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.headerMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.controlGroup {
+  margin-bottom: 16px;
+}
+
+.controlLabel {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.buttonRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.caseBtn {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  transition:
+    background-color 0.12s ease,
+    border-color 0.12s ease;
+}
+
+button.caseBtn[aria-pressed="true"],
+button.caseBtn[aria-pressed="true"]:not(:disabled):hover {
+  background: var(--accent) !important;
+  color: var(--on-accent) !important;
+  border-color: var(--accent) !important;
+}
+
+.snapshotCard {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+  margin-bottom: 16px;
+}
+
+.snapshotHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.snapshotList {
+  margin: 0 0 14px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.snapshotList li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.snapshotKey {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.scoreGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.scoreCard {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+}
+
+.scoreRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+
+.scoreValue {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.barTrack {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--panel);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.barFillOffline {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 999px;
+  transition: width 0.2s ease;
+}
+
+.barFillLive {
+  height: 100%;
+  background: var(--green);
+  border-radius: 999px;
+  transition: width 0.2s ease;
+}
+
+.optionGrid {
+  display: grid;
+  gap: 8px;
+}
+
+.optionBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 100%;
+  text-align: left;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.optionTitle {
+  font-weight: 600;
+}
+
+.optionDesc {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+button.optionBtn[aria-pressed="true"],
+button.optionBtn[aria-pressed="true"]:not(:disabled):hover {
+  background: var(--accent-soft) !important;
+  color: var(--ink) !important;
+  border-color: var(--accent) !important;
+}
+
+button.optionBtn[aria-pressed="true"] .optionDesc {
+  color: var(--ink);
+}
+
+.feedbackBox {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+}
+
+.feedbackBox p {
+  margin: 0 0 10px;
+}
+
+.feedbackBox p:last-child {
+  margin-bottom: 0;
+}
+
+.actionRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.disclaimer {
+  margin: 14px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.qaList {
+  margin: 18px 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.qaItem {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.qaItem strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.qaItem p {
+  margin: 0 0 8px;
+}
+
+.qaItem p:last-child {
+  margin-bottom: 0;
+}
+
+.takeawayBox {
+  padding: 20px 22px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+}
+
+.takeawayBox p:last-child {
+  margin-bottom: 0;
+}
