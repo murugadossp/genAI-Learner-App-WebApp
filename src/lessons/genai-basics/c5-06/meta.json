@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c5-06",
   "title": "Loss: measuring prediction errors",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     {
       "id": "what-is-loss",

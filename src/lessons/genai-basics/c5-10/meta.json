@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c5-10",
   "title": "Performance across different groups",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     {
       "id": "why-averages-hide",
