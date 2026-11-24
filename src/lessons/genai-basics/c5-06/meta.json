@@ -1,0 +1,36 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c5-06",
+  "title": "Loss: measuring prediction errors",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "what-is-loss",
+      "title": "From a guess to an error score."
+    },
+    {
+      "id": "mae-vs-mse",
+      "title": "Different loss functions punish mistakes differently."
+    },
+    {
+      "id": "lab",
+      "title": "Slide a line and watch the loss change."
+    },
+    {
+      "id": "loss-vs-outcome",
+      "title": "Why low loss does not guarantee a useful model."
+    },
+    {
+      "id": "limits",
+      "title": "Limits and quick questions."
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
+  ]
+}
