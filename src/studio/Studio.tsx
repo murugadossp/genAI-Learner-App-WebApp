@@ -4,6 +4,31 @@ import { useState } from "react";
 import Shell from "./Shell";
 import { Card } from "./Cards";
 import { courses, lessonUrl } from "./data";
+import curriculum from "../data/curriculum/curriculum.json";
+import webLessons from "../data/web-lessons.json";
+
+const publishedChapters = curriculum.chapters.flatMap((chapter) => {
+  const lessonCount = chapter.lessons.filter((lesson) =>
+    webLessons.some(
+      (webLesson) =>
+        webLesson.module === "genai-basics" &&
+        webLesson.lessonId === lesson.slug &&
+        webLesson.webStatus === "published",
+    ),
+  ).length;
+
+  return lessonCount > 0
+    ? [
+        {
+          id: chapter.id,
+          title: chapter.title,
+          lessonCount,
+          href: `/course/chapter-${chapter.id}`,
+        },
+      ]
+    : [];
+});
+
 export default function Studio() {
   const [filter, setFilter] = useState("All");
   const [query, setQuery] = useState("");
@@ -97,6 +122,43 @@ export default function Studio() {
                 </div>
               )}
             </div>
+            <section className="section published-chapters">
+              <div className="section-head">
+                <div>
+                  <div className="eyebrow">Browse by chapter</div>
+                  <h2 id="published-chapters-heading">Published chapters</h2>
+                </div>
+                <span className="micro">
+                  {publishedChapters.length} chapters available
+                </span>
+              </div>
+              <div
+                className="published-chapter-grid"
+                aria-labelledby="published-chapters-heading"
+              >
+                {publishedChapters.map((chapter) => (
+                  <Link
+                    className="published-chapter-card"
+                    href={chapter.href}
+                    key={chapter.id}
+                  >
+                    <span className="published-chapter-number">
+                      Chapter {String(chapter.id).padStart(2, "0")}
+                    </span>
+                    <span className="published-chapter-copy">
+                      <strong>{chapter.title}</strong>
+                      <span>{chapter.lessonCount} published lessons</span>
+                    </span>
+                    <span
+                      className="published-chapter-arrow"
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </section>
           </div>
         </div>
       </div>
