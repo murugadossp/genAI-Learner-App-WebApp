@@ -383,6 +383,53 @@ a.card:hover {
   font-size: 12px;
   color: var(--muted);
 }
+.published-chapters {
+  border-top: 1px solid var(--line);
+  margin-top: 24px;
+}
+.published-chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.published-chapter-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  transition: border-color 0.15s, transform 0.15s;
+}
+.published-chapter-card:hover {
+  border-color: var(--muted);
+  transform: translateY(-2px);
+}
+.published-chapter-number {
+  flex: 0 0 82px;
+  color: var(--muted);
+  font: 11px/1.4 ui-monospace, monospace;
+  text-transform: uppercase;
+}
+.published-chapter-copy {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+.published-chapter-copy strong {
+  font-size: 14px;
+  line-height: 1.35;
+}
+.published-chapter-copy span {
+  color: var(--muted);
+  font-size: 12px;
+}
+.published-chapter-arrow {
+  margin-left: auto;
+  color: var(--accent);
+}
 .dark-panel {
   background: var(--dark);
   color: #f1f4e9;
@@ -1165,7 +1212,8 @@ button:disabled {
     gap: 10px;
   }
   .grid,
-  .workspace .grid {
+  .workspace .grid,
+  .published-chapter-grid {
     grid-template-columns: 1fr;
   }
   .section {
