@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c6-01",
   "title": "Neurons, weights and biases",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     { "id": "idea", "title": "A neuron is a calculation." },
     { "id": "weights", "title": "Inputs get multiplied by weights." },
