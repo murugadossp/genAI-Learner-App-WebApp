@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c5-07",
   "title": "Overfitting and underfitting",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     {
       "id": "pattern-and-fit",

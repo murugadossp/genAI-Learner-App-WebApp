@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c5-08",
   "title": "Accuracy, precision and recall",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     {
       "id": "accuracy-trap",
