@@ -37,11 +37,17 @@ export function GradientLab() {
   const values = trajectory.map((point) => point.w);
   const xMin = Math.min(...values, TARGET) - 2;
   const xMax = Math.max(...values, TARGET) + 2;
-  const lossMax = Math.max(...trajectory.map((point) => point.loss), 1) * 1.15;
   const left = 56;
   const right = 544;
   const top = 28;
   const bottom = 250;
+  const lossMax =
+    Math.max(
+      ...trajectory.map((point) => point.loss),
+      lossAt(xMin),
+      lossAt(xMax),
+      1,
+    ) * 1.15;
   const x = (w: number) => left + ((w - xMin) / (xMax - xMin)) * (right - left);
   const y = (loss: number) => bottom - (loss / lossMax) * (bottom - top);
   const curvePoints = Array.from({ length: 81 }, (_, index) => {

@@ -60,6 +60,20 @@ for (const width of [390, 768, 1440])
         await expect(lab.getByRole("img")).toHaveAccessibleDescription(
           /U-shaped curve[\s\S]*target, 4[\s\S]*current prediction/,
         );
+        const lossCurve = lab
+          .getByTestId("loss-plot")
+          .locator("polyline")
+          .first();
+        await expect
+          .poll(() =>
+            lossCurve.evaluate((curve: SVGPolylineElement) => {
+              const bounds = curve.getBBox();
+              return (
+                bounds.y >= 28 - 0.1 && bounds.y + bounds.height <= 250 + 0.1
+              );
+            }),
+          )
+          .toBeTruthy();
 
         expect(
           await page.evaluate(
