@@ -1,6 +1,8 @@
 import { LessonFrame } from "../../LessonFrame";
+import Image from "next/image";
 import { KnowledgeCheck } from "./KnowledgeCheck";
 import { WeightLab } from "./WeightLab";
+import neuronFlow from "./images/neuron-flow.webp";
 import styles from "./lesson.module.css";
 
 export default function Lesson() {
@@ -50,6 +52,24 @@ export default function Lesson() {
           </a>
           . This lesson studies that calculation before any later processing.
         </p>
+        <p>
+          The made-up umbrella example below previews the numbers: rain signal
+          1, dark-cloud signal 0, weights 2 and −1, and bias −1. The next
+          sections work through each step.
+        </p>
+        <figure className={styles.infographic}>
+          <Image
+            src={neuronFlow}
+            alt="Infographic: One neuron, one calculation. Weighted inputs + bias = score. Inputs × weights: Rain 1 × 2 = 2; Clouds 0 × −1 = 0. Add bias: 2 + 0 + (−1). Score: 1. Analogy: Each clue has a knob that changes its contribution. Key takeaways: ✓ Multiply each input by its weight; ✓ Add bias to the weighted inputs; ✓ The result is a score, not a thought."
+            width={1200}
+            height={805}
+            sizes="(max-width: 600px) 100vw, (max-width: 1100px) 90vw, 800px"
+          />
+          <figcaption className="micro">
+            The two input contributions are added with the bias to produce the
+            score.
+          </figcaption>
+        </figure>
       </section>
 
       <section id="weights">

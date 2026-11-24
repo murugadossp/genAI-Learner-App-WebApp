@@ -8,6 +8,22 @@
   margin: 1rem 0;
 }
 
+.infographic {
+  margin: 1.5rem 0;
+}
+
+.infographic img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.infographic figcaption {
+  margin-top: 0.45rem;
+}
+
 .analogy h3,
 .quickQuestions h3 {
   margin-top: 0;

@@ -32,6 +32,21 @@ for (const width of [390, 768, 1440])
         );
         await expect(page.getByText(/not a tiny brain/).first()).toBeVisible();
 
+        const infographicAlt =
+          "Infographic: One neuron, one calculation. Weighted inputs + bias = score. Inputs × weights: Rain 1 × 2 = 2; Clouds 0 × −1 = 0. Add bias: 2 + 0 + (−1). Score: 1. Analogy: Each clue has a knob that changes its contribution. Key takeaways: ✓ Multiply each input by its weight; ✓ Add bias to the weighted inputs; ✓ The result is a score, not a thought.";
+        const infographic = page.getByRole("img", { name: infographicAlt });
+        await expect(infographic).toBeVisible();
+        await expect(infographic).toHaveAttribute("alt", infographicAlt);
+        await infographic.scrollIntoViewIfNeeded();
+        await expect
+          .poll(() =>
+            infographic.evaluate((element) => {
+              const image = element as HTMLImageElement;
+              return image.complete && image.naturalWidth > 0;
+            }),
+          )
+          .toBeTruthy();
+
         const lab = page.getByTestId("weight-lab");
         const rain = lab.getByRole("checkbox", { name: /Rain signal/ });
         const clouds = lab.getByRole("checkbox", { name: /Dark-cloud signal/ });
