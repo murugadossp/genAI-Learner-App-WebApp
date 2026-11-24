@@ -1,0 +1,36 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c5-08",
+  "title": "Accuracy, precision and recall",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "accuracy-trap",
+      "title": "Why accuracy alone can mislead."
+    },
+    {
+      "id": "confusion-matrix",
+      "title": "Reading a confusion matrix."
+    },
+    {
+      "id": "precision-and-recall",
+      "title": "Precision and recall answer two different questions."
+    },
+    {
+      "id": "lab",
+      "title": "Move the threshold and watch the trade-off."
+    },
+    {
+      "id": "choosing-metrics",
+      "title": "Matching metrics to the cost of mistakes."
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
+  ]
+}
