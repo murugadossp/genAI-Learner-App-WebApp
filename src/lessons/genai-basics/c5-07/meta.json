@@ -1,0 +1,40 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c5-07",
+  "title": "Overfitting and underfitting",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "pattern-and-fit",
+      "title": "The pattern is more useful than every bump."
+    },
+    {
+      "id": "underfitting",
+      "title": "Underfitting misses the pattern."
+    },
+    {
+      "id": "overfitting",
+      "title": "Overfitting memorises bumps."
+    },
+    {
+      "id": "good-fit",
+      "title": "A good fit captures the trend."
+    },
+    {
+      "id": "diagnosing-the-gap",
+      "title": "Compare both errors to diagnose the fit."
+    },
+    {
+      "id": "lab",
+      "title": "Try the curves on Sam’s days."
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
+  ]
+}
