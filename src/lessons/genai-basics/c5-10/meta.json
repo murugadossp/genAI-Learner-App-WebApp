@@ -1,0 +1,36 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c5-10",
+  "title": "Performance across different groups",
+  "webStatus": "draft",
+  "sections": [
+    {
+      "id": "why-averages-hide",
+      "title": "One average can hide a group gap."
+    },
+    {
+      "id": "error-types",
+      "title": "The same accuracy can hide different errors."
+    },
+    {
+      "id": "intersectional",
+      "title": "Combine traits to check more specific groups."
+    },
+    {
+      "id": "lab",
+      "title": "Explore the same calls by group."
+    },
+    {
+      "id": "limits",
+      "title": "Read subgroup results with care."
+    },
+    {
+      "id": "check",
+      "title": "Check your understanding."
+    },
+    {
+      "id": "takeaway",
+      "title": "Take this with you."
+    }
+  ]
+}
