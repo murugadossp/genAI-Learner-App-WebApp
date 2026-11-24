@@ -1,7 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import { LessonFrame } from "../../LessonFrame";
 import { Check } from "./Check";
 import { BoundaryLab } from "./BoundaryLab";
+import layersActivationImage from "./assets/layers-activation.webp";
 import styles from "./lesson.module.css";
 
 export default function Lesson() {
@@ -167,6 +169,17 @@ export default function Lesson() {
           <figcaption className="micro">
             ReLU applies max(0, z): negative values become zero, while positive
             values pass through.
+          </figcaption>
+        </figure>
+        <figure className={`${styles.figure} ${styles.infographic}`}>
+          <Image
+            src={layersActivationImage}
+            alt="Layers and activation functions. A network passes values forward from Hidden layer through ReLU to next layer. ReLU maps negative values to zero and positive values to pass through. Analogy: relay with several workstations. Key takeaways: An activation changes the rule; no single affine rule describes both sides of its graph."
+            sizes="(max-width: 760px) 100vw, 720px"
+          />
+          <figcaption className="micro">
+            The paired rows show ReLU’s rule; the arrows between cards show
+            values moving forward to the next layer.
           </figcaption>
         </figure>
         <div className={styles.callout}>

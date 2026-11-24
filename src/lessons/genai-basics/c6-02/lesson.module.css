@@ -6,11 +6,23 @@
   background: var(--panel);
 }
 
+.infographic {
+  padding: 0.5rem;
+}
+
 .figure svg {
   display: block;
   width: 100%;
   height: auto;
   color: var(--muted);
+}
+
+.figure img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
 }
 
 .diagramLabel {
@@ -150,6 +162,11 @@
 }
 
 @media (max-width: 620px) {
+  .infographic {
+    width: calc(100vw - 1rem);
+    margin-left: calc(50% - 50vw + 0.5rem);
+  }
+
   .choices {
     grid-template-columns: 1fr;
   }

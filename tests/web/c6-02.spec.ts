@@ -33,6 +33,22 @@ for (const width of [390, 768, 1440])
           (await diagram.getAttribute("aria-label"))?.length,
         ).toBeGreaterThan(40);
 
+      const infographic = page.getByRole("img", {
+        name: /Layers and activation functions/,
+      });
+      await expect(infographic).toHaveAttribute(
+        "alt",
+        "Layers and activation functions. A network passes values forward from Hidden layer through ReLU to next layer. ReLU maps negative values to zero and positive values to pass through. Analogy: relay with several workstations. Key takeaways: An activation changes the rule; no single affine rule describes both sides of its graph.",
+      );
+      await expect
+        .poll(() =>
+          infographic.evaluate((element) => {
+            const image = element as HTMLImageElement;
+            return image.complete && image.naturalWidth > 0;
+          }),
+        )
+        .toBe(true);
+
       await expect
         .poll(() =>
           page.evaluate(
