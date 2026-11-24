@@ -1,0 +1,163 @@
+.updateRule {
+  display: grid;
+  gap: 0.55rem;
+  margin: 1rem 0;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--panel);
+}
+
+.updateRule strong {
+  color: var(--ink);
+}
+
+.trySteps {
+  padding-left: 1.4rem;
+}
+
+.trySteps li {
+  margin: 0.45rem 0;
+}
+
+.quickQuestions {
+  margin: 1.5rem 0;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.quickQuestions h3 {
+  margin-top: 0;
+}
+
+.quickQuestions dl {
+  margin-bottom: 0;
+}
+
+.quickQuestions dl > div + div {
+  margin-top: 0.9rem;
+}
+
+.quickQuestions dt {
+  font-weight: 700;
+}
+
+.quickQuestions dd {
+  margin: 0.2rem 0 0;
+}
+
+.labBody {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.labIntro {
+  margin-top: 0;
+}
+
+.rateLabel {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.slider {
+  width: 100%;
+  margin: 0.1rem 0 0.45rem;
+  accent-color: var(--accent);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.controls button {
+  min-height: 42px;
+}
+
+.readout {
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg);
+}
+
+.readout p {
+  margin: 0;
+}
+
+.readout p + p {
+  margin-top: 0.35rem;
+}
+
+.chart {
+  margin: 0.35rem 0 0;
+}
+
+.chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+}
+
+.axis {
+  stroke: var(--line);
+  stroke-width: 1.5;
+}
+
+.targetLine {
+  stroke: var(--muted);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 5;
+}
+
+.lossCurve {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linejoin: round;
+}
+
+.updatePath {
+  fill: none;
+  stroke: var(--orange);
+  stroke-width: 2;
+  stroke-dasharray: 4 4;
+}
+
+.pastPoint {
+  fill: var(--orange);
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
+.currentPoint {
+  fill: var(--accent);
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.targetLabel,
+.axisLabel {
+  fill: var(--muted);
+  font-size: 13px;
+  font-family: inherit;
+}
+
+@media (max-width: 520px) {
+  .controls {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .controls button {
+    width: 100%;
+  }
+}
