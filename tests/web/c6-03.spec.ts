@@ -37,6 +37,20 @@ for (const width of [390, 768, 1440])
           page.getByText("Neural Networks and Deep Learning / Lesson 03"),
         ).toBeVisible();
 
+        const infographic = page.locator("#step figure img");
+        await expect(infographic).toHaveAttribute(
+          "alt",
+          "Gradient descent. A direction, then a step. w = 0; Slope = −4; Loss = 8; Rate = 0.25; w = 1; Loss = 4.5; Target = 4. The arrow moves down the bowl toward the target. Analogy: low point; a little at a time. Key takeaways: The learning rate scales the slope; Training repeats updates.",
+        );
+        await expect
+          .poll(() =>
+            infographic.evaluate(
+              (image: HTMLImageElement) =>
+                image.complete && image.naturalWidth > 0,
+            ),
+          )
+          .toBeTruthy();
+
         const lab = page.getByTestId("gradient-lab");
         await expect(lab.getByTestId("prediction")).toHaveText("0.00");
         await expect(lab.getByTestId("loss")).toHaveText("8.00");

@@ -113,7 +113,7 @@ export function GradientLab() {
 
         <figure className={styles.chart}>
           <svg
-            viewBox="0 0 600 300"
+            viewBox="0 0 600 320"
             role="img"
             aria-labelledby="loss-plot-title"
             aria-describedby="loss-plot-description"
@@ -198,7 +198,7 @@ export function GradientLab() {
             <text
               className={styles.axisLabel}
               x={(left + right) / 2}
-              y="292"
+              y="310"
               textAnchor="middle"
             >
               Prediction w

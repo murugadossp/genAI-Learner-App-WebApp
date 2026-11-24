@@ -144,10 +144,22 @@
   stroke-width: 2;
 }
 
+.figure {
+  margin: 1.25rem 0;
+}
+
+.figure img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
 .targetLabel,
 .axisLabel {
   fill: var(--muted);
-  font-size: 13px;
+  font-size: 22px;
   font-family: inherit;
 }
 

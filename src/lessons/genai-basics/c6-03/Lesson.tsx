@@ -1,7 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Check } from "../../Check";
 import { LessonFrame } from "../../LessonFrame";
 import { GradientLab } from "./GradientLab";
+import gradientDescentImage from "./images/gradient-descent.webp";
 import styles from "./lesson.module.css";
 
 export default function Lesson() {
@@ -59,7 +61,8 @@ export default function Lesson() {
         <p>
           At <var>w</var> = 0, the slope is −4. A negative slope means the loss
           falls if <var>w</var> moves a little to the right. Gradient descent
-          subtracts a portion of that slope from the current setting.
+          subtracts the slope multiplied by the learning rate from the current
+          setting.
         </p>
         <div className={styles.updateRule}>
           <strong>
@@ -76,6 +79,17 @@ export default function Lesson() {
           From there, the slope is 1 − 4 = −3, so another update gives 1 − 0.25
           × (−3) = 1.75, with loss about 2.53.
         </p>
+        <figure className={styles.figure}>
+          <Image
+            src={gradientDescentImage}
+            alt="Gradient descent. A direction, then a step. w = 0; Slope = −4; Loss = 8; Rate = 0.25; w = 1; Loss = 4.5; Target = 4. The arrow moves down the bowl toward the target. Analogy: low point; a little at a time. Key takeaways: The learning rate scales the slope; Training repeats updates."
+            sizes="(max-width: 760px) 100vw, 720px"
+          />
+          <figcaption className="micro">
+            One small update lowers loss as the prediction moves toward its
+            target.
+          </figcaption>
+        </figure>
         <p>
           An <strong>update</strong> is one calculated change to the adjustable
           setting. Training repeats updates; it does not usually jump straight
