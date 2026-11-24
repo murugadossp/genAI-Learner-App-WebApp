@@ -72,6 +72,15 @@ for (const width of [390, 768, 1440])
       );
 
       const check = page.locator("#check");
+      const fieldset = check.getByRole("group", {
+        name: /A network stacks two affine transforms/,
+      });
+      await expect(fieldset).toHaveAttribute("aria-describedby", /.+/);
+      const feedbackId = await fieldset.getAttribute("aria-describedby");
+      await expect(check.locator(`[id="${feedbackId}"]`)).toHaveAttribute(
+        "role",
+        "status",
+      );
       await check
         .getByRole("radio", { name: /Any added layer automatically/ })
         .check();

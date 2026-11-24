@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { LessonFrame } from "../../LessonFrame";
-import { Check } from "../../Check";
+import { Check } from "./Check";
 import { BoundaryLab } from "./BoundaryLab";
 import styles from "./lesson.module.css";
 
