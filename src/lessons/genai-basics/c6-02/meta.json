@@ -1,0 +1,13 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c6-02",
+  "title": "Layers and activation functions",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "layers", "title": "A network passes values forward" },
+    { "id": "activation", "title": "An activation changes the rule" },
+    { "id": "boundary", "title": "Make a window-shaped boundary" },
+    { "id": "check", "title": "Check your understanding" },
+    { "id": "takeaway", "title": "Take this with you" }
+  ]
+}
