@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c6-03",
   "title": "Gradient descent: improving predictions",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     { "id": "idea", "title": "A guess can improve in steps." },
     { "id": "step", "title": "Use the slope to choose a direction." },

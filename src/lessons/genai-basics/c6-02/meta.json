@@ -2,7 +2,7 @@
   "module": "genai-basics",
   "lessonId": "c6-02",
   "title": "Layers and activation functions",
-  "webStatus": "draft",
+  "webStatus": "published",
   "sections": [
     { "id": "layers", "title": "A network passes values forward" },
     { "id": "activation", "title": "An activation changes the rule" },
