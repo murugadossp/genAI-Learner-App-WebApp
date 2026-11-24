@@ -1,0 +1,210 @@
+.analogy,
+.quickQuestions,
+.takeaway {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  padding: 1rem 1.1rem;
+  margin: 1rem 0;
+}
+
+.analogy h3,
+.quickQuestions h3 {
+  margin-top: 0;
+}
+
+.analogy p,
+.quickQuestions p,
+.takeaway p {
+  margin-bottom: 0;
+}
+
+.calculation,
+.biasFlow {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.25rem 0;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  text-align: center;
+}
+
+.calculation strong,
+.biasFlow strong {
+  color: var(--accent);
+}
+
+.calculation figcaption,
+.biasFlow figcaption {
+  grid-column: 1 / -1;
+  text-align: left;
+}
+
+.biasFlow {
+  grid-template-columns: 1.2fr auto 0.8fr auto 1.2fr;
+}
+
+.lab {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.labNote {
+  margin: 0 0 1rem;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  background: var(--accent-soft);
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.inputGroup {
+  min-width: 0;
+  margin: 0;
+  padding: 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+}
+
+.inputGroup legend {
+  padding: 0 0.25rem;
+  font-weight: 700;
+}
+
+.toggleRow,
+.rangeLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0.8rem 0;
+}
+
+.toggleRow input {
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: var(--accent);
+}
+
+.toggleRow span,
+.rangeLabel span {
+  margin-right: auto;
+}
+
+.toggleRow output,
+.rangeLabel output {
+  min-width: 2rem;
+  padding: 0.15rem 0.4rem;
+  border: 1px solid var(--line);
+  border-radius: 0.4rem;
+  background: var(--panel);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.range {
+  display: block;
+  width: 100%;
+  margin: 0.5rem 0 1rem;
+  accent-color: var(--accent);
+}
+
+.flow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin: 1rem 0;
+}
+
+.flowBranch,
+.flowResult,
+.scoreBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-width: 0;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  background: var(--panel);
+}
+
+.flowBranch span,
+.scoreBox strong {
+  font-variant-numeric: tabular-nums;
+}
+
+.flowResult {
+  grid-column: 1 / 2;
+}
+
+.scoreBox {
+  grid-column: 2 / 3;
+  background: var(--accent-soft);
+}
+
+.scoreBox strong {
+  font-size: 1.25rem;
+}
+
+.equation {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: var(--dark);
+  color: var(--inverse-ink);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.result {
+  padding: 0.75rem;
+  border-left: 4px solid var(--accent);
+  background: var(--accent-soft);
+}
+
+.steps {
+  padding-left: 1.4rem;
+}
+
+.steps li {
+  margin: 0.35rem 0;
+}
+
+.takeaway {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+@media (max-width: 600px) {
+  .calculation,
+  .biasFlow {
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .calculation strong,
+  .biasFlow strong {
+    grid-column: 1 / -1;
+  }
+
+  .controls,
+  .flow {
+    grid-template-columns: 1fr;
+  }
+
+  .flowResult,
+  .scoreBox {
+    grid-column: auto;
+  }
+}

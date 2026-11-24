@@ -1,0 +1,15 @@
+{
+  "module": "genai-basics",
+  "lessonId": "c6-01",
+  "title": "Neurons, weights and biases",
+  "webStatus": "draft",
+  "sections": [
+    { "id": "idea", "title": "A neuron is a calculation." },
+    { "id": "weights", "title": "Inputs get multiplied by weights." },
+    { "id": "bias", "title": "Bias shifts the starting score." },
+    { "id": "explore", "title": "Change the weights." },
+    { "id": "limits", "title": "What this tiny model can and cannot show." },
+    { "id": "check", "title": "Check your understanding." },
+    { "id": "takeaway", "title": "Keep this model in mind." }
+  ]
+}
